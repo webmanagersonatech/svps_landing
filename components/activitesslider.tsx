@@ -110,8 +110,8 @@ export default function SchoolActivitiesPremium() {
         {/* Layout */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
 
-          {/* LEFT IMAGE SECTION - with vertical padding on xl screens */}
-          <div className="order-2 lg:order-1 xl:py-5">
+          {/* LEFT IMAGE SECTION - appears first on mobile/tablet, second on desktop */}
+          <div className="order-1 lg:order-1 ">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeActivity.id}
@@ -156,12 +156,10 @@ export default function SchoolActivitiesPremium() {
                 </div>
               </motion.div>
             </AnimatePresence>
-
-
           </div>
 
-          {/* RIGHT LIST SECTION - with extra padding on large screens (2xl) */}
-          <div className="order-1 lg:order-2 lg:pl-6 2xl:pl-12">
+          {/* RIGHT LIST SECTION - appears second on mobile/tablet, first on desktop */}
+          <div className="order-2 lg:order-2 lg:pl-6 2xl:pl-12">
             <motion.div
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
@@ -179,7 +177,7 @@ export default function SchoolActivitiesPremium() {
                       key={activity.id}
                       onClick={() => handleActivityClick(idx)}
                       className={`w-full text-left px-4 py-3 transition-all duration-300 group
-                        ${activeIndex === idx
+                ${activeIndex === idx
                           ? "bg-gradient-to-r from-primary/10 to-accent/10 shadow-md"
                           : "hover:bg-background"
                         }`}
@@ -213,7 +211,6 @@ export default function SchoolActivitiesPremium() {
                     </motion.button>
                   ))}
                 </div>
-
               </div>
               {/* Stats */}
               <div className="mt-4 pt-4 border-t border-secondary/20 grid grid-cols-3 gap-2 text-center">
