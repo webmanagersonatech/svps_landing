@@ -110,7 +110,7 @@ export default function GamesPage() {
   return (
     <>
       <Head>
-        <title>Games & Sports | Sona Valliappa Public School</title>
+        <title> Sports | Sona Valliappa Public School</title>
         <meta
           name="description"
           content="Sports, games, and physical education at Sona Valliappa Public School – building strength, teamwork, and confidence."
@@ -119,7 +119,7 @@ export default function GamesPage() {
 
       <main>
         <PageHeader
-          title="Games & Sports"
+          title=" Sports"
           subtitle="Building strength, teamwork, and confidence."
           breadcrumbs={["Home", "Activities", "Games"]}
         />
