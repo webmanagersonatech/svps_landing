@@ -127,7 +127,7 @@ export default function InfrastructureGrid() {
     return (
         <section
             ref={containerRef}
-            className="w-full py-6 px-4 md:px-8"
+            className="w-full py-6 md:px-4"
         >
             <motion.div
                 variants={containerVariants}
