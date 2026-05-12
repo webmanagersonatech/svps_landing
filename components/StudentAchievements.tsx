@@ -414,10 +414,7 @@ const StudentAchievements = () => {
                                 </div>
                             </div>
 
-                            {/* Bottom Strip */}
-                            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-white/90 px-4 py-1 text-[9px] uppercase tracking-[4px] text-secondary">
-                                SVPS.in
-                            </div>
+                       
 
                             {/* Indicators */}
                             <div className="absolute bottom-2 right-6 flex gap-2 z-20">

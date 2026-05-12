@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router'; // Import useRouter
 import { activities } from '../data/activities';
 import {
   Menu, X, ChevronDown, ChevronRight,
@@ -36,11 +37,26 @@ interface MobileDropdownProps {
 }
 
 export default function Navbar() {
+  const router = useRouter(); // Get router instance
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const dropdownTimeout = useRef(null);
   const navRef = useRef(null);
+
+  // Helper function to check if a link is active
+  const isActive = (href) => {
+    if (href === '/') {
+      return router.pathname === href;
+    }
+    return router.pathname.startsWith(href);
+  };
+
+  // Helper function to check if any submenu item is active
+  const isSubmenuActive = (submenu) => {
+    if (!submenu) return false;
+    return submenu.some(item => router.pathname === item.href || router.pathname.startsWith(item.href + '/'));
+  };
 
   // Handle scroll effect
   useEffect(() => {
@@ -210,19 +226,20 @@ export default function Navbar() {
 
   // Mobile Dropdown Component
   const MobileDropdown = ({ link, onClose }) => {
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(isSubmenuActive(link.submenu));
+    const isLinkActive = isActive(link.href);
 
     return (
       <div className="border-b border-[#ec8013]/10">
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="flex items-center justify-between w-full px-4 py-3 transition-all duration-200 hover:bg-[#ec8013]/5 group"
+          className={`flex items-center justify-between w-full px-4 py-3 transition-all duration-200 hover:bg-[#ec8013]/5 group ${isLinkActive ? 'bg-[#ec8013]/10' : ''}`}
         >
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-[#ec8013]/10 rounded-lg flex items-center justify-center">
-              <link.icon className="w-4 h-4 text-[#ec8013]" />
+            <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isLinkActive ? 'bg-[#ec8013]' : 'bg-[#ec8013]/10'}`}>
+              <link.icon className={`w-4 h-4 ${isLinkActive ? 'text-white' : 'text-[#ec8013]'}`} />
             </div>
-            <span className="font-medium text-sm text-[#f5dfc4]">{link.name}</span>
+            <span className={`font-medium text-sm ${isLinkActive ? 'text-[#ec8013]' : 'text-[#f5dfc4]'}`}>{link.name}</span>
           </div>
           <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
             <ChevronDown className="w-3.5 h-3.5 text-[#f5dfc4]/50" />
@@ -238,30 +255,33 @@ export default function Navbar() {
               className="overflow-hidden"
             >
               <div className="pl-11 pr-3 pb-2 space-y-1">
-                {link.submenu.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-[#ec8013]/10 group"
-                    onClick={() => { setIsExpanded(false); onClose(); }}
-                  >
-                    <div className="w-6 h-6 bg-[#ec8013]/5 rounded-md flex items-center justify-center">
-                      <item.icon className="w-3.5 h-3.5 text-[#ec8013]" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-xs font-medium text-[#f5dfc4]">{item.name}</span>
-                        {item.badge && (
-                          <span className="text-[7px] px-1 py-0.5 bg-[#ec8013]/20 text-[#ec8013] rounded-full font-semibold">
-                            {item.badge}
-                          </span>
-                        )}
+                {link.submenu.map((item) => {
+                  const isItemActive = router.pathname === item.href || router.pathname.startsWith(item.href + '/');
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-[#ec8013]/10 group ${isItemActive ? 'bg-[#ec8013]/20' : ''}`}
+                      onClick={() => { setIsExpanded(false); onClose(); }}
+                    >
+                      <div className={`w-6 h-6 rounded-md flex items-center justify-center ${isItemActive ? 'bg-[#ec8013]' : 'bg-[#ec8013]/5'}`}>
+                        <item.icon className={`w-3.5 h-3.5 ${isItemActive ? 'text-white' : 'text-[#ec8013]'}`} />
                       </div>
-                      <div className="text-[10px] text-[#f5dfc4]/40">{item.description}</div>
-                    </div>
-                    <ChevronRight className="w-3 h-3 text-[#f5dfc4]/20" />
-                  </Link>
-                ))}
+                      <div className="flex-1">
+                        <div className="flex items-center gap-1.5">
+                          <span className={`text-xs font-medium ${isItemActive ? 'text-[#ec8013]' : 'text-[#f5dfc4]'}`}>{item.name}</span>
+                          {item.badge && (
+                            <span className="text-[7px] px-1 py-0.5 bg-[#ec8013]/20 text-[#ec8013] rounded-full font-semibold">
+                              {item.badge}
+                            </span>
+                          )}
+                        </div>
+                        <div className="text-[10px] text-[#f5dfc4]/40">{item.description}</div>
+                      </div>
+                      <ChevronRight className="w-3 h-3 text-[#f5dfc4]/20" />
+                    </Link>
+                  );
+                })}
               </div>
             </motion.div>
           )}
@@ -372,99 +392,121 @@ export default function Navbar() {
                     alt="SVPS Logo"
                     className="h-8 sm:h-9 md:h-10 lg:h-11 w-auto object-contain"
                   />
-
                 </motion.div>
               </Link>
 
               {/* Desktop Navigation - Responsive Spacing */}
               <div className="hidden lg:flex items-center gap-0.5 xl:gap-1">
-                {navLinks.map((link) => (
-                  <div
-                    key={link.name}
-                    className="relative"
-                    onMouseEnter={() => link.submenu && handleMouseEnter(link.name)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {link.submenu ? (
-                      <motion.button
-                        whileHover={{ y: -0.5 }}
-                        className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base font-medium transition-colors duration-200 ${activeDropdown === link.name
-                            ? 'text-[#ec8013]'
-                            : 'text-[#f5dfc4]/80 hover:text-[#f5dfc4]'
+                {navLinks.map((link) => {
+                  const isLinkActive = isActive(link.href);
+                  const isSubActive = isSubmenuActive(link.submenu);
+                  
+                  return (
+                    <div
+                      key={link.name}
+                      className="relative"
+                      onMouseEnter={() => link.submenu && handleMouseEnter(link.name)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      {link.submenu ? (
+                        <motion.button
+                          whileHover={{ y: -0.5 }}
+                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base font-medium transition-colors duration-200 ${
+                            isLinkActive || isSubActive
+                              ? 'text-[#ec8013]'
+                              : 'text-[#f5dfc4]/80 hover:text-[#f5dfc4]'
                           }`}
-                      >
-                        <span>{link.name}</span>
-                        <motion.div
-                          animate={{ rotate: activeDropdown === link.name ? 180 : 0 }}
-                          transition={{ duration: 0.2 }}
                         >
-                          <ChevronDown className="w-3 h-3 xl:w-3.5 xl:h-3.5" />
-                        </motion.div>
-                      </motion.button>
-                    ) : (
-                      <Link
-                        href={link.href}
-                        className="flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base font-medium text-[#f5dfc4]/80 hover:text-[#f5dfc4] transition-colors duration-200"
-                      >
-                        <span>{link.name}</span>
-                      </Link>
-                    )}
-
-                    {/* Desktop Submenu - Responsive Width */}
-                    <AnimatePresence>
-                      {link.submenu && activeDropdown === link.name && (
-                        <motion.div
-                          className="absolute top-full left-0 mt-1"
-                          variants={dropdownVariants}
-                          initial="hidden"
-                          animate="visible"
-                          exit="exit"
-                          onMouseEnter={() => handleMouseEnter(link.name)}
-                          onMouseLeave={handleMouseLeave}
+                          <span>{link.name}</span>
+                          <motion.div
+                            animate={{ rotate: activeDropdown === link.name ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <ChevronDown className="w-3 h-3 xl:w-3.5 xl:h-3.5" />
+                          </motion.div>
+                        </motion.button>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base font-medium transition-colors duration-200 ${
+                            isLinkActive
+                              ? 'text-[#ec8013]'
+                              : 'text-[#f5dfc4]/80 hover:text-[#f5dfc4]'
+                          }`}
                         >
-                          <div className="w-72 xl:w-80 bg-[#1a4a5c] shadow-xl border border-[#ec8013]/20 overflow-hidden">
-                            <div
-                              className={`p-2 ${link.name === 'Activities'
-                                  ? 'max-h-[360px] overflow-y-auto activities-scrollbar'
-                                  : ''
-                                }`}
-                            >
-                              {link.submenu.map((item) => (
-                                <motion.div key={item.name} variants={itemVariants}>
-                                  <Link
-                                    href={item.href}
-                                    className="flex items-center gap-3 p-2.5 hover:bg-[#ec8013]/10 transition-all duration-150 group"
-                                  >
-                                    <div className="w-8 h-8 bg-[#ec8013]/10 flex items-center justify-center shrink-0 rounded-md">
-                                      <item.icon className="w-4 h-4 text-[#ec8013]" />
-                                    </div>
-                                    <div className="flex-1 min-w-0">
-                                      <div className="flex items-center gap-1.5">
-                                        <span className="text-xs xl:text-sm font-medium text-[#f5dfc4] group-hover:text-[#ec8013] transition-colors">
-                                          {item.name}
-                                        </span>
-                                        {item.badge && (
-                                          <span className="text-[8px] px-1.5 py-0.5 bg-[#ec8013]/20 text-[#ec8013] rounded-full font-semibold shrink-0">
-                                            {item.badge}
-                                          </span>
-                                        )}
-                                      </div>
-                                      <div className="text-[10px] text-[#f5dfc4]/40 truncate">
-                                        {item.description}
-                                      </div>
-                                    </div>
-                                    <ArrowRight className="w-3 h-3 text-[#f5dfc4]/20 group-hover:text-[#ec8013] group-hover:translate-x-0.5 transition-all shrink-0" />
-                                  </Link>
-                                </motion.div>
-                              ))}
-                            </div>
-                         
-                          </div>
-                        </motion.div>
+                          <span>{link.name}</span>
+                        </Link>
                       )}
-                    </AnimatePresence>
-                  </div>
-                ))}
+
+                      {/* Desktop Submenu - Responsive Width */}
+                      <AnimatePresence>
+                        {link.submenu && activeDropdown === link.name && (
+                          <motion.div
+                            className="absolute top-full left-0 mt-1"
+                            variants={dropdownVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                            onMouseEnter={() => handleMouseEnter(link.name)}
+                            onMouseLeave={handleMouseLeave}
+                          >
+                            <div className="w-72 xl:w-80 bg-[#1a4a5c] shadow-xl border border-[#ec8013]/20 overflow-hidden">
+                              <div
+                                className={`p-2 ${
+                                  link.name === 'Activities'
+                                    ? 'max-h-[360px] overflow-y-auto activities-scrollbar'
+                                    : ''
+                                }`}
+                              >
+                                {link.submenu.map((item) => {
+                                  const isItemActive = router.pathname === item.href || router.pathname.startsWith(item.href + '/');
+                                  return (
+                                    <motion.div key={item.name} variants={itemVariants}>
+                                      <Link
+                                        href={item.href}
+                                        className={`flex items-center gap-3 p-2.5 transition-all duration-150 group ${
+                                          isItemActive ? 'bg-[#ec8013]/15' : 'hover:bg-[#ec8013]/10'
+                                        }`}
+                                      >
+                                        <div className={`w-8 h-8 flex items-center justify-center shrink-0 rounded-md ${
+                                          isItemActive ? 'bg-[#ec8013]' : 'bg-[#ec8013]/10'
+                                        }`}>
+                                          <item.icon className={`w-4 h-4 ${
+                                            isItemActive ? 'text-white' : 'text-[#ec8013]'
+                                          }`} />
+                                        </div>
+                                        <div className="flex-1 min-w-0">
+                                          <div className="flex items-center gap-1.5">
+                                            <span className={`text-xs xl:text-sm font-medium transition-colors ${
+                                              isItemActive ? 'text-[#ec8013]' : 'text-[#f5dfc4] group-hover:text-[#ec8013]'
+                                            }`}>
+                                              {item.name}
+                                            </span>
+                                            {item.badge && (
+                                              <span className="text-[8px] px-1.5 py-0.5 bg-[#ec8013]/20 text-[#ec8013] rounded-full font-semibold shrink-0">
+                                                {item.badge}
+                                              </span>
+                                            )}
+                                          </div>
+                                          <div className="text-[10px] text-[#f5dfc4]/40 truncate">
+                                            {item.description}
+                                          </div>
+                                        </div>
+                                        <ArrowRight className={`w-3 h-3 transition-all shrink-0 ${
+                                          isItemActive ? 'text-[#ec8013]' : 'text-[#f5dfc4]/20 group-hover:text-[#ec8013] group-hover:translate-x-0.5'
+                                        }`} />
+                                      </Link>
+                                    </motion.div>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Desktop Buttons - Responsive Sizing */}
@@ -546,14 +588,22 @@ export default function Navbar() {
                         ) : (
                           <Link
                             href={link.href}
-                            className="flex items-center justify-between gap-3 px-4 py-3 transition-all hover:bg-[#ec8013]/5 group rounded-lg"
+                            className={`flex items-center justify-between gap-3 px-4 py-3 transition-all group rounded-lg ${
+                              isActive(link.href) ? 'bg-[#ec8013]/10' : 'hover:bg-[#ec8013]/5'
+                            }`}
                             onClick={() => setIsOpen(false)}
                           >
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 bg-[#ec8013]/10 rounded-lg flex items-center justify-center">
-                                <link.icon className="w-4 h-4 text-[#ec8013]" />
+                              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                                isActive(link.href) ? 'bg-[#ec8013]' : 'bg-[#ec8013]/10'
+                              }`}>
+                                <link.icon className={`w-4 h-4 ${
+                                  isActive(link.href) ? 'text-white' : 'text-[#ec8013]'
+                                }`} />
                               </div>
-                              <span className="font-medium text-sm text-[#f5dfc4]">{link.name}</span>
+                              <span className={`font-medium text-sm ${
+                                isActive(link.href) ? 'text-[#ec8013]' : 'text-[#f5dfc4]'
+                              }`}>{link.name}</span>
                             </div>
                             <ChevronRight className="w-3.5 h-3.5 text-[#f5dfc4]/30" />
                           </Link>
