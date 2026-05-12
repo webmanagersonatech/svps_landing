@@ -453,7 +453,7 @@ export default function NewsEventDetailPage({ item }: { item: NewsOrEvent | null
                                         filteredRecentItems.map((relatedItem) => (
                                             <Link
                                                 key={relatedItem.slug}
-                                                href={`/news-events/${relatedItem.slug}`}
+                                                href={`/news-and-events/${relatedItem.slug}`}
                                                 className="block group"
                                             >
                                                 <div className="bg-white border border-gray-100 rounded-lg px-3 py-2 hover:shadow-sm transition-all duration-200 hover:border-gray-200">
