@@ -148,7 +148,7 @@ export default function Navbar() {
       ],
     },
     {
-      name: 'Infra',
+      name: 'Infrastructure',
       href: '/infrastructure-facilities',
       icon: Building,
       submenu: [

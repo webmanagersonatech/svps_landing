@@ -27,12 +27,10 @@ const Footer = () => {
     { name: "Mandatory Disclosure", href: "/public-disclosure" },
     { name: "News & Events", href: "/news-and-events" },
     { name: "Admission Contact", href: "/admission/admission-contact" },
-    { name: "Gallery", href: "/gallery" },
   ];
 
   const quickLinks = [
     { name: "Home", href: "/" },
-    { name: "CBSE Information", href: "/" },
     { name: "School Facilities", href: "/infrastructure-facilities/classrooms" },
     { name: "Transport", href: "/infrastructure-facilities/transport-facilities" },
     { name: "Careers", href: "/careers" },
