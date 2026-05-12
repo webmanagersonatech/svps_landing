@@ -57,16 +57,16 @@ const books = [
         subtitle: "The Inspiring Biography of Mr. C. Valliappa (Tamil)",
         desc: "A deeply personal biography capturing the journey, values, and legacy of Mr. C. Valliappa.",
         icon: HeartIcon,
-        image: "https://www.sonabusinessschool.com/images/about/verum-vizhuthugalum.webp",
-        link: "/books/verum-vizhuthugalum",
+        image: "/about/chairmanbooks/verum-vizhuthugalum.webp",
+        link: "https://www.sonatech.ac.in/about-sona/read/?book=verum-vizhudhugalum",
     },
     {
         title: "The Sona Story",
         subtitle: "The Textile to Tech Journey of Chettiar Industrialist C. Valliappa",
         desc: "An inspiring transformation story of the Sona Group from textile roots to a tech-driven educational empire.",
         icon: LightBulbIcon,
-        image: "https://www.sonabusinessschool.com/images/about/the-sona-story.webp",
-        link: "/books/the-sona-story",
+        image: "/about/chairmanbooks/the-sona-story.webp",
+        link: "https://www.sonatech.ac.in/about-sona/read/?book=the-sona-story",
     },
 ];
 
