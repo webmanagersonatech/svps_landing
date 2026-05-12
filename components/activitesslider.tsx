@@ -1,33 +1,19 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { activities } from "../data/activities";
+import Link from "next/link";
 
 type Activity = {
   id: number;
   title: string;
   description: string;
+  slug: string;
   image: string;
   color: string;
 };
 
-const activities: Activity[] = [
-  { id: 1, title: "Dramatics and Role Play", description: "Creative theatre and acting sessions.", image: "https://img.magnific.com/premium-photo/boy-girl-standing-stage-theater_236854-58201.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#FF6B6B" },
-  { id: 2, title: "Sonaria Music Club", description: "Music, singing, and instruments training.", image: "https://img.magnific.com/premium-photo/young-students-playing-violins-orchestra_1236347-132.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#4ECDC4" },
-  { id: 3, title: "Yoga", description: "Improving mental and physical health.", image: "https://img.magnific.com/premium-photo/positive-children-performing-yoga-exercises-kids-doing-gymnastic-exercises-family-health-concept_89223-15942.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#45B7D1" },
-  { id: 4, title: "Sports Activities", description: "Indoor and outdoor sports programs.", image: "https://img.magnific.com/premium-photo/boy-wearing-red-jersey-with-number-4-it_1206963-63117.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#96CEB4" },
-  { id: 5, title: "Dance", description: "Classical and modern dance activities.", image: "https://img.magnific.com/premium-photo/3d-icon-desk-fan-water-bottle-vector-illustration-white-background-ideal-home-office-com_980716-500750.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#FFEAA7" },
-  { id: 6, title: "Art and Craft", description: "Painting, drawing, and crafts.", image: "https://img.magnific.com/premium-photo/group-young-girls-are-seated-long-wooden-table-painting-with-their-hands-they-are-surrounded-by-colorful-paint-have-smiles-their-faces_1148129-40233.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#DDA0DD" },
-  { id: 7, title: "Story Telling", description: "Boosting imagination through stories.", image: "https://img.magnific.com/premium-photo/girl-reads-book-group-children_670382-11477.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#98D8C8" },
-  { id: 8, title: "Public Speaking", description: "Confidence building sessions.", image: "https://img.magnific.com/premium-photo/indian-girl-practicing-her-presentation-skills-her-determination-succeed-academics-reflected-her-efforts-refine-her-public-speaking-abilities_748982-28032.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#F7D794" },
-  { id: 9, title: "Field Trips", description: "Educational outdoor experiences.", image: "https://img.magnific.com/free-photo/asian-boy-little-girls-sitting-wooden-bridge-joyful-playing-with-banana-leaves-head-smile-laughting-with-funny-together-copy-space-rural-scene-style-concept_1150-55885.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#778BEB" },
-  { id: 10, title: "Special Day Activities", description: "Cultural and national celebrations.", image: "https://img.magnific.com/free-photo/kids-having-fun-jungle-party_23-2149499049.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#E77F67" },
-  { id: 11, title: "Exciting Games", description: "Fun and interactive learning games.", image: "https://img.magnific.com/premium-photo/students-playing-carrom-school_1613570-225.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#63CDDA" },
-  { id: 12, title: "Rhythmic Songs", description: "Music-based learning sessions.", image: "https://img.magnific.com/premium-photo/young-boy-dressed-suit-smiles-while-playing-violin_14117-1112104.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#F8A5C2" },
-  { id: 13, title: "Pottery", description: "Clay modeling and creativity.", image: "https://img.magnific.com/free-photo/talented-child-doing-pottery_23-2151693891.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#B8A9C9" },
-  { id: 14, title: "Japanese Language", description: "Foreign language learning.", image: "https://img.magnific.com/free-photo/close-up-pupils-doing-japanese-calligraphy-called-shodo_23-2149105367.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#F3A683" },
-  { id: 15, title: "ICT", description: "Technology and digital skills.", image: "https://img.magnific.com/free-photo/kids-with-vr-glasses-abstract-futuristic-school-classroom_23-2150892634.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#786FA6" },
-  { id: 16, title: "Value Calendar", description: "Daily moral and value-based learning.", image: "https://img.magnific.com/premium-photo/man-girl-are-doing-homework-classroom_1206963-86038.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", color: "#E1B12C" },
-];
+
 
 const textVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -123,7 +109,7 @@ export default function SchoolActivitiesPremium() {
               >
                 <div className="relative h-80 md:h-96 xl:h-[460px] overflow-hidden">
                   <img
-                    src={activeActivity.image}
+                    src={activeActivity.thumbnail}
                     alt={activeActivity.title}
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                     loading="lazy"
@@ -137,9 +123,32 @@ export default function SchoolActivitiesPremium() {
                     </span>
                   </div>
 
+                  {/* Glass Explore Button */}
+                  <Link
+                    href={`/activities/${activeActivity.slug}`}
+                    className="absolute bottom-5 right-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white text-sm font-medium shadow-[0_8px_32px_rgba(0,0,0,0.25)] hover:bg-white/20 transition-all duration-300 hover:scale-105"
+                  >
+                    Explore Activity
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
+
                   <div
                     className="absolute bottom-0 left-0 right-0 h-1"
-                    style={{ backgroundColor: activeActivity.color }}
+                    style={{ backgroundColor: "#f37d2a" }}
                   />
                 </div>
 
@@ -147,11 +156,13 @@ export default function SchoolActivitiesPremium() {
                   <span className="text-xs uppercase tracking-wider text-secondary/60 font-semibold">
                     Featured Activity
                   </span>
+
                   <h3 className="text-lg font-semibold text-secondary mt-1">
                     {activeActivity.title}
                   </h3>
+
                   <p className="text-secondary/80 text-sm mt-2">
-                    {activeActivity.description}
+                    {activeActivity.shortDescription}
                   </p>
                 </div>
               </motion.div>
@@ -188,7 +199,7 @@ export default function SchoolActivitiesPremium() {
                           <div className="flex items-center gap-2 mb-1">
                             <div
                               className="w-2 h-2 rounded-full"
-                              style={{ backgroundColor: activity.color }}
+                              style={{ backgroundColor: "#f37d2a" }}
                             />
                             <span className={`font-medium ${activeIndex === idx ? "text-secondary" : "text-secondary/70"}`}>
                               {activity.title}
@@ -196,7 +207,7 @@ export default function SchoolActivitiesPremium() {
                           </div>
 
                           <p className={`text-xs ${activeIndex === idx ? "text-secondary/80" : "text-secondary/50"}`}>
-                            {activity.description.substring(0, 60)}...
+                            {activity.shortDescription.substring(0, 60)}...
                           </p>
                         </div>
 
@@ -204,7 +215,7 @@ export default function SchoolActivitiesPremium() {
                           <motion.div
                             layoutId="activeIndicator"
                             className="w-1 h-8 rounded-full"
-                            style={{ backgroundColor: activity.color }}
+                            style={{ backgroundColor: "#f37d2a" }}
                           />
                         )}
                       </div>

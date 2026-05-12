@@ -16,345 +16,249 @@ export type NewsOrEvent = {
     endDate: string;
     category: "news" | "event";
     thumbnail: string;
-    galleries: string[];
+    galleries?: string[];
     pressrelease?: string[];
     videoLinks?: string[];
     days?: EventDay[];
 };
 
-// ==============================
-// sample data
-// ==============================
-
 export const newsAndEvents: NewsOrEvent[] = [
     // ========== NEWS (6 total) ==========
-    {
-        title: "School Wins National Green Award",
-        slug: "national-green-award-2025",
-        excerpt: "Our school received the 'Green School of the Year' award for sustainable practices and environmental education.",
-        contentHtml: `
-      <p>We are proud to announce that our institution has been honoured with the <strong>National Green Award 2025</strong> by the Ministry of Environment. The award recognises our waste management, solar energy adoption, and eco‑club initiatives.</p>
-      <p>The ceremony took place in New Delhi on 5th April. Principal Dr. S. Mehta received the trophy from the Minister.</p>
-      <p>Students and staff worked together on tree planting, plastic‑free campus drives, and water harvesting projects.</p>
-    `,
-        startDate: "2025-04-05",
-        endDate: "2025-04-05",
-        category: "news",
-        thumbnail: "https://img.magnific.com/free-photo/collage-city-committed-education_23-2149886993.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-        galleries: [
-            "https://img.magnific.com/premium-photo/indian-girl-practicing-her-presentation-skills-her-determination-succeed-academics-reflected-her-efforts-refine-her-public-speaking-abilities_748982-27460.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-            "https://img.magnific.com/premium-photo/close-up-laptop-computer-workplace-with-different-objects-creative-polygonal-breaking-news-globe-hologram-television-online-news-digital-communication-concept-3d-rendering_670147-57928.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-            "https://img.magnific.com/premium-photo/girl-is-holding-microphone-yelling-into-it_248459-79349.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-        ],
 
-        videoLinks: ["https://youtu.be/abc123", "https://youtu.be/xyz789"],
+    {
+        "title": "Kindergarten Reopening Day 2025 – A Colorful Comeback to Joyful Beginnings",
+        "slug": "kindergarten-reopening-day-2025",
+        "excerpt": "A grand red carpet welcome for our youngest learners on June 9th, 2025, featuring Magot, recreation zones, and a day filled with laughter and joy.",
+        "contentHtml": `
+        <p>On Monday, 9th June, our vibrant kindergarten campus came alive with laughter, cheers, and bright smiles as we reopened our doors to a grand red carpet welcome! 🌟</p>
+        <p>Children were greeted with warmth and love by none other than Magot, setting the tone for a day filled with fun, laughter, and delightful takeaways. From exciting recreation zones to picture-perfect moments, it was a celebration to remember! 🎈📸</p>
+        <p>Our heartfelt thanks to our Respected Chairman Shri C. VALLIAPPA, Sona Institutions, Mr. Varun, Director Dr. V. Karthikeyan, Principal Ms. E.J. Kavitha, and our dedicated staff for making this day truly magical. 💫</p>
+        <p>The presence and joy of our little stars rejuvenated the campus, bringing back the spirit of learning, laughter, and love. ❤️</p>
+        <p>Here's to a year filled with curiosity, creativity, and countless memories! 🌈</p>
+    `,
+        "startDate": "2025-06-09",
+        "endDate": "2025-06-09",
+        "category": "news",
+        "thumbnail": "/newsandevents/kindergarden-reopening-2025.webp",
+
     },
     {
-        title: "Students Excel at National Robotics Championship",
-        slug: "robotics-championship-2025",
-        excerpt: "Our robotics team won second prize at the National Robotics Championship held in Bangalore.",
-        contentHtml: `
-      <p>Six students from grades 9 and 10 represented our school at the National Robotics Championship. Their innovative disaster management robot earned them the silver medal.</p>
-      <p>The team was mentored by Mr. K. Venkatesh, Head of the ICT department. The winners received trophies and a cash prize of ₹50,000.</p>
+        "title": "House Wise Competition July 2025",
+        "slug": "house-wise-competition-july-2025",
+        "excerpt": "An exciting inter-house competition featuring singing, dancing, storytelling, drawing, relay races, and games with participation from Ruby, Sapphire, Emerald, and Topaz houses.",
+        "contentHtml": `
+        <p>The spirit of camaraderie and healthy competition was at its peak during our exciting House Wise Competition held in July 2025! 🏆🎉</p>
+        <p>With enthusiastic participation from all houses — Ruby, Sapphire, Emerald, and Topaz — our students showcased their unique talents in various events ranging from singing, dancing, storytelling, and drawing to fun-filled relay races and games. 🖌️🎤🏃‍♂️</p>
+        <p>The energy and excitement in the air were contagious as students cheered for their teammates, displaying wonderful team spirit and sportsmanship. Our little stars left everyone amazed with their confidence, creativity, and competitive zeal! 🌟</p>
+        <p>A special thanks to our beloved Chairman Shri C. VALLIAPPA, Director Mr. Varun, Principal Dr. V. Karthikeyan, Vice Principal Ms. E.J. Kavitha, and our dedicated staff for organizing such a vibrant and enriching event. 💐</p>
+        <p>Congratulations to all the young champions who participated with heart and soul. Every child was a winner, and every moment was a celebration of learning through joy! 🎊</p>
     `,
-        startDate: "2025-03-20",
-        endDate: "2025-03-22",
-        category: "news",
-        thumbnail: "https://example.com/images/robotics-thumb.jpg",
-        galleries: [
-            "https://example.com/images/robotics-1.jpg",
-            "https://example.com/images/robotics-2.jpg",
-        ],
-        videoLinks: ["https://youtu.be/robotics-highlight"],
+        "startDate": "2025-07-15",
+        "endDate": "2025-07-15",
+        "category": "news",
+        "thumbnail": "/newsandevents/hosue_com_2.webp",
+
     },
     {
-        title: "New School Building Inaugurated",
-        slug: "new-building-inauguration",
-        excerpt: "The new state-of-the-art academic block was inaugurated by the Education Minister.",
-        contentHtml: `
-      <p>On March 30, 2025, the Honourable Education Minister inaugurated the new five-story academic block. The building houses 20 smart classrooms, 4 science labs, and a modern library.</p>
-      <p>The project was completed in 18 months at a cost of ₹15 crores. The new block will accommodate 800 additional students.</p>
+        "title": "Primary & Middle School Reopening Day 2025 – Reopening with Responsibility & Renewal",
+        "slug": "primary-middle-school-reopening-2025",
+        "excerpt": "A meaningful reopening on World Environment Day, inspiring students to be stewards of a greener tomorrow with special assembly and anti-plastic awareness.",
+        "contentHtml": `
+        <p>On June 5th, our Primary & Middle School students returned to a vibrant campus — just in time to celebrate World Environment Day! 🎉🌎</p>
+        <p>The reopening was marked with a special assembly that not only welcomed our young learners back but also inspired them to be stewards of a greener tomorrow. 💚</p>
+        <p>Students were guided on the harmful impact of plastic and how small actions can lead to big environmental changes. Thought-provoking messages and engaging programmes helped rejuvenate their spirit and reconnect them with values of responsibility and sustainability. 🌱♻️</p>
+        <p>We were honored by the presence of Director Dr. V. Karthikeyan, Principal Ms. E.J. Kavitha, and our passionate team of educators, who made the day truly meaningful. 🙌 🌱📚 🚫🛍️</p>
+        <p>🗣️: "A fresh start. A greener tomorrow. A school year with purpose!" 🌟🌱 🌍✨</p>
     `,
-        startDate: "2025-03-30",
-        endDate: "2025-03-30",
-        category: "news",
-        thumbnail: "https://example.com/images/new-building-thumb.jpg",
-        galleries: [
-            "https://example.com/images/new-building-1.jpg",
-            "https://example.com/images/new-building-2.jpg",
-            "https://example.com/images/new-building-3.jpg",
-        ],
+        "startDate": "2025-06-05",
+        "endDate": "2025-06-05",
+        "category": "news",
+        "thumbnail": "/newsandevents/primary-and-middle-school-reopening-2025.webp",
+
     },
     {
-        title: "100% Results in Board Examinations",
-        slug: "board-results-2025",
-        excerpt: "Our school achieved 100% pass rate in both Class 10 and Class 12 board exams.",
-        contentHtml: `
-      <p>We are thrilled to announce that all 250 students who appeared for the CBSE Class 10 and Class 12 board examinations have passed with flying colours. 35 students scored above 95%, and 12 students secured a perfect 100 in Mathematics.</p>
-      <p>The Principal congratulated the students and teachers for their hard work.</p>
+        "title": "Faculty Development Programme 2025",
+        "slug": "faculty-development-programme-2025",
+        "excerpt": "A vibrant FDP on curriculum planning, innovative pedagogy, AI integration, and research-based practices to transform classroom experiences.",
+        "contentHtml": `
+        <p>A vibrant Faculty Development Programme was held on May 30 at 10:30 AM at Sona Valliappa Public School, Salem.</p>
+        <p>Dr. V. Karthikeyan, Director, inaugurated the session, emphasizing the shift towards teacher-centric, student-focused, and process-driven learning.</p>
+        <p>Principal Ms. E.J. Kavitha welcomed the gathering and highlighted the value of continuous professional growth.</p>
+        <p>Teachers engaged in sessions on curriculum planning, innovative pedagogy, AI integration, and research-based practices—gearing up to transform classroom experiences.</p>
+        <p>Chairman Shri. C. Valliappa, Sona Institutions, appreciated the efforts and presented certificates to all participants.</p>
+        <p>The programme was effectively coordinated by Ms. W. Sherin and Ms. C. Karthika, and was proudly led by the school's own team of passionate educators.</p>
     `,
-        startDate: "2025-05-10",
-        endDate: "2025-05-10",
-        category: "news",
-        thumbnail: "https://example.com/images/board-result-thumb.jpg",
-        galleries: [
-            "https://example.com/images/result-1.jpg",
-            "https://example.com/images/result-2.jpg",
-        ],
-        videoLinks: ["https://youtu.be/result-celebration"],
+        "startDate": "2025-05-30",
+        "endDate": "2025-05-30",
+        "category": "news",
+        "thumbnail": "/newsandevents/faculty-development-programme.webp",
+     
     },
+    // events
     {
-        title: "Exchange Program with Japanese School",
-        slug: "japan-exchange-program",
-        excerpt: "Ten students and two teachers will visit our sister school in Tokyo for a cultural exchange.",
-        contentHtml: `
-      <p>Our school has signed a Memorandum of Understanding with Sakura High School, Tokyo. Starting June 2025, ten students and two teachers will participate in a two-week exchange program. They will learn Japanese language, calligraphy, and share Indian culture.</p>
-      <p>The Japanese delegation will visit our school in August 2025.</p>
+        "title": "Annual Sports Meet 2026",
+        "slug": "annual-sports-meet-2026",
+        "excerpt": "A grand day of athletic excellence, teamwork, and sportsmanship featuring sprints, relays, long jump, and fun games.",
+        "contentHtml": `
+        <p>Sona Valliappa Public School proudly celebrated its Annual Sports Meet 2026 with great enthusiasm and vibrant participation from students, teachers, and parents. The event was a grand display of athletic excellence, teamwork, and sportsmanship.</p>
+        <p>The sports meet featured a wide range of track and field events, including sprints, relays, long jump, and various fun games. Students showcased remarkable energy, discipline, and determination, making each event exciting and competitive.</p>
+        <p>The school campus was filled with cheers and encouragement as parents and teachers actively supported the participants. The spirit of unity and healthy competition was clearly visible throughout the event.</p>
+        <p>The event concluded with a prize distribution ceremony, where winners were honored for their outstanding performances. The Annual Sports Meet 2026 was a memorable occasion that promoted physical fitness, confidence, and team spirit among students.</p>
     `,
-        startDate: "2025-04-25",
-        endDate: "2025-04-25",
-        category: "news",
-        thumbnail: "https://example.com/images/japan-exchange-thumb.jpg",
-        galleries: [
-            "https://example.com/images/exchange-1.jpg",
-            "https://example.com/images/exchange-2.jpg",
+        "startDate": "2026-01-15",
+        "endDate": "2026-01-15",
+        "category": "event",
+        "thumbnail": "/newsandevents/Annual-Sports-1.webp",
+        "galleries": [
+            "/newsandevents/Annual-Sports-2.webp",
+            "/newsandevents/Annual-Sports-3.webp",
+            "/newsandevents/Annual-Sports-4.webp",
+            "/newsandevents/Annual-Sports-5.webp",
+            "/newsandevents/Annual-Sports-6.webp",
+            "/newsandevents/Annual-Sports-7.webp",
+
         ],
-    },
-    {
-        title: "Annual Sports Day Sets New Records",
-        slug: "sports-day-2025-records",
-        excerpt: "Three school records were broken at the Annual Sports Day 2025.",
-        contentHtml: `
-      <p>The 45th Annual Sports Day was held on February 15, 2025. Three new school records were set in 100m sprint, long jump, and 4x100m relay. The House Cup was won by Gandhi House.</p>
-      <p>Former Olympian Ms. P. T. Usha graced the occasion as chief guest.</p>
-    `,
-        startDate: "2025-02-15",
-        endDate: "2025-02-15",
-        category: "news",
-        thumbnail: "https://example.com/images/sports-day-thumb.jpg",
-        galleries: [
-            "https://example.com/images/sports-day-1.jpg",
-            "https://example.com/images/sports-day-2.jpg",
-            "https://example.com/images/sports-day-3.jpg",
-        ],
-        videoLinks: ["https://youtu.be/sports-day-2025"],
+        "videoLinks": [
+            "https://youtu.be/sports_meet_2026_highlights"
+        ]
     },
 
-    // ========== EVENTS (10 total) ==========
-    // Existing events
     {
-        title: "Annual Science Fair 2025",
-        slug: "annual-science-fair-2025",
-        excerpt: "Students showcase innovative STEM projects – robotics, renewable energy models, and chemistry experiments.",
-        contentHtml: `
-      <p>The Annual Science Fair will be held in the school auditorium. All classes from 6 to 12 will participate.</p>
-      <p>Special lectures by guest scientists, interactive workshops, and a prize distribution ceremony.</p>
-      <p>Parents and alumni are cordially invited.</p>
+        "title": "Vinayagar Chaturthi 2025",
+        "slug": "vinayagar-chaturthi-2025",
+        "excerpt": "A joyful celebration of Lord Ganesha's birthday with traditional pooja, bhajans, creative activities, and community spirit.",
+        "contentHtml": `
+        <p>Sona Valliappa Public School joyfully celebrated Vinayagar Chaturthi with the wholehearted participation of students, teachers, and parents. A beautifully decorated idol of Lord Ganesha was installed on the school premises, creating an atmosphere of devotion, positivity, and togetherness.</p>
+        <p>The celebration began with a traditional pooja and the chanting of slokas, seeking the blessings of Lord Vinayagar, the remover of obstacles and the symbol of wisdom and prosperity. Parents, teachers, and students came together in the rituals, making the occasion spiritually enriching and memorable.</p>
+        <p>Students expressed their devotion through bhajans and creative activities, while parents actively encouraged and supported the young learners. These activities not only strengthened the bond between school and parents but also instilled cultural values and spiritual awareness among the children.</p>
+        <p>The event concluded with the distribution of prasadam, spreading joy, harmony, and blessings to everyone present. The celebration was a wonderful blend of tradition, creativity, and community spirit, leaving lasting impressions on all who participated.</p>
     `,
-        startDate: "2025-05-15",
-        endDate: "2025-05-15",
-        category: "event",
-        thumbnail: "https://example.com/images/science-fair-thumb.jpg",
-        galleries: [
-            "https://example.com/images/science-fair-1.jpg",
-            "https://example.com/images/science-fair-2.jpg",
+        "startDate": "2025-08-27",
+        "endDate": "2025-08-27",
+        "category": "event",
+        "thumbnail": "/newsandevents/Vinayagar-Chaturthi-1.webp",
+        "galleries": [
+            "/newsandevents/Vinayagar-Chaturthi-1.webp",
+            "/newsandevents/Vinayagar-Chaturthi-2.webp",
+            "/newsandevents/Vinayagar-Chaturthi-3.webp",
+            "/newsandevents/Vinayagar-Chaturthi-5.webp",
+            "/newsandevents/Vinayagar-Chaturthi-6.webp",
+            "/newsandevents/Vinayagar-Chaturthi-8.webp",
         ],
-        videoLinks: ["https://youtu.be/prerelease_science"],
+        "videoLinks": [
+            "https://youtu.be/vinayagar_chaturthi_2025"
+        ]
     },
     {
-        title: "Cultural Fest: Utsav 2025",
-        slug: "utsav-2025",
-        excerpt: "Three days of music, dance, drama, art competitions, and food festival.",
-        contentHtml: `
-      <p>Utsav 2025 is our annual cultural extravaganza. Each day features different themes and competitions.</p>
-      <p>Open to students, parents, and neighbouring schools. Entry free for all.</p>
+        "title": "Krishna Janmashtami 2025",
+        "slug": "krishna-janmashtami-2025",
+        "excerpt": "A grand celebration featuring cultural programs, classical dance, bhajans, fancy dress, and children dressed as little Krishna and Radha.",
+        "contentHtml": `
+        <p>Sona Valliappa Public School celebrated Krishna Janmashtami with devotion and grandeur. The occasion was marked by vibrant cultural programs, including storytelling, classical dance, bhajans, and fancy dress presentations, which showcased the enthusiasm and creativity of our students.</p>
+        <p>Children dressed as little Krishnas and Radhas added charm to the celebration, spreading the message of love, peace, and unity. The event not only commemorated the birth of Lord Krishna but also provided students with an opportunity to imbibe cultural values, appreciate traditions, and develop a sense of spiritual belonging.</p>
+        <p>The celebration created a joyful atmosphere on campus, leaving a lasting impression on both students and parents.</p>
     `,
-        startDate: "2025-06-10",
-        endDate: "2025-06-12",
-        category: "event",
-        thumbnail: "https://example.com/images/utsav-thumb.jpg",
-        galleries: [
-            "https://example.com/images/utsav-overall-1.jpg",
-            "https://example.com/images/utsav-overall-2.jpg",
+        "startDate": "2025-08-16",
+        "endDate": "2025-08-16",
+        "category": "event",
+        "thumbnail": "/newsandevents/Krishna-Janmastami-1.webp",
+        "galleries": [
+            "/newsandevents/Krishna-Janmastami-2.webp",
+            "/newsandevents/Krishna-Janmastami-3.webp",
+            "/newsandevents/Krishna-Janmastami-4.webp",
+            "/newsandevents/Krishna-Janmastami-5.webp",
+            "/newsandevents/Krishna-Janmastami-6.webp",
+            "/newsandevents/Krishna-Janmastami-7.webp",
         ],
-        videoLinks: ["https://youtu.be/utsav2025_teaser"],
-        days: [
-            {
-                dayNumber: 1,
-                title: "Inauguration & Classical Night",
-                description: `
-          <p>Chief guest: renowned classical dancer Smt. Anjali Sharma. Performances in Bharatanatyam, Odissi, and Hindustani vocal.</p>
-          <p>Opening ceremony at 5:00 PM in the open-air theatre.</p>
-        `,
-                images: [
-                    "https://example.com/images/utsav-day1-1.jpg",
-                    "https://example.com/images/utsav-day1-2.jpg",
-                ],
-            },
-            {
-                dayNumber: 2,
-                title: "Western Music & Dance Battle",
-                description: `
-          <p>Band performances, solo singing, hip‑hop and contemporary dance competition. Inter‑school showdown from 9 AM to 4 PM.</p>
-        `,
-                images: [
-                    "https://example.com/images/utsav-day2-1.jpg",
-                    "https://example.com/images/utsav-day2-2.jpg",
-                    "https://example.com/images/utsav-day2-3.jpg",
-                ],
-            },
-            {
-                dayNumber: 3,
-                title: "Folk Day & Prize Ceremony",
-                description: `
-          <p>Folk dances from different states, traditional costume parade, followed by the grand valedictory and prize distribution.</p>
-        `,
-                images: [
-                    "https://example.com/images/utsav-day3-1.jpg",
-                ],
-            },
-        ],
+        "videoLinks": [
+            "https://youtu.be/krishna_janmashtami_2025"
+        ]
     },
-    // New events (8 more)
+
     {
-        title: "Parent-Teacher Meet (Q2 2025)",
-        slug: "parent-teacher-meet-q2-2025",
-        excerpt: "Quarterly parent-teacher interaction to discuss student progress.",
-        contentHtml: `
-      <p>The second quarterly Parent-Teacher Meet will be held in the school auditorium. Parents can collect report cards and meet subject teachers between 9 AM and 2 PM.</p>
-      <p>Online appointments are mandatory. Please register via the parent portal.</p>
+        "title": "Annual Day 2024",
+        "slug": "annual-day-2024",
+        "excerpt": "A spectacular evening of talent, celebration, and achievements featuring cultural performances, student awards, and a grand finale.",
+        "contentHtml": `
+        <p>Sona Valliappa Public School celebrated its Annual Day 2024 with great pomp and splendor. The evening was a magnificent showcase of student talent, featuring mesmerizing cultural performances, including classical and western dances, skits, musical presentations, and a vibrant fashion show.</p>
+        <p>The event was graced by our beloved Chairman Shri C. VALLIAPPA, Director Mr. Varun, Principal Dr. V. Karthikeyan, Vice Principal Ms. E.J. Kavitha, along with distinguished guests, parents, and well-wishers. Their encouraging presence added immense value to the celebration.</p>
+        <p>The highlight of the evening was the prize distribution ceremony, where students were honored for their academic excellence, sports achievements, and co-curricular accomplishments. The young achievers walked with pride as they received their well-deserved accolades.</p>
+        <p>The grand finale left the audience spellbound, creating memories that will be cherished for years to come. Annual Day 2024 was truly a celebration of learning, growth, and the bright future of our students.</p>
     `,
-        startDate: "2025-07-20",
-        endDate: "2025-07-20",
-        category: "event",
-        thumbnail: "https://example.com/images/ptm-thumb.jpg",
-        galleries: [
-            "https://example.com/images/ptm-1.jpg",
-            "https://example.com/images/ptm-2.jpg",
+        "startDate": "2024-12-20",
+        "endDate": "2024-12-20",
+        "category": "event",
+        "thumbnail": "/newsandevents/Annual-Day-1.webp",
+        "galleries": [
+
+            "/newsandevents/Annual-Day-2.webp",
+            "/newsandevents/Annual-Day-3.webp",
+            "/newsandevents/Annual-Day-4.webp",
+            "/newsandevents/Annual-Day-5.webp",
+            "/newsandevents/Annual-Day-6.webp",
+            "/newsandevents/Annual-Day-7.webp"
         ],
-    },
-    {
-        title: "Inter-House Debate Competition",
-        slug: "inter-house-debate-2025",
-        excerpt: "Theme: 'Artificial Intelligence – Boon or Bane?' Open to students from grades 8 to 12.",
-        contentHtml: `
-      <p>The English Literary Association organises the annual Inter-House Debate Competition. Each house can send two speakers. The topic will be announced 30 minutes before the event.</p>
-      <p>Judges include university professors and alumni. Best speaker and winning house trophies to be awarded.</p>
-    `,
-        startDate: "2025-08-05",
-        endDate: "2025-08-05",
-        category: "event",
-        thumbnail: "https://example.com/images/debate-thumb.jpg",
-        galleries: [
-            "https://example.com/images/debate-1.jpg",
-            "https://example.com/images/debate-2.jpg",
-        ],
-        videoLinks: ["https://youtu.be/debate-preview"],
-    },
-    {
-        title: "Workshop on Cyber Safety",
-        slug: "cyber-safety-workshop",
-        excerpt: "A one-day workshop for students and parents on safe internet practices.",
-        contentHtml: `
-      <p>Cyber crime experts from the city police will conduct an interactive workshop on online safety, phishing, social media privacy, and cyber bullying. Separate sessions for students (morning) and parents (afternoon).</p>
-      <p>Certificates will be provided to all attendees.</p>
-    `,
-        startDate: "2025-08-18",
-        endDate: "2025-08-18",
-        category: "event",
-        thumbnail: "https://example.com/images/cyber-thumb.jpg",
-        galleries: [
-            "https://example.com/images/cyber-1.jpg",
-            "https://example.com/images/cyber-2.jpg",
-        ],
-    },
-    {
-        title: "Teacher's Day Celebration 2025",
-        slug: "teachers-day-2025",
-        excerpt: "Students honour teachers with cultural performances and a special assembly.",
-        contentHtml: `
-      <p>On the occasion of Dr. Sarvepalli Radhakrishnan's birth anniversary, students will organise a special assembly, cultural performances, and a token of gratitude for all teachers. Senior students will take on the role of teachers for select periods.</p>
-    `,
-        startDate: "2025-09-05",
-        endDate: "2025-09-05",
-        category: "event",
-        thumbnail: "https://example.com/images/teachers-day-thumb.jpg",
-        galleries: [
-            "https://example.com/images/teachers-day-1.jpg",
-            "https://example.com/images/teachers-day-2.jpg",
-            "https://example.com/images/teachers-day-3.jpg",
-        ],
-    },
-    {
-        title: "Annual Art Exhibition",
-        slug: "art-exhibition-2025",
-        excerpt: "Display of paintings, sculptures, and craftwork by students from all grades.",
-        contentHtml: `
-      <p>The Fine Arts department presents the Annual Art Exhibition titled "Colours of Imagination". Over 300 artworks including watercolours, acrylics, clay models, and recycled art will be on display. Visitors can also participate in live pottery and canvas painting workshops.</p>
-      <p>Entry free for parents and alumni. The exhibition will remain open from 10 AM to 5 PM.</p>
-    `,
-        startDate: "2025-09-20",
-        endDate: "2025-09-21",
-        category: "event",
-        thumbnail: "https://example.com/images/art-exhibition-thumb.jpg",
-        galleries: [
-            "https://example.com/images/art-exhibition-1.jpg",
-            "https://example.com/images/art-exhibition-2.jpg",
-        ],
-        videoLinks: ["https://youtu.be/art-expo-teaser"],
-    },
-    {
-        title: "Diwali Mela (Charity Fair)",
-        slug: "diwali-mela-2025",
-        excerpt: "A vibrant fair with food stalls, games, and handicrafts – proceeds go to an orphanage.",
-        contentHtml: `
-      <p>The Student Council organises the annual Diwali Mela. There will be over 20 stalls selling traditional sweets, diyas, rangoli powders, and accessories. Fun games, magic show, and a lucky draw. All proceeds will be donated to "Asha Kiran" orphanage.</p>
-      <p>Entry ₹20 per person. Food coupons available at the gate.</p>
-    `,
-        startDate: "2025-10-18",
-        endDate: "2025-10-18",
-        category: "event",
-        thumbnail: "https://example.com/images/diwali-mela-thumb.jpg",
-        galleries: [
-            "https://example.com/images/mela-1.jpg",
-            "https://example.com/images/mela-2.jpg",
-            "https://example.com/images/mela-3.jpg",
-        ],
-    },
-    {
-        title: "Sports Meet – Winter Championship",
-        slug: "winter-sports-2025",
-        excerpt: "Two-day sports competition including athletics, basketball, and throwball.",
-        contentHtml: `
-      <p>The Winter Sports Championship will be held on the school grounds. Events include 100m, 200m, 4x100m relay, long jump, shot put, basketball (boys & girls), and throwball. Inter-house and individual medals.</p>
-      <p>Registration closes on October 30. All participants must bring their own sports kit.</p>
-    `,
-        startDate: "2025-11-10",
-        endDate: "2025-11-11",
-        category: "event",
-        thumbnail: "https://example.com/images/winter-sports-thumb.jpg",
-        galleries: [
-            "https://example.com/images/sports-1.jpg",
-            "https://example.com/images/sports-2.jpg",
-        ],
-        videoLinks: ["https://youtu.be/winter-sports-promo"],
-    },
-    {
-        title: "Graduation Ceremony 2025 (Class 12 Farewell)",
-        slug: "graduation-2025",
-        excerpt: "Farewell and certificate distribution for the outgoing batch of Class 12.",
-        contentHtml: `
-      <p>The Graduation Ceremony for the batch of 2024-25 will be held in the school auditorium. Chief guest: Dr. S. Krishnan, Dean of Engineering, Anna University. Awards for academic excellence and leadership will be presented.</p>
-      <p>Dress code: Formal. Parents are requested to arrive by 4:30 PM.</p>
-    `,
-        startDate: "2026-09-25",
-        endDate: "2026-09-25",
-        category: "event",
-        thumbnail: "https://example.com/images/graduation-thumb.jpg",
-        galleries: [
-            "https://example.com/images/grad-1.jpg",
-            "https://example.com/images/grad-2.jpg",
-        ],
-        videoLinks: ["https://youtu.be/graduation-live"],
-    },
+        "videoLinks": [
+            "https://youtu.be/annual_day_2024"
+        ]
+    }
+
+
+    // multiday event
+
+    // {
+    //     title: "Cultural Fest: Utsav 2025",
+    //     slug: "utsav-2025",
+    //     excerpt: "Three days of music, dance, drama, art competitions, and food festival.",
+    //     contentHtml: `
+    //   <p>Utsav 2025 is our annual cultural extravaganza. Each day features different themes and competitions.</p>
+    //   <p>Open to students, parents, and neighbouring schools. Entry free for all.</p>
+    // `,
+    //     startDate: "2025-06-10",
+    //     endDate: "2025-06-12",
+    //     category: "event",
+    //     thumbnail: "https://example.com/images/utsav-thumb.jpg",
+    //     galleries: [
+    //         "https://example.com/images/utsav-overall-1.jpg",
+    //         "https://example.com/images/utsav-overall-2.jpg",
+    //     ],
+    //     videoLinks: ["https://youtu.be/utsav2025_teaser"],
+    //     days: [
+    //         {
+    //             dayNumber: 1,
+    //             title: "Inauguration & Classical Night",
+    //             description: `
+    //       <p>Chief guest: renowned classical dancer Smt. Anjali Sharma. Performances in Bharatanatyam, Odissi, and Hindustani vocal.</p>
+    //       <p>Opening ceremony at 5:00 PM in the open-air theatre.</p>
+    //     `,
+    //             images: [
+    //                 "https://example.com/images/utsav-day1-1.jpg",
+    //                 "https://example.com/images/utsav-day1-2.jpg",
+    //             ],
+    //         },
+    //         {
+    //             dayNumber: 2,
+    //             title: "Western Music & Dance Battle",
+    //             description: `
+    //       <p>Band performances, solo singing, hip‑hop and contemporary dance competition. Inter‑school showdown from 9 AM to 4 PM.</p>
+    //     `,
+    //             images: [
+    //                 "https://example.com/images/utsav-day2-1.jpg",
+    //                 "https://example.com/images/utsav-day2-2.jpg",
+    //                 "https://example.com/images/utsav-day2-3.jpg",
+    //             ],
+    //         },
+    //         {
+    //             dayNumber: 3,
+    //             title: "Folk Day & Prize Ceremony",
+    //             description: `
+    //       <p>Folk dances from different states, traditional costume parade, followed by the grand valedictory and prize distribution.</p>
+    //     `,
+    //             images: [
+    //                 "https://example.com/images/utsav-day3-1.jpg",
+    //             ],
+    //         },
+    //     ],
+    // },
+
 ];

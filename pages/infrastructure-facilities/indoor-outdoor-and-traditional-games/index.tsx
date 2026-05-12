@@ -124,25 +124,7 @@ export default function GamesPage() {
           breadcrumbs={["Home", "Activities", "Games"]}
         />
 
-        {/* INTRO SECTION */}
-        <section
-          className="relative w-full bg-cover bg-center bg-no-repeat py-12"
-          style={{
-            backgroundImage:
-              "url('https://img.magnific.com/premium-photo/kids-taking-break-from-class-energetic-scene_1324785-18883.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80')",
-          }}
-        >
-          <div className="absolute inset-0 bg-black/50" />
-          <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3 font-serif">
-              Play. Compete. Grow.
-            </h2>
-            <p className="text-gray-200 text-sm max-w-xl mx-auto">
-              Sports at our school are not just activities — they build
-              discipline, leadership, and confidence for life.
-            </p>
-          </div>
-        </section>
+     
 
         {/* GAME SECTIONS WITH REVEAL ANIMATIONS (delay=200) */}
         <div className="relative w-full">

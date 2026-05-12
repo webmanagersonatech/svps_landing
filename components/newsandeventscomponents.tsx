@@ -6,67 +6,67 @@ import {
     Calendar,
     Newspaper,
 
-    Clock,
-    MapPin,
-
     ArrowRight,
 
 } from "lucide-react";
 
-// Sample News Data
-const galleryItems = [
-    {
-        id: 1,
-        imgSrc: "/newsandevents/svps-annual-day-2024-7.webp",
-        alt: "School Event",
-        date: "MARCH 15, 2024",
-        title: "Annual Day Celebration",
-        rotate: -5,
-        delay: 0.4,
-        mt: 0,
-        rotateHover: -3
-    },
-    {
-        id: 2,
-        imgSrc: "/newsandevents/sports-day-2024-1.webp",
-        alt: "Sports Event",
-        date: "FEBRUARY 10, 2024",
-        title: "Annual Sports Day",
-        rotate: 5,
-        delay: 0.5,
-        mt: 8,
-        rotateHover: 3
-    },
-    {
-        id: 3,
-        imgSrc: "/newsandevents/pongal-celebration-22-7.webp",
-        alt: "Cultural Event",
-        date: "JANUARY 14, 2024",
-        title: "Pongal Cultural Fest",
-        rotate: -3,
-        delay: 0.6,
-        mt: -8,
-        rotateHover: -1
-    },
-    {
-        id: 4,
-        imgSrc: "/newsandevents/primary-and-middle-school-reopening-2025.webp",
-        alt: "Academic Event",
-        date: "DECEMBER 05, 2024",
-        title: "Science & Tech Expo",
-        rotate: 3,
-        delay: 0.7,
-        mt: 0,
-        rotateHover: 1
-    }
-];
+import { newsAndEvents } from "../data/newsandevents";
 
 
 
 // Main Component
 const NewsEventsComponent = () => {
     const [activeTab, setActiveTab] = useState("news");
+    const [loading, setLoading] = useState(false);
     const [headerRef, headerInView] = useInView({ triggerOnce: true, threshold: 0.2 });
+    const today = new Date();
+
+    const newsItems = newsAndEvents
+        .filter((item) => item.category === "news")
+        .sort(
+            (a, b) =>
+                new Date(b.startDate).getTime() -
+                new Date(a.startDate).getTime()
+        )
+        .slice(0, 4);
+
+    const eventItems = newsAndEvents
+        .filter((item) => item.category === "event")
+        .sort(
+            (a, b) =>
+                new Date(b.startDate).getTime() -
+                new Date(a.startDate).getTime()
+        )
+        .slice(0, 4);
+
+    const upcomingItems = newsAndEvents
+        .filter(
+            (item) =>
+                item.category === "event" &&
+                new Date(item.startDate).getTime() > today.getTime()
+        )
+        .sort(
+            (a, b) =>
+                new Date(a.startDate).getTime() -
+                new Date(b.startDate).getTime()
+        )
+        .slice(0, 4);
+
+    const getActiveData = () => {
+        switch (activeTab) {
+            case "news":
+                return newsItems;
+            case "events":
+                return eventItems;
+            case "upcoming":
+                return upcomingItems;
+            default:
+                return [];
+        }
+    };
+
+
+    const data = getActiveData();
 
 
     return (
@@ -256,49 +256,84 @@ const NewsEventsComponent = () => {
                             transition={{ duration: 0.8, delay: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
                             className="relative"
                         >
+
+
                             <div className="grid grid-cols-2 gap-6 gap-y-8">
-                                {galleryItems.map((item) => (
-                                    <motion.div
-                                        key={item.id}
-                                        initial={{ opacity: 0, y: 20, rotate: item.rotate }}
-                                        animate={headerInView ? { opacity: 1, y: 0, rotate: item.rotate } : { opacity: 0, y: 20, rotate: item.rotate }}
-                                        transition={{ duration: 0.6, delay: item.delay }}
-                                        whileHover={{
-                                            scale: 1.05,
-                                            rotate: item.rotateHover,
-                                            transition: { duration: 0.3 }
-                                        }}
-                                        className={`group mt-${item.mt}`}
-                                        style={{ marginTop: item.mt !== 0 ? `${item.mt}px` : 0 }}
-                                    >
-                                        <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                                            <img
-                                                src={item.imgSrc}
-                                                alt={item.alt}
-                                                className="w-full h-48 md:h-56 object-cover transition-transform duration-500 group-hover:scale-110"
-                                            />
+                                {loading && (
+                                    <div className="grid grid-cols-2 gap-6 gap-y-8">
+                                        {[1, 2, 3, 4].map((i) => (
+                                            <div key={i} className="animate-pulse">
+                                                <div className="h-48 bg-gray-200 rounded-2xl"></div>
+                                                <div className="h-4 bg-gray-200 mt-3 w-3/4 rounded"></div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                                
+                                {data.map((item, index) => {
+                                    const effects = {
+                                        rotate: index % 2 === 0 ? -5 : 5,
+                                        rotateHover: index % 2 === 0 ? -3 : 3,
+                                        delay: index * 0.1,
+                                        mt: index % 2 === 0 ? 0 : 8
+                                    };
 
-                                            {/* Date Badge - Inside Image (Top Left Corner) */}
-                                            <div className="absolute top-3 left-3 z-10">
-                                                <div className="bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-lg">
-                                                    <p className="text-xs font-semibold text-[#e68a2e] tracking-wide">
-                                                        {item.date}
-                                                    </p>
+                                    return (
+                                        <Link key={item.slug} href={`/news-and-events/${item.slug}`}>
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 20, rotate: effects.rotate }}
+                                                animate={
+                                                    headerInView
+                                                        ? { opacity: 1, y: 0, rotate: effects.rotate }
+                                                        : { opacity: 0, y: 20, rotate: effects.rotate }
+                                                }
+                                                transition={{ duration: 0.6, delay: effects.delay }}
+                                                whileHover={{
+                                                    scale: 1.05,
+                                                    rotate: effects.rotateHover,
+                                                    transition: { duration: 0.3 }
+                                                }}
+                                                className="group cursor-pointer"
+                                                style={{ marginTop: `${effects.mt}px` }}
+                                            >
+                                                <div className="relative rounded-2xl overflow-hidden shadow-xl">
+
+                                                    {/* IMAGE */}
+                                                    <img
+                                                        src={item.thumbnail}
+                                                        alt={item.title}
+                                                        className="w-full h-48 md:h-56 object-cover transition-transform duration-500 group-hover:scale-110"
+                                                    />
+
+                                                    {/* DATE */}
+                                                    <div className="absolute top-3 left-3 z-10">
+                                                        <div className="bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-lg">
+                                                            <p className="text-xs font-semibold text-[#e68a2e] tracking-wide">
+                                                                {new Date(item.startDate).toLocaleDateString("en-US", {
+                                                                    month: "long",
+                                                                    day: "2-digit",
+                                                                    year: "numeric"
+                                                                })}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* TITLE */}
+                                                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                                                        <h4 className="text-sm font-bold text-white text-center">
+                                                            {item.title}
+                                                        </h4>
+                                                    </div>
+
+                                                    {/* OVERLAY */}
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
                                                 </div>
-                                            </div>
+                                            </motion.div>
+                                        </Link>
+                                    );
+                                })}
 
-                                            {/* Title Badge - Inside Image (Bottom Overlay) */}
-                                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                                                <h4 className="text-sm font-bold text-white text-center">
-                                                    {item.title}
-                                                </h4>
-                                            </div>
-
-                                            {/* Light Hover Overlay */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                        </div>
-                                    </motion.div>
-                                ))}
                             </div>
                         </motion.div>
                     </div>

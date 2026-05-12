@@ -367,7 +367,7 @@ export default function NewsEventDetailPage({ item }: { item: NewsOrEvent | null
             <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">
                     <h1 className="text-2xl font-bold text-gray-900">Item not found</h1>
-                    <Link href="/news-events" className="text-primary hover:underline mt-4 inline-block">
+                    <Link href="/news-and-events" className="text-primary hover:underline mt-4 inline-block">
                         ← Back to News & Events
                     </Link>
                 </div>
@@ -405,7 +405,7 @@ export default function NewsEventDetailPage({ item }: { item: NewsOrEvent | null
                     <Reveal delay={200}>
                         <div className="mb-8">
                             <Link
-                                href="/news-events"
+                                href="/news-and-events"
                                 className="inline-flex items-center text-sm text-gray-500 hover:text-primary transition gap-1 group"
                             >
                                 <ArrowLeftIcon className="w-4 h-4 group-hover:-translate-x-0.5 transition" />
