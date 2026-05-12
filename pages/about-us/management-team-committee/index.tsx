@@ -177,7 +177,7 @@ export default function ManagementProfilesPage() {
             imageInitials: "KT",
             achievements: ["19 Educational Institutions", "14 Textile Mills", "Tamil Language Promoter"],
             icon: BuildingOfficeIcon,
-            image: "https://www.sonavalliappapublicschool.com/assets/img/managment/karumuttu-thiagarajar.png"
+            image: "/managementprofiles/karumuttu-thiagarajar.webp"
         },
         {
             name: "Sri. M.S.Chockalingam Chettiar",
@@ -189,7 +189,7 @@ export default function ManagementProfilesPage() {
                 "Being a highly spiritual person, Sri.M.S.Chockalingam Chettiar served as the “Thakkar” of Sri.Rajaganapathy temple Salem during 1987-1988.",
                 "It was during his tenure as Thakkar, the outer part around the temple sanctum was constructed."
             ],
-            image: "https://www.sonavalliappapublicschool.com/assets/img/managment/chockalingam-chettiar.png",
+            image: "/managementprofiles/chockalingam.webp",
             imageInitials: "MS",
             achievements: [
                 "Former Chairman",
@@ -215,7 +215,7 @@ export default function ManagementProfilesPage() {
                 "He is the President of Association of Management’s of Aided Polytechnic Colleges, Tamilnadu."
             ],
             imageInitials: "CV",
-            image: "https://www.sonavalliappapublicschool.com/assets/img/managment/valliappa.jpg",
+            image: "/managementprofiles/valliappa-chairman-sona-gro.webp",
             achievements: [
                 "EDUPRENEURS Award 2013",
                 "Founder - Sona College of Arts and Science",
@@ -227,7 +227,7 @@ export default function ManagementProfilesPage() {
         {
             name: "Smt.Seetha Valliappa",
             title: "Correspondent",
-            image: "https://www.sonavalliappapublicschool.com/assets/img/managment/seetha-valliappa.jpg",
+            image: "/managementprofiles/seetha-valliappa.webp",
             role: "Madam Chairman",
             description: [
                 "The kind hearted Madam Chairman, is the lady behind the success of Sona Group of Institutions.",
@@ -246,7 +246,7 @@ export default function ManagementProfilesPage() {
         {
             name: "Sri. Chocko Valliappa",
             title: "Vice-Chairman",
-            image: "https://www.sonavalliappapublicschool.com/assets/img/managment/chocko-valliappa.jpg",
+            image: "/managementprofiles/chocko-valliappa.webp",
             role: "Multifaceted Industrialist",
             description: [
                 "has made a triumphant venture into the highly competitive IT industry and has accumulated a vast experience in developing and exploring innovative technologies.",
@@ -270,7 +270,7 @@ export default function ManagementProfilesPage() {
         {
             name: "Sri.Thyagu Valliappa",
             title: "Vice-Chairman",
-            image: "https://www.sonavalliappapublicschool.com/assets/img/managment/thyagu-valliappa.jpg",
+            image: "/managementprofiles/thyagu-valliappa.webp",
             role: "Textile and Garments Sector Leader",
             description: [
                 "Heads Textile and Garments sector and is very keen in elevating Sona Group to very lofty standards on par with globally renowned colleges.",
@@ -419,7 +419,7 @@ export default function ManagementProfilesPage() {
                                                 {/* ACHIEVEMENTS */}
                                                 {member.achievements?.length > 0 && (
                                                     <div className="mt-4 pt-3 border-t border-gray-100">
-                                                      
+
                                                     </div>
                                                 )}
 
@@ -457,7 +457,7 @@ export default function ManagementProfilesPage() {
                         </button>
                     </div>
 
-                 
+
 
                 </div>
             </main>

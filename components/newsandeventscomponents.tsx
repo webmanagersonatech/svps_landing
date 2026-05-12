@@ -17,7 +17,7 @@ import {
 const galleryItems = [
     {
         id: 1,
-        imgSrc: "https://www.sonavalliappapublicschool.com/assets/img/svps-annual-day-24/svps-annual-day-2024-7.webp",
+        imgSrc: "/newsandevents/svps-annual-day-2024-7.webp",
         alt: "School Event",
         date: "MARCH 15, 2024",
         title: "Annual Day Celebration",
@@ -28,7 +28,7 @@ const galleryItems = [
     },
     {
         id: 2,
-        imgSrc: "https://www.sonavalliappapublicschool.com/assets/img/sports-day-2024/sports-day-2024-1.webp",
+        imgSrc: "/newsandevents/sports-day-2024-1.webp",
         alt: "Sports Event",
         date: "FEBRUARY 10, 2024",
         title: "Annual Sports Day",
@@ -39,7 +39,7 @@ const galleryItems = [
     },
     {
         id: 3,
-        imgSrc: "https://www.sonavalliappapublicschool.com/assets/img/pongal-celebration-22/pongal-celebration-22-7.webp",
+        imgSrc: "/newsandevents/pongal-celebration-22-7.webp",
         alt: "Cultural Event",
         date: "JANUARY 14, 2024",
         title: "Pongal Cultural Fest",
@@ -50,7 +50,7 @@ const galleryItems = [
     },
     {
         id: 4,
-        imgSrc: "https://www.sonavalliappapublicschool.com/assets/img/primary-and-middle-school-reopening-2025.webp",
+        imgSrc: "/newsandevents/primary-and-middle-school-reopening-2025.webp",
         alt: "Academic Event",
         date: "DECEMBER 05, 2024",
         title: "Science & Tech Expo",
