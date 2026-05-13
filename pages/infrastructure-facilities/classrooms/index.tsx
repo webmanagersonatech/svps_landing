@@ -14,6 +14,7 @@ import {
     SparklesIcon,
     StarIcon,
 } from "@heroicons/react/24/outline";
+import PopupForm from "../../../components/bookvisit";
 
 /* =========================
    SCROLL REVEAL
@@ -21,6 +22,7 @@ import {
 function useReveal() {
     const ref = useRef<HTMLDivElement | null>(null);
     const [visible, setVisible] = useState(false);
+
 
     useEffect(() => {
         const el = ref.current;
@@ -84,6 +86,7 @@ const stats = [
    MAIN PAGE
 ========================= */
 export default function ClassroomPage() {
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
 
 
     return (
@@ -305,7 +308,7 @@ export default function ClassroomPage() {
                             <div className="flex flex-wrap justify-center gap-3">
 
                                 {/* Primary */}
-                                <button className="group bg-[#18596d] text-white px-6 py-2.5 rounded-full text-sm font-semibold 
+                                <button onClick={() => setIsPopupOpen(true)} className="group bg-[#18596d] text-white px-6 py-2.5 rounded-full text-sm font-semibold 
                           shadow-md hover:shadow-lg hover:bg-[#154a59] transition-all duration-300 flex items-center gap-2">
                                     Book a Visit
                                     <MapPinIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -329,7 +332,12 @@ export default function ClassroomPage() {
                     </div>
                 </section>
 
-                
+                <PopupForm
+                    isOpen={isPopupOpen}
+                    onClose={() => setIsPopupOpen(false)}
+                    title="Schedule Your Campus Visit"
+                    subtitle="Fill out the form below and our admissions team will get back to you within 24 hours."
+                />
             </main>
         </>
     )

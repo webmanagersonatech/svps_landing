@@ -174,9 +174,14 @@ export default function AdmissionProcedurePage() {
                                     {/* BUTTON with shape accent */}
                                     <div className="relative inline-block mt-5">
                                         <div className="absolute inset-0 bg-yellow-400/20 blur-md rounded-lg -z-10"></div>
-                                        <button className="bg-yellow-400 text-black font-semibold px-6 py-2.5 rounded-lg hover:bg-yellow-300 transition transform hover:scale-105 shadow-lg">
+                                        <a
+                                            href="https://hikabackend.sonastar.com/api/institutions/enquiry/INS-3-ZXYXKM"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="bg-yellow-400 text-black font-semibold px-6 py-2.5 rounded-lg hover:bg-yellow-300 transition transform hover:scale-105 shadow-lg inline-block"
+                                        >
                                             ENROL NOW →
-                                        </button>
+                                        </a>
                                     </div>
 
                                 </div>
@@ -361,9 +366,14 @@ export default function AdmissionProcedurePage() {
                                 <h3 className="text-xl font-semibold text-gray-900 mb-1">Confirm Your Seat</h3>
                                 <p className="text-gray-500 text-sm max-w-xl">Upon acceptance, please complete the enrollment process within the stipulated date to secure your child's seat.</p>
                             </div>
-                            <button className="bg-primary text-white px-8 py-2.5 rounded-xl hover:bg-primary/90 transition-all shadow-sm hover:shadow-md active:scale-[0.98] font-medium whitespace-nowrap">
+                            <a
+                                href="https://hikabackend.sonastar.com/api/institutions/enquiry/INS-3-ZXYXKM"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-primary text-white px-8 py-2.5 rounded-xl hover:bg-primary/90 transition-all shadow-sm hover:shadow-md active:scale-[0.98] font-medium whitespace-nowrap inline-block"
+                            >
                                 Confirm Enrollment →
-                            </button>
+                            </a>
                         </div>
                     </Reveal>
                 </div>

@@ -30,11 +30,11 @@ export const newsAndEvents: NewsOrEvent[] = [
         "slug": "kindergarten-reopening-day-2025",
         "excerpt": "A grand red carpet welcome for our youngest learners on June 9th, 2025, featuring Magot, recreation zones, and a day filled with laughter and joy.",
         "contentHtml": `
-        <p>On Monday, 9th June, our vibrant kindergarten campus came alive with laughter, cheers, and bright smiles as we reopened our doors to a grand red carpet welcome! 🌟</p>
+        <p>On Monday, 9th June, our vibrant kindergarten campus came alive with laughter, cheers, and bright smiles as we reopened our doors to a grand red carpet welcome! </p>
         <p>Children were greeted with warmth and love by none other than Magot, setting the tone for a day filled with fun, laughter, and delightful takeaways. From exciting recreation zones to picture-perfect moments, it was a celebration to remember! 🎈📸</p>
         <p>Our heartfelt thanks to our Respected Chairman Shri C. VALLIAPPA, Sona Institutions, Mr. Varun, Director Dr. V. Karthikeyan, Principal Ms. E.J. Kavitha, and our dedicated staff for making this day truly magical. 💫</p>
-        <p>The presence and joy of our little stars rejuvenated the campus, bringing back the spirit of learning, laughter, and love. ❤️</p>
-        <p>Here's to a year filled with curiosity, creativity, and countless memories! 🌈</p>
+        <p>The presence and joy of our little stars rejuvenated the campus, bringing back the spirit of learning, laughter, and love. </p>
+        <p>Here's to a year filled with curiosity, creativity, and countless memories! </p>
     `,
         "startDate": "2025-06-09",
         "endDate": "2025-06-09",
@@ -64,11 +64,11 @@ export const newsAndEvents: NewsOrEvent[] = [
         "slug": "primary-middle-school-reopening-2025",
         "excerpt": "A meaningful reopening on World Environment Day, inspiring students to be stewards of a greener tomorrow with special assembly and anti-plastic awareness.",
         "contentHtml": `
-        <p>On June 5th, our Primary & Middle School students returned to a vibrant campus — just in time to celebrate World Environment Day! 🎉🌎</p>
-        <p>The reopening was marked with a special assembly that not only welcomed our young learners back but also inspired them to be stewards of a greener tomorrow. 💚</p>
+        <p>On June 5th, our Primary & Middle School students returned to a vibrant campus — just in time to celebrate World Environment Day!</p>
+        <p>The reopening was marked with a special assembly that not only welcomed our young learners back but also inspired them to be stewards of a greener tomorrow. </p>
         <p>Students were guided on the harmful impact of plastic and how small actions can lead to big environmental changes. Thought-provoking messages and engaging programmes helped rejuvenate their spirit and reconnect them with values of responsibility and sustainability. 🌱♻️</p>
-        <p>We were honored by the presence of Director Dr. V. Karthikeyan, Principal Ms. E.J. Kavitha, and our passionate team of educators, who made the day truly meaningful. 🙌 🌱📚 🚫🛍️</p>
-        <p>🗣️: "A fresh start. A greener tomorrow. A school year with purpose!" 🌟🌱 🌍✨</p>
+        <p>We were honored by the presence of Director Dr. V. Karthikeyan, Principal Ms. E.J. Kavitha, and our passionate team of educators, who made the day truly meaningful. </p>
+        <p>🗣️: "A fresh start. A greener tomorrow. A school year with purpose!" </p>
     `,
         "startDate": "2025-06-05",
         "endDate": "2025-06-05",
@@ -92,7 +92,7 @@ export const newsAndEvents: NewsOrEvent[] = [
         "endDate": "2025-05-30",
         "category": "news",
         "thumbnail": "/newsandevents/faculty-development-programme.webp",
-     
+
     },
     // events
     {

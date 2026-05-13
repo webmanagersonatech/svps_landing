@@ -269,7 +269,7 @@ const NewsEventsComponent = () => {
                                         ))}
                                     </div>
                                 )}
-                                
+
                                 {data.map((item, index) => {
                                     const effects = {
                                         rotate: index % 2 === 0 ? -5 : 5,
@@ -380,3 +380,4 @@ const NewsEventsComponent = () => {
 };
 
 export default NewsEventsComponent;
+

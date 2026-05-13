@@ -25,7 +25,7 @@ import {
     PaintBrushIcon,
     CpuChipIcon,
 } from "@heroicons/react/24/outline";
-
+import PopupForm from "../../../components/bookvisit";
 /* =========================
    SCROLL REVEAL HOOK
 ========================= */
@@ -88,80 +88,9 @@ const ShapeImage = ({ src, alt, shape, className }: { src: string; alt: string; 
    MAIN PAGE
 ========================= */
 export default function AllRoundDevelopmentPage() {
-    // Dimensions of holistic development with images
-    const devDimensions = [
-        {
-            icon: AcademicCapIcon,
-            title: "Intellectual",
-            description: "Beyond textbooks – critical thinking, research, and innovation through academic clubs and competitions.",
-            color: "from-blue-500 to-cyan-500",
-            image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=400&fit=crop",
-        },
-        {
-            icon: HeartIcon,
-            title: "Emotional & Social",
-            description: "Empathy, leadership, teamwork, and resilience developed through group activities and counseling.",
-            color: "from-pink-500 to-rose-500",
-            image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=400&fit=crop",
-        },
-        {
-            icon: TrophyIcon,
-            title: "Physical",
-            description: "Sports, yoga, fitness programs – building stamina, coordination, and a healthy lifestyle.",
-            color: "from-green-500 to-emerald-500",
-            image: "https://images.unsplash.com/photo-1536924430914-91f9e2041b83?w=600&h=400&fit=crop",
-        },
-        {
-            icon: MusicalNoteIcon,
-            title: "Creative & Aesthetic",
-            description: "Art, music, dance, drama, and design thinking – unleashing every child's creative potential.",
-            color: "from-purple-500 to-indigo-500",
-            image: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=600&h=400&fit=crop",
-        },
-        {
-            icon: GlobeAltIcon,
-            title: "Cultural & Global",
-            description: "Exposure to diverse traditions, languages, and international exchange programs.",
-            color: "from-yellow-500 to-orange-500",
-            image: "https://images.unsplash.com/photo-1528164344705-47542687000d?w=600&h=400&fit=crop",
-        },
-        {
-            icon: ShieldCheckIcon,
-            title: "Ethical & Spiritual",
-            description: "Value education, mindfulness, and community service – shaping responsible citizens.",
-            color: "from-slate-500 to-gray-700",
-            image: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&h=400&fit=crop",
-        },
-    ];
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-    // Clubs & activities with images
-    const clubs = [
-        { name: "Eco Club", icon: BeakerIcon, image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&h=300&fit=crop" },
-        { name: "Robotics Club", icon: CpuChipIcon, image: "https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?w=400&h=300&fit=crop" },
-        { name: "Performing Arts", icon: MusicalNoteIcon, image: "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=400&h=300&fit=crop" },
-        { name: "Sports Academy", icon: TrophyIcon, image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400&h=300&fit=crop" },
-        { name: "Literary Circle", icon: BookOpenIcon, image: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=400&h=300&fit=crop" },
-        { name: "Art & Craft", icon: PaintBrushIcon, image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=400&h=300&fit=crop" },
-    ];
 
-    // Testimonials with student images
-    const testimonials = [
-        {
-            quote: "Being part of the Eco Club taught me that small actions can change the world. I now lead waste segregation at home!",
-            name: "Ananya S., Grade 8",
-            image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=150&h=150&fit=crop",
-        },
-        {
-            quote: "The annual theatre production gave me confidence I never knew I had. Now I dream of becoming a director.",
-            name: "Rohan M., Grade 10",
-            image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop",
-        },
-        {
-            quote: "Robotics club made me fall in love with coding. I've built two projects already!",
-            name: "Ishita V., Grade 9",
-            image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop",
-        },
-    ];
 
     return (
         <>
@@ -242,12 +171,19 @@ export default function AllRoundDevelopmentPage() {
                             <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
                                 Come see our clubs in action, meet our coaches, and watch a rehearsal or a match.
                             </p>
-                            <button className="bg-white text-primary px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                            <button onClick={() => setIsPopupOpen(true)} className="bg-white text-primary px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
                                 Schedule a Campus Visit
                             </button>
                         </Reveal>
                     </div>
                 </div>
+
+                <PopupForm
+                    isOpen={isPopupOpen}
+                    onClose={() => setIsPopupOpen(false)}
+                    title="Schedule Your Campus Visit"
+                    subtitle="Fill out the form below and our admissions team will get back to you within 24 hours."
+                />
             </main>
         </>
     );
