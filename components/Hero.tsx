@@ -202,7 +202,8 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="relative z-20 container mx-auto px-4 md:px-8 lg:px-12 min-h-[70vh] md:min-h-[75vh] flex items-center">
+      {/* UPDATED CONTAINER - Now matching Navbar's container-responsive */}
+      <div className="relative z-20 container-responsive min-h-[70vh] md:min-h-[75vh] flex items-center">
         <div className="w-full py-12 md:py-16 lg:py-20">
           {/* TWO COLUMN LAYOUT - Left Content & Right Form */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -219,9 +220,6 @@ export default function Hero() {
                   transition={{ duration: 0.4 }}
                   className="space-y-6"
                 >
-
-
-
                   {/* Main Heading */}
                   <motion.div variants={itemVariants} className="space-y-2">
                     <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
@@ -253,35 +251,7 @@ export default function Hero() {
                       </span>
                       <div className="absolute inset-0 bg-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                     </Link>
-
-
                   </motion.div>
-
-                  {/* Trust Badges */}
-                  {/* <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 md:gap-6 pt-2">
-                    <div className="flex -space-x-2">
-                      {[...Array(4)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.6 + i * 0.1 }}
-                          className={`w-8 h-8 rounded-full border-2 border-white/20 ${i % 2 === 0
-                              ? "bg-gradient-to-r from-primary to-accent"
-                              : "bg-secondary"
-                            }`}
-                        />
-                      ))}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="flex gap-0.5">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-                        ))}
-                      </div>
-                      <span className="text-sm text-white/50">{currentSlide.trustRating}/5 from {currentSlide.trustCount} reviews</span>
-                    </div>
-                  </motion.div> */}
 
                   {/* Slide Indicator Dots */}
                   <motion.div variants={itemVariants} className="flex gap-2 pt-4">
@@ -326,11 +296,7 @@ export default function Hero() {
                 {/* Glassmorphism Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 pointer-events-none" />
 
-
-
                 <div className="relative p-5 md:p-6 backdrop-blur-sm">
-
-
                   {/* Corner Fold Shadow Effect */}
                   <div className="absolute top-2 right-2 w-6 h-6 bg-gradient-to-br from-white/5 to-transparent rounded-tr-xl border-t border-r border-white/10" />
                   <div className="absolute bottom-2 left-2 w-6 h-6 bg-gradient-to-tl from-white/5 to-transparent rounded-bl-xl border-b border-l border-white/10" />
@@ -525,7 +491,6 @@ export default function Hero() {
       </div>
 
       {/* SOCIAL MEDIA SIDEBAR */}
-      {/* SOCIAL MEDIA SIDEBAR */}
       <motion.div
         className="absolute right-2 xl:right-4 top-1/2 -translate-y-1/2 hidden xl:flex flex-col items-center gap-2 z-20"
         initial="hidden"
@@ -562,8 +527,8 @@ export default function Hero() {
           { Icon: FaFacebook, label: "Facebook", hoverColor: "group-hover:text-blue-500", url: "https://www.facebook.com/sonavalliappapublicschool/" },
           { Icon: FaTwitter, label: "Twitter / X", hoverColor: "group-hover:text-black", url: "https://x.com/sona_vp_school" },
         ].map(({ Icon, label, hoverColor, url }, i, arr) => (
-
           <motion.div
+            key={i}
             variants={{
               hidden: { opacity: 0, x: 30 },
               visible: { opacity: 1, x: 0 }
@@ -583,8 +548,6 @@ export default function Hero() {
               </span>
             </a>
           </motion.div>
-
-
         ))}
 
         {/* BOTTOM LINE */}
@@ -623,6 +586,45 @@ export default function Hero() {
         .animate-gradient {
           background-size: 200% auto;
           animation: gradient 3s ease infinite;
+        }
+        
+        /* Container responsive - matching Navbar */
+        .container-responsive {
+          width: 100%;
+          margin-left: auto;
+          margin-right: auto;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        @media (min-width: 640px) {
+          .container-responsive {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .container-responsive {
+            padding-left: 2rem;
+            padding-right: 2rem;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .container-responsive {
+            max-width: 1280px;
+            padding-left: 2rem;
+            padding-right: 2rem;
+          }
+        }
+
+        @media (min-width: 1536px) {
+          .container-responsive {
+            max-width: 1470px;
+            padding-left: 2rem;
+            padding-right: 2rem;
+          }
         }
       `}</style>
     </section>
