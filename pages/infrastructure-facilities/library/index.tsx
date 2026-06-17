@@ -401,45 +401,36 @@ export default function LibraryPage() {
           <Reveal>
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-secondary font-serif mb-4">
-                The Heart of Learning
+                Library – The Heart of Learning
               </h2>
 
               <p className="text-gray-600 leading-relaxed mb-5">
-                Our library is a vibrant knowledge hub where students explore books,
-                research materials, and digital resources in a calm and focused environment.
+                A place for seeking knowledge, nurturing imagination, and exploring new ideas.
               </p>
 
-              {/* KEY POINTS */}
-              <div className="space-y-3 mb-5">
-                <p className="text-gray-700 flex gap-2">
-                  <span className="text-primary">•</span>
-                  Encourages independent learning and curiosity beyond textbooks.
-                </p>
+              <p className="text-gray-600 leading-relaxed mb-5 font-semibold text-secondary">
+                Reading Environment
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-5">
+                A peaceful and inspiring space for learning, reading, and reflection.
+              </p>
 
-                <p className="text-gray-700 flex gap-2">
-                  <span className="text-primary">•</span>
-                  Supports academic excellence with curated reference materials.
-                </p>
+              <p className="text-gray-600 leading-relaxed mb-5">
+                Our library is a rich collection of books and digital resources that support
+                subject knowledge and language development.
+              </p>
 
-                <p className="text-gray-700 flex gap-2">
-                  <span className="text-primary">•</span>
-                  Provides access to digital resources, e-books, and journals.
-                </p>
+              <p className="text-gray-600 leading-relaxed mb-5">
+                It encourages independent learning, curiosity, research, and lifelong reading habits.
+              </p>
 
-                <p className="text-gray-700 flex gap-2">
-                  <span className="text-primary">•</span>
-                  Promotes reading habits and intellectual growth from early age.
-                </p>
-
-                <p className="text-gray-700 flex gap-2">
-                  <span className="text-primary">•</span>
-                  Offers a peaceful study space for focused learning and research.
-                </p>
-              </div>
+              <p className="text-gray-600 leading-relaxed mb-5">
+                The library offers access to e-books, journals, and other digital resources as a
+                valuable support system for students.
+              </p>
 
               <p className="text-gray-600 leading-relaxed">
-                With a balance of traditional books and modern digital learning tools,
-                the library empowers students to explore knowledge in every form.
+                It helps students become creative thinkers and intellectually enriched learners.
               </p>
             </div>
           </Reveal>

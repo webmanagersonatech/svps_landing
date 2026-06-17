@@ -154,7 +154,8 @@ export default function TeacherTrainingPage() {
     return (
         <>
             <Head>
-                <title>Teacher Training & Workshops | Sona Valliappa Public School</title>
+                <title>Workshops for Teacher Training and Transformation
+                    | Sona Valliappa Public School</title>
                 <meta
                     name="description"
                     content="Empowering our educators with continuous professional development – workshops, certifications, and collaborative learning."
@@ -164,7 +165,8 @@ export default function TeacherTrainingPage() {
             <main className="bg-gradient-to-b from-slate-50 via-white to-slate-100/40 overflow-x-hidden">
                 {/* HERO SECTION */}
                 <PageHeader
-                    title="Teacher Training & Workshops"
+                    title="Workshops for Teacher Training and Transformation
+"
                     subtitle='"Great teachers never stop learning – we invest in ours so they can invest in every child."'
                     breadcrumbs={["Home", "Academics", "Teacher Training"]}
                 />
@@ -177,27 +179,49 @@ export default function TeacherTrainingPage() {
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <Reveal>
                             <div className="space-y-6">
-
                                 <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-secondary leading-tight">
                                     Teachers as <span className="text-primary">Lifelong Learners</span>
                                 </h2>
+
                                 <p className="text-gray-700 leading-relaxed text-lg">
-                                    At Sona Valliappa Public School, we regard teacher development as the single most
-                                    important lever for student success. Our comprehensive training programme ensures that
-                                    every educator stays at the forefront of pedagogical research, technology, and
-                                    emotional intelligence.
+                                    Great teachers are lifelong learners. At SVPS, we empower our teachers
+                                    so they can inspire and nurture every student.
                                 </p>
-                                <p className="text-gray-700 leading-relaxed border-l-4 border-primary/40 pl-4 italic">
-                                    From mandatory monthly workshops to sponsoring advanced certifications, we create a
-                                    culture where reflection, collaboration, and innovation are celebrated. The result?
-                                    Classrooms that are dynamic, inclusive, and future‑ready.
+
+                                <p className="text-gray-700 leading-relaxed text-lg font-semibold text-secondary">
+                                    Teachers as Lifelong Learners
+                                </p>
+                                <p className="text-gray-700 leading-relaxed text-lg">
+                                    We conduct Teacher Facilitation Programmes to develop highly skilled
+                                    educators. Continuous professional development forms the foundation
+                                    of student success.
+                                </p>
+                                <p className="text-gray-700 leading-relaxed text-lg">
+                                    Our comprehensive training programmes equip teachers with subject
+                                    expertise, psychological understanding, technological knowledge,
+                                    and modern teaching skills.
+                                </p>
+
+                                <p className="text-gray-700 leading-relaxed text-lg font-semibold text-secondary">
+                                    Employing Various Teaching Methodologies
+                                </p>
+                                <p className="text-gray-700 leading-relaxed text-lg">
+                                    Regular teacher workshops, including inter-school and intra-school
+                                    programmes with certification, are conducted, and participation is
+                                    encouraged for all teachers.
+                                </p>
+                                <p className="text-gray-700 leading-relaxed text-lg">
+                                    These workshops promote a positive learning culture, collaborative
+                                    teaching, and innovative educational practices.
+                                </p>
+
+                                <p className="text-gray-700 leading-relaxed border-l-4 border-primary/40 pl-4 italic text-lg">
+                                    The result is dynamic, inclusive, and future-ready classrooms.
                                 </p>
                             </div>
                         </Reveal>
-
                         <Reveal delay={100}>
                             <div className="relative max-w-lg mx-auto group">
-
                                 {/* Background Accent Card */}
                                 <div className="absolute -top-4 -right-4 w-full h-full rounded-2xl bg-[#18596d]/40"></div>
 
@@ -206,29 +230,26 @@ export default function TeacherTrainingPage() {
                                     <RoundedImage
                                         src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=600&fit=crop"
                                         alt="Teachers in a workshop"
-                                        className="w-full h-72 md:h-80 object-cover group-hover:scale-105 transition-transform duration-700"
+                                        className="w-full h-80 md:h-96 lg:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
                                     />
-
                                     {/* Soft overlay */}
                                     <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition duration-300"></div>
                                 </div>
 
                                 {/* Floating Info Card */}
-                                <div className="absolute -bottom-6 left-6 right-6 bg-white  shadow-md px-4 py-3 flex items-center justify-between">
+                                <div className="absolute -bottom-6 left-6 right-6 bg-white shadow-md px-4 py-3 flex items-center justify-between">
                                     <div>
                                         <p className="text-sm font-semibold text-gray-800">
                                             Teacher Workshop
                                         </p>
                                         <p className="text-xs text-gray-500">
-                                            Collaborative Learning
+                                            Training & Transformation
                                         </p>
                                     </div>
-
                                     <div className="w-8 h-8 flex items-center justify-center rounded-full bg-[#18596d]/10">
                                         <div className="w-2 h-2 bg-[#18596d] rounded-full"></div>
                                     </div>
                                 </div>
-
                             </div>
                         </Reveal>
                     </div>

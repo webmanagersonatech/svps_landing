@@ -117,10 +117,10 @@ export default function GamesPage() {
         />
       </Head>
 
-      <main>
+      <main className=" bg-gray-50">
         <PageHeader
           title=" Sports"
-          subtitle="Building strength, teamwork, and confidence."
+          subtitle="Fitness for Body and Mind"
           breadcrumbs={["Home", "Activities", "Games"]}
         />
 
@@ -129,10 +129,11 @@ export default function GamesPage() {
         {/* GAME SECTIONS WITH REVEAL ANIMATIONS (delay=200) */}
         <div className="relative w-full">
           <div className="relative z-10 flex flex-col">
+            
             <Reveal delay={200}>
               <GameSection
                 title="Indoor Games"
-                desc="Sharpen the mind with focus, patience, and strategic thinking."
+                desc="Indoor games help students develop concentration, patience, strategic thinking, and mental agilit"
                 games={[
                   {
                     name: "Chess",
@@ -162,7 +163,7 @@ export default function GamesPage() {
             <Reveal delay={200}>
               <GameSection
                 title="Outdoor Games"
-                desc="Build endurance, teamwork, and competitive spirit."
+                desc="Outdoor games foster persistence, teamwork, sportsmanship, and the ability to compete positively."
                 games={[
                   {
                     name: "Cricket",
@@ -192,7 +193,7 @@ export default function GamesPage() {
             <Reveal delay={200}>
               <GameSection
                 title="Traditional Games"
-                desc="Experience culture while improving agility and coordination."
+                desc="Traditional games preserve cultural values while improving mobility, endurance, and team coordination."
                 games={[
                   {
                     name: "Kabaddi",

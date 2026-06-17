@@ -113,27 +113,17 @@ export default function ClassroomPage() {
                         <Reveal>
                             <div>
                                 <h2 className="text-2xl md:text-3xl font-serif font-bold text-secondary mb-4">
-                                    A Space Where Learning Comes Alive
+                                   Smart Classrooms
                                 </h2>
                                 <p className="text-gray-600 mb-4 leading-relaxed">
-                                    Our classrooms are designed to be interactive, inclusive, and
-                                    student-centered. We combine traditional teaching with modern
-                                    techniques to make learning meaningful.
-
+                                   A Serene Place for LSRW (Listening, Speaking, Reading and Writing) – Interactive and Comprehensive Teaching and Learning.
                                 </p>
                                 <p className="text-gray-600 mb-4 leading-relaxed">
-                                    Our classrooms are designed to be interactive, inclusive, and
-                                    student-centered. We combine traditional teaching with modern
-                                    techniques to make learning meaningful.
+                                   Our experienced teachers guide students in both curricular and co-curricular activities.
                                 </p>
-
                                 <p className="text-gray-600 leading-relaxed">
-                                    With smart boards, collaborative seating, and engaging
-                                    teaching methods, students actively participate and enjoy
-                                    the learning process.
-
+                                   We provide an environment where students can develop their creative, innovative, and dynamic skills..
                                 </p>
-
                             </div>
                         </Reveal>
 
