@@ -54,33 +54,23 @@ export default function MedicalFacilitiesPage() {
   const features = [
     {
       icon: HeartIcon,
-      title: "Well-Equipped Infirmary",
-      desc: "Dedicated medical room with essential equipment for immediate care.",
+      title: "Regular Medical Check-up",
+      desc: "Comprehensive health check-ups conducted by Sona Ayush Doctors to monitor student well-being.",
     },
     {
       icon: UserGroupIcon,
-      title: "Qualified Staff",
-      desc: "Trained nurse and staff available during school hours.",
+      title: "Medical Camp",
+      desc: "Specialized medical camps organized for students to ensure thorough health assessment.",
     },
     {
       icon: ShieldCheckIcon,
-      title: "Health & Safety Protocols",
-      desc: "Strict hygiene standards and regular health monitoring.",
-    },
-    {
-      icon: ClockIcon,
-      title: "Regular Health Checkups",
-      desc: "Periodic medical checkups to track student well-being.",
-    },
-    {
-      icon: TruckIcon,
-      title: "Emergency Support",
-      desc: "Quick response system with tie-ups to nearby hospitals.",
+      title: "Medical Counselling",
+      desc: "Professional medical counselling services to address health concerns and promote wellness.",
     },
     {
       icon: PlusCircleIcon,
-      title: "First Aid & Care",
-      desc: "Immediate attention for minor injuries and health concerns.",
+      title: "First Aid Facility",
+      desc: "Immediate first aid assistance available on campus for any minor injuries or emergencies.",
     },
   ];
 
@@ -164,7 +154,7 @@ export default function MedicalFacilitiesPage() {
         <div className="max-w-7xl mx-auto px-4 pb-20">
 
           <h2 className="text-2xl font-bold text-center mb-10">
-            Our Medical Services
+            Our Medical Facilities
           </h2>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">

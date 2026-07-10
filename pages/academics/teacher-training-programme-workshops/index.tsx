@@ -178,7 +178,7 @@ export default function TeacherTrainingPage() {
 
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <Reveal>
-                            <div className="space-y-6">
+                            <div className="space-y-4">
                                 <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-secondary leading-tight">
                                     Teachers as <span className="text-primary">Lifelong Learners</span>
                                 </h2>
@@ -202,22 +202,29 @@ export default function TeacherTrainingPage() {
                                     and modern teaching skills.
                                 </p>
 
-                                <p className="text-gray-700 leading-relaxed text-lg font-semibold text-secondary">
-                                    Employing Various Teaching Methodologies
-                                </p>
-                                <p className="text-gray-700 leading-relaxed text-lg">
-                                    Regular teacher workshops, including inter-school and intra-school
-                                    programmes with certification, are conducted, and participation is
-                                    encouraged for all teachers.
-                                </p>
-                                <p className="text-gray-700 leading-relaxed text-lg">
-                                    These workshops promote a positive learning culture, collaborative
-                                    teaching, and innovative educational practices.
-                                </p>
+                                <div className="bg-white  shadow-sm border border-gray-100 p-6">
+                                    <p className="text-gray-700 leading-relaxed text-lg font-semibold text-secondary mb-3">
+                                        SVPS Teaching Methodologies
+                                    </p>
+                                    <ul className="grid sm:grid-cols-2 gap-2">
+                                        {[
+                                            "Teaching Students with Psychological Approach",
+                                            "Application oriented with demonstration Method",
 
-                                <p className="text-gray-700 leading-relaxed border-l-4 border-primary/40 pl-4 italic text-lg">
-                                    The result is dynamic, inclusive, and future-ready classrooms.
-                                </p>
+
+                                            "Chalk and talk Method",
+                                            "Student Centric Method",
+                                            "Best Teaching Practices",
+                                            "Innovative Method",
+                                            "Motivating Students to get interest in the Subjects that explained with Inductive Approach and Deductive Approach",
+                                        ].map((item, index) => (
+                                            <li key={index} className="flex items-start gap-2 text-gray-700 text-lg">
+                                                <span className="text-primary mt-1">✦</span>
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         </Reveal>
                         <Reveal delay={100}>
@@ -256,7 +263,115 @@ export default function TeacherTrainingPage() {
                 </div>
 
 
+    {/* --- ADDED: TEACHER TRAINING PROGRAMMES & WORKSHOPS --- */}
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid md:grid-cols-2 gap-8">
+                        <div className="bg-white shadow-sm border border-gray-100 p-8 hover:shadow-md transition-shadow">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                                    <AcademicCapIcon className="w-5 h-5 text-primary" />
+                                </div>
+                                <p className="text-gray-700 text-lg font-semibold text-secondary">
+                                    Teacher Training Programmes & Workshops
+                                </p>
+                            </div>
+                            <ul className="space-y-3">
+                                <li className="flex items-start gap-3 text-gray-700">
+                                    <span className="text-primary mt-1">•</span>
+                                    <span>At SVPS, we conduct Teacher Training Programmes by Skillful Experts.</span>
+                                </li>
+                                <li className="flex items-start gap-3 text-gray-700">
+                                    <span className="text-primary mt-1">•</span>
+                                    <span>It enables every Teacher Educator to be well-versed in the Subject Knowledge and Psychological Approach.</span>
+                                </li>
+                                <li className="flex items-start gap-3 text-gray-700">
+                                    <span className="text-primary mt-1">•</span>
+                                    <span>Workshops for Teachers are conducted regularly. Workshops teach and train the teachers with new methods and information to make Teaching-Learning Process, interesting and interactive.</span>
+                                </li>
+                                <li className="flex items-start gap-3 text-gray-700">
+                                    <span className="text-primary mt-1">•</span>
+                                    <span>The new syllabus and curriculum is made familiar and easy to comprehend.</span>
+                                </li>
+                                <li className="flex items-start gap-3 text-gray-700">
+                                    <span className="text-primary mt-1">•</span>
+                                    <span>Teachers are encouraged to participate in various Inter-School and Intra-School Workshops and improve their Skills.</span>
+                                </li>
+                            </ul>
+                        </div>
 
+                        <div className="bg-gradient-to-br from-primary/5 to-secondary/5 p-8 border border-primary/10">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                                    <LightBulbIcon className="w-5 h-5 text-primary" />
+                                </div>
+                                <p className="text-gray-700 text-lg font-semibold text-secondary">
+                                    Employing Various Teaching Methodologies
+                                </p>
+                            </div>
+                            <div className="space-y-4">
+                                <p className="text-gray-700 leading-relaxed">
+                                    Regular teacher workshops, including inter-school and intra-school
+                                    programmes with certification, are conducted, and participation is
+                                    encouraged for all teachers.
+                                </p>
+                                <p className="text-gray-700 leading-relaxed">
+                                    These workshops promote a positive learning culture, collaborative
+                                    teaching, and innovative educational practices.
+                                </p>
+                                <div className="bg-white/80 rounded-lg p-4 border-l-4 border-primary">
+                                    <p className="text-gray-700 leading-relaxed italic">
+                                        "The result is dynamic, inclusive, and future-ready classrooms."
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* WORKSHOP CATEGORIES */}
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                    <Reveal>
+                        <div className="text-center mb-12">
+                            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 rounded-full text-primary text-sm font-semibold mb-3">
+                                <SparklesIcon className="w-4 h-4" />
+                                Our Workshops
+                            </div>
+                            <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary">
+                                Professional Development <span className="text-primary">Programmes</span>
+                            </h2>
+                            <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
+                                Comprehensive training modules designed to empower our educators
+                            </p>
+                        </div>
+                    </Reveal>
+
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {workshopCategories.map((category, idx) => (
+                            <Reveal key={idx} delay={idx * 100}>
+                                <div className="group bg-white shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                                    <div className="h-48 overflow-hidden">
+                                        <img
+                                            src={category.image}
+                                            alt={category.title}
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                        />
+                                    </div>
+                                    <div className="p-6">
+                                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary group-hover:text-white transition-colors">
+                                            <category.icon className="w-6 h-6 text-primary group-hover:text-white" />
+                                        </div>
+                                        <h3 className="text-lg font-semibold text-secondary mb-2">
+                                            {category.title}
+                                        </h3>
+                                        <p className="text-gray-600 text-sm leading-relaxed">
+                                            {category.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </Reveal>
+                        ))}
+                    </div>
+                </div>
 
                 {/* TEACHER TESTIMONIALS with photos */}
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

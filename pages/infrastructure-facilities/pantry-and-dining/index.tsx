@@ -60,16 +60,15 @@ export default function DiningPage() {
         />
 
         {/* INTRO */}
-        <div className="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
+        <div className="max-w-7xl  text-lg mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
           <Reveal>
             <div>
               <h2 className="text-2xl md:text-3xl font-bold font-serif text-secondary mb-4">
-                Healthy Food, Healthy Students
+                Pantry and <span className="text-primary">Dining</span>
               </h2>
 
               <p className="text-gray-600 mb-5">
-                Students are encouraged to bring nutritious, home-prepared food
-                to support their physical and mental well-being.
+                At SVPS, we prioritize healthy eating habits and a clean dining environment for all students.
               </p>
 
               {/* KEY POINTS */}
@@ -77,34 +76,23 @@ export default function DiningPage() {
 
                 <p className="text-gray-700 flex gap-2">
                   <span className="text-green-600">•</span>
-                  Promotes balanced nutrition for growing children.
+                  Students can have healthy snacks sitting in order, during breaks in the forenoon and afternoon.
                 </p>
 
                 <p className="text-gray-700 flex gap-2">
                   <span className="text-green-600">•</span>
-                  Helps improve concentration and classroom performance.
+                  Students dine, traditionally in the afternoon in the verandah.
                 </p>
 
                 <p className="text-gray-700 flex gap-2">
                   <span className="text-green-600">•</span>
-                  Encourages home-cooked and hygienic food habits.
-                </p>
-
-                <p className="text-gray-700 flex gap-2">
-                  <span className="text-green-600">•</span>
-                  Reduces consumption of junk and processed foods.
-                </p>
-
-                <p className="text-gray-700 flex gap-2">
-                  <span className="text-green-600">•</span>
-                  Builds lifelong healthy eating discipline from early age.
+                  SVPS is a junk food free campus.
                 </p>
 
               </div>
 
               <p className="text-gray-600">
-                Developing healthy eating habits at an early age helps children
-                stay active, focused, and energetic throughout the day.
+                Creating a culture of mindful eating and traditional dining practices for holistic student development.
               </p>
             </div>
           </Reveal>
@@ -120,7 +108,7 @@ export default function DiningPage() {
               <div className="absolute top-4 left-4 w-full h-full bg-green-50 rounded-2xl" />
 
               {/* MAIN IMAGE CARD */}
-              <div className="relative  overflow-hidden shadow-2xl group aspect-[4/3]">
+              <div className="relative overflow-hidden shadow-2xl group aspect-[4/3]">
 
                 <img
                   src="https://img.magnific.com/premium-photo/students-enjoy-nutritious-breakfast-national-school-breakfast-week-sharing-smiles_771426-115272.jpg"
@@ -137,11 +125,11 @@ export default function DiningPage() {
                   <div className="bg-white/90 backdrop-blur-md px-4 py-3 rounded-t-xl shadow-md">
 
                     <p className="font-semibold text-gray-900 text-lg">
-                      Healthy Dining Culture
+                      Junk Food Free Campus
                     </p>
 
                     <p className="text-sm text-gray-600 mt-1">
-                      Encouraging nutritious habits, balanced meals, and mindful eating
+                      Promoting healthy snacks and traditional dining experiences
                     </p>
 
                   </div>
@@ -150,7 +138,7 @@ export default function DiningPage() {
 
                 {/* TOP BADGE */}
                 <div className="absolute top-5 right-5 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-medium shadow">
-                  Nutrition First
+                  Healthy Eating
                 </div>
 
               </div>

@@ -116,25 +116,37 @@ export default function AllRoundDevelopmentPage() {
                     <div className="absolute bottom-20 right-0 w-80 h-80 bg-secondary/5 rounded-full blur-3xl -z-10"></div>
 
                     <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <Reveal>
-                            <div className="space-y-6">
-
-                                <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-secondary leading-tight">
-                                    Education for the <span className="text-primary">Head, Heart & Hands</span>
-                                </h2>
-                                <p className="text-gray-700 leading-relaxed text-lg">
-                                    At Sona Valliappa Public School, we believe that true success comes from a balanced
-                                    development of intellectual, emotional, physical, and social capabilities. Our
-                                    co-curricular and extracurricular programmes are woven into the school fabric – not
-                                    an afterthought.
-                                </p>
-                                <p className="text-gray-700 leading-relaxed border-l-4 border-primary/40 pl-4 italic">
-                                    Every student is encouraged to explore passions beyond the classroom. With 20+ clubs,
-                                    competitive sports, performing arts, and value‑based initiatives, your child will
-                                    discover their unique strengths and develop lifelong skills.
-                                </p>
-                            </div>
-                        </Reveal>
+                      <Reveal>
+    <div className="space-y-6">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-secondary leading-tight">
+            All Round <span className="text-primary">Development</span>
+        </h2>
+        
+        <ul className="space-y-4 text-gray-700 leading-relaxed text-lg list-disc pl-6">
+            <li>
+                At SVPS, Students study the Subjects thoroughly, understand and apply it practically.
+            </li>
+            <li>
+                Students are moulded to be ever interested, choosing their area of option in co-curricular and extra-curricular activities.
+            </li>
+            <li>
+                Every Student is encouraged to learn many Arts and Cultures, beyond their prescribed Subjects. Students can explore their Arts Skills and Science Talents as:
+            </li>
+        </ul>
+        
+    <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4 justify-center">
+    <span className="text-gray-700 font-medium text-sm">Amazing Artists</span>
+    <span className="text-gray-400">|</span>
+    <span className="text-gray-700 font-medium text-sm">All Round Athletes</span>
+    <span className="text-gray-400">|</span>
+    <span className="text-gray-700 font-medium text-sm">Excelling Explorers</span>
+    <span className="text-gray-400">|</span>
+    <span className="text-gray-700 font-medium text-sm">Expertise Versatile</span>
+    <span className="text-gray-400">|</span>
+    <span className="text-gray-700 font-medium text-sm">Leading Resources</span>
+</div>
+    </div>
+</Reveal>
 
                         <Reveal delay={100}>
                             <div className="relative">
