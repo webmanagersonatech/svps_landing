@@ -6,6 +6,7 @@ import {
   LightBulbIcon,
 
 } from "@heroicons/react/24/outline";
+import PopupForm from "../../../components/bookvisit";
 
 /* =========================
    SCROLL REVEAL HOOK
@@ -63,6 +64,7 @@ function Reveal({
    MAIN PAGE
 ========================= */
 export default function HeritagePage() {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const milestones = [
     {
@@ -146,7 +148,7 @@ export default function HeritagePage() {
             {/* TEXT */}
             <div className="h-full flex flex-col justify-center space-y-4">
               <Reveal>
-                <h2 className="text-2xl md:text-3xl font-serif font-bold text-secondary">
+                <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary">
                   A Legacy of Excellence in Education
                 </h2>
               </Reveal>
@@ -307,7 +309,10 @@ export default function HeritagePage() {
                 </Reveal>
 
                 <Reveal delay={350}>
-                  <button className="bg-primary text-white px-8 py-2 rounded-r-full hover:scale-105 active:scale-95 transition duration-300 shadow-md hover:shadow-lg">
+                  <button
+                    onClick={() => setIsPopupOpen(true)}
+                    className="bg-primary text-white px-8 py-2 rounded-r-full hover:scale-105 active:scale-95 transition duration-300 shadow-md hover:shadow-lg"
+                  >
                     Enquire Now
                   </button>
                 </Reveal>
@@ -317,6 +322,13 @@ export default function HeritagePage() {
             </div>
           </div>
         </div>
+
+        <PopupForm
+          isOpen={isPopupOpen}
+          onClose={() => setIsPopupOpen(false)}
+          title="Enquire Now"
+          subtitle="Fill in your details and we'll get back to you."
+        />
 
       </main>
     </>

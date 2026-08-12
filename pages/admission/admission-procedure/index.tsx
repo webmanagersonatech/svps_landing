@@ -166,7 +166,7 @@ export default function AdmissionProcedurePage() {
                                         </span>
                                     </h2>
 
-                                    <p className="mt-3 text-white/80 text-sm md:text-base">
+                                    <p className="mt-3 text-white/80 text-lg">
                                         Now Open For Registration. Start your journey with modern learning,
                                         smart classrooms, and expert teaching.
                                     </p>
@@ -187,7 +187,7 @@ export default function AdmissionProcedurePage() {
                                 </div>
 
                                 {/* FEATURES - redesigned with shape badges */}
-                                <div className="absolute bottom-5 left-6 text-white text-sm space-y-2 z-10">
+                                <div className="absolute bottom-5 left-6 text-white text-sm  space-y-2 z-10">
                                     <div className="flex items-center gap-2 backdrop-blur-sm bg-white/10 px-3 py-1 rounded-full">
                                         <span className="w-5 h-5 rounded-full bg-yellow-400/30 flex items-center justify-center text-xs">✓</span>
                                         Best Teaching
@@ -216,12 +216,12 @@ export default function AdmissionProcedurePage() {
                                 Easy & Transparent Admission
                             </h2>
 
-                            <p className="text-gray-600 leading-relaxed mb-5">
+                            <p className="text-gray-600 text-lg leading-relaxed mb-5">
                                 Our admission process is designed to be simple and smooth for all parents and students.
                                 We ensure clarity at every step with proper guidance from our admission team.
                             </p>
 
-                            <div className="space-y-3 mb-5 text-gray-700">
+                            <div className="space-y-3 mb-5 text-lg text-gray-700">
                                 <p>• Fill the application form with required details</p>
                                 <p>• Submit necessary academic documents</p>
                                 <p>• Attend interaction / assessment session</p>
@@ -229,7 +229,7 @@ export default function AdmissionProcedurePage() {
                                 <p>• Complete fee payment and enrollment</p>
                             </div>
 
-                            <p className="text-gray-600">
+                            <p className="text-gray-600 text-lg">
                                 We are committed to providing a stress-free admission experience for every family.
                             </p>
                         </div>
@@ -243,10 +243,10 @@ export default function AdmissionProcedurePage() {
                         <span className="inline-block bg-primary/5 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4 tracking-wide">
                             Admissions 2026-2027
                         </span>
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 tracking-tight">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
                             Begin Your Child's Journey With Us
                         </h2>
-                        <p className="text-gray-500 max-w-2xl mx-auto text-base leading-relaxed">
+                        <p className="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">
                             Sona Valliappa Public School is currently offering Admissions from <strong className="text-gray-800">Pre-KG to Grade VIII</strong> subject to eligibility and availability of seats.
                         </p>
                     </div>
@@ -254,7 +254,7 @@ export default function AdmissionProcedurePage() {
                     {/* Age Criteria - Minimal Chip Design */}
                     <Reveal>
                         <div className="bg-white  p-6 md:p-8 shadow-sm border border-gray-100 mb-10">
-                            <h3 className="text-lg font-semibold text-gray-900 mb-5">
+                            <h3 className="text-xl font-semibold text-gray-900 mb-5">
                                 Age Criteria <span className="font-normal text-gray-500">(as on June 1st, 2025)</span>
                             </h3>
 
@@ -364,7 +364,7 @@ export default function AdmissionProcedurePage() {
                         <div className="bg-white border border-gray-200 shadow-sm p-6 md:p-7 flex flex-col md:flex-row justify-between items-center gap-5 transition-all">
                             <div>
                                 <h3 className="text-xl font-semibold text-gray-900 mb-1">Confirm Your Seat</h3>
-                                <p className="text-gray-500 text-sm max-w-xl">Upon acceptance, please complete the enrollment process within the stipulated date to secure your child's seat.</p>
+                                <p className="text-gray-500 text-lg max-w-xl">Upon acceptance, please complete the enrollment process within the stipulated date to secure your child's seat.</p>
                             </div>
                             <a
                                 href="https://hikabackend.sonastar.com/api/institutions/enquiry/INS-3-ZXYXKM"

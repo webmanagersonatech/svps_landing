@@ -56,14 +56,14 @@ export default function DiningPage() {
         <PageHeader
           title="Dining"
           subtitle="Promoting healthy eating habits for growing minds."
-          breadcrumbs={["Home", "Facilities", "Dining"]}
+          breadcrumbs={["Home", "Infrastructure facilities", "Dining"]}
         />
 
         {/* INTRO */}
         <div className="max-w-7xl  text-lg mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
           <Reveal>
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold font-serif text-secondary mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold font-serif text-secondary mb-4">
                 Pantry and <span className="text-primary">Dining</span>
               </h2>
 

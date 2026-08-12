@@ -118,7 +118,7 @@ export default function AllRoundDevelopmentPage() {
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                       <Reveal>
     <div className="space-y-6">
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-secondary leading-tight">
+        <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary leading-tight">
             All Round <span className="text-primary">Development</span>
         </h2>
         

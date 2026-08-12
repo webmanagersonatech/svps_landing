@@ -402,7 +402,7 @@ export default function ManagementProfilesPage() {
                                                     {member.title && (
                                                         <>
                                                             <span className="text-gray-300">•</span>
-                                                            <span className="text-gray-500 text-xs sm:text-sm">
+                                                            <span className="text-gray-500 ">
                                                                 {member.title}
                                                             </span>
                                                         </>
@@ -410,7 +410,7 @@ export default function ManagementProfilesPage() {
                                                 </div>
 
                                                 {/* DESCRIPTION */}
-                                                <div className="mt-3 space-y-2 text-gray-600 text-xs sm:text-sm leading-relaxed">
+                                                <div className="mt-3 space-y-2 text-gray-600  leading-relaxed">
                                                     {member.description.map((para, i) => (
                                                         <p key={i}>{para}</p>
                                                     ))}

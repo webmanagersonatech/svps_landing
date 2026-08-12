@@ -176,7 +176,7 @@ export default function MethodologyPage() {
 
 
                             <Reveal delay={100}>
-                                <h2 className="text-2xl md:text-3xl font-serif font-bold text-secondary leading-tight">
+                                <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary leading-tight">
                                     From “Chalk & Talk” <br />to “Guide on the Side”
                                 </h2>
                             </Reveal>

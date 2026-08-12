@@ -179,7 +179,7 @@ export default function TeacherTrainingPage() {
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <Reveal>
                             <div className="space-y-4">
-                                <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-secondary leading-tight">
+                                <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary leading-tight">
                                     Teachers as <span className="text-primary">Lifelong Learners</span>
                                 </h2>
 
@@ -188,9 +188,7 @@ export default function TeacherTrainingPage() {
                                     so they can inspire and nurture every student.
                                 </p>
 
-                                <p className="text-gray-700 leading-relaxed text-lg font-semibold text-secondary">
-                                    Teachers as Lifelong Learners
-                                </p>
+                               
                                 <p className="text-gray-700 leading-relaxed text-lg">
                                     We conduct Teacher Facilitation Programmes to develop highly skilled
                                     educators. Continuous professional development forms the foundation
@@ -275,7 +273,7 @@ export default function TeacherTrainingPage() {
                                     Teacher Training Programmes & Workshops
                                 </p>
                             </div>
-                            <ul className="space-y-3">
+                            <ul className="space-y-3 text-lg">
                                 <li className="flex items-start gap-3 text-gray-700">
                                     <span className="text-primary mt-1">•</span>
                                     <span>At SVPS, we conduct Teacher Training Programmes by Skillful Experts.</span>
@@ -309,7 +307,7 @@ export default function TeacherTrainingPage() {
                                 </p>
                             </div>
                             <div className="space-y-4">
-                                <p className="text-gray-700 leading-relaxed">
+                                <p className="text-gray-700  text-lg leading-relaxed">
                                     Regular teacher workshops, including inter-school and intra-school
                                     programmes with certification, are conducted, and participation is
                                     encouraged for all teachers.
@@ -378,7 +376,7 @@ export default function TeacherTrainingPage() {
                     <Reveal>
                         <div className="text-center mb-12">
                             <HeartIcon className="w-10 h-10 text-primary mx-auto mb-2" />
-                            <h2 className="text-3xl font-serif font-bold text-secondary">What Our Teachers Say</h2>
+                            <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary">What Our Teachers Say</h2>
                             <p className="text-gray-600">Real experiences from our learning community</p>
                         </div>
                     </Reveal>

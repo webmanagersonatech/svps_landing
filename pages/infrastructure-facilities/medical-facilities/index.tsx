@@ -85,7 +85,7 @@ export default function MedicalFacilitiesPage() {
         <PageHeader
           title="Medical Facilities"
           subtitle="Ensuring the health, safety, and well-being of every student."
-          breadcrumbs={["Home", "Facilities", "Medical"]}
+          breadcrumbs={["Home", "Infrastructure facilities", "Medical"]}
         />
 
         {/* INTRO */}
@@ -123,25 +123,25 @@ export default function MedicalFacilitiesPage() {
           {/* CONTENT */}
           <Reveal>
             <div>
-              <h2 className="text-3xl font-bold text-secondary  font-serif  mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-secondary font-serif mb-4">
                 Caring for Every Child
               </h2>
 
-              <p className="text-gray-600 mb-4 leading-relaxed">
+              <p className="text-gray-600 mb-4 text-lg leading-relaxed">
                 The school provides comprehensive medical support to ensure that every
                 student is safe and cared for throughout the day.
               </p>
 
-              <p className="text-gray-600 leading-relaxed mb-4">
+              <p className="text-gray-600 leading-relaxed text-lg mb-4">
                 From routine health checkups to emergency care, our facilities are
                 equipped to handle every situation efficiently.
               </p>
-              <p className="text-gray-600 leading-relaxed mb-4">
+              <p className="text-gray-600 leading-relaxed text-lg mb-4">
                 From routine health checkups to emergency care, our facilities are
                 equipped to handle every situation efficiently.
               </p>
 
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed text-lg">
                 From routine health checkups to emergency care, our facilities are
                 equipped to handle every situation efficiently.
               </p>
@@ -153,37 +153,40 @@ export default function MedicalFacilitiesPage() {
         {/* FEATURES */}
         <div className="max-w-7xl mx-auto px-4 pb-20">
 
-          <h2 className="text-2xl font-bold text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
             Our Medical Facilities
           </h2>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {features.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <Reveal key={i}>
-                  <div className="bg-white rounded-xl border p-5 hover:shadow-md transition flex items-start gap-4">
+         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+  {features.map((item, i) => {
+    const Icon = item.icon;
+    return (
+      <Reveal key={i}>
+        <div className="relative bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md hover:border-orange-300 transition flex items-start gap-4 overflow-hidden">
 
-                    {/* ICON */}
-                    <div className="bg-primary/10 p-3 rounded-lg">
-                      <Icon className="w-6 h-6 text-primary" />
-                    </div>
+          {/* CORNER ACCENT */}
+          <div className="absolute top-0 right-0 w-10 h-10 bg-orange-500/90 rounded-bl-2xl" />
 
-                    {/* TEXT */}
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">
-                        {item.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm">
-                        {item.desc}
-                      </p>
-                    </div>
-
-                  </div>
-                </Reveal>
-              );
-            })}
+          {/* ICON */}
+          <div className="bg-primary/10 p-3 rounded-lg relative z-10">
+            <Icon className="w-6 h-6 text-primary" />
           </div>
+
+          {/* TEXT */}
+          <div className="relative z-10">
+            <h3 className="font-semibold text-lg text-gray-900 mb-1">
+              {item.title}
+            </h3>
+            <p className="text-gray-600 text-sm">
+              {item.desc}
+            </p>
+          </div>
+
+        </div>
+      </Reveal>
+    );
+  })}
+</div>
         </div>
 
       </main>

@@ -9,7 +9,7 @@ import {
   MessageCircle, Calendar, Globe, Award,
   Shield, Building, Activity,
   Bus, Heart, Coffee, Music,
-  Map, Monitor, Video, Image,
+  Trophy, Palette, Building2, Monitor,
   FileText, Download,
   LogIn,
   Sparkles, ArrowRight, Star,
@@ -143,6 +143,8 @@ export default function Navbar() {
       submenu: [
         { name: 'Curriculum & Pedagogical Processes', href: '/academics/curriculum-and-pedagogical-processes', icon: BookOpen, description: 'Teaching framework' },
         { name: 'Methodology', href: '/academics/methodology', icon: BookOpen, description: 'Learning approach' },
+        { name: 'Creative Learning', href: '/academics/creative-learning', icon: Palette, description: 'Imagination in action' },
+        { name: 'Academic Excellence', href: '/academics/academic-excellence', icon: Trophy, description: 'Strong academic foundation' },
         { name: 'All Round Development', href: '/academics/all-round-development', icon: Award, description: 'Holistic growth' },
         { name: 'Teacher Training', href: '/academics/teacher-training-programme-workshops', icon: Users, description: 'Faculty development' },
       ],
@@ -157,6 +159,18 @@ export default function Navbar() {
         { name: 'Transport', href: '/infrastructure-facilities/transport-facilities', icon: Bus, description: 'Safe travel' },
         { name: 'Medical', href: '/infrastructure-facilities/medical-facilities', icon: Heart, description: 'Health support' },
         { name: 'Library', href: '/infrastructure-facilities/library', icon: BookOpen, description: 'Knowledge resources' },
+        {
+          name: 'Auditorium',
+          href: '/infrastructure-facilities/auditorium',
+          icon: Building2,
+          description: 'Spacious space for events and activities'
+        },
+        {
+          name: 'Computer Lab',
+          href: '/infrastructure-facilities/computer-lab',
+          icon: Monitor,
+          description: 'Technology-enabled learning'
+        },
         { name: 'Dining', href: '/infrastructure-facilities/pantry-and-dining', icon: Coffee, description: 'Dining area' },
       ],
     },
@@ -400,7 +414,7 @@ export default function Navbar() {
                 {navLinks.map((link) => {
                   const isLinkActive = isActive(link.href);
                   const isSubActive = isSubmenuActive(link.submenu);
-                  
+
                   return (
                     <div
                       key={link.name}
@@ -411,11 +425,10 @@ export default function Navbar() {
                       {link.submenu ? (
                         <motion.button
                           whileHover={{ y: -0.5 }}
-                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base font-medium transition-colors duration-200 ${
-                            isLinkActive || isSubActive
-                              ? 'text-[#ec8013]'
-                              : 'text-[#f5dfc4]/80 hover:text-[#f5dfc4]'
-                          }`}
+                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base font-medium transition-colors duration-200 ${isLinkActive || isSubActive
+                            ? 'text-[#ec8013]'
+                            : 'text-[#f5dfc4]/80 hover:text-[#f5dfc4]'
+                            }`}
                         >
                           <span>{link.name}</span>
                           <motion.div
@@ -428,11 +441,10 @@ export default function Navbar() {
                       ) : (
                         <Link
                           href={link.href}
-                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base font-medium transition-colors duration-200 ${
-                            isLinkActive
-                              ? 'text-[#ec8013]'
-                              : 'text-[#f5dfc4]/80 hover:text-[#f5dfc4]'
-                          }`}
+                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base font-medium transition-colors duration-200 ${isLinkActive
+                            ? 'text-[#ec8013]'
+                            : 'text-[#f5dfc4]/80 hover:text-[#f5dfc4]'
+                            }`}
                         >
                           <span>{link.name}</span>
                         </Link>
@@ -452,11 +464,10 @@ export default function Navbar() {
                           >
                             <div className="w-72 xl:w-80 bg-[#1a4a5c] shadow-xl border border-[#ec8013]/20 overflow-hidden">
                               <div
-                                className={`p-2 ${
-                                  link.name === 'Activities'
-                                    ? 'max-h-[360px] overflow-y-auto activities-scrollbar'
-                                    : ''
-                                }`}
+                                className={`p-2 ${link.name === 'Activities'
+                                  ? 'max-h-[360px] overflow-y-auto activities-scrollbar'
+                                  : ''
+                                  }`}
                               >
                                 {link.submenu.map((item) => {
                                   const isItemActive = router.pathname === item.href || router.pathname.startsWith(item.href + '/');
@@ -464,22 +475,18 @@ export default function Navbar() {
                                     <motion.div key={item.name} variants={itemVariants}>
                                       <Link
                                         href={item.href}
-                                        className={`flex items-center gap-3 p-2.5 transition-all duration-150 group ${
-                                          isItemActive ? 'bg-[#ec8013]/15' : 'hover:bg-[#ec8013]/10'
-                                        }`}
+                                        className={`flex items-center gap-3 p-2.5 transition-all duration-150 group ${isItemActive ? 'bg-[#ec8013]/15' : 'hover:bg-[#ec8013]/10'
+                                          }`}
                                       >
-                                        <div className={`w-8 h-8 flex items-center justify-center shrink-0 rounded-md ${
-                                          isItemActive ? 'bg-[#ec8013]' : 'bg-[#ec8013]/10'
-                                        }`}>
-                                          <item.icon className={`w-4 h-4 ${
-                                            isItemActive ? 'text-white' : 'text-[#ec8013]'
-                                          }`} />
+                                        <div className={`w-8 h-8 flex items-center justify-center shrink-0 rounded-md ${isItemActive ? 'bg-[#ec8013]' : 'bg-[#ec8013]/10'
+                                          }`}>
+                                          <item.icon className={`w-4 h-4 ${isItemActive ? 'text-white' : 'text-[#ec8013]'
+                                            }`} />
                                         </div>
                                         <div className="flex-1 min-w-0">
                                           <div className="flex items-center gap-1.5">
-                                            <span className={`text-xs xl:text-sm font-medium transition-colors ${
-                                              isItemActive ? 'text-[#ec8013]' : 'text-[#f5dfc4] group-hover:text-[#ec8013]'
-                                            }`}>
+                                            <span className={`text-xs xl:text-sm font-medium transition-colors ${isItemActive ? 'text-[#ec8013]' : 'text-[#f5dfc4] group-hover:text-[#ec8013]'
+                                              }`}>
                                               {item.name}
                                             </span>
                                             {item.badge && (
@@ -492,9 +499,8 @@ export default function Navbar() {
                                             {item.description}
                                           </div>
                                         </div>
-                                        <ArrowRight className={`w-3 h-3 transition-all shrink-0 ${
-                                          isItemActive ? 'text-[#ec8013]' : 'text-[#f5dfc4]/20 group-hover:text-[#ec8013] group-hover:translate-x-0.5'
-                                        }`} />
+                                        <ArrowRight className={`w-3 h-3 transition-all shrink-0 ${isItemActive ? 'text-[#ec8013]' : 'text-[#f5dfc4]/20 group-hover:text-[#ec8013] group-hover:translate-x-0.5'
+                                          }`} />
                                       </Link>
                                     </motion.div>
                                   );
@@ -588,22 +594,18 @@ export default function Navbar() {
                         ) : (
                           <Link
                             href={link.href}
-                            className={`flex items-center justify-between gap-3 px-4 py-3 transition-all group rounded-lg ${
-                              isActive(link.href) ? 'bg-[#ec8013]/10' : 'hover:bg-[#ec8013]/5'
-                            }`}
+                            className={`flex items-center justify-between gap-3 px-4 py-3 transition-all group rounded-lg ${isActive(link.href) ? 'bg-[#ec8013]/10' : 'hover:bg-[#ec8013]/5'
+                              }`}
                             onClick={() => setIsOpen(false)}
                           >
                             <div className="flex items-center gap-3">
-                              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                                isActive(link.href) ? 'bg-[#ec8013]' : 'bg-[#ec8013]/10'
-                              }`}>
-                                <link.icon className={`w-4 h-4 ${
-                                  isActive(link.href) ? 'text-white' : 'text-[#ec8013]'
-                                }`} />
+                              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isActive(link.href) ? 'bg-[#ec8013]' : 'bg-[#ec8013]/10'
+                                }`}>
+                                <link.icon className={`w-4 h-4 ${isActive(link.href) ? 'text-white' : 'text-[#ec8013]'
+                                  }`} />
                               </div>
-                              <span className={`font-medium text-sm ${
-                                isActive(link.href) ? 'text-[#ec8013]' : 'text-[#f5dfc4]'
-                              }`}>{link.name}</span>
+                              <span className={`font-medium text-sm ${isActive(link.href) ? 'text-[#ec8013]' : 'text-[#f5dfc4]'
+                                }`}>{link.name}</span>
                             </div>
                             <ChevronRight className="w-3.5 h-3.5 text-[#f5dfc4]/30" />
                           </Link>

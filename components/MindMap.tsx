@@ -127,7 +127,7 @@ export default function InfrastructureGrid() {
     return (
         <section
             ref={containerRef}
-            className="w-full py-6 md:px-4"
+            className="w-full py-4 md:px-4"
         >
             <motion.div
                 variants={containerVariants}
@@ -136,8 +136,8 @@ export default function InfrastructureGrid() {
                 className="
           max-w-7xl mx-auto
           grid grid-cols-1 md:grid-cols-4
-          gap-4
-          auto-rows-[180px]
+          gap-3
+          auto-rows-[110px]
         "
             >
                 {/* LEFT BIG CARD */}
@@ -157,18 +157,18 @@ export default function InfrastructureGrid() {
 
                             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
                                 <div className="text-white text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                    <div className="text-4xl mb-2">
+                                    <div className="text-3xl mb-2">
                                         {nodes[0].accentIcon}
                                     </div>
-                                    <p className="text-lg font-semibold">Explore {nodes[0].label}</p>
+                                    <p className="text-base font-semibold">Explore {nodes[0].label}</p>
                                 </div>
                             </div>
 
-                            <div className="absolute bottom-4 left-4 text-white z-10 group-hover:opacity-0 transition-opacity duration-300">
-                                <div className="text-3xl mb-2">
+                            <div className="absolute bottom-3 left-3 text-white z-10 group-hover:opacity-0 transition-opacity duration-300">
+                                <div className="text-2xl mb-1">
                                     {nodes[0].accentIcon}
                                 </div>
-                                <h3 className="text-2xl font-bold">
+                                <h3 className="text-xl font-bold">
                                     {nodes[0].label}
                                 </h3>
                             </div>
@@ -193,18 +193,18 @@ export default function InfrastructureGrid() {
 
                             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
                                 <div className="text-white text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                    <div className="text-3xl mb-2">
+                                    <div className="text-2xl mb-1">
                                         {nodes[1].accentIcon}
                                     </div>
-                                    <p className="text-base font-semibold">Explore {nodes[1].label}</p>
+                                    <p className="text-sm font-semibold">Explore {nodes[1].label}</p>
                                 </div>
                             </div>
 
-                            <div className="absolute bottom-4 left-4 text-white z-10 group-hover:opacity-0 transition-opacity duration-300">
-                                <div className="text-2xl mb-1">
+                            <div className="absolute bottom-3 left-3 text-white z-10 group-hover:opacity-0 transition-opacity duration-300">
+                                <div className="text-xl mb-1">
                                     {nodes[1].accentIcon}
                                 </div>
-                                <h3 className="text-lg font-bold">
+                                <h3 className="text-base font-bold">
                                     {nodes[1].label}
                                 </h3>
                             </div>
@@ -229,18 +229,18 @@ export default function InfrastructureGrid() {
 
                             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
                                 <div className="text-white text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                    <div className="text-3xl mb-2">
+                                    <div className="text-2xl mb-1">
                                         {nodes[2].accentIcon}
                                     </div>
-                                    <p className="text-base font-semibold">Explore {nodes[2].label}</p>
+                                    <p className="text-sm font-semibold">Explore {nodes[2].label}</p>
                                 </div>
                             </div>
 
-                            <div className="absolute bottom-4 left-4 text-white z-10 group-hover:opacity-0 transition-opacity duration-300">
-                                <div className="text-2xl mb-1">
+                            <div className="absolute bottom-3 left-3 text-white z-10 group-hover:opacity-0 transition-opacity duration-300">
+                                <div className="text-xl mb-1">
                                     {nodes[2].accentIcon}
                                 </div>
-                                <h3 className="text-lg font-bold">
+                                <h3 className="text-base font-bold">
                                     {nodes[2].label}
                                 </h3>
                             </div>
@@ -267,18 +267,18 @@ export default function InfrastructureGrid() {
 
                                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
                                     <div className="text-white text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                        <div className="text-2xl mb-2">
+                                        <div className="text-xl mb-1">
                                             {node.accentIcon}
                                         </div>
-                                        <p className="text-sm font-semibold">Explore {node.label}</p>
+                                        <p className="text-xs font-semibold">Explore {node.label}</p>
                                     </div>
                                 </div>
 
-                                <div className="absolute bottom-3 left-3 text-white z-10 group-hover:opacity-0 transition-opacity duration-300">
-                                    <div className="text-xl mb-1">
+                                <div className="absolute bottom-2 left-2 text-white z-10 group-hover:opacity-0 transition-opacity duration-300">
+                                    <div className="text-lg mb-0.5">
                                         {node.accentIcon}
                                     </div>
-                                    <h3 className="text-sm font-semibold">
+                                    <h3 className="text-xs font-semibold">
                                         {node.label}
                                     </h3>
                                 </div>

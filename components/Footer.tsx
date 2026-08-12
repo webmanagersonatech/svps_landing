@@ -83,7 +83,7 @@ const Footer = () => {
                   href="mailto:svpschool@sonatech.ac.in"
                   className="text-white/80 hover:text-primary transition"
                 >
-                  svpschool@sonatech.ac.in
+                  svpschool@sonavalliappapublicschool.com
                 </a>
               </div>
 

@@ -158,7 +158,7 @@ export default function VisionMissionPage() {
                             {/* Right side - Vision Text */}
                             <div className="h-full flex flex-col justify-center space-y-4">
                                 <Reveal>
-                                    <h2 className="text-2xl md:text-3xl font-serif font-bold text-secondary flex items-center gap-3">
+                                    <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary flex items-center gap-3">
                                         <EyeIcon className="w-8 h-8 text-primary" />
                                         Our Vision
                                     </h2>
@@ -171,7 +171,7 @@ export default function VisionMissionPage() {
                                 </Reveal>
 
                                 <Reveal delay={200}>
-                                    <p className="text-gray-700 leading-relaxed">
+                                    <p className="text-gray-700 text-lg leading-relaxed">
                                         We envision a future where every student discovers their unique potential and
                                         is empowered with the knowledge, skills, and values to shape a sustainable and
                                         equitable world. Through excellence in teaching, groundbreaking research, and
@@ -191,7 +191,7 @@ export default function VisionMissionPage() {
                             {/* Left side */}
                             <div className="space-y-4 flex flex-col justify-center">
                                 <Reveal>
-                                    <h2 className="text-2xl md:text-3xl font-serif font-bold text-secondary flex items-center gap-3">
+                                    <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary flex items-center gap-3">
                                         <AcademicCapIcon className="w-8 h-8 text-primary" />
                                         Our Mission
                                     </h2>
@@ -208,7 +208,7 @@ export default function VisionMissionPage() {
                                         ].map((item, i) => (
                                             <li key={i} className="flex items-start gap-3">
                                                 <span className="text-primary font-bold text-lg mt-0.5">✓</span>
-                                                <span className="text-gray-700">{item}</span>
+                                                <span className="text-gray-700 text-lg">{item}</span>
                                             </li>
                                         ))}
                                     </ul>

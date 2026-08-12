@@ -10,39 +10,42 @@ import { FaInstagram, FaWhatsapp, FaFacebook, FaTwitter } from "react-icons/fa";
 
 // Slides for left side cycling content (changes every 5 seconds)
 const contentSlides = [
-  {
-    id: 1,
-    badge: "Premium Platform",
-    titlePrefix: "Transform Your",
-    titleGradient: "Future with SVPS",
-    description: "Join the leading online learning platform and unlock your potential with expert-led courses, hands-on projects, and global certification.",
-    ctaText: "Start Learning Now",
-    ctaLink: "/courses",
-    trustRating: 4.9,
-    trustCount: "10k+"
-  },
-  {
-    id: 2,
-    badge: "Global Community",
-    titlePrefix: "Connect &",
-    titleGradient: "Learn Together",
-    description: "Join millions of learners worldwide. Participate in live sessions, group projects, and network with industry experts who share your passion.",
-    ctaText: "Join Community",
-    ctaLink: "/community",
-    trustRating: 4.8,
-    trustCount: "25k+"
-  },
-  {
-    id: 3,
-    badge: "Career Focused",
-    titlePrefix: "Launch Your",
-    titleGradient: "Dream Career",
-    description: "Get job-ready with our career-focused programs. Receive 1-on-1 mentoring, build a portfolio, and get hired at top companies worldwide.",
-    ctaText: "Explore Careers",
-    ctaLink: "/careers",
-    trustRating: 4.9,
-    trustCount: "15k+"
-  }
+{
+  id: 1,
+  badge: "Excellence in Education",
+  titlePrefix: "Shape Your",
+  titleGradient: "Future with SVPS",
+  description:
+    "Discover a nurturing learning environment where students grow with knowledge, confidence, creativity, and strong values to become future-ready leaders.",
+  ctaText: "Explore Our School",
+  ctaLink: "/about-us/heritage",
+  trustRating: 4.9,
+  trustCount: "1k+"
+},
+{
+  id: 2,
+  badge: "Learn • Grow • Succeed",
+  titlePrefix: "Inspiring Young",
+  titleGradient: "Minds to Soar",
+  description:
+    "At SVPS, we empower every child through engaging learning, innovative experiences, sports, arts, and activities that bring out their unique potential.",
+  ctaText: "Discover SVPS",
+  ctaLink: "/infrastructure-facilities/classrooms",
+  trustRating: 4.9,
+  trustCount: "1k+"
+},
+{
+  id: 3,
+  badge: "Future Ready Education",
+  titlePrefix: "Where Learning",
+  titleGradient: "Meets Possibilities",
+  description:
+    "Build a strong foundation for tomorrow with quality education, personalized guidance, modern learning, and a vibrant school community that helps every student thrive.",
+  ctaText: "Join Our School",
+  ctaLink: "/admission/admission-procedure",
+  trustRating: 4.9,
+  trustCount: "1k+"
+}
 ];
 
 // Background images for slideshow

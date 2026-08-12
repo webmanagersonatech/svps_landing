@@ -2,45 +2,38 @@ import Head from "next/head";
 import { PageHeader } from "./PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
-  BookOpenIcon,
-  ComputerDesktopIcon,
-  UserGroupIcon,
+  UsersIcon,
+  SpeakerWaveIcon,
   LightBulbIcon,
-  ChatBubbleLeftRightIcon,
-  AcademicCapIcon,
+  VideoCameraIcon,
+  SunIcon,
+  MicrophoneIcon,
+  TicketIcon,
+  StarIcon,
+  BuildingLibraryIcon,
+  XMarkIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
   SparklesIcon,
-  MapPinIcon,
-  CalendarDaysIcon,
-  ArrowRightIcon,
-  CheckBadgeIcon,
-  GlobeAltIcon,
 } from "@heroicons/react/24/outline";
-import { StarIcon } from "@heroicons/react/24/solid";
 
 /* =========================
-   SCROLL REVEAL (Enhanced)
+   REVEAL
 ========================= */
-function useReveal(threshold = 0.15, delay = 0) {
+function useReveal() {
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), delay);
-          observer.unobserve(el);
-        }
-      },
-      { threshold, rootMargin: "0px 0px -50px 0px" }
-    );
-
-    observer.observe(el);
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setVisible(true);
+        observer.disconnect();
+      }
+    });
+    if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [delay, threshold]);
+  }, []);
 
   return { ref, visible };
 }
@@ -48,21 +41,17 @@ function useReveal(threshold = 0.15, delay = 0) {
 function Reveal({
   children,
   delay = 0,
-  className = "",
 }: {
   children: React.ReactNode;
   delay?: number;
-  className?: string;
 }) {
-  const { ref, visible } = useReveal(0.15, delay);
-
+  const { ref, visible } = useReveal();
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${className} ${
-        visible
-          ? "opacity-100 translate-y-0 rotate-0 scale-100"
-          : "opacity-0 translate-y-12 rotate-1 scale-95"
+      style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
+      className={`transition-all duration-700 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
       {children}
@@ -71,158 +60,371 @@ function Reveal({
 }
 
 /* =========================
-   MAIN PAGE - REDESIGNED
+   FILMSTRIP GALLERY
 ========================= */
-export default function ClassroomPage() {
-  const features = [
+interface ShotImage {
+  src: string;
+  alt: string;
+  title: string;
+}
+
+function AuditoriumFilmstrip() {
+  const [selectedImage, setSelectedImage] = useState<ShotImage | null>(null);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  const shots: ShotImage[] = [
     {
-      icon: BookOpenIcon,
-      title: "Concept-Based Learning",
-      desc: "Deep understanding over rote memorization with real-world connections.",
-      color: "from-blue-500 to-cyan-500",
+      src: "https://images.unsplash.com/photo-1560439514-4e9645039924?w=900&q=80",
+      alt: "Auditorium stage",
+      title: "The Main Stage",
     },
     {
-      icon: ComputerDesktopIcon,
-      title: "Smart Classrooms",
-      desc: "Interactive panels, digital resources & immersive visual learning.",
-      color: "from-purple-500 to-indigo-500",
+      src: "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=900&q=80",
+      alt: "Tiered auditorium seating",
+      title: "Tiered Seating",
     },
     {
-      icon: UserGroupIcon,
-      title: "Collaborative Learning",
-      desc: "Structured group work, peer mentoring & presentation skills.",
-      color: "from-emerald-500 to-teal-500",
+      src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=900&q=80",
+      alt: "Concert lighting rig",
+      title: "Stage Lighting",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=900&q=80",
+      alt: "School event on stage",
+      title: "Annual Day",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=900&q=80",
+      alt: "Auditorium hall wide shot",
+      title: "The Grand Hall",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=900&q=80",
+      alt: "Award ceremony",
+      title: "Award Ceremony",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=900&q=80",
+      alt: "Empty stage with curtains",
+      title: "Centre Stage",
+    },
+  ];
+
+  const openLightbox = (image: ShotImage, index: number) => {
+    setSelectedImage(image);
+    setCurrentIndex(index);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeLightbox = () => {
+    setSelectedImage(null);
+    document.body.style.overflow = "auto";
+  };
+
+  const navigate = (direction: "prev" | "next") => {
+    let newIndex = currentIndex;
+    if (direction === "prev") {
+      newIndex = currentIndex === 0 ? shots.length - 1 : currentIndex - 1;
+    } else {
+      newIndex = currentIndex === shots.length - 1 ? 0 : currentIndex + 1;
+    }
+    setCurrentIndex(newIndex);
+    setSelectedImage(shots[newIndex]);
+  };
+
+  return (
+    <div className="relative">
+      <div className="flex gap-5 overflow-x-auto pb-6 px-4 md:px-[calc((100%-1280px)/2+1rem)] snap-x snap-mandatory scrollbar-thin">
+        {shots.map((img, idx) => (
+          <div
+            key={idx}
+            onClick={() => openLightbox(img, idx)}
+            className="group relative flex-shrink-0 w-[220px] md:w-[280px] h-[340px] md:h-[400px] rounded-2xl overflow-hidden cursor-pointer snap-start shadow-2xl"
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+            <div className="absolute bottom-0 left-0 p-5 w-full">
+              <div className="h-[2px] w-8 bg-primary mb-2 transition-all duration-500 group-hover:w-14" />
+              <p className="text-white font-semibold text-lg font-serif">
+                {img.title}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
+          onClick={closeLightbox}
+        >
+          <button
+            onClick={closeLightbox}
+            className="absolute top-5 right-5 text-white hover:text-primary transition-colors"
+          >
+            <XMarkIcon className="w-8 h-8" />
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate("prev");
+            }}
+            className="absolute left-5 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors bg-white/10 rounded-full p-2"
+          >
+            <ChevronLeftIcon className="w-8 h-8" />
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate("next");
+            }}
+            className="absolute right-5 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors bg-white/10 rounded-full p-2"
+          >
+            <ChevronRightIcon className="w-8 h-8" />
+          </button>
+          <div
+            className="max-w-4xl max-h-[85vh] mx-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              className="w-full h-full object-contain rounded-lg"
+            />
+            <p className="text-white text-center font-serif text-lg mt-4">
+              {selectedImage.title}
+            </p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* =========================
+   MAIN PAGE
+========================= */
+export default function AuditoriumPage() {
+  const stats = [
+    { value: "1200+", label: "Seats" },
+    { value: "5000", label: "Sq. Ft. Stage" },
+    { value: "100%", label: "Air Conditioned" },
+    { value: "360°", label: "Sound Coverage" },
+  ];
+
+  const rows = [
+    {
+      icon: MicrophoneIcon,
+      title: "Professional Acoustics",
+      desc: "Acoustically engineered walls and ceilings deliver crystal-clear sound to every seat in the house, from a whispered dialogue to a full orchestra.",
+      img: "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=900&q=80",
     },
     {
       icon: LightBulbIcon,
-      title: "Activity-Based Teaching",
-      desc: "Hands-on experiments, simulations & project-based learning.",
-      color: "from-amber-500 to-orange-500",
+      title: "Dynamic Stage Lighting",
+      desc: "A programmable lighting rig sets the mood for dance, drama and cultural performances — turning every act into a spectacle.",
+      img: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=900&q=80",
     },
     {
-      icon: ChatBubbleLeftRightIcon,
-      title: "Open Interaction",
-      desc: "Safe environment for questions, debates and classroom dialogue.",
-      color: "from-rose-500 to-pink-500",
-    },
-    {
-      icon: AcademicCapIcon,
-      title: "Individual Attention",
-      desc: "Personalized learning paths & mentor support for every child.",
-      color: "from-violet-500 to-fuchsia-500",
+      icon: VideoCameraIcon,
+      title: "Audio-Visual & Recording",
+      desc: "HD projection, LED screens and live recording capability ensure no moment on stage goes uncaptured.",
+      img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=900&q=80",
     },
   ];
 
-  const stats = [
-    { value: "24:1", label: "Student-Teacher Ratio", icon: UserGroupIcon },
-    { value: "100%", label: "Smart Classrooms", icon: ComputerDesktopIcon },
-    { value: "8+", label: "Awards for Excellence", icon: StarIcon },
-    { value: "15+", label: "Clubs & Activities", icon: SparklesIcon },
-  ];
-
-  const galleryImages = [
-    "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=400&fit=crop",
+  const chips = [
+    { icon: UsersIcon, label: "Grand Seating" },
+    { icon: TicketIcon, label: "Events & Ceremonies" },
+    { icon: BuildingLibraryIcon, label: "Green Rooms" },
+    { icon: SunIcon, label: "Climate Controlled" },
   ];
 
   return (
     <>
       <Head>
-        <title>Classrooms | Sona Valliappa Public School</title>
-        <meta
-          name="description"
-          content="Step into the future of education — modern, interactive, and child-centric classrooms designed for 21st century learning."
-        />
+        <title>Auditorium | Sona Valliappa Public School</title>
       </Head>
 
-      <main className="bg-white overflow-x-hidden">
-        {/* HEADER with custom styling */}
-        <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-50 via-white to-cyan-50 -z-10" />
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-indigo-100/30 to-transparent rounded-bl-[100px] -z-10" />
-          <PageHeader
-            title="Classrooms"
-            subtitle="Where curiosity meets innovation — a learning ecosystem designed for brilliance."
-            breadcrumbs={["Home", "Academics", "Classrooms"]}
-          />
-        </div>
+      <main className="bg-white">
+        {/* HEADER */}
+        <PageHeader
+          title="Auditorium"
+          subtitle="A grand stage where talent shines and memories are made."
+          breadcrumbs={["Home", "Infrastructure facilities", "Auditorium"]}
+        />
 
-        {/* HERO SECTION - Redesigned with modern split layout & badges */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+        {/* CINEMATIC HERO BAND */}
+        <section className="relative bg-secondary overflow-hidden">
+          <div className="absolute inset-0 opacity-25">
+            <img
+              src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=1600&q=80"
+              alt="Auditorium stage"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-secondary/40" />
+
+          <div className="relative max-w-7xl mx-auto px-4 py-16 md:py-20">
             <Reveal>
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-2 bg-indigo-50 px-4 py-2 rounded-full">
-                  <SparklesIcon className="w-5 h-5 text-indigo-600" />
-                  <span className="text-sm font-medium text-indigo-700">
-                    Next-Gen Learning Environment
-                  </span>
-                </div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
-                  A Space Where{" "}
-                  <span className="bg-gradient-to-r from-indigo-600 to-cyan-600 bg-clip-text text-transparent">
-                    Learning Comes Alive
-                  </span>
-                </h2>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Our classrooms break free from traditional boundaries — designed
-                  to inspire creativity, foster collaboration, and empower every
-                  student to thrive in a rapidly changing world.
-                </p>
-                <div className="flex flex-wrap gap-4 pt-2">
-                  <button className="group bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-indigo-200 transition-all duration-300 flex items-center gap-2">
-                    Virtual Tour
-                    <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                  <button className="border-2 border-gray-300 hover:border-indigo-600 text-gray-700 hover:text-indigo-600 px-6 py-3 rounded-full font-semibold transition-all duration-300">
-                    Download Brochure
-                  </button>
-                </div>
+              <div className="flex flex-wrap justify-center gap-3 mb-10">
+                {chips.map((c, i) => {
+                  const Icon = c.icon;
+                  return (
+                    <div
+                      key={i}
+                      className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full text-xs md:text-sm font-medium"
+                    >
+                      <Icon className="w-4 h-4 text-primary" />
+                      {c.label}
+                    </div>
+                  );
+                })}
               </div>
             </Reveal>
 
-            <Reveal delay={150}>
-              <div className="relative">
-                <div className="absolute -top-4 -right-4 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" />
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 text-center">
+              {stats.map((s, i) => (
+                <Reveal key={i} delay={i * 100}>
+                  <div>
+                    <p className="text-3xl md:text-5xl font-bold text-white font-serif mb-1">
+                      {s.value}
+                    </p>
+                    <div className="h-[2px] w-8 bg-primary mx-auto mb-2" />
+                    <p className="text-white/70 text-xs md:text-sm uppercase tracking-[0.2em]">
+                      {s.label}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* INTRO — asymmetric split */}
+        <section className="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-12 gap-10 items-center">
+          <Reveal>
+            <div className="md:col-span-5">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-14 h-[2px] bg-primary"></div>
+                <p className="uppercase tracking-[0.3em] text-xs font-semibold text-primary">
+                  Infrastructure
+                </p>
+              </div>
+
+              <h2 className="text-3xl md:text-5xl font-bold text-secondary font-serif mb-5 leading-tight">
+                Where Every
+                <br />
+                Voice Finds
+                <br />
+                Its Stage
+              </h2>
+
+              <p className="text-gray-600 text-lg leading-relaxed mb-4">
+                Our spacious, air-conditioned auditorium is the heartbeat of
+                school life — a place where academics meet the arts.
+              </p>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                From annual day celebrations to investiture ceremonies and
+                inter-school competitions, it brings the entire school
+                community together under one roof.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={150}>
+            <div className="md:col-span-7 relative">
+              <div className="grid grid-cols-5 gap-4 h-[420px] md:h-[480px]">
+                <div className="col-span-3 rounded-2xl overflow-hidden shadow-xl">
                   <img
-                    src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=800&h=600&fit=crop"
-                    alt="Modern classroom with students"
+                    src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=900&q=80"
+                    alt="Auditorium stage"
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-lg">
-                    <div className="flex items-center gap-2">
-                      <CheckBadgeIcon className="w-5 h-5 text-indigo-600" />
-                      <span className="text-sm font-semibold text-gray-800">
-                        Smart Class Certified
-                      </span>
-                    </div>
+                </div>
+                <div className="col-span-2 flex flex-col gap-4">
+                  <div className="flex-1 rounded-2xl overflow-hidden shadow-xl">
+                    <img
+                      src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=80"
+                      alt="Auditorium hall"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex-1 rounded-2xl overflow-hidden shadow-xl">
+                    <img
+                      src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=600&q=80"
+                      alt="School event"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
               </div>
-            </Reveal>
-          </div>
-        </div>
 
-        {/* STATS SECTION - new engaging metrics */}
-        <div className="bg-gradient-to-r from-indigo-50 via-white to-cyan-50 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, idx) => {
-                const Icon = stat.icon;
+              <div className="absolute -bottom-6 -left-6 bg-white shadow-xl rounded-2xl px-6 py-4 flex items-center gap-3 border border-gray-100">
+                <SparklesIcon className="w-6 h-6 text-primary" />
+                <div>
+                  <p className="font-semibold text-secondary text-sm">
+                    Every Seat, a Front Row
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    Unobstructed sightlines, tier to tier
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </section>
+
+        {/* ALTERNATING FEATURE ROWS */}
+        <section className="bg-slate-50 py-20">
+          <div className="max-w-7xl mx-auto px-4">
+            <Reveal>
+              <div className="text-center mb-16">
+                <div className="flex items-center justify-center gap-4 mb-4">
+                  <div className="w-14 h-[2px] bg-primary"></div>
+                  <p className="uppercase tracking-[0.3em] text-xs font-semibold text-primary">
+                    Built For Performance
+                  </p>
+                  <div className="w-14 h-[2px] bg-primary"></div>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-secondary font-serif">
+                  Engineered For The Spotlight
+                </h2>
+              </div>
+            </Reveal>
+
+            <div className="space-y-16 md:space-y-24">
+              {rows.map((row, i) => {
+                const Icon = row.icon;
+                const reversed = i % 2 === 1;
                 return (
-                  <Reveal key={idx} delay={idx * 80}>
-                    <div className="text-center group">
-                      <div className="mx-auto w-14 h-14 bg-white rounded-2xl shadow-md flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:shadow-indigo-200">
-                        <Icon className="w-7 h-7 text-indigo-600" />
+                  <Reveal key={i}>
+                    <div
+                      className={`grid md:grid-cols-2 gap-10 items-center ${
+                        reversed ? "md:[&>*:first-child]:order-2" : ""
+                      }`}
+                    >
+                      <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
+                        <img
+                          src={row.img}
+                          alt={row.title}
+                          className="w-full h-full object-cover hover:scale-105 transition duration-700"
+                        />
                       </div>
-                      <div className="text-3xl md:text-4xl font-bold text-gray-900">
-                        {stat.value}
-                      </div>
-                      <div className="text-sm text-gray-500 mt-1">
-                        {stat.label}
+                      <div>
+                        <div className="bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center mb-5">
+                          <Icon className="w-7 h-7 text-primary" />
+                        </div>
+                        <h3 className="text-2xl md:text-3xl font-bold text-secondary font-serif mb-3">
+                          {row.title}
+                        </h3>
+                        <p className="text-gray-600 text-lg leading-relaxed">
+                          {row.desc}
+                        </p>
                       </div>
                     </div>
                   </Reveal>
@@ -230,170 +432,55 @@ export default function ClassroomPage() {
               })}
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* FEATURES SECTION - modern card design with gradient borders */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <Reveal>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                Designed for{" "}
-                <span className="bg-gradient-to-r from-indigo-600 to-cyan-600 bg-clip-text text-transparent">
-                  Holistic Growth
-                </span>
+        {/* FILMSTRIP GALLERY */}
+        <section className="py-20 bg-white overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 mb-10">
+            <Reveal>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-14 h-[2px] bg-primary"></div>
+                <p className="uppercase tracking-[0.3em] text-xs font-semibold text-primary">
+                  In Frame
+                </p>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-secondary font-serif">
+                Moments on the Big Stage
               </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-cyan-500 mx-auto mt-4 rounded-full" />
-              <p className="mt-6 text-gray-600 max-w-2xl mx-auto">
-                Every corner of our classroom is intentionally crafted to spark
-                curiosity, encourage exploration, and build lifelong skills.
-              </p>
-            </div>
-          </Reveal>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <Reveal key={i} delay={i * 100}>
-                  <div className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 overflow-hidden">
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
-                    />
-                    <div className="relative z-10">
-                      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-100 to-cyan-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="w-7 h-7 text-indigo-700" />
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">
-                        {item.title}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed">{item.desc}</p>
-                    </div>
-                    <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <ArrowRightIcon className="w-5 h-5 text-indigo-400" />
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* IMMERSIVE GALLERY SECTION - new visual showcase */}
-        <div className="bg-gray-50 py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Reveal>
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                  A Glimpse Inside Our{" "}
-                  <span className="bg-gradient-to-r from-indigo-600 to-cyan-600 bg-clip-text text-transparent">
-                    Learning Spaces
-                  </span>
-                </h2>
-                <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-                  See how our classrooms transform into dynamic hubs of discovery.
-                </p>
-              </div>
             </Reveal>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {galleryImages.map((img, idx) => (
-                <Reveal key={idx} delay={idx * 100}>
-                  <div className="group overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300">
-                    <img
-                      src={img}
-                      alt={`Classroom gallery ${idx + 1}`}
-                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="bg-white p-3">
-                      <p className="text-sm text-gray-500 text-center">
-                        {idx === 0 && "Interactive Session"}
-                        {idx === 1 && "Group Discovery"}
-                        {idx === 2 && "Smart Lab"}
-                        {idx === 3 && "Creative Corner"}
-                      </p>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
           </div>
-        </div>
+          <AuditoriumFilmstrip />
+        </section>
 
-        {/* TESTIMONIAL PILL - adds credibility and warmth */}
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* CTA */}
+        <section className="max-w-7xl mx-auto px-4 pb-20">
           <Reveal>
-            <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-indigo-100 relative overflow-hidden">
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-indigo-100 rounded-full blur-3xl opacity-40" />
-              <div className="relative z-10">
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <StarIcon key={i} className="w-5 h-5 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-xl md:text-2xl font-medium text-gray-700 italic leading-relaxed">
-                  “The classroom environment at Sona Valliappa is unlike anything
-                  we've seen. My child looks forward to school every day — the
-                  interactive teaching methods have genuinely reignited her love
-                  for learning.”
+            <div className="relative overflow-hidden rounded-3xl bg-secondary text-white p-10 md:p-16 text-center shadow-xl">
+              <div className="absolute inset-0 opacity-10">
+                <img
+                  src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1600&q=80"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative">
+                <StarIcon className="w-10 h-10 text-primary mx-auto mb-4" />
+                <h3 className="text-2xl md:text-4xl font-bold font-serif mb-3">
+                  Host Your Next School Event With Us
+                </h3>
+                <p className="text-white/80 max-w-2xl mx-auto mb-8">
+                  From cultural fests to academic ceremonies, our auditorium
+                  is equipped to make every occasion memorable.
                 </p>
-                <div className="mt-6 flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center text-white font-bold">
-                    SP
-                  </div>
-                  <div>
-                    <div className="font-bold text-gray-900">
-                      Mrs. Sunita Prakash
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      Parent, Grade 5 Student
-                    </div>
-                  </div>
-                </div>
+                <a
+                  href="/contact-us"
+                  className="inline-block bg-primary hover:bg-primary/90 transition text-white font-semibold px-8 py-3 rounded-full"
+                >
+                  Get in Touch
+                </a>
               </div>
             </div>
           </Reveal>
-        </div>
-
-        {/* CTA SECTION - redesigned with dual action & modern backdrop */}
-        <section className="relative py-24 overflow-hidden">
-          <div className="absolute inset-0">
-            <img
-              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600&h=600&fit=crop"
-              className="w-full h-full object-cover"
-              alt="Campus background"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/90 to-cyan-900/80 backdrop-blur-sm" />
-          </div>
-          <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-            <Reveal>
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-                <CalendarDaysIcon className="w-5 h-5 text-white" />
-                <span className="text-white/90 font-medium">
-                  Open House Every Saturday
-                </span>
-              </div>
-              <h3 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                Experience the Difference
-              </h3>
-              <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-                Walk through our interactive classrooms, meet our passionate
-                educators, and see why parents call SVS the best decision for
-                their child’s future.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <button className="group bg-white text-indigo-700 px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2">
-                  Book a Campus Visit
-                  <MapPinIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="border-2 border-white/50 hover:border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2">
-                  <GlobeAltIcon className="w-5 h-5" />
-                  Virtual Experience
-                </button>
-              </div>
-              <p className="text-white/60 text-sm mt-8">
-                Limited slots available — register now for a personalized tour.
-              </p>
-            </Reveal>
-          </div>
         </section>
       </main>
     </>

@@ -164,7 +164,7 @@ const StudentAchievements = () => {
                 {/* Achievement Themed Floating Elements */}
 
                 {/* Trophy */}
-                <div className="absolute top-[12%] left-[8%] w-28 h-28 rounded-[30px] bg-white/70 backdrop-blur-2xl border border-amber-100 shadow-[0_10px_40px_rgba(251,191,36,0.15)] rotate-12 flex items-center justify-center">
+                <div className="absolute top-[12%] left-[8%] w-28 h-28     rotate-12 flex items-center justify-center">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -182,7 +182,7 @@ const StudentAchievements = () => {
                 </div>
 
                 {/* Medal */}
-                <div className="absolute top-[18%] right-[10%] w-24 h-24 rounded-full bg-white/70 backdrop-blur-2xl border border-blue-100 shadow-[0_10px_35px_rgba(59,130,246,0.15)] -rotate-12 flex items-center justify-center">
+                <div className="absolute top-[18%] right-[10%] w-24 h-24    -rotate-12 flex items-center justify-center">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -209,7 +209,7 @@ const StudentAchievements = () => {
                 </div>
 
                 {/* Achievement Badge */}
-                <div className="absolute bottom-[16%] left-[12%] w-20 h-20 rounded-[24px] bg-white/70 backdrop-blur-2xl border border-violet-100 shadow-[0_10px_35px_rgba(139,92,246,0.15)] rotate-6 flex items-center justify-center">
+                <div className="absolute bottom-[16%] left-[12%] w-20 h-20     rotate-6 flex items-center justify-center">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -223,7 +223,7 @@ const StudentAchievements = () => {
                 </div>
 
                 {/* Graduation Achievement */}
-                <div className="absolute bottom-[12%] right-[11%] w-20 h-20 rounded-lg bg-white/70 backdrop-blur-2xl border border-emerald-100 shadow-[0_10px_40px_rgba(16,185,129,0.15)] -rotate-6 flex items-center justify-center">
+                <div className="absolute bottom-[12%] right-[11%] w-20 h-20     -rotate-6 flex items-center justify-center">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -285,7 +285,8 @@ const StudentAchievements = () => {
                             <div
                                 className="absolute top-0 right-0 h-full w-[34%] backdrop-blur-sm"
                                 style={{
-                                    background: "linear-gradient(135deg, #18596d 0%, #0f1115 100%)",
+                                    background:
+                                        "linear-gradient(135deg, rgba(24, 89, 109, 0.7) 0%, rgba(15, 17, 21, 0.7) 100%)",
                                 }}
                             />
 
@@ -403,7 +404,7 @@ const StudentAchievements = () => {
                                             {item.subTitle}
                                         </p>
 
-                                        <p className="mt-4 text-secondary text-sm sm:text-base leading-relaxed uppercase tracking-wide">
+                                        <p className="mt-4 text-secondary text-sm sm:text-base leading-relaxed  tracking-wide">
                                             {item.description}
                                         </p>
 
@@ -414,7 +415,7 @@ const StudentAchievements = () => {
                                 </div>
                             </div>
 
-                       
+
 
                             {/* Indicators */}
                             <div className="absolute bottom-2 right-6 flex gap-2 z-20">

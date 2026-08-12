@@ -173,7 +173,7 @@ export default function AdmissionContactPage() {
                         {/* RIGHT COLUMN – ENQUIRY FORM (NO CARD) */}
                         <Reveal>
                             <div className="bg-gray-50/80 p-6 md:p-8 border border-gray-100">
-                                <h2 className="text-2xl font-bold text-gray-900 font-serif mb-2">Admission Enquiry</h2>
+                                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-serif mb-2">Admission Enquiry</h2>
                                 <p className="text-gray-500 text-sm mb-6 pb-1 border-b border-gray-200 inline-block">
                                     Fill the form – we'll get back to you shortly
                                 </p>

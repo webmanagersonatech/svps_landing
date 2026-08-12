@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
+import PopupForm from "../../../components/bookvisit";
 import {
     LightBulbIcon,
     AcademicCapIcon,
@@ -69,6 +70,7 @@ function Reveal({
    MAIN PAGE - PRINCIPAL'S MESSAGE
 ========================= */
 export default function PrincipalMessagePage() {
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
     // Principal's core values / guiding principles
     const guidingPrinciples = [
         {
@@ -251,11 +253,17 @@ export default function PrincipalMessagePage() {
 
                         <Reveal delay={350}>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button className="bg-primary text-white px-8 py-2.5 rounded-r-full hover:bg-primary/90 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                                <button
+                                    onClick={() => setIsPopupOpen(true)}
+                                    className="bg-primary text-white px-8 py-2.5 rounded-r-full hover:bg-primary/90 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                                >
                                     <ChatBubbleLeftRightIcon className="w-5 h-5" />
                                     Schedule a Meeting
                                 </button>
-                                <button className="border-2 border-primary text-primary px-8 py-2.5 rounded-r-full hover:bg-primary/5 transition-all">
+                                <button
+                                    onClick={() => setIsPopupOpen(true)}
+                                    className="border-2 border-primary text-primary px-8 py-2.5 rounded-r-full hover:bg-primary/5 transition-all"
+                                >
                                     Enquire Now
                                 </button>
                             </div>
@@ -263,6 +271,13 @@ export default function PrincipalMessagePage() {
                     </div>
                 </div>
             </main>
+
+            <PopupForm
+                isOpen={isPopupOpen}
+                onClose={() => setIsPopupOpen(false)}
+                title="Enquire Now"
+                subtitle="Fill in your details and we'll get back to you."
+            />
         </>
     );
 }

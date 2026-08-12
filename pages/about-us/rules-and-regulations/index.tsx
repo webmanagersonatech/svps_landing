@@ -137,7 +137,7 @@ export default function RulesAndRegulationsPage() {
                 </div>
 
                 {/* Footer note */}
-                <div className="border-t border-gray-200 py-10 text-center text-sm text-gray-500">
+                <div className="py-10 text-center text-sm text-gray-500">
                     <ShieldCheckIcon className="w-6 h-6 mx-auto text-gray-400 mb-2" />
                     <p>For any queries, please contact the school administration.</p>
                 </div>
@@ -159,7 +159,7 @@ function TimingsPanel() {
                         <div>
                             <div className="flex items-center gap-2 border-b border-gray-200 pb-2 mb-5">
                                 <CalendarDaysIcon className="w-6 h-6 text-primary" />
-                                <h2 className="text-2xl font-semibold text-gray-800">
+                                <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">
                                     Monday – Friday
                                 </h2>
                             </div>
@@ -288,7 +288,7 @@ function TimingsPanel() {
                             <div className="flex items-center gap-2 border-b border-gray-200 pb-2 mb-5">
                                 <ClockIcon className="w-6 h-6 text-secondary" />
 
-                                <h2 className="text-2xl font-semibold text-gray-800">
+                                <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">
                                     Saturday
                                 </h2>
                             </div>
@@ -347,7 +347,7 @@ function UniformPanel() {
                     {/* CONTENT */}
                     <div className="h-full flex flex-col justify-between">
                         <div>
-                            <h2 className="text-2xl font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-4">
+                            <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-4">
                                 Formal Attire (Mon – Thu)
                             </h2>
 
@@ -487,7 +487,7 @@ function UniformPanel() {
                     {/* CONTENT */}
                     <div className="order-1 md:order-2 h-full flex flex-col justify-between">
                         <div>
-                            <h2 className="text-2xl font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-4">
+                            <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-4">
                                 Sports & House Uniform
                             </h2>
 
@@ -562,7 +562,7 @@ function StudentsPanel() {
             <Reveal>
                 <div className="grid md:grid-cols-2 gap-8 items-start">
                     <div>
-                        <h2 className="text-2xl font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-4">Code of Conduct</h2>
+                        <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-4">Code of Conduct</h2>
                         <ul className="space-y-2.5">
                             {rules.map((rule, idx) => (
                                 <li key={idx} className="flex gap-2 text-gray-700 text-base">
@@ -692,7 +692,7 @@ function ParentsPanel() {
                 <div>
                     <div className="flex items-center gap-2 border-b border-gray-200 pb-2 mb-5">
                         <HeartIcon className="w-6 h-6 text-secondary" />
-                        <h2 className="text-2xl font-semibold text-gray-800">Parent Partnership Guidelines</h2>
+                        <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">Parent Partnership Guidelines</h2>
                     </div>
                     <p className="text-gray-600 text-base mb-6">
                         We believe in a collaborative approach. Parents are requested to adhere to the following:

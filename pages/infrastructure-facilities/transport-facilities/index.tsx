@@ -92,29 +92,33 @@ export default function TransportPage() {
         <PageHeader
           title="Transport Facilities"
           subtitle="Safe, reliable, and efficient transportation for every student."
-          breadcrumbs={["Home", "Facilities", "Transport"]}
+          breadcrumbs={["Home", "Infrastructure facilities", "Transport"]}
         />
 
         {/* INTRO */}
         <section className="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-12 items-center">
-          <Reveal>
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-secondary  mb-6 font-serif leading-snug">
-                Safe Journeys,
-                <span className="text-primary block">Every Single Day</span>
-              </h2>
+         <Reveal>
+  <div>
+    <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-6 font-serif leading-snug">
+      Safe Journeys,
+      <span className="text-primary block">Every Single Day</span>
+    </h2>
 
-              <p className="text-gray-600 mb-4 text-lg">
-                Our transport system is built with safety, comfort, and
-                punctuality at its core.
-              </p>
+    <p className="text-gray-600 mb-4 text-lg">
+      Our safe, reliable, and comfortable school transport service is designed
+      to provide students with a smooth and convenient journey to and from
+      school. Our buses are maintained with care and operated with a strong
+      focus on student safety, comfort, and punctuality.
+    </p>
 
-              <p className="text-gray-600 text-lg">
-                GPS-enabled buses, trained drivers, and optimized routes ensure
-                a smooth and secure commute for every student.
-              </p>
-            </div>
-          </Reveal>
+    <p className="text-gray-600 text-lg">
+      With responsible drivers and supportive staff, we strive to create a
+      secure and pleasant travel experience for every student. Our transport
+      service gives parents peace of mind while ensuring students reach school
+      and return home comfortably and safely.
+    </p>
+  </div>
+</Reveal>
 
           <Reveal>
             <div className="relative group ">
@@ -139,33 +143,35 @@ export default function TransportPage() {
         {/* FEATURES */}
         <section className="max-w-7xl mx-auto px-4 pb-24">
           <Reveal>
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
               Why Choose Our Transport?
             </h2>
           </Reveal>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {features.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <Reveal key={i}>
-                  <div className="bg-white rounded-xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+  {features.map((item, i) => {
+    const Icon = item.icon;
+    return (
+      <Reveal key={i}>
+        <div className="bg-white rounded-xl p-5 border-t-4 border-orange-500 border-x border-b border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
 
-                    <Icon className="w-8 h-8 text-primary mb-3" />
-
-                    <h3 className="text-base font-semibold text-gray-900 mb-1">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-sm text-gray-600">
-                      {item.desc}
-                    </p>
-
-                  </div>
-                </Reveal>
-              );
-            })}
+          <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-orange-50 mb-3">
+            <Icon className="w-6 h-6 text-primary" />
           </div>
+
+          <h3 className="text-lg font-semibold text-gray-900 mb-1">
+            {item.title}
+          </h3>
+
+          <p className="text-sm text-gray-600">
+            {item.desc}
+          </p>
+
+        </div>
+      </Reveal>
+    );
+  })}
+</div>
         </section>
       </main>
     </>

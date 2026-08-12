@@ -51,11 +51,11 @@ const FeatureCard = ({
                 />
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/80"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/80"></div>
 
                 {/* Top Number */}
                 <div className="absolute top-5 left-5 z-20">
-                    <span className="text-white/40 text-4xl font-bold">
+                    <span className="text-white/60 text-4xl font-bold">
                         0{index + 1}
                     </span>
                 </div>
@@ -66,7 +66,7 @@ const FeatureCard = ({
                         {title}
                     </h3>
 
-                    <p className="mt-2 text-sm text-white/70 line-clamp-2">
+                    <p className="mt-2 text-sm text-white line-clamp-2">
                         {description}
                     </p>
 
@@ -192,7 +192,10 @@ const GrowthSkillsComponent = () => {
                 animate={inView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.8 }}
                 className="pt-32 pb-20 px-4 relative"
-                style={{ background: "linear-gradient(135deg, #18596d 0%, #0f1115 100%)" }}
+                style={{
+                    background:
+                        "linear-gradient(135deg, rgba(24, 89, 109, 0.75) 0%, rgba(15, 17, 21, 0.75) 100%)",
+                }}
             >
                 {/* IMAGE 3 - Bottom Left Corner */}
                 <motion.div
@@ -239,14 +242,14 @@ const GrowthSkillsComponent = () => {
                             title="Creative Learning"
                             description="Encouraging curiosity, imagination, and innovation through activity-based education."
                             index={1}
-                            href="/academics/all-round-development"
+                            href="/academics/creative-learning"
                         />
 
                         <FeatureCard
                             image="https://img.magnific.com/premium-photo/girl-with-her-arms-crossed-front-chalkboard-with-word-peace-it_1277828-30404.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
                             title="Academic Excellence"
                             description="Providing strong academic foundations with personalized attention for every student."
-                            href="/academics/curriculum-and-pedagogical-processes"
+                            href="/academics/academic-excellence"
                             index={2}
                         />
 

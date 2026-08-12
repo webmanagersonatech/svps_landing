@@ -2,6 +2,7 @@ import { ChevronRightIcon, HomeIcon } from "@heroicons/react/24/outline";
 import { motion, useAnimation, useMotionValueEvent, useScroll } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ReactNode, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 export function PageHeader({
     title,
@@ -331,44 +332,62 @@ export function PageHeader({
                     variants={breadcrumbVariants}
                     className="inline-flex items-center gap-2 bg-white shadow-lg py-2 px-4 border border-gray-200 rounded-lg hover:shadow-xl transition-shadow duration-300"
                 >
-                    <motion.div
-                        whileHover={{ scale: 1.1, rotate: -10 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        <HomeIcon className="w-4 h-4 text-gray-600" />
-                    </motion.div>
+                    <Link href="/" aria-label="Home">
+                        <motion.div
+                            whileHover={{ scale: 1.1, rotate: -10 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            <HomeIcon className="w-4 h-4 text-gray-600 hover:text-gray-900 transition" />
+                        </motion.div>
+                    </Link>
 
                     <div className="flex items-center gap-2 flex-wrap">
-                        {breadcrumbs.map((item, i) => (
-                            <motion.div
-                                key={i}
-                                variants={breadcrumbItemVariants}
-                                custom={i}
-                                className="flex items-center gap-2"
-                                whileHover={{ x: i !== breadcrumbs.length - 1 ? 3 : 0 }}
-                            >
-                                <motion.span
-                                    whileHover={{ scale: i !== breadcrumbs.length - 1 ? 1.05 : 1 }}
-                                    className={
-                                        i === breadcrumbs.length - 1
-                                            ? "text-gray-900 font-medium text-sm"
-                                            : "text-gray-600 hover:text-gray-900 transition cursor-pointer text-sm"
-                                    }
-                                >
-                                    {item}
-                                </motion.span>
+                        {breadcrumbs.map((item, i) => {
+                            const isLast = i === breadcrumbs.length - 1;
+                            const isHome = i === 0 && item.toLowerCase() === "home";
 
-                                {i !== breadcrumbs.length - 1 && (
-                                    <motion.div
-                                        initial={{ x: -5, opacity: 0 }}
-                                        animate={{ x: 0, opacity: 1 }}
-                                        transition={{ delay: i * 0.1 }}
-                                    >
-                                        <ChevronRightIcon className="w-3.5 h-3.5 text-gray-400" />
-                                    </motion.div>
-                                )}
-                            </motion.div>
-                        ))}
+                            return (
+                                <motion.div
+                                    key={i}
+                                    variants={breadcrumbItemVariants}
+                                    custom={i}
+                                    className="flex items-center gap-2"
+                                    whileHover={{ x: !isLast ? 3 : 0 }}
+                                >
+                                    {isHome ? (
+                                        <Link href="/">
+                                            <motion.span
+                                                whileHover={{ scale: 1.05 }}
+                                                className="text-gray-600 hover:text-gray-900 transition cursor-pointer text-sm"
+                                            >
+                                                {item}
+                                            </motion.span>
+                                        </Link>
+                                    ) : (
+                                        <motion.span
+                                            whileHover={{ scale: !isLast ? 1.05 : 1 }}
+                                            className={
+                                                isLast
+                                                    ? "text-gray-900 font-medium text-sm"
+                                                    : "text-gray-600 text-sm"
+                                            }
+                                        >
+                                            {item}
+                                        </motion.span>
+                                    )}
+
+                                    {!isLast && (
+                                        <motion.div
+                                            initial={{ x: -5, opacity: 0 }}
+                                            animate={{ x: 0, opacity: 1 }}
+                                            transition={{ delay: i * 0.1 }}
+                                        >
+                                            <ChevronRightIcon className="w-3.5 h-3.5 text-gray-400" />
+                                        </motion.div>
+                                    )}
+                                </motion.div>
+                            );
+                        })}
                     </div>
                 </motion.nav>
             </motion.div>

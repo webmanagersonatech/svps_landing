@@ -55,7 +55,7 @@ export default function ContactPage() {
         {/* LEFT – FORM SECTION */}
         <Reveal>
             <div className="h-full">
-                <h2 className="text-2xl md:text-3xl font-serif font-semibold text-gray-900">
+                <h2 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900">
                     Let's Get In Touch
                 </h2>
                 <p className="text-gray-500 mt-2 mb-8 border-b border-gray-100 pb-4">

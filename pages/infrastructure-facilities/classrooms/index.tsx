@@ -104,7 +104,7 @@ export default function ClassroomPage() {
                 <PageHeader
                     title="Classrooms"
                     subtitle="Creating an engaging and interactive learning environment for every student."
-                    breadcrumbs={["Home", "Academics", "Classrooms"]}
+                    breadcrumbs={["Home", "Infrastructure facilities", "Classrooms"]}
                 />
 
                 {/* INTRO */}
@@ -112,17 +112,24 @@ export default function ClassroomPage() {
                     <div className="grid md:grid-cols-2 gap-10 items-center">
                         <Reveal>
                             <div>
-                                <h2 className="text-2xl md:text-3xl font-serif font-bold text-secondary mb-4">
-                                   Smart Classrooms
+                                <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary mb-4">
+                                    Smart Classrooms
                                 </h2>
+
                                 <p className="text-gray-600 mb-4 leading-relaxed">
-                                   A Serene Place for LSRW (Listening, Speaking, Reading and Writing) – Interactive and Comprehensive Teaching and Learning.
+                                    Our smart classrooms provide a modern, engaging, and student-friendly
+                                    learning environment designed to make education more interactive and
+                                    effective. Equipped with digital learning tools and technology-enabled
+                                    teaching resources, our classrooms help students understand concepts
+                                    through visuals, presentations, videos, and interactive activities.
                                 </p>
-                                <p className="text-gray-600 mb-4 leading-relaxed">
-                                   Our experienced teachers guide students in both curricular and co-curricular activities.
-                                </p>
+
                                 <p className="text-gray-600 leading-relaxed">
-                                   We provide an environment where students can develop their creative, innovative, and dynamic skills..
+                                    We maintain a comfortable, positive, and distraction-free environment
+                                    where students can learn with confidence, participate actively, and
+                                    develop their curiosity and creativity. Our smart classrooms bring
+                                    together technology, effective teaching, and a supportive atmosphere to
+                                    create a better learning experience for every student.
                                 </p>
                             </div>
                         </Reveal>

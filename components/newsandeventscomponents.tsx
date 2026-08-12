@@ -76,7 +76,7 @@ const NewsEventsComponent = () => {
             <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#18596d]/5 rounded-full blur-3xl"></div>
 
             {/* CBSE Header Pattern - Redesigned with Left Text & Right Images */}
-            <div className="relative bg-gradient-to-b from-[#f5dfc4] via-[#fdebd3] to-[#fff7ed] text-white overflow-hidden">
+            <div className="relative bg-gradient-to-b from-[#f5dfc4] via-[#fdebd3] via-50% via-[#f9f3ed] via-75% to-[#f5f7fa] text-white overflow-hidden">
 
 
                 {/* Floating Orbs */}

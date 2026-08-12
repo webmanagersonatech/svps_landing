@@ -341,7 +341,7 @@ export default function LibraryPage() {
         <PageHeader
           title="Library"
           subtitle="A quiet world of knowledge, imagination, and discovery."
-          breadcrumbs={["Home", "Facilities", "Library"]}
+          breadcrumbs={["Home", "Infrastructure facilities", "Library"]}
         />
 
         {/* INTRO (more premium layout like your medical page) */}
@@ -404,33 +404,19 @@ export default function LibraryPage() {
                 Library – The Heart of Learning
               </h2>
 
-              <p className="text-gray-600 leading-relaxed mb-5">
-                A place for seeking knowledge, nurturing imagination, and exploring new ideas.
+              <p className="text-gray-600 text-lg leading-relaxed mb-5">
+                Our library offers a cozy and thoughtfully designed reading space where
+                students can relax, explore, and enjoy the world of books. The warm and
+                comfortable atmosphere creates the perfect setting for quiet reading,
+                focused learning, and peaceful discovery.
               </p>
 
-              <p className="text-gray-600 leading-relaxed mb-5 font-semibold text-secondary">
-                Reading Environment
-              </p>
-              <p className="text-gray-600 leading-relaxed mb-5">
-                A peaceful and inspiring space for learning, reading, and reflection.
-              </p>
-
-              <p className="text-gray-600 leading-relaxed mb-5">
-                Our library is a rich collection of books and digital resources that support
-                subject knowledge and language development.
-              </p>
-
-              <p className="text-gray-600 leading-relaxed mb-5">
-                It encourages independent learning, curiosity, research, and lifelong reading habits.
-              </p>
-
-              <p className="text-gray-600 leading-relaxed mb-5">
-                The library offers access to e-books, journals, and other digital resources as a
-                valuable support system for students.
-              </p>
-
-              <p className="text-gray-600 leading-relaxed">
-                It helps students become creative thinkers and intellectually enriched learners.
+              <p className="text-gray-600 text-lg leading-relaxed mb-5">
+                With a carefully curated collection of books and learning resources,
+                students can develop a love for reading while expanding their knowledge,
+                imagination, creativity, and independent thinking. Our library is more
+                than just a place for books—it is a comfortable space where curiosity
+                grows and learning becomes a joyful experience.
               </p>
             </div>
           </Reveal>
@@ -457,14 +443,14 @@ export default function LibraryPage() {
               const Icon = item.icon;
               return (
                 <Reveal key={i}>
-                  <div className="bg-white border rounded-xl p-5 flex gap-4 items-start hover:shadow-md transition hover:-translate-y-1">
+                  <div className="bg-white rounded-xl p-5 flex gap-4 items-start ring-1 ring-gray-200 ring-offset-2 ring-offset-gray-50 hover:ring-orange-400 hover:shadow-lg transition hover:-translate-y-1">
 
                     <div className="bg-primary/10 p-3 rounded-lg">
                       <Icon className="w-6 h-6 text-primary" />
                     </div>
 
                     <div>
-                      <h3 className="font-semibold mb-1 text-gray-900">
+                      <h3 className="font-semibold mb-1 text-lg text-gray-900">
                         {item.title}
                       </h3>
                       <p className="text-sm text-gray-600">
