@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -73,10 +73,11 @@ const books = [
 export default function ChairmanBooksPage() {
     return (
         <>
-            <Head>
-                <title>Chairman\'s Books | Sona Valliappa Public School</title>
-                <meta name="description" content="Explore books authored by our Chairman." />
-            </Head>
+            <SEO
+                title="Chairman's Books"
+                description="Explore books authored by the Chairman of Sona Group of Institutions – insights on education, leadership and nation-building."
+                path="/about-us/chairman-books"
+            />
 
             <main className="bg-gradient-to-b from-background/60 via-white to-background/50">
                 <PageHeader

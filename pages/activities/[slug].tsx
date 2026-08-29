@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import Head from "next/head";
+import SEO from "../../components/SEO";
 import { useEffect, useRef, useState } from "react";
 import { activities } from "../../data/activities";
 import { PageHeader } from "../../components/PageHeader";
@@ -76,10 +76,15 @@ export default function ActivityDetailPage() {
 
   return (
     <>
-      <Head>
-        <title>{activity.title} | Activities</title>
-        <meta name="description" content={`Explore ${activity.title} and discover new skills`} />
-      </Head>
+      <SEO
+        title={`${activity.title} Activities`}
+        description={
+          activity.shortDescription ||
+          `Explore ${activity.title} at Sona Valliappa Public School, Salem, and discover new skills through hands-on, engaging activities.`
+        }
+        path={`/activities/${activity.slug}`}
+        image={activity.thumbnail}
+      />
 
       <main className="bg-gradient-to-b from-slate-50 via-white to-slate-100">
         {/* HERO SECTION */}

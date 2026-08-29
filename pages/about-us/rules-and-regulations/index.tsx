@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -84,13 +84,11 @@ export default function RulesAndRegulationsPage() {
 
     return (
         <>
-            <Head>
-                <title>Rules & Regulations | Sona Valliappa Public School</title>
-                <meta
-                    name="description"
-                    content="School timings, uniform guidelines, code of conduct for students, and guidelines for parents."
-                />
-            </Head>
+            <SEO
+                title="Rules & Regulations"
+                description="School timings, uniform guidelines, code of conduct for students, and guidelines for parents at Sona Valliappa Public School, Salem."
+                path="/about-us/rules-and-regulations"
+            />
 
             <main className="bg-gradient-to-b from-background/60 via-white to-background/50">
                 <PageHeader

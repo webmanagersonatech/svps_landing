@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -47,9 +47,11 @@ function Reveal({ children }: { children: React.ReactNode }) {
 export default function DiningPage() {
   return (
     <>
-      <Head>
-        <title>Dining | Sona Valliappa Public School</title>
-      </Head>
+      <SEO
+        title="Pantry & Dining"
+        description="Hygienic pantry and dining facilities serving nutritious meals to students at Sona Valliappa Public School, Salem."
+        path="/infrastructure-facilities/pantry-and-dining"
+      />
 
       <main className="bg-slate-50">
         {/* HEADER */}

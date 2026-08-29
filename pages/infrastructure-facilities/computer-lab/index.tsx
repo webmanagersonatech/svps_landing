@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -86,13 +86,11 @@ export default function ComputerLabPage() {
 
     return (
         <>
-            <Head>
-                <title>Computer Lab | Sona Valliappa Public School</title>
-                <meta
-                    name="description"
-                    content="The Computer Lab at Sona Valliappa Public School — modern workstations, coding curriculum, and a safe digital environment for future-ready learners."
-                />
-            </Head>
+            <SEO
+                title="Computer Lab"
+                description="The Computer Lab at Sona Valliappa Public School — modern workstations, coding curriculum, and a safe digital environment for future-ready learners."
+                path="/infrastructure-facilities/computer-lab"
+            />
 
             <main className="bg-white overflow-x-hidden">
                 <PageHeader

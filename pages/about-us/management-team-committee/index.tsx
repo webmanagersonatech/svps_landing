@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import {
@@ -309,10 +309,12 @@ export default function ManagementProfilesPage() {
 
     return (
         <>
-            <Head>
-                <title>Management Profiles | Sona Valliappa Public School</title>
-                <meta name="description" content="Meet the visionary leaders behind Sona Group of Institutions - Founding fathers and current management shaping educational excellence" />
-            </Head>
+            <SEO
+                title="Management Profiles"
+                description="Meet the visionary leaders behind Sona Group of Institutions - founding fathers and current management shaping educational excellence at Sona Valliappa Public School, Salem."
+                path="/about-us/management-team-committee"
+                image="/managementprofiles/valliappa-chairman-sona-gro.webp"
+            />
 
             <main className="bg-gradient-to-b from-background/60 via-white to-background/50 to-gray-50">
                 {/* HERO SECTION */}

@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import { NewsOrEvent } from "../../../data/newsandevents";
@@ -70,10 +70,11 @@ export default function AdmissionContactPage() {
 
     return (
         <>
-            <Head>
-                <title>Admission Contact | Sona Valliappa Public School</title>
-                <meta name="description" content="Contact our admission office for inquiries and support" />
-            </Head>
+            <SEO
+                title="Admission Contact"
+                description="Contact the admission office of Sona Valliappa Public School, Salem for enquiries, campus visits and application support."
+                path="/admission/admission-contact"
+            />
 
             <main className="bg-white">
 

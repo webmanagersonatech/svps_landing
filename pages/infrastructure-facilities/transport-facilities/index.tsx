@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -83,9 +83,11 @@ export default function TransportPage() {
 
   return (
     <>
-      <Head>
-        <title>Transport Facilities | Sona Valliappa Public School</title>
-      </Head>
+      <SEO
+        title="Transport Facilities"
+        description="Safe and reliable school transport facilities connecting students across Salem to Sona Valliappa Public School."
+        path="/infrastructure-facilities/transport-facilities"
+      />
 
       <main className="bg-gradient-to-b from-slate-50 to-white">
         {/* HEADER */}

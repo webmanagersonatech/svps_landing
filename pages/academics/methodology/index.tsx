@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import Image from "next/image";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -148,13 +148,11 @@ export default function MethodologyPage() {
 
     return (
         <>
-            <Head>
-                <title>Teaching Methodology | Sona Valliappa Public School</title>
-                <meta
-                    name="description"
-                    content="Discover how we teach at Sona Valliappa Public School – inquiry‑based, collaborative, technology‑enriched, and designed for lifelong learning."
-                />
-            </Head>
+            <SEO
+                title="Teaching Methodology"
+                description="Discover how we teach at Sona Valliappa Public School – inquiry‑based, collaborative, technology‑enriched, and designed for lifelong learning."
+                path="/academics/methodology"
+            />
 
             <main className="bg-gradient-to-b from-background/60 via-white to-background/50 overflow-x-hidden">
                 {/* HERO SECTION */}

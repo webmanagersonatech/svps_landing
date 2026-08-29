@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 
@@ -153,14 +153,11 @@ export default function TeacherTrainingPage() {
 
     return (
         <>
-            <Head>
-                <title>Workshops for Teacher Training and Transformation
-                    | Sona Valliappa Public School</title>
-                <meta
-                    name="description"
-                    content="Empowering our educators with continuous professional development – workshops, certifications, and collaborative learning."
-                />
-            </Head>
+            <SEO
+                title="Teacher Training Programme & Workshops"
+                description="Empowering our educators with continuous professional development – workshops, certifications, and collaborative learning at Sona Valliappa Public School."
+                path="/academics/teacher-training-programme-workshops"
+            />
 
             <main className="bg-gradient-to-b from-slate-50 via-white to-slate-100/40 overflow-x-hidden">
                 {/* HERO SECTION */}

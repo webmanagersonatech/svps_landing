@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { Reveal } from "../../../components/Reveal";
 
@@ -133,13 +133,11 @@ export default function GamesPage() {
 
   return (
     <>
-      <Head>
-        <title> Sports | Sona Valliappa Public School</title>
-        <meta
-          name="description"
-          content="Sports, games, and physical education at Sona Valliappa Public School – building strength, teamwork, and confidence."
-        />
-      </Head>
+      <SEO
+        title="Sports & Games"
+        description="Sports, indoor and outdoor games, and traditional games at Sona Valliappa Public School, Salem – building strength, teamwork, and confidence."
+        path="/infrastructure-facilities/indoor-outdoor-and-traditional-games"
+      />
 
       <main className=" bg-gray-50">
         <PageHeader

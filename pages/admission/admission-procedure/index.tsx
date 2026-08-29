@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -85,9 +85,11 @@ export default function AdmissionProcedurePage() {
 
     return (
         <>
-            <Head>
-                <title>Admission Procedure | School</title>
-            </Head>
+            <SEO
+                title="Admission Procedure"
+                description="Step-by-step admission procedure for Sona Valliappa Public School, Salem – eligibility, documents required and how to apply for the upcoming academic year."
+                path="/admission/admission-procedure"
+            />
 
             <main className="bg-gradient-to-b from-slate-50 to-white">
 

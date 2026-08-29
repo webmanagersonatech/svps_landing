@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -76,9 +76,11 @@ export default function MedicalFacilitiesPage() {
 
   return (
     <>
-      <Head>
-        <title>Medical Facilities | Sona Valliappa Public School</title>
-      </Head>
+      <SEO
+        title="Medical Facilities"
+        description="On-campus medical facilities and healthcare support ensuring student health and safety at Sona Valliappa Public School, Salem."
+        path="/infrastructure-facilities/medical-facilities"
+      />
 
       <main className="bg-slate-50">
         {/* HEADER */}

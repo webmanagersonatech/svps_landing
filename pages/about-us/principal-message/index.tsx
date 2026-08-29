@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import Image from "next/image";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -109,13 +109,11 @@ export default function PrincipalMessagePage() {
 
     return (
         <>
-            <Head>
-                <title>Principal's Message | Sona Valliappa Public School</title>
-                <meta
-                    name="description"
-                    content="Hear from our Principal – the vision, values, and commitment that shape Sona Valliappa Public School's nurturing environment."
-                />
-            </Head>
+            <SEO
+                title="Principal's Message"
+                description="Hear from our Principal – the vision, values, and commitment that shape Sona Valliappa Public School's nurturing environment."
+                path="/about-us/principal-message"
+            />
 
             <main className="bg-gradient-to-b from-background/60 via-white to-background/50">
                 {/* HERO SECTION */}

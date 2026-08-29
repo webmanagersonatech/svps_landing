@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -112,13 +112,11 @@ export default function AcademicExcellencePage() {
 
     return (
         <>
-            <Head>
-                <title>Academic Excellence | Sona Valliappa Public School</title>
-                <meta
-                    name="description"
-                    content="Academic excellence at Sona Valliappa Public School — a strong foundation built on effective teaching, personalised guidance, and continuous improvement."
-                />
-            </Head>
+            <SEO
+                title="Academic Excellence"
+                description="Academic excellence at Sona Valliappa Public School — a strong foundation built on effective teaching, personalised guidance, and continuous improvement."
+                path="/academics/academic-excellence"
+            />
 
             <main className="bg-gradient-to-b from-slate-50 via-white to-slate-100/40 overflow-x-hidden">
                 <PageHeader

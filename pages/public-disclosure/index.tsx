@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../components/SEO";
 import { PageHeader } from "../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -289,13 +289,11 @@ export default function PublicDisclosurePage() {
 
   return (
     <>
-      <Head>
-        <title>Public Mandatory Disclosure | Sona Valliappa Public School</title>
-        <meta
-          name="description"
-          content="Official CBSE mandatory disclosure for Sona Valliappa Public School - Affiliation, results, staff, infrastructure and regulatory documents."
-        />
-      </Head>
+      <SEO
+        title="Public Mandatory Disclosure"
+        description="Official CBSE mandatory disclosure for Sona Valliappa Public School - Affiliation, results, staff, infrastructure and regulatory documents."
+        path="/public-disclosure"
+      />
 
       <main className="bg-gray-50 min-h-screen">
         <PageHeader

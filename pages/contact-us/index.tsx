@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../components/SEO";
 import { PageHeader } from "../../components/PageHeader";
 import { useState } from "react";
 import { Reveal } from "../../components/Reveal";
@@ -36,9 +36,26 @@ export default function ContactPage() {
 
     return (
         <>
-            <Head>
-                <title>Contact Us | Sona Valliappa Public School</title>
-            </Head>
+            <SEO
+                title="Contact Us"
+                description="Get in touch with Sona Valliappa Public School, Junction Main Road, Salem – 636005, Tamil Nadu. Call, email or visit us for admissions and enquiries."
+                path="/contact-us"
+                jsonLd={{
+                    "@context": "https://schema.org",
+                    "@type": "School",
+                    name: "Sona Valliappa Public School",
+                    telephone: "+91 427 2912160",
+                    email: "svpschool@sonatech.ac.in",
+                    address: {
+                        "@type": "PostalAddress",
+                        streetAddress: "Junction Main Road",
+                        addressLocality: "Salem",
+                        postalCode: "636005",
+                        addressRegion: "Tamil Nadu",
+                        addressCountry: "IN",
+                    },
+                }}
+            />
 
             <main className="bg-white">
                 {/* HEADER */}

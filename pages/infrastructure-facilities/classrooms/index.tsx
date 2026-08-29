@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -91,13 +91,11 @@ export default function ClassroomPage() {
 
     return (
         <>
-            <Head>
-                <title>Classrooms | Sona Valliappa Public School</title>
-                <meta
-                    name="description"
-                    content="Modern classrooms with interactive and student-focused learning."
-                />
-            </Head>
+            <SEO
+                title="Classrooms"
+                description="Modern, well-ventilated classrooms with interactive and student-focused learning at Sona Valliappa Public School, Salem."
+                path="/infrastructure-facilities/classrooms"
+            />
 
             <main className="bg-gradient-to-b from-slate-50 to-white">
                 {/* HEADER */}

@@ -1,5 +1,5 @@
 // pages/news-events/[slug].tsx
-import Head from "next/head";
+import SEO from "../../components/SEO";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { useState, useMemo, useEffect } from "react";
@@ -375,20 +375,17 @@ export default function NewsEventDetailPage({ item }: { item: NewsOrEvent | null
         );
     }
 
-    const pageTitle = `${item.title} | Sona Valliappa Public School`;
     const metaDescription = item.excerpt;
 
     return (
         <>
-            <Head>
-                <title>{pageTitle}</title>
-                <meta name="description" content={metaDescription} />
-                <meta property="og:title" content={item.title} />
-                <meta property="og:description" content={metaDescription} />
-                {item.thumbnail && <meta property="og:image" content={item.thumbnail} />}
-                <meta property="og:type" content="article" />
-                <meta name="twitter:card" content="summary_large_image" />
-            </Head>
+            <SEO
+                title={item.title}
+                description={metaDescription}
+                path={`/news-and-events/${item.slug}`}
+                image={item.thumbnail}
+                type="article"
+            />
 
             <main className="bg-white relative">
                 <PageHeader

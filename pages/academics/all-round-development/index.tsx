@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -94,13 +94,11 @@ export default function AllRoundDevelopmentPage() {
 
     return (
         <>
-            <Head>
-                <title>All Round Development | Sona Valliappa Public School</title>
-                <meta
-                    name="description"
-                    content="Holistic education at Sona Valliappa – sports, clubs, life skills, values, and endless opportunities beyond academics."
-                />
-            </Head>
+            <SEO
+                title="All Round Development"
+                description="Holistic education at Sona Valliappa Public School, Salem – sports, clubs, life skills, values, and endless opportunities beyond academics."
+                path="/academics/all-round-development"
+            />
 
             <main className="bg-gradient-to-b from-slate-50 via-white to-slate-100/40 overflow-x-hidden">
                 {/* HERO SECTION */}

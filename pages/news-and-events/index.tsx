@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../components/SEO";
 import { useState, useEffect, useMemo } from "react";
 import { PageHeader } from "../../components/PageHeader";
 import { NewsOrEvent, newsAndEvents } from "../../data/newsandevents";
@@ -255,13 +255,11 @@ export default function NewsEventsPage() {
 
     return (
         <>
-            <Head>
-                <title>News & Events | Sona Valliappa Public School</title>
-                <meta
-                    name="description"
-                    content="Latest news, events and upcoming activities at Sona Valliappa Public School"
-                />
-            </Head>
+            <SEO
+                title="News & Events"
+                description="Latest news, events, celebrations and upcoming activities at Sona Valliappa Public School, Salem."
+                path="/news-and-events"
+            />
 
             <main className="bg-white">
                 <PageHeader

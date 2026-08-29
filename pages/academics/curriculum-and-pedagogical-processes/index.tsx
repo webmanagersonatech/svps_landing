@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import Image from "next/image";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -307,13 +307,11 @@ export default function CurriculumPage() {
 
     return (
         <>
-            <Head>
-                <title>Curriculum | Sona Valliappa Public School</title>
-                <meta
-                    name="description"
-                    content="Explore our comprehensive curriculum at Sona Valliappa Public School - blending academic excellence with innovation, life skills, and global perspectives."
-                />
-            </Head>
+            <SEO
+                title="Curriculum & Pedagogical Processes"
+                description="Explore our comprehensive curriculum at Sona Valliappa Public School - blending academic excellence with innovation, life skills, and global perspectives."
+                path="/academics/curriculum-and-pedagogical-processes"
+            />
 
             <main className="bg-gradient-to-b from-background/60 via-white to-background/50">
                 {/* HERO SECTION */}

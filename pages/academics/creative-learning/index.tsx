@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -105,13 +105,11 @@ export default function CreativeLearningPage() {
 
     return (
         <>
-            <Head>
-                <title>Creative Learning | Sona Valliappa Public School</title>
-                <meta
-                    name="description"
-                    content="Creative learning at Sona Valliappa Public School — where imagination, projects, discussions and hands-on discovery bring the classroom to life."
-                />
-            </Head>
+            <SEO
+                title="Creative Learning"
+                description="Creative learning at Sona Valliappa Public School — where imagination, projects, discussions and hands-on discovery bring the classroom to life."
+                path="/academics/creative-learning"
+            />
 
             <main className="bg-gradient-to-b from-slate-50 via-white to-slate-100/40 overflow-x-hidden">
                 <PageHeader

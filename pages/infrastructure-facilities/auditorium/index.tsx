@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -240,9 +240,11 @@ export default function AuditoriumPage() {
 
   return (
     <>
-      <Head>
-        <title>Auditorium | Sona Valliappa Public School</title>
-      </Head>
+      <SEO
+        title="Auditorium"
+        description="A state-of-the-art auditorium at Sona Valliappa Public School, Salem, hosting assemblies, cultural events and performances."
+        path="/infrastructure-facilities/auditorium"
+      />
 
       <main className="bg-gradient-to-b from-slate-50 to-white">
         {/* HEADER */}

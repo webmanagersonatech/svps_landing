@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -331,9 +331,11 @@ export default function LibraryPage() {
 
   return (
     <>
-      <Head>
-        <title>Library | Sona Valliappa Public School</title>
-      </Head>
+      <SEO
+        title="Library"
+        description="A well-stocked library at Sona Valliappa Public School, Salem, fostering a love for reading and independent research among students."
+        path="/infrastructure-facilities/library"
+      />
 
       <main className="bg-gradient-to-b from-slate-50 to-white">
 

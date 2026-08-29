@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { useRouter } from "next/router";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -95,9 +95,11 @@ export default function HeritagePage() {
 
   return (
     <>
-      <Head>
-        <title>Our Heritage | Sona Valliappa Public School</title>
-      </Head>
+      <SEO
+        title="Our Heritage"
+        description="Discover the rich heritage and legacy of Sona Valliappa Public School, part of the Sona Group of Institutions, Salem – decades of trust in quality education."
+        path="/about-us/heritage"
+      />
 
       <main className="bg-gradient-to-b from-background/60 via-white to-background/50">
 

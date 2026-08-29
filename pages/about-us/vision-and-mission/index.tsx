@@ -1,4 +1,4 @@
-import Head from "next/head";
+import SEO from "../../../components/SEO";
 import { useRouter } from "next/router";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -112,9 +112,11 @@ export default function VisionMissionPage() {
 
     return (
         <>
-            <Head>
-                <title>Vision & Mission | Sona Valliappa Public School</title>
-            </Head>
+            <SEO
+                title="Vision & Mission"
+                description="Explore the vision and mission of Sona Valliappa Public School, Salem – shaping confident, compassionate and future-ready learners."
+                path="/about-us/vision-and-mission"
+            />
 
             <main className="bg-gradient-to-b from-background/60 via-white to-background/50 relative">
 
