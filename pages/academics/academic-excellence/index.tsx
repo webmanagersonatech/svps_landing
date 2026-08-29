@@ -108,7 +108,7 @@ const focusAreas = [
 ];
 
 export default function AcademicExcellencePage() {
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
 
     return (
         <>
@@ -162,25 +162,32 @@ export default function AcademicExcellencePage() {
 
                         <Reveal className="order-1 md:order-2">
                             <div className="space-y-6">
-                                <span className="inline-flex items-center gap-2 text-primary font-semibold text-sm tracking-wide uppercase">
-                                    <ScaleIcon className="w-5 h-5" /> A Foundation Built to Last
-                                </span>
+
+
                                 <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary leading-tight">
-                                    Excellence with <span className="text-primary">Purpose</span>
+                                    Learn with <span className="text-primary">Understanding</span>
                                 </h2>
+
                                 <p className="text-gray-700 leading-relaxed text-lg">
-                                    We are committed to providing a strong academic foundation that helps every student
-                                    achieve their full potential. Our experienced and dedicated teachers use effective
-                                    teaching methods, modern learning resources, and personalised guidance to make
-                                    learning clear, engaging, and purposeful.
+                                    We believe academic excellence is more than marks. Our focus is on
+                                    conceptual learning, strong foundations, practical application, and
+                                    individual growth.
                                 </p>
+
                                 <p className="text-gray-700 leading-relaxed text-lg">
-                                    We focus not only on academic performance but also on conceptual understanding,
-                                    critical thinking, problem-solving, and continuous improvement — empowering
-                                    students to build a strong foundation for their future.
+                                    Through engaging teaching, regular practice, and continuous assessment,
+                                    we encourage students to understand, explore, and apply what they learn.
+                                    We aim to help every student learn better, think independently, and
+                                    achieve their best.
                                 </p>
+
                                 <div className="flex flex-wrap gap-3 pt-2">
-                                    {["Clarity", "Rigor", "Guidance", "Growth"].map((tag) => (
+                                    {[
+                                        "Conceptual Learning",
+                                        "Strong Foundations",
+                                        "Practical Application",
+                                        "Individual Growth",
+                                    ].map((tag) => (
                                         <span
                                             key={tag}
                                             className="px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-sm font-medium border border-secondary/20"
@@ -191,6 +198,8 @@ export default function AcademicExcellencePage() {
                                 </div>
                             </div>
                         </Reveal>
+
+
                     </div>
                 </section>
 
@@ -211,25 +220,25 @@ export default function AcademicExcellencePage() {
                 </section>
 
 
-            
+
 
                 {/* COMMITMENT LIST */}
                 <section className="bg-background/40 py-20">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
-                       <Reveal>
-    <div className="relative">
-        {/* Offset frame behind image */}
-        <div className="absolute -inset-2 bg-primary/10 rounded-tl-[4rem] rounded-br-[4rem] rounded-tr-2xl rounded-bl-2xl" />
+                        <Reveal>
+                            <div className="relative">
+                                {/* Offset frame behind image */}
+                                <div className="absolute -inset-2 bg-primary/10 rounded-tl-[4rem] rounded-br-[4rem] rounded-tr-2xl rounded-bl-2xl" />
 
-        <div className="relative overflow-hidden rounded-tl-[4rem] rounded-br-[4rem] rounded-tr-2xl rounded-bl-2xl shadow-xl">
-            <img
-                src="/infra/library/canvas1.png"
-                alt="Supportive learning environment"
-                className="w-full h-80 md:h-[24rem] object-cover"
-            />
-        </div>
-    </div>
-</Reveal>
+                                <div className="relative overflow-hidden rounded-tl-[4rem] rounded-br-[4rem] rounded-tr-2xl rounded-bl-2xl shadow-xl">
+                                    <img
+                                        src="/infra/library/canvas1.png"
+                                        alt="Supportive learning environment"
+                                        className="w-full h-80 md:h-[24rem] object-cover"
+                                    />
+                                </div>
+                            </div>
+                        </Reveal>
                         <Reveal delay={100}>
                             <div className="space-y-5">
                                 <span className="text-primary font-semibold text-sm tracking-wide uppercase">Our Commitment</span>
@@ -254,7 +263,7 @@ export default function AcademicExcellencePage() {
                     </div>
                 </section>
 
-             
+
             </main>
         </>
     );

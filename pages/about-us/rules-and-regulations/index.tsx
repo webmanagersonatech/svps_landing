@@ -157,86 +157,78 @@ function TimingsPanel() {
                     {/* LEFT CONTENT */}
                     <div className="h-full flex flex-col justify-between">
                         <div>
-                            <div className="flex items-center gap-2 border-b border-gray-200 pb-2 mb-5">
+                            <div className="flex items-center gap-2 border-b border-gray-200 pb-2 mb-3">
                                 <CalendarDaysIcon className="w-6 h-6 text-primary" />
                                 <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">
-                                    Monday – Friday
+                                    School Timings
                                 </h2>
                             </div>
+
+                            <p className="text-gray-600 text-base italic mb-5">
+                                "Time spent learning is time invested in your future."
+                            </p>
+
+                            <p className="text-gray-600 text-base mb-5">
+                                Our school follows a well-structured schedule that provides
+                                students with ample time to learn, participate, interact, and
+                                enjoy their school day. We believe that beginning the day on
+                                time helps students settle in comfortably and be ready to make
+                                the most of their learning experience.
+                            </p>
 
                             <table className="w-full text-base">
                                 <tbody className="divide-y divide-gray-100">
                                     <tr>
                                         <td className="py-2.5 w-2/3 text-gray-700 font-medium">
-                                            School Gates Open
+                                            Monday to Friday
                                         </td>
-                                        <td className="py-2.5 text-gray-600">8:00 AM</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td className="py-2.5 font-medium">
-                                            First Bell / Line Up
-                                        </td>
-                                        <td className="py-2.5">8:20 AM</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td className="py-2.5 font-medium">
-                                            Morning Assembly
-                                        </td>
-                                        <td className="py-2.5">8:25 AM – 8:35 AM</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td className="py-2.5 font-medium">
-                                            Instruction Begins
-                                        </td>
-                                        <td className="py-2.5">8:35 AM</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td className="py-2.5 font-medium">Short Break</td>
-                                        <td className="py-2.5">
-                                            10:30 AM – 10:45 AM
+                                        <td className="py-2.5 text-gray-600">
+                                            8:45 AM – 3:30 PM
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td className="py-2.5 font-medium">
-                                            Lunch Recess
+                                            Extra Curricular Activities / Coaching
+                                        </td>
+                                        <td className="py-2.5">3:45 PM – 5:00 PM</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td className="py-2.5 font-medium">Saturday</td>
+                                        <td className="py-2.5">8:45 AM – 3:30 PM</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td className="py-2.5 font-medium">
+                                            Working Saturdays
                                         </td>
                                         <td className="py-2.5">
-                                            12:45 PM – 1:20 PM
+                                            Second & Fourth Saturdays of every month
                                         </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td className="py-2.5 font-medium">
-                                            Dispersal (Pre-Prim to Grade 2)
-                                        </td>
-                                        <td className="py-2.5">2:45 PM</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td className="py-2.5 font-medium">
-                                            Dispersal (Grades 3-5)
-                                        </td>
-                                        <td className="py-2.5">3:15 PM</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td className="py-2.5 font-medium">
-                                            Dispersal (Grades 6-10)
-                                        </td>
-                                        <td className="py-2.5">3:30 PM</td>
                                     </tr>
                                 </tbody>
                             </table>
+
+                            <ul className="mt-5 space-y-2 text-base text-gray-600">
+                                <li className="flex gap-2">
+                                    <span className="text-primary font-bold">•</span>
+                                    Students are encouraged to reach school a little before the
+                                    scheduled start time so that they have enough time to settle
+                                    down and be ready for the day.
+                                </li>
+                                <li className="flex gap-2">
+                                    <span className="text-primary font-bold">•</span>
+                                    Parents are kindly requested to ensure that students arrive
+                                    on time and are picked up promptly at the end of the school
+                                    day. Let's make every school day count!
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
                     {/* RIGHT IMAGE */}
-                    <div className="relative min-h-[420px] md:min-h-full rounded-2xloverflow-hidden">
+                    <div className="relative min-h-[420px] md:min-h-full rounded-2xl overflow-hidden">
                         <Image
                             src="/about/sctime-1.png"
                             alt="School Campus"
@@ -289,7 +281,7 @@ function TimingsPanel() {
                                 <ClockIcon className="w-6 h-6 text-secondary" />
 
                                 <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">
-                                    Saturday
+                                    Office Timings
                                 </h2>
                             </div>
 
@@ -297,37 +289,35 @@ function TimingsPanel() {
                                 <tbody className="divide-y divide-gray-100">
                                     <tr>
                                         <td className="py-2.5 w-2/3 font-medium">
-                                            Assembly
+                                            Monday to Friday
                                         </td>
 
                                         <td className="py-2.5">
-                                            8:25 AM – 8:35 AM
+                                            8:45 AM – 5:00 PM
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td className="py-2.5 font-medium">
-                                            Activity / Remedial Classes
+                                            Saturday
                                         </td>
 
                                         <td className="py-2.5">
-                                            8:35 AM – 12:30 PM
+                                            8:45 AM – 5:00 PM
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td className="py-2.5 font-medium">
-                                            Dispersal (All Grades)
+                                            Office Working Saturdays
                                         </td>
 
-                                        <td className="py-2.5">12:30 PM</td>
+                                        <td className="py-2.5">
+                                            Second & Fourth Saturdays of every month
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
-
-                            <p className="text-sm text-gray-500 mt-3">
-                                Office hours: 9:00 AM – 1:00 PM
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -348,60 +338,47 @@ function UniformPanel() {
                     <div className="h-full flex flex-col justify-between">
                         <div>
                             <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-4">
-                                Formal Attire (Mon – Thu)
+                                School Uniform
                             </h2>
 
-                            <div className="grid sm:grid-cols-2 gap-6">
+                            <p className="text-gray-600 text-base italic mb-5">
+                                "Wearing your uniform with pride reflects the spirit of our
+                                school."
+                            </p>
+
+                            <p className="text-gray-600 text-base mb-6">
+                                Students are expected to wear the prescribed uniform neatly and
+                                maintain a well-groomed appearance throughout the school day.
+                            </p>
+
+                            <div className="space-y-6">
                                 <div>
                                     <p className="font-semibold text-gray-800 mb-2 text-lg">
-                                        Boys (Grades 1–10)
+                                        Monday to Friday
                                     </p>
 
                                     <ul className="list-disc list-inside text-base text-gray-700 space-y-1.5">
-                                        <li>
-                                            Light blue full-sleeved shirt with
-                                            monogram
-                                        </li>
-
-                                        <li>Navy blue trousers</li>
-
-                                        <li>Navy blue tie</li>
-
-                                        <li>
-                                            Black leather belt & black lace-up
-                                            shoes
-                                        </li>
-
-                                        <li>
-                                            White socks & School ID card
-                                        </li>
+                                        <li>Five colour T-shirt with Navy blue track pants</li>
                                     </ul>
                                 </div>
 
                                 <div>
                                     <p className="font-semibold text-gray-800 mb-2 text-lg">
-                                        Girls (Grades 1–10)
+                                        Saturday
                                     </p>
 
                                     <ul className="list-disc list-inside text-base text-gray-700 space-y-1.5">
-                                        <li>
-                                            Light blue full-sleeved shirt with
-                                            monogram
-                                        </li>
+                                        <li>Yellow T-shirt with Navy blue track pants</li>
+                                    </ul>
+                                </div>
 
-                                        <li>
-                                            Navy blue skirt or tunic
-                                        </li>
+                                <div>
+                                    <p className="font-semibold text-gray-800 mb-2 text-lg">
+                                        Shoes
+                                    </p>
 
-                                        <li>Navy blue tie</li>
-
-                                        <li>
-                                            Black belt & black closed-toe shoes
-                                        </li>
-
-                                        <li>
-                                            White socks, navy hairband & ID card
-                                        </li>
+                                    <ul className="list-disc list-inside text-base text-gray-700 space-y-1.5">
+                                        <li>Black shoes & White shoes with Navy blue socks</li>
                                     </ul>
                                 </div>
                             </div>
@@ -445,101 +422,6 @@ function UniformPanel() {
                     </div>
                 </div>
             </Reveal>
-
-            <Reveal delay={100}>
-                <div className="grid md:grid-cols-2 gap-8 items-stretch">
-                    {/* IMAGE */}
-                    <div className="order-2 md:order-1 relative min-h-[340px] md:min-h-full group flex items-center justify-center">
-
-                        {/* Decorative Background */}
-                        <div className="absolute inset-4 rounded-[3rem] bg-gradient-to-br from-secondary/15 to-secondary/5 rotate-3"></div>
-
-                        {/* Main Styled Card */}
-                        <div
-                            className="
-            relative w-full h-full overflow-hidden
-            rounded-[3rem_1rem_3rem_1rem]
-            border border-white/30
-            bg-white/60 backdrop-blur-xl
-            shadow-[0_20px_60px_rgba(0,0,0,0.15)]
-            p-4
-            -rotate-2 group-hover:rotate-0
-            transition-all duration-500
-        "
-                        >
-                            <div className="relative w-full h-full overflow-hidden rounded-[2rem]">
-                                <Image
-                                    src="/about/scuniform-1.png"
-                                    alt="Sports Uniform"
-                                    fill
-                                    className="object-contain object-center group-hover:scale-105 transition-transform duration-700"
-                                />
-
-                                {/* Soft Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
-                            </div>
-                        </div>
-
-                        {/* Floating Accent */}
-                        <div className="absolute bottom-6 left-6 w-8 h-8 rounded-full bg-secondary/80 shadow-xl"></div>
-                    </div>
-
-                    {/* CONTENT */}
-                    <div className="order-1 md:order-2 h-full flex flex-col justify-between">
-                        <div>
-                            <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-4">
-                                Sports & House Uniform
-                            </h2>
-
-                            <div className="space-y-4">
-                                <div>
-                                    <p className="font-semibold text-gray-800 mb-2 text-lg">
-                                        Boys & Girls
-                                    </p>
-
-                                    <ul className="list-disc list-inside text-base text-gray-700 space-y-1.5">
-                                        <li>
-                                            House colour T-shirt
-                                            (Red/Blue/Green/Yellow) with logo
-                                        </li>
-
-                                        <li>Navy blue track pants</li>
-
-                                        <li>
-                                            White canvas / sports shoes & crew
-                                            socks
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <p className="font-semibold text-gray-800 mb-2 text-lg">
-                                        Winter Uniform (Nov – Jan)
-                                    </p>
-
-                                    <ul className="list-disc list-inside text-base text-gray-700 space-y-1.5">
-                                        <li>
-                                            Navy blue V-neck sweater with school
-                                            emblem
-                                        </li>
-
-                                        <li>
-                                            Optional: School blazer for events
-                                        </li>
-
-                                        <li>Plain navy blue muffler</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <p className="text-sm text-gray-500 mt-4 border-t border-gray-100 pt-3">
-                                ⚠️ Improper uniform may lead to a warning. Full
-                                uniform required on all working days.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </Reveal>
         </div>
     );
 }
@@ -549,12 +431,14 @@ function UniformPanel() {
 ========================= */
 function StudentsPanel() {
     const rules = [
-        "Greet teachers and peers respectfully. Maintain silence in corridors and assembly.",
-        "Minimum 85% attendance required. Late arrival without valid reason invites disciplinary action.",
-        "Plagiarism, cheating, or unfair means in exams is strictly prohibited.",
-        "Mobile phones, smartwatches, and electronic gadgets are banned on campus.",
-        "Zero tolerance for bullying, ragging, or physical/verbal abuse.",
-        "Maintain silence in the library. Follow lab safety protocols strictly.",
+        "Students should be regular and punctual to school.",
+        "Students must come in the prescribed uniform, well-groomed, and carry their ID card and required materials.",
+        "Students are expected to respect teachers, staff, and fellow students and use polite language at all times.",
+        "Students should maintain discipline and good behaviour in the classroom and throughout the school campus.",
+        "Students must take care of school property and help keep the school premises clean.",
+        "Mobile phones and other prohibited electronic devices are not permitted on the school premises.",
+        "Students must follow the instructions and guidelines given by teachers and school authorities.",
+        "Students are encouraged to be honest, responsible, helpful, and kind.",
     ];
 
     return (
@@ -562,7 +446,7 @@ function StudentsPanel() {
             <Reveal>
                 <div className="grid md:grid-cols-2 gap-8 items-start">
                     <div>
-                        <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-4">Code of Conduct</h2>
+                        <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 border-b border-gray-200 pb-2 mb-4">General Rules for Students</h2>
                         <ul className="space-y-2.5">
                             {rules.map((rule, idx) => (
                                 <li key={idx} className="flex gap-2 text-gray-700 text-base">
@@ -602,88 +486,23 @@ function StudentsPanel() {
                     </div>
                 </div>
             </Reveal>
-
-            <Reveal delay={100}>
-                <div className="grid md:grid-cols-2 gap-8 items-start">
-                    <div className="order-2 md:order-1 relative h-64 md:h-64 group">
-
-                        {/* Layer Background */}
-                        <div className="absolute inset-0 rotate-3 rounded-[2.5rem] bg-secondary/15"></div>
-
-                        {/* Main Image Shape */}
-                        <div
-                            className="
-            relative w-full h-full overflow-hidden
-            rounded-[2.5rem_0.8rem_2.5rem_0.8rem]
-            shadow-2xl border border-gray-200
-            -rotate-2 group-hover:rotate-0
-            transition-all duration-500
-        "
-                        >
-                            <Image
-                                src="/about/rules2.png"
-                                alt="School Library"
-                                fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                            />
-
-                            {/* Overlay */}
-                            <div className="absolute inset-0 bg-black/10" />
-
-                            {/* Shine Effect */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                        </div>
-                    </div>
-                    <div className="order-1 md:order-2">
-                        <div className="border-l-4 border-amber-400 pl-4 py-2 bg-amber-50/30 rounded-r-lg">
-                            <p className="text-base text-amber-800">
-                                <span className="font-semibold">Rewards:</span> Consistent discipline is recognized through house points, merit certificates, and the annual "Student of the Year" award.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </Reveal>
         </div>
     );
 }
 
 /* =========================
-   PARENTS PANEL – WITH IMAGES
+   PARENTS PANEL
 ========================= */
 function ParentsPanel() {
-    const guidelines = [
-        {
-            title: "Parent-Teacher Communication",
-            points: [
-                "Monthly PTM on the second Saturday (9 AM – 1 PM).",
-                "School diary must be checked and signed daily.",
-                "Teachers can be reached via the official parent portal between 9 AM – 4 PM.",
-            ],
-        },
-        {
-            title: "School Pick-up & Drop-off",
-            points: [
-                "Follow designated car lane; do not park at main gate.",
-                "Authorized pick-up card must be displayed.",
-                "Inform class teacher in advance if someone else is picking the child.",
-            ],
-        },
-        {
-            title: "Attendance & Leave",
-            points: [
-                "Prior application required for leave of absence (minimum 3 days).",
-                "Medical certificate needed for absence beyond 3 days.",
-                "No leave will be granted during exams or test weeks.",
-            ],
-        },
-        {
-            title: "Fee & General Discipline",
-            points: [
-                "Tuition fees due by the 10th of every month; late fine applicable.",
-                "Ensure child brings complete stationary and homework.",
-                "Encourage eco-friendly habits: no plastic items in lunch boxes.",
-            ],
-        },
+    const rules = [
+        "Ensure your child attends school regularly and arrives on time.",
+        "Make sure your child comes to school in the proper uniform, well-groomed, and with the required materials.",
+        "Follow the designated school drop-off and pick-up timings.",
+        "Inform the school promptly in case of absence or any important concern.",
+        "Maintain regular communication with teachers and attend parent-teacher meetings as scheduled.",
+        "Encourage your child to follow school rules and practise respectful and responsible behaviour.",
+        "Avoid sending unnecessary items or valuables with your child.",
+        "Please address any concerns or grievances through the appropriate school authorities.",
     ];
 
     return (
@@ -692,35 +511,23 @@ function ParentsPanel() {
                 <div>
                     <div className="flex items-center gap-2 border-b border-gray-200 pb-2 mb-5">
                         <HeartIcon className="w-6 h-6 text-secondary" />
-                        <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">Parent Partnership Guidelines</h2>
+                        <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">General Rules for Parents</h2>
                     </div>
-                    <p className="text-gray-600 text-base mb-6">
-                        We believe in a collaborative approach. Parents are requested to adhere to the following:
-                    </p>
 
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <div className="space-y-6">
-                            {guidelines.slice(0, 2).map((section, idx) => (
-                                <div key={idx} className="border-l-4 border-secondary/30 pl-4">
-                                    <h3 className="font-semibold text-gray-800 mb-2 flex items-center gap-1 text-lg">
-                                        <ChevronRightIcon className="w-5 h-5 text-secondary" />
-                                        {section.title}
-                                    </h3>
-                                    <ul className="space-y-1.5">
-                                        {section.points.map((point, i) => (
-                                            <li key={i} className="text-base text-gray-600 flex gap-2">
-                                                <span className="text-secondary">•</span> {point}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                    <div className="grid md:grid-cols-2 gap-8 items-start">
+                        <ul className="space-y-2.5">
+                            {rules.map((rule, idx) => (
+                                <li key={idx} className="flex gap-2 text-gray-700 text-base">
+                                    <span className="text-secondary font-bold text-lg">•</span> {rule}
+                                </li>
                             ))}
-                        </div>
+                        </ul>
+
                         <div className="relative group w-full flex justify-center">
 
                             {/* Custom Shape Container */}
                             <div className="relative overflow-hidden 
-        h-52 md:h-64 w-full max-w-md
+        h-64 md:h-80 w-full max-w-md
         rounded-[40px_10px_40px_10px] 
         shadow-xl border border-white/10">
 
@@ -742,53 +549,6 @@ function ParentsPanel() {
                                     </h3>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6 mt-6">
-                        <div className="relative flex justify-center order-2 md:order-1 group">
-                            <div
-                                className="
-                relative overflow-hidden
-                h-56 md:h-72 w-full
-                rounded-[60px_15px_60px_15px]
-                shadow-xl border border-gray-200
-            "
-                            >
-                                <Image
-                                    src="/about/rules-3.png"
-                                    alt="School Transport"
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                />
-
-                                {/* Soft Gradient */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-
-                                {/* Floating Badge */}
-                                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-1 rounded-full shadow-md">
-                                    <p className="text-xs font-semibold tracking-wide text-gray-700">
-                                        SCHOOL GUIDELINES
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="space-y-6 order-1 md:order-2">
-                            {guidelines.slice(2, 4).map((section, idx) => (
-                                <div key={idx} className="border-l-4 border-secondary/30 pl-4">
-                                    <h3 className="font-semibold text-gray-800 mb-2 flex items-center gap-1 text-lg">
-                                        <ChevronRightIcon className="w-5 h-5 text-secondary" />
-                                        {section.title}
-                                    </h3>
-                                    <ul className="space-y-1.5">
-                                        {section.points.map((point, i) => (
-                                            <li key={i} className="text-base text-gray-600 flex gap-2">
-                                                <span className="text-secondary">•</span> {point}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
                         </div>
                     </div>
                 </div>
