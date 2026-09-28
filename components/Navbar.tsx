@@ -519,13 +519,50 @@ export default function Navbar() {
               <div className="hidden lg:flex items-center gap-2 xl:gap-3">
                 <Link
                   href="/public-disclosure"
-                  className="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-semibold rounded-full bg-gradient-to-r from-[#ec8013] to-[#f5a623] text-white shadow-md hover:shadow-lg transition-all"
+                  className="
+      px-3 xl:px-4 py-1.5
+      text-xs xl:text-sm font-semibold
+      rounded-full
+      bg-gradient-to-r from-[#ec8013] to-[#f5a623]
+      text-white
+      shadow-md
+      transition-all duration-300 ease-out
+      hover:scale-105
+      hover:-translate-y-0.5
+      hover:shadow-xl
+      hover:from-[#f5a623]
+      hover:to-[#ec8013]
+      active:scale-95
+      active:translate-y-0
+      focus:outline-none
+      focus:ring-2
+      focus:ring-[#ec8013]/50
+    "
                 >
                   Mandatory Disclosure
                 </Link>
+
                 <Link
                   href="https://hikaapp.sonastar.com/INS-3-ZXYXKM"
-                  className="px-3 xl:px-4 py-1.5 text-xs xl:text-sm font-semibold rounded-full bg-gradient-to-r from-[#ec8013] to-[#f5a623] text-white shadow-md hover:shadow-lg transition-all"
+                  className="
+      px-3 xl:px-4 py-1.5
+      text-xs xl:text-sm font-semibold
+      rounded-full
+      bg-gradient-to-r from-[#ec8013] to-[#f5a623]
+      text-white
+      shadow-md
+      transition-all duration-300 ease-out
+      hover:scale-105
+      hover:-translate-y-0.5
+      hover:shadow-xl
+      hover:from-[#f5a623]
+      hover:to-[#ec8013]
+      active:scale-95
+      active:translate-y-0
+      focus:outline-none
+      focus:ring-2
+      focus:ring-[#ec8013]/50
+    "
                 >
                   Apply Now
                 </Link>

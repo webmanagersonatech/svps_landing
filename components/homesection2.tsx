@@ -38,8 +38,10 @@ const GrowthSkillsComponent2 = () => {
                 {/* ================= HERO SECTION ================= */}
                 <div
                     className="p-28 bg-cover bg-center"
-                    style={{ backgroundImage: "url('/homeimages/canvas.png')" }}
-                ></div>
+                    style={{ backgroundImage: "url('/homeimages/canvas.webp')" }}
+                >
+
+                </div>
                 <div className="relative px-4 sm:px-6 lg:px-8 py-8">
                     <div className="max-w-7xl mx-auto">
                         {/* Grid with equal height columns */}

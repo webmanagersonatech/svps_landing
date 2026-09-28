@@ -34,24 +34,30 @@ const FeatureCard = ({
                 }}
                 whileHover={{ scale: 1.02 }}
                 className="
-                    group relative h-56 overflow-hidden
-                    rounded-[2rem]
-                    bg-black cursor-pointer
-                    shadow-[0_12px_40px_rgba(0,0,0,0.12)]
-                "
+        group relative h-56 overflow-hidden
+        rounded-[2rem]
+        bg-black cursor-pointer
+        shadow-[0_12px_40px_rgba(0,0,0,0.12)]
+    "
             >
                 {/* Image */}
                 <img
                     src={image}
                     alt={title}
                     className="
-                        absolute inset-0 w-full h-full object-cover
-                        group-hover:scale-110 transition-transform duration-700
-                    "
+            absolute inset-0 w-full h-full object-cover
+            group-hover:scale-110 transition-transform duration-700
+        "
                 />
 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/80"></div>
+                {/* Bottom Black Overlay Only */}
+                <div className="
+        absolute inset-x-0 bottom-0 h-1/2
+        bg-gradient-to-t
+        from-black/90
+        via-black/60
+        to-transparent
+    "></div>
 
                 {/* Top Number */}
                 <div className="absolute top-5 left-5 z-20">
@@ -66,13 +72,16 @@ const FeatureCard = ({
                         {title}
                     </h3>
 
-                    <p className="mt-2 text-sm text-white line-clamp-2">
-                        {description}
-                    </p>
-
                     {/* Arrow Button */}
                     <div className="mt-4 flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:translate-x-1 transition-transform duration-300">
+                        <div className="
+                w-8 h-8 rounded-full
+                bg-white/15 backdrop-blur-md
+                flex items-center justify-center
+                border border-white/20
+                group-hover:translate-x-1
+                transition-transform duration-300
+            ">
                             <ArrowRight className="w-4 h-4 text-white" />
                         </div>
 
@@ -85,6 +94,7 @@ const FeatureCard = ({
         </Link>
     );
 };
+
 
 const GrowthSkillsComponent = () => {
     const [ref, inView] = useInView({
@@ -230,7 +240,7 @@ const GrowthSkillsComponent = () => {
                     {/* FLOATING CARDS */}
                     <div className="grid md:grid-cols-3 gap-6 -mt-[200px]">
                         <FeatureCard
-                            image="https://img.magnific.com/free-photo/ordinary-human-job-performed-by-robot_23-2151008311.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_incoming&w=740&q=80"
+                            image="/homeimages/smart-classroom.webp"
                             title="Smart Classrooms"
                             description="Interactive digital classrooms that make learning engaging, creative, and future-ready."
                             index={0}
@@ -238,7 +248,7 @@ const GrowthSkillsComponent = () => {
                         />
 
                         <FeatureCard
-                            image="https://img.magnific.com/premium-photo/young-girl-yellow-dress-seated-desk-art-project-holds-red-pencil-right-hand-blue_1299716-5550.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
+                            image="/homeimages/creative-learning.webp"
                             title="Creative Learning"
                             description="Encouraging curiosity, imagination, and innovation through activity-based education."
                             index={1}
@@ -246,7 +256,7 @@ const GrowthSkillsComponent = () => {
                         />
 
                         <FeatureCard
-                            image="https://img.magnific.com/premium-photo/girl-with-her-arms-crossed-front-chalkboard-with-word-peace-it_1277828-30404.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
+                            image="/homeimages/academic-excellence.webp"
                             title="Academic Excellence"
                             description="Providing strong academic foundations with personalized attention for every student."
                             href="/academics/academic-excellence"
@@ -254,7 +264,7 @@ const GrowthSkillsComponent = () => {
                         />
 
                         <FeatureCard
-                            image="https://img.magnific.com/premium-photo/children-playing-gym-with-balloons-sign-that-says-kids_875765-5570.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
+                            image="/homeimages/sportsandactivities.webp"
                             title="Sports & Activities"
                             description="Building teamwork, confidence, and leadership through sports and co-curricular activities."
                             index={3}
@@ -262,7 +272,7 @@ const GrowthSkillsComponent = () => {
                         />
 
                         <FeatureCard
-                            image="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop"
+                            image="/homeimages/expert-teachers.webp"
                             title="Expert Teachers"
                             description="Experienced and passionate educators dedicated to nurturing every child's potential."
                             href="/academics/teacher-training-programme-workshops"
@@ -270,7 +280,7 @@ const GrowthSkillsComponent = () => {
                         />
 
                         <FeatureCard
-                            image="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1200&auto=format&fit=crop"
+                            image="/homeimages/smart-library.webp"
                             title="Smart Library"
                             description="A modern library with digital resources, reading spaces, and knowledge-driven learning."
                             index={5}

@@ -149,7 +149,7 @@ export default function AllRoundDevelopmentPage() {
                         <Reveal delay={100}>
                             <div className="relative">
                                 <ShapeImage
-                                    src="https://img.magnific.com/premium-photo/male-students-engaging-with-modern-technology-overlaying-traditional-values-full-white_1142544-7117.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
+                                    src="/acadamics/all-round-development.webp"
                                     alt="Students in activity"
                                     shape="rounded"
                                     className="w-full h-80 md:h-96 "

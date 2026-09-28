@@ -186,11 +186,7 @@ export default function TeacherTrainingPage() {
                                 </p>
 
                                
-                                <p className="text-gray-700 leading-relaxed text-lg">
-                                    We conduct Teacher Facilitation Programmes to develop highly skilled
-                                    educators. Continuous professional development forms the foundation
-                                    of student success.
-                                </p>
+                             
                                 <p className="text-gray-700 leading-relaxed text-lg">
                                     Our comprehensive training programmes equip teachers with subject
                                     expertise, psychological understanding, technological knowledge,
@@ -211,7 +207,7 @@ export default function TeacherTrainingPage() {
                                             "Student Centric Method",
                                             "Best Teaching Practices",
                                             "Innovative Method",
-                                            "Motivating Students to get interest in the Subjects that explained with Inductive Approach and Deductive Approach",
+                                        
                                         ].map((item, index) => (
                                             <li key={index} className="flex items-start gap-2 text-gray-700 text-lg">
                                                 <span className="text-primary mt-1">✦</span>
@@ -230,7 +226,7 @@ export default function TeacherTrainingPage() {
                                 {/* Main Image Card */}
                                 <div className="relative rounded-2xl overflow-hidden shadow-lg">
                                     <RoundedImage
-                                        src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=600&fit=crop"
+                                        src="/acadamics/teacher-training-1.webp"
                                         alt="Teachers in a workshop"
                                         className="w-full h-80 md:h-96 lg:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
                                     />
@@ -324,7 +320,7 @@ export default function TeacherTrainingPage() {
                 </div>
 
                 {/* WORKSHOP CATEGORIES */}
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                     <Reveal>
                         <div className="text-center mb-12">
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 rounded-full text-primary text-sm font-semibold mb-3">
@@ -366,7 +362,7 @@ export default function TeacherTrainingPage() {
                             </Reveal>
                         ))}
                     </div>
-                </div>
+                </div> */}
 
                 {/* TEACHER TESTIMONIALS with photos */}
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -416,7 +412,7 @@ export default function TeacherTrainingPage() {
                 {/* CALL TO ACTION with background image */}
                 <div className="relative py-20  overflow-hidden">
                     <div className="absolute inset-0 z-0">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=600&fit=crop" alt="Teachers collaborating" className="w-full h-full object-cover" />
+                        <img src="/acadamics/teacher-training.webp" alt="Teachers collaborating" className="w-full h-full object-cover" />
                         <div className="absolute inset-0 bg-primary/70 mix-blend-multiply"></div>
                     </div>
                     <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
@@ -427,9 +423,9 @@ export default function TeacherTrainingPage() {
                                 Many of our workshops are open to teachers from other schools. Join our professional learning
                                 community – together we raise the bar for education.
                             </p>
-                            <button className="bg-white text-primary px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                            {/* <button className="bg-white text-primary px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
                                 Register for Next Workshop
-                            </button>
+                            </button> */}
                         </Reveal>
                     </div>
                 </div>

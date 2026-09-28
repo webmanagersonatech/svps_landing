@@ -42,27 +42,27 @@ export default function SchoolInfrastructureComponent() {
               creativity, and learning merge to build future-ready students.
             </motion.p>
 
-        <div className="mt-8 space-y-4">
-  {[
-    "25+ Acre Smart Campus",
-    "AI & Robotics Labs",
-    "Modern Digital Learning",
-    "Sports & Creative Spaces",
-  ].map((item, i) => (
-    <motion.div
-      key={i}
-      initial={{ opacity: 0, x: -40 }}
-      animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
-      transition={{ duration: 0.5, delay: 0.2 + i * 0.1, ease: "easeOut" }}
-      className="flex items-center gap-4 border-l-4 border-orange-500 bg-white/60 rounded-r-xl px-4 py-3 shadow-sm hover:shadow-md hover:border-orange-600 transition-all duration-300"
-    >
-      <div className="flex items-center justify-center w-8 h-8 rounded-full border-2 border-orange-500 text-orange-500 text-sm font-semibold shrink-0">
-        {i + 1}
-      </div>
-      <p className="text-gray-800 font-medium">{item}</p>
-    </motion.div>
-  ))}
-</div>
+            <div className="mt-8 space-y-4">
+              {[
+                "25+ Acre Smart Campus",
+                "AI & Robotics Labs",
+                "Modern Digital Learning",
+                "Sports & Creative Spaces",
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -40 }}
+                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
+                  transition={{ duration: 0.5, delay: 0.2 + i * 0.1, ease: "easeOut" }}
+                  className="flex items-center gap-4 border-l-4 border-orange-500 bg-white/60 rounded-r-xl px-4 py-3 shadow-sm hover:shadow-md hover:border-orange-600 transition-all duration-300"
+                >
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full border-2 border-orange-500 text-orange-500 text-sm font-semibold shrink-0">
+                    {i + 1}
+                  </div>
+                  <p className="text-gray-800 font-medium">{item}</p>
+                </motion.div>
+              ))}
+            </div>
             <Link href="/infrastructure-facilities/classrooms">
               <motion.button
                 initial={{ opacity: 0, y: 20 }}

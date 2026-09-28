@@ -228,7 +228,7 @@ function TimingsPanel() {
                     {/* RIGHT IMAGE */}
                     <div className="relative min-h-[420px] md:min-h-full rounded-2xl overflow-hidden">
                         <Image
-                            src="/about/sctime-1.png"
+                            src="/about/sctime-1.webp"
                             alt="School Campus"
                             fill
                             className="object-contain object-center hover:scale-105 transition-transform duration-500"
@@ -258,10 +258,10 @@ function TimingsPanel() {
         "
                         >
                             <Image
-                                src="/about/sctime.png"
+                                src="/about/sctime.webp"
                                 alt="School Assembly"
                                 fill
-                                className="object-contain object-center p-6 group-hover:scale-105 transition-transform duration-700"
+                                className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                             />
 
                             {/* Top Gradient */}
@@ -433,10 +433,9 @@ function StudentsPanel() {
         "Students must come in the prescribed uniform, well-groomed, and carry their ID card and required materials.",
         "Students are expected to respect teachers, staff, and fellow students and use polite language at all times.",
         "Students should maintain discipline and good behaviour in the classroom and throughout the school campus.",
-        "Students must take care of school property and help keep the school premises clean.",
+
         "Mobile phones and other prohibited electronic devices are not permitted on the school premises.",
-        "Students must follow the instructions and guidelines given by teachers and school authorities.",
-        "Students are encouraged to be honest, responsible, helpful, and kind.",
+
     ];
 
     return (

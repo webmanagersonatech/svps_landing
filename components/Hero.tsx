@@ -10,50 +10,53 @@ import { FaInstagram, FaWhatsapp, FaFacebook, FaTwitter } from "react-icons/fa";
 
 // Slides for left side cycling content (changes every 5 seconds)
 const contentSlides = [
-{
-  id: 1,
-  badge: "Excellence in Education",
-  titlePrefix: "Shape Your",
-  titleGradient: "Future with SVPS",
-  description:
-    "Discover a nurturing learning environment where students grow with knowledge, confidence, creativity, and strong values to become future-ready leaders.",
-  ctaText: "Explore Our School",
-  ctaLink: "/about-us/heritage",
-  trustRating: 4.9,
-  trustCount: "1k+"
-},
-{
-  id: 2,
-  badge: "Learn • Grow • Succeed",
-  titlePrefix: "Inspiring Young",
-  titleGradient: "Minds to Soar",
-  description:
-    "At SVPS, we empower every child through engaging learning, innovative experiences, sports, arts, and activities that bring out their unique potential.",
-  ctaText: "Discover SVPS",
-  ctaLink: "/infrastructure-facilities/classrooms",
-  trustRating: 4.9,
-  trustCount: "1k+"
-},
-{
-  id: 3,
-  badge: "Future Ready Education",
-  titlePrefix: "Where Learning",
-  titleGradient: "Meets Possibilities",
-  description:
-    "Build a strong foundation for tomorrow with quality education, personalized guidance, modern learning, and a vibrant school community that helps every student thrive.",
-  ctaText: "Join Our School",
-  ctaLink: "/admission/admission-procedure",
-  trustRating: 4.9,
-  trustCount: "1k+"
-}
+  {
+    id: 1,
+    badge: "Excellence in Education",
+    titlePrefix: "Shape Your",
+    titleGradient: "Future with SVPS",
+    description:
+      "Discover a nurturing learning environment where students grow with knowledge, confidence, creativity, and strong values to become future-ready leaders.",
+    ctaText: "Explore Our School",
+    ctaLink: "/about-us/heritage",
+    trustRating: 4.9,
+    trustCount: "1k+"
+  },
+  {
+    id: 2,
+    badge: "Learn • Grow • Succeed",
+    titlePrefix: "Inspiring Young",
+    titleGradient: "Minds to Soar",
+    description:
+      "At SVPS, we empower every child through engaging learning, innovative experiences, sports, arts, and activities that bring out their unique potential.",
+    ctaText: "Discover SVPS",
+    ctaLink: "/infrastructure-facilities/classrooms",
+    trustRating: 4.9,
+    trustCount: "1k+"
+  },
+  {
+    id: 3,
+    badge: "Future Ready Education",
+    titlePrefix: "Where Learning",
+    titleGradient: "Meets Possibilities",
+    description:
+      "Build a strong foundation for tomorrow with quality education, personalized guidance, modern learning, and a vibrant school community that helps every student thrive.",
+    ctaText: "Join Our School",
+    ctaLink: "/admission/admission-procedure",
+    trustRating: 4.9,
+    trustCount: "1k+"
+  }
 ];
 
 // Background images for slideshow
 const backgroundImages = [
-  "https://img.freepik.com/premium-photo/child-students-school_198067-1070401.jpg?ga=GA1.1.747278850.1765974059&semt=ais_hybrid&w=740&q=80",
-  "https://img.freepik.com/premium-photo/classmates-friends-bag-school-education_198067-1070642.jpg?ga=GA1.1.747278850.1765974059&semt=ais_hybrid&w=740&q=80",
-  "https://img.freepik.com/premium-photo/students-with-backpacks-smiles-their-faces-walking-through-school-gates-into-colorful_25996-10173.jpg?ga=GA1.1.747278850.1765974059&semt=ais_hybrid&w=740&q=80",
-  "https://www.sonavalliappapublicschool.com/assets/img/homeslider/homeslide5.webp",
+  "/hero/hero3.webp",
+  "/hero/hero4.webp",
+  "/hero/hero2.webp",
+  "/hero/hero1.webp",
+
+
+
 ];
 
 // Animation variants

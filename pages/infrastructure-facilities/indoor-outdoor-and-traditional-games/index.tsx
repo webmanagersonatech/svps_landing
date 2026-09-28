@@ -161,22 +161,22 @@ export default function GamesPage() {
                   {
                     name: "Chess",
                     image:
-                      "https://img.magnific.com/free-photo/young-kid-playing-chess_23-2149432866.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+                      "/infra/sports/chess.jpg",
                   },
                   {
                     name: "Carrom",
                     image:
-                      "https://img.magnific.com/premium-photo/carrom-board-maker-7_975681-261393.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+                      "/infra/sports/carrom.png",
                   },
                   {
                     name: "Table Tennis",
                     image:
-                      "https://img.magnific.com/premium-photo/unbelievable-table-tennis-smash-rally_1079150-49183.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+                      "/infra/sports/tennis.webp",
                   },
                   {
                     name: "Board Games",
                     image:
-                      "https://img.magnific.com/premium-photo/indian-boy-girl-organizing-family-game-night-parents-day-bonding-laughter-friendly-competition-while-celebrating-their-parents-love_748982-24123.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+                      "/infra/sports/board.png",
                   },
                 ]}
                 onViewClick={openModal}
@@ -191,22 +191,22 @@ export default function GamesPage() {
                   {
                     name: "Cricket",
                     image:
-                      "https://img.magnific.com/free-photo/young-baseball-player-holding-bat-field_23-2150982548.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+                      "/infra/sports/cricket.webp",
                   },
                   {
                     name: "Football",
                     image:
-                      "https://img.magnific.com/premium-photo/boy-wearing-red-jersey-with-number-4-it_1206963-63117.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+                      "/infra/sports/football.webp",
                   },
                   {
                     name: "Athletics",
                     image:
-                      "https://img.magnific.com/premium-photo/group-kids-running-track-with-numbers-their-shirts_1206963-63245.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+                      "/infra/sports/running.webp",
                   },
                   {
                     name: "Basketball",
                     image:
-                      "https://img.magnific.com/premium-photo/young-student-school-uniform-smiling-while-holding-basketball-court-outdoor-activity_350874-12805.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+                      "/infra/sports/basketball.webp",
                   },
                 ]}
                 onViewClick={openModal}
@@ -221,22 +221,22 @@ export default function GamesPage() {
                   {
                     name: "Kabaddi",
                     image:
-                      "https://thumbs.dreamstime.com/b/women-s-kabaddi-action-9926358.jpg?w=768",
+                      "/infra/sports/Kabaddi.webp",
                   },
                   {
                     name: "Kho Kho",
                     image:
-                      "https://img.magnific.com/premium-photo/young-student-school-uniform-smiling-while-holding-basketball-court-outdoor-activity_350874-12805.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+                      "/infra/sports/Kho-Kho.webp",
                   },
                   {
                     name: "Lagori",
                     image:
-                      "https://images.unsplash.com/photo-1624880357913-a8539238245b",
+                      "/infra/sports/Lagori.webp",
                   },
                   {
                     name: "Gilli Danda",
                     image:
-                      "https://images.unsplash.com/photo-1596464716127-f2a82984de30",
+                      "/infra/sports/Gilli-Danda.webp",
                   },
                 ]}
                 onViewClick={openModal}

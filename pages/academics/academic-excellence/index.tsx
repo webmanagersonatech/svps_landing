@@ -135,7 +135,7 @@ export default function AcademicExcellencePage() {
                             <div className="relative">
                                 <div className="relative overflow-hidden rounded-3xl shadow-xl">
                                     <img
-                                        src="/acadamics/bgimage.jpg"
+                                        src="/acadamics/acadamic-excellence.webp"
                                         alt="Focused academic learning at SVPS"
                                         className="w-full h-80 md:h-[26rem] object-cover transition duration-500 hover:scale-105"
                                     />

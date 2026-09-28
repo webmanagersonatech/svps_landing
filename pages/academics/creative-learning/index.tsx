@@ -158,7 +158,7 @@ export default function CreativeLearningPage() {
                             <div className="group">
                                 <div className="relative overflow-hidden rounded-2xl">
                                     <img
-                                        src="/activities/Dramatics-2.jpg"
+                                        src="/acadamics/creative-learn.webp"
                                         alt="Students engaged in creative activity"
                                         className="w-full h-80 md:h-[26rem] object-cover transition-transform duration-500 group-hover:scale-105"
                                     />
@@ -202,10 +202,10 @@ export default function CreativeLearningPage() {
                         </Reveal>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {[
-                                { src: "/activities/Dramatics-1.jpg", label: "Dramatics & Expression" },
-                                { src: "/activities/Dramatics-3.webp", label: "Stage & Storytelling" },
-                                { src: "/activities/Dramatics-4.webp", label: "Team Projects" },
-                                { src: "/activities/Dramatics-5.webp", label: "Performance & Confidence" },
+                                { src: "/acadamics/Dramatics-Expression.webp", label: "Dramatics & Expression" },
+                                { src: "/acadamics/Stage-Storytelling.webp", label: "Stage & Storytelling" },
+                                { src: "/acadamics/Team-Projects.webp", label: "Team Projects" },
+                                { src: "/acadamics/Performance-Confidence.webp", label: "Performance & Confidence" },
                             ].map((g, i) => (
                                 <Reveal key={g.label} delay={i * 90}>
                                     <div className="group relative overflow-hidden rounded-2xl shadow-sm h-56">

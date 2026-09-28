@@ -71,13 +71,13 @@ function Reveal({
     );
 }
 const galleryImages = [
-    "https://img.magnific.com/free-photo/view-modern-classroom-school_23-2150911424.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-    "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=400&fit=crop",
+    "/infra/interactive-session.webp",
+    "/infra/group-discovery.webp",
+    "/infra/smart-lab.webp",
+    "/infra/creative-corner.webp",
 ];
 const stats = [
-    { value: "24:1", label: "Student-Teacher Ratio", icon: UserGroupIcon },
+  
     { value: "100%", label: "Smart Classrooms", icon: ComputerDesktopIcon },
     { value: "8+", label: "Awards for Excellence", icon: StarIcon },
     { value: "15+", label: "Clubs & Activities", icon: SparklesIcon },
@@ -138,7 +138,7 @@ export default function ClassroomPage() {
                                 {/* Main Image Card */}
                                 <div className="rounded-t-2xl overflow-hidden shadow-md">
                                     <img
-                                        src="https://img.magnific.com/premium-photo/classroom-with-green-chalkboard-group-children-front-them_198067-1056701.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
+                                        src="/infra/classroom.webp"
                                         alt="Classroom"
                                         className="w-full h-64 md:h-72 object-cover group-hover:scale-105 transition-transform duration-700"
                                     />
@@ -172,7 +172,7 @@ export default function ClassroomPage() {
                 {/* STATS SECTION */}
                 <div className="bg-gray-100 py-8">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
                             {stats.map((stat, idx) => {
                                 const Icon = stat.icon;
                                 return (

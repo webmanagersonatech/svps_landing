@@ -24,7 +24,7 @@ const nodes: NodeType[] = [
         id: 1,
         label: "Classrooms",
         imageUrl:
-            "https://img.magnific.com/premium-photo/capturing-serenity-exploring-empty-japanesestyle-classroom_931866-15515.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+            "/homeimages/classrooms.webp",
         href: "/infrastructure-facilities/classrooms",
         color: "#2563EB",
         accentIcon: <FaChalkboardTeacher />,
@@ -33,7 +33,7 @@ const nodes: NodeType[] = [
         id: 2,
         label: "Library",
         imageUrl:
-            "https://img.magnific.com/premium-photo/children-are-sitting-library-with-word-bottom-book_198067-1078835.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+            "/infra/library/canvas3.png",
         href: "/infrastructure-facilities/library",
         color: "#059669",
         accentIcon: <FaBook />,
@@ -42,7 +42,7 @@ const nodes: NodeType[] = [
         id: 3,
         label: "Playground",
         imageUrl:
-            "https://img.magnific.com/premium-photo/boy-hanging-monkey-bars-playground_1605431-364.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+            "/infra/sports/football.webp",
         href: "/infrastructure-facilities/indoor-outdoor-and-traditional-games",
         color: "#D97706",
         accentIcon: <FaFutbol />,
@@ -51,7 +51,7 @@ const nodes: NodeType[] = [
         id: 4,
         label: "Computer Lab",
         imageUrl:
-            "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&h=600&fit=crop",
+            "/homeimages/computer-lab.webp",
         href: "/infrastructure-facilities/computer-lab",
         color: "#7C3AED",
         accentIcon: <FaLaptopCode />,

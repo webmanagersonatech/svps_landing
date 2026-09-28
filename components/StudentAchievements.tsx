@@ -60,9 +60,9 @@ const achievementsData = [
         parent:
             "Parents: Mrs. Aanchal Gupta & Mr. Aditya Gupta",
         image:
-            "https://img.magnific.com/premium-photo/girl-holding-trophy-that-says-year-it_1277828-30302.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+            "/achievements/winner-1.webp",
         bgImage:
-            "https://img.magnific.com/premium-photo/girl-holding-trophy-that-says-year-it_1277828-30302.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+            "/achievements/winner-1.webp",
     },
     {
         id: 2,
@@ -75,40 +75,40 @@ const achievementsData = [
         parent:
             "Parents: Mrs. Neha Sharma & Mr. Rahul Sharma",
         image:
-            "https://img.magnific.com/premium-photo/happy-young-indian-woman-school-uniform-holdi-1719088463-2_979520-94437.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+            "/achievements/winner-2.webp",
         bgImage:
-            "https://img.magnific.com/premium-photo/happy-young-indian-woman-school-uniform-holdi-1719088463-2_979520-94437.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+            "/achievements/winner-2.webp",
     },
-    {
-        id: 3,
-        studentName: "ARJUN MENON",
-        className: "CLASS V",
-        achievement: "NATIONAL CHESS CHAMPION",
-        subTitle: "UNDER 12 CATEGORY",
-        description:
-            "Achieved national recognition with strategic brilliance and confidence.",
-        parent:
-            "Parents: Mrs. Lakshmi Menon & Mr. Raj Menon",
-        image:
-            "https://img.magnific.com/premium-photo/boy-holding-trophy-with-words-year-2012-it_1277828-30093.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-        bgImage:
-            "https://img.magnific.com/premium-photo/boy-holding-trophy-with-words-year-2012-it_1277828-30093.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-    },
-    {
-        id: 4,
-        studentName: "SANA KHAN",
-        className: "CLASS II",
-        achievement: "BEST SPEAKER AWARD",
-        subTitle: "INTER SCHOOL EVENT",
-        description:
-            "Exceptional communication skills and stage confidence at inter-school competition.",
-        parent:
-            "Parents: Mrs. Farah Khan & Mr. Imran Khan",
-        image:
-            "https://img.magnific.com/premium-photo/happy-young-indian-boy-school-uniform-holding-crest_979520-49596.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-        bgImage:
-            "https://img.magnific.com/premium-photo/happy-young-indian-boy-school-uniform-holding-crest_979520-49596.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-    },
+    // {
+    //     id: 3,
+    //     studentName: "ARJUN MENON",
+    //     className: "CLASS V",
+    //     achievement: "NATIONAL CHESS CHAMPION",
+    //     subTitle: "UNDER 12 CATEGORY",
+    //     description:
+    //         "Achieved national recognition with strategic brilliance and confidence.",
+    //     parent:
+    //         "Parents: Mrs. Lakshmi Menon & Mr. Raj Menon",
+    //     image:
+    //         "https://img.magnific.com/premium-photo/boy-holding-trophy-with-words-year-2012-it_1277828-30093.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+    //     bgImage:
+    //         "https://img.magnific.com/premium-photo/boy-holding-trophy-with-words-year-2012-it_1277828-30093.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+    // },
+    // {
+    //     id: 4,
+    //     studentName: "SANA KHAN",
+    //     className: "CLASS II",
+    //     achievement: "BEST SPEAKER AWARD",
+    //     subTitle: "INTER SCHOOL EVENT",
+    //     description:
+    //         "Exceptional communication skills and stage confidence at inter-school competition.",
+    //     parent:
+    //         "Parents: Mrs. Farah Khan & Mr. Imran Khan",
+    //     image:
+    //         "https://img.magnific.com/premium-photo/happy-young-indian-boy-school-uniform-holding-crest_979520-49596.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+    //     bgImage:
+    //         "https://img.magnific.com/premium-photo/happy-young-indian-boy-school-uniform-holding-crest_979520-49596.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+    // },
 ];
 
 const StudentAchievements = () => {

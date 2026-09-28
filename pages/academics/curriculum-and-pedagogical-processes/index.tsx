@@ -389,7 +389,7 @@ export default function CurriculumPage() {
 
                     <div className="relative w-full h-full overflow-hidden rounded-[60%_40%_50%_70%/60%_60%_40%_40%] border border-white/30 shadow-2xl">
                         <img
-                            src="https://img.magnific.com/premium-photo/indian-school-kid-science-student-using-molecular-model-kit-studying-physics-selective-focus_466689-50220.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
+                            src="/acadamics/Curriculum.webp"
                             alt="Curriculum"
                             className="w-full h-full object-cover"
                         />

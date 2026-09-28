@@ -33,6 +33,8 @@ function useReveal() {
     const ref = useRef<HTMLDivElement | null>(null);
     const [visible, setVisible] = useState(false);
 
+
+
     useEffect(() => {
         const el = ref.current;
         if (!el) return;
@@ -102,6 +104,17 @@ const ShapeImage = ({ src, alt, shape, className }: { src: string; alt: string; 
 };
 
 export default function MethodologyPage() {
+
+
+    const [activePillar, setActivePillar] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActivePillar((prev) => (prev + 1) % methodologyPillars.length);
+        }, 2500);
+
+        return () => clearInterval(interval);
+    }, []);
     // Core pedagogical pillars
     const methodologyPillars = [
         {
@@ -109,7 +122,7 @@ export default function MethodologyPage() {
             title: "Inquiry‑Based Learning",
             description:
                 "Students learn by asking questions, investigating real problems, and constructing their own understanding.",
-            image: "https://img.magnific.com/free-photo/smart-student-with-blackboard_23-2147650764.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+            image: "/acadamics/inquiry-based.webp",
             shape: "circle" as const,
         },
         {
@@ -117,7 +130,7 @@ export default function MethodologyPage() {
             title: "Collaborative Learning",
             description:
                 "Group discussions, peer teaching, and team projects build communication and teamwork skills.",
-            image: "https://img.magnific.com/premium-photo/team-indian-students-working-science-project-together-showcasing-teamwork-collaboration-mutual-support-conducting-experiments-presenting-findings_748982-3248.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+            image: "/acadamics/Collaborative-Learning.webp",
             shape: "circle" as const,
         },
         {
@@ -125,7 +138,7 @@ export default function MethodologyPage() {
             title: "Experiential & Hands‑On",
             description:
                 "Laboratory work, field visits, and maker sessions turn abstract concepts into tangible experiences.",
-            image: "https://img.magnific.com/premium-photo/young-boy-stands-awe-before-table-overflowing-with-colorful-delicious-candy-treats_431161-77367.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+            image: "/acadamics/Experiential-Hands‑On.webp",
             shape: "circle" as const,
         },
         {
@@ -133,7 +146,7 @@ export default function MethodologyPage() {
             title: "Technology Integrated",
             description:
                 "Digital tools, smart classrooms, and AI‑driven adaptive platforms personalise the learning journey.",
-            image: "https://img.magnific.com/premium-photo/male-students-engaging-with-modern-technology-overlaying-traditional-values-full-white_1142544-7117.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+            image: "/acadamics/Technology-Integrated.webp",
             shape: "circle" as const,
         },
     ];
@@ -196,87 +209,279 @@ export default function MethodologyPage() {
                             </Reveal>
                         </div>
                         <Reveal delay={100}>
-                            <div className="flex flex-wrap justify-center gap-y-12 gap-x-16 md:gap-x-24">
-                                {methodologyPillars.map((pillar, idx) => (
-                                    <div key={idx} className="flex flex-col items-center w-40 group animate-float" style={{ animationDelay: `${idx * 0.15}s` }}>
-                                        <div className="relative w-32 h-32 mb-4 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
-                                            <ShapeImage src={pillar.image} alt={pillar.title} shape={pillar.shape} className="w-full h-full filter drop-shadow-xl" />
-                                            <div className="absolute -bottom-2 -right-2 bg-primary rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-all">
-                                                <pillar.icon className="w-4 h-4 text-white" />
+                            <div className="w-full max-w-6xl mx-auto px-2 sm:px-4">
+
+                                {/* ================= MAIN BANNER ================= */}
+                                <div className="
+            relative
+            w-full
+            h-[230px]
+            sm:h-[250px]
+            md:h-[285px]
+            overflow-hidden
+            
+        
+            bg-white
+            shadow-xl
+        ">
+
+                                    {/* ================= BACKGROUND IMAGE ================= */}
+                                    <img
+                                        src={methodologyPillars[activePillar].image}
+                                        alt={methodologyPillars[activePillar].title}
+                                        className="
+                    absolute
+                    inset-0
+                    w-full
+                    h-full
+                    object-cover
+                    object-center
+                "
+                                    />
+
+                                    {/* ================= YELLOW TOP ACCENT ================= */}
+                                    <div
+                                        className="
+                    absolute
+                    z-[2]
+                    -top-[70px]
+                    left-[27%]
+                    w-[145px]
+                    h-[190px]
+                    rotate-[27deg]
+                    rounded-[30px]
+                    bg-[#FDBB30]
+                "
+                                    />
+
+                                    {/* ================= BLUE BOTTOM RIGHT ACCENT ================= */}
+                                    <div
+                                        className="
+                    absolute
+                    z-[2]
+                    -right-[45px]
+                    -bottom-[70px]
+                    w-[210px]
+                    h-[125px]
+                    rotate-[-8deg]
+                    rounded-[40px]
+                    bg-[#1559A5]
+                "
+                                    />
+
+                                    {/* ================= LEFT WHITE PANEL ================= */}
+                                    <div
+                                        className="
+                    absolute
+                    z-10
+                    left-0
+                    top-0
+                    bottom-0
+                    w-[49%]
+                    sm:w-[47%]
+                    md:w-[44%]
+                    bg-white
+                "
+                                        style={{
+                                            clipPath:
+                                                "polygon(0 0, 67% 0, 76% 7%, 83% 23%, 100% 42%, 96% 60%, 82% 69%, 88% 84%, 72% 100%, 0 100%)",
+                                        }}
+                                    >
+
+                                        {/* ================= SOFT BLUE TOP LEFT SHAPE ================= */}
+                                        <div
+                                            className="
+                        absolute
+                        -left-[55px]
+                        -top-[65px]
+                        w-[150px]
+                        h-[150px]
+                        rotate-[32deg]
+                        rounded-[28px]
+                        bg-[#DCEEFF]
+                    "
+                                        />
+
+                                        {/* ================= YELLOW BOTTOM LEFT SHAPE ================= */}
+                                        <div
+                                            className="
+                        absolute
+                        -left-[25px]
+                        -bottom-[48px]
+                        w-[75px]
+                        h-[90px]
+                        rotate-[-18deg]
+                        rounded-[22px]
+                        bg-[#FDBB30]
+                    "
+                                        />
+
+                                        {/* ================= CONTENT ================= */}
+                                        <div className="
+                    relative
+                    z-20
+                    h-full
+                    flex
+                    flex-col
+                    justify-center
+                    pl-7
+                    sm:pl-9
+                    md:pl-12
+                    pr-4
+                ">
+
+                                            {/* ================= NUMBER BADGE ================= */}
+                                            <div className="
+                        relative
+                        w-[54px]
+                        h-[40px]
+                        sm:w-[58px]
+                        sm:h-[43px]
+                        md:w-[64px]
+                        md:h-[46px]
+                        mb-2.5
+                    ">
+
+                                                {/* Yellow Offset */}
+                                                <div className="
+                            absolute
+                            inset-0
+                            translate-x-1.5
+                            translate-y-1.5
+                            rounded-[8px]
+                            bg-[#FDBB30]
+                        " />
+
+                                                {/* Blue Number */}
+                                                <div className="
+                            relative
+                            w-full
+                            h-full
+                            flex
+                            items-center
+                            justify-center
+                            rounded-[8px]
+                            bg-[#1559A5]
+                            text-white
+                            text-lg
+                            sm:text-xl
+                            md:text-[22px]
+                            font-bold
+                            italic
+                        ">
+                                                    {String(activePillar + 1).padStart(2, "0")}
+                                                </div>
                                             </div>
+
+                                            {/* ================= SMALL LABEL ================= */}
+                                            <p className="
+                        mb-1
+                        text-[#3568A9]
+                        text-[8px]
+                        sm:text-[9px]
+                        md:text-[10px]
+                        tracking-[0.15em]
+                        uppercase
+                        font-medium
+                    ">
+                                                Methodology Pillar
+                                            </p>
+
+                                            {/* ================= TITLE ================= */}
+                                            <h3 className="
+                        max-w-[270px]
+                        text-[#123B73]
+                        text-[19px]
+                        sm:text-[22px]
+                        md:text-[27px]
+                        leading-[1.08]
+                        font-bold
+                    ">
+                                                {methodologyPillars[activePillar].title}
+                                            </h3>
+
+                                            {/* ================= YELLOW LINE ================= */}
+                                            <div className="
+                        mt-3
+                        w-10
+                        sm:w-12
+                        md:w-14
+                        h-[3px]
+                        rounded-full
+                        bg-[#FDBB30]
+                    " />
+
                                         </div>
-                                        <h3 className="font-semibold text-secondary text-center">{pillar.title}</h3>
                                     </div>
-                                ))}
+
+
+                                    {/* ================= BOTTOM DOT NAVIGATION ================= */}
+                                    <div className="
+                absolute
+                z-40
+                left-1/2
+                bottom-2.5
+                -translate-x-1/2
+                flex
+                items-center
+                gap-1.5
+                px-4
+                py-2
+                rounded-full
+                bg-white
+                shadow-md
+            ">
+                                        {methodologyPillars.map((_, idx) => (
+                                            <button
+                                                key={idx}
+                                                type="button"
+                                                onClick={() => setActivePillar(idx)}
+                                                aria-label={`Go to methodology pillar ${idx + 1}`}
+                                                className={`
+                            h-2
+                            rounded-full
+                            transition-all
+                            duration-300
+                            ${activePillar === idx
+                                                        ? "w-8 bg-[#1763AD]"
+                                                        : "w-2 bg-[#C7D4E5] hover:bg-[#9DB4CF]"
+                                                    }
+                        `}
+                                            />
+                                        ))}
+                                    </div>
+
+                                </div>
                             </div>
-                            {/* quote */}
                         </Reveal>
                     </div>
                 </div>
 
 
-
-                <div className="relative w-full py-20">
+                <div className="relative w-full overflow-hidden">
 
                     {/* BACKGROUND IMAGE */}
                     <img
-                        src="/acadamics/bgimage.jpg" // <-- replace with your image path
+                        src="/acadamics/bgimage.webp"
                         alt="Learning Journey Background"
-                        className="absolute inset-0 w-full h-full object-cover"
+                        className="block w-full h-auto"
                     />
 
                     {/* BLACK OVERLAY */}
                     <div className="absolute inset-0 bg-black/70"></div>
 
                     {/* CONTENT */}
-                    <div className="relative z-10 max-w-7xl mx-auto px-4">
+                    <div className="absolute inset-0 z-10 flex items-center justify-center px-4">
 
                         <Reveal>
-                            <div className="text-center mb-12 text-white">
+                            <div className="text-center text-white">
                                 <h2 className="text-3xl md:text-4xl font-serif font-bold">
                                     The Learning Journey
                                 </h2>
-                                <p className="mt-2 max-w-2xl mx-auto text-gray-200">
-                                    Our unique pedagogical cycle that nurtures lifelong learners
-                                </p>
                             </div>
                         </Reveal>
-
-                        <div className="grid md:grid-cols-4 gap-6 relative">
-
-                            {/* Line */}
-                            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-white/30 -translate-y-1/2"></div>
-
-                            {learningSteps.map((step, idx) => (
-                                <Reveal key={idx} delay={idx * 150}>
-                                    <div className="relative group">
-
-                                        <div className="relative z-10 bg-white/90 backdrop-blur-md p-6 shadow-lg transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl rounded-xl">
-
-                                            {/* ICON */}
-                                            <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition">
-                                                <step.icon className="w-6 h-6 text-gray-700" />
-                                            </div>
-
-                                            <div className="mt-6 text-center">
-                                                <h3 className="text-gray-800 font-bold text-xl mb-2">
-                                                    {step.title}
-                                                </h3>
-                                                <p className="text-gray-600 text-sm">
-                                                    {step.description}
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </Reveal>
-                            ))}
-                        </div>
-
                     </div>
                 </div>
-
-
 
             </main>
 
