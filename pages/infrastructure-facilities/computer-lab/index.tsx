@@ -160,7 +160,7 @@ export default function ComputerLabPage() {
                     <section className="relative w-full h-[60vh] min-h-[420px]">
                         {/* Background image (optional, remove if you want just the collage) */}
                         <img
-                            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1920&h=1080&fit=crop"
+                            src="/homeimages/computer-lab.webp"
                             alt="Rows of computers in the school lab"
                             className="absolute inset-0 w-full h-full object-cover"
                         />

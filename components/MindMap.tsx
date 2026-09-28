@@ -69,7 +69,7 @@ const nodes: NodeType[] = [
         id: 6,
         label: "Transport",
         imageUrl:
-            "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&h=600&fit=crop",
+            "/infra/transport.webp",
         href: "/infrastructure-facilities/transport-facilities",
         color: "#0891B2",
         accentIcon: <FaBus />,

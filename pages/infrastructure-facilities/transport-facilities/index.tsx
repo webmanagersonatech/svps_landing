@@ -132,7 +132,7 @@ export default function TransportPage() {
               {/* main */}
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <img
-                  src="https://img.magnific.com/premium-photo/landscape-yellow-school-bus-with-word-school-front_1288286-2797.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
+                  src="/infra/transport.webp"
                   alt="School Bus"
                   className="w-full h-[240px] object-cover"
                 />
