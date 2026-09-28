@@ -361,7 +361,7 @@ export default function LibraryPage() {
               <div className="relative rounded-2xl overflow-hidden shadow-xl group aspect-[4/3]">
 
                 <img
-                  src="https://img.magnific.com/premium-photo/school-library-with-kids-reading_198067-1080624.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
+                  src="/homeimages/smart-library.webp"
                   alt="Library"
                   className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
                 />
