@@ -76,7 +76,7 @@ function AuditoriumFilmstrip() {
 
   const shots: (ShotImage & { span?: string })[] = [
     {
-      src: "https://images.unsplash.com/photo-1560439514-4e9645039924?w=900&q=80",
+      src: "/infra/auditorium.webp",
       alt: "Auditorium stage",
       title: "The Main Stage",
       span: "md:row-span-2",
@@ -87,7 +87,7 @@ function AuditoriumFilmstrip() {
       title: "Tiered Seating",
     },
     {
-      src: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=900&q=80",
+      src: "/infra/auditorium-2.webp",
       alt: "Concert lighting rig",
       title: "Stage Lighting",
     },
@@ -98,7 +98,7 @@ function AuditoriumFilmstrip() {
       span: "md:row-span-2",
     },
     {
-      src: "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=900&q=80",
+      src: "/infra/auditorium-1.webp",
       alt: "Auditorium hall wide shot",
       title: "The Grand Hall",
     },
@@ -267,7 +267,7 @@ export default function AuditoriumPage() {
               {/* main image */}
               <div className="relative  overflow-hidden shadow-2xl group aspect-[4/3]">
                 <img
-                  src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=900&q=80"
+                  src="/infra/auditorium.webp"
                   alt="School auditorium stage"
                   className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
                 />
@@ -283,7 +283,7 @@ export default function AuditoriumPage() {
               {/* accent secondary image, tucked bottom-right, overlapping */}
               <div className="absolute -bottom-2 -right-2 md:-right-6 w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-xl ring-4 ring-secondary">
                 <img
-                  src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=400&q=80"
+                  src="/infra/auditorium-2.webp"
                   alt="Auditorium hall wide shot"
                   className="w-full h-full object-cover"
                 />
