@@ -209,7 +209,7 @@ export default function ContactPage() {
             <div className="h-full">
                 <div className="h-full overflow-hidden rounded-tl-[80px] rounded-br-[20px] shadow-lg">
                     <img
-                        src="https://img.magnific.com/premium-photo/content-indian-schoolgirls-modern-rural-areas-pose-with-books-bags-school-uniform-agai_1007204-28283.jpg"
+                        src="/contact/contact.webp"
                         alt="Contact"
                         className="w-full h-full object-cover"
                     />
