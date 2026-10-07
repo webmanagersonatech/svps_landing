@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -131,10 +132,13 @@ export default function TransportPage() {
 
               {/* main */}
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                <img
-                  src="/infra/transport.webp"
-                  alt="School Bus"
-                  className="w-full h-[240px] object-cover"
+                <Image
+                    src="/infra/transport.webp"
+                    alt="School Bus"
+                    width={1200}
+                    height={800}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="w-full h-[240px] object-cover"
                 />
               </div>
 

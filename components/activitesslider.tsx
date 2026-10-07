@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { activities } from "../data/activities";
+import type { Activity as ActivityItem } from "../lib/activitiesApi";
+import { skipOptimization } from "../lib/apiClient";
 import Link from "next/link";
+import Image from "next/image";
 
-type Activity = {
-  id: number;
-  title: string;
-  description: string;
-  slug: string;
-  image: string;
-  color: string;
-};
 
 
 
@@ -38,7 +32,7 @@ const imageVariants = {
   }
 };
 
-export default function SchoolActivitiesPremium() {
+export default function SchoolActivitiesPremium({ activities }: { activities: ActivityItem[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoSliding, setIsAutoSliding] = useState(true);
 
@@ -48,12 +42,12 @@ export default function SchoolActivitiesPremium() {
   });
 
   useEffect(() => {
-    if (!isAutoSliding) return;
+    if (!isAutoSliding || activities.length < 2) return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % activities.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [isAutoSliding]);
+  }, [isAutoSliding, activities.length]);
 
   const handleActivityClick = (index: number) => {
     setIsAutoSliding(false);
@@ -61,7 +55,10 @@ export default function SchoolActivitiesPremium() {
     setTimeout(() => setIsAutoSliding(true), 8000);
   };
 
-  const activeActivity = activities[activeIndex];
+  // Nothing to show -> hide the whole section
+  if (activities.length === 0) return null;
+
+  const activeActivity = activities[activeIndex] ?? activities[0];
 
   return (
     <div
@@ -108,11 +105,13 @@ export default function SchoolActivitiesPremium() {
                 className="relative rounded-2xl overflow-hidden shadow-2xl bg-white"
               >
                 <div className="relative h-80 md:h-96 xl:h-[460px] overflow-hidden">
-                  <img
+                  <Image
                     src={activeActivity.thumbnail}
                     alt={activeActivity.title}
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                    loading="lazy"
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    unoptimized={skipOptimization(activeActivity.thumbnail)}
+                    className="object-cover transition-transform duration-700 hover:scale-105"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 via-transparent to-transparent" />
@@ -207,7 +206,7 @@ export default function SchoolActivitiesPremium() {
                           </div>
 
                           <p className={`text-xs ${activeIndex === idx ? "text-secondary/80" : "text-secondary/50"}`}>
-                            {activity.shortDescription.substring(0, 60)}...
+                            {(activity.shortDescription || "").substring(0, 60)}{(activity.shortDescription || "").length > 60 ? "..." : ""}
                           </p>
                         </div>
 
@@ -226,7 +225,7 @@ export default function SchoolActivitiesPremium() {
               {/* Stats */}
               <div className="mt-4 pt-4 border-t border-secondary/20 grid grid-cols-3 gap-2 text-center">
                 <div>
-                  <div className="text-xl font-bold text-secondary">16+</div>
+                  <div className="text-xl font-bold text-secondary">{activities.length}</div>
                   <div className="text-xs text-secondary/60">Activities</div>
                 </div>
                 <div>

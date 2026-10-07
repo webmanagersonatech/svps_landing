@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -76,7 +77,14 @@ function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 // Simple image component for uniform styling
 const RoundedImage = ({ src, alt, className }: { src: string; alt: string; className?: string }) => (
     <div className={`overflow-hidden rounded-2xl shadow-lg ${className || ""}`}>
-        <img src={src} alt={alt} className="w-full h-full object-cover transition duration-500 hover:scale-105" />
+        <Image
+            src={src}
+            alt={alt}
+            width={1200}
+            height={800}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="w-full h-full object-cover transition duration-500 hover:scale-105"
+        />
     </div>
 );
 
@@ -341,9 +349,12 @@ export default function TeacherTrainingPage() {
                             <Reveal key={idx} delay={idx * 100}>
                                 <div className="group bg-white shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                                     <div className="h-48 overflow-hidden">
-                                        <img
+                                        <Image
                                             src={category.image}
                                             alt={category.title}
+                                            width={1200}
+                                            height={800}
+                                            sizes="(min-width: 1024px) 50vw, 100vw"
                                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                         />
                                     </div>
@@ -382,9 +393,12 @@ export default function TeacherTrainingPage() {
                                     {/* Floating Avatar */}
                                     <div className="absolute -top-8 left-1/2 -translate-x-1/2">
                                         <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-50">
-                                            <img
+                                            <Image
                                                 src={t.image}
                                                 alt={t.name}
+                                                width={1200}
+                                                height={800}
+                                                sizes="(min-width: 1024px) 50vw, 100vw"
                                                 className="w-full h-full object-cover"
                                             />
                                         </div>
@@ -412,7 +426,14 @@ export default function TeacherTrainingPage() {
                 {/* CALL TO ACTION with background image */}
                 <div className="relative py-20  overflow-hidden">
                     <div className="absolute inset-0 z-0">
-                        <img src="/acadamics/teacher-training.webp" alt="Teachers collaborating" className="w-full h-full object-cover" />
+                        <Image
+                            src="/acadamics/teacher-training.webp"
+                            alt="Teachers collaborating"
+                            width={1200}
+                            height={800}
+                            sizes="(min-width: 1024px) 50vw, 100vw"
+                            className="w-full h-full object-cover"
+                        />
                         <div className="absolute inset-0 bg-primary/70 mix-blend-multiply"></div>
                     </div>
                     <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">

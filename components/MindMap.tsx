@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import Link from "next/link";
@@ -60,7 +61,7 @@ const nodes: NodeType[] = [
         id: 5,
         label: "Cafeteria",
         imageUrl:
-            "https://img.magnific.com/premium-photo/bhai-dooj-family-festive-feast-photo_960396-1003083.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+            "/homeimages/eating.webp",
         href: "/infrastructure-facilities/pantry-and-dining",
         color: "#DC2626",
         accentIcon: <FaUtensils />,
@@ -147,9 +148,12 @@ export default function InfrastructureGrid() {
                 >
                     <Link href={nodes[0].href || "#"}>
                         <div className="w-full h-full relative">
-                            <img
+                            <Image
                                 src={nodes[0].imageUrl}
                                 alt={nodes[0].label}
+                                width={1200}
+                                height={800}
+                                sizes="(min-width: 1024px) 50vw, 100vw"
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             />
 
@@ -183,9 +187,12 @@ export default function InfrastructureGrid() {
                 >
                     <Link href={nodes[1].href || "#"}>
                         <div className="w-full h-full relative">
-                            <img
+                            <Image
                                 src={nodes[1].imageUrl}
                                 alt={nodes[1].label}
+                                width={1200}
+                                height={800}
+                                sizes="(min-width: 1024px) 50vw, 100vw"
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             />
 
@@ -219,9 +226,12 @@ export default function InfrastructureGrid() {
                 >
                     <Link href={nodes[2].href || "#"}>
                         <div className="w-full h-full relative">
-                            <img
+                            <Image
                                 src={nodes[2].imageUrl}
                                 alt={nodes[2].label}
+                                width={1200}
+                                height={800}
+                                sizes="(min-width: 1024px) 50vw, 100vw"
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             />
 
@@ -257,9 +267,12 @@ export default function InfrastructureGrid() {
                     >
                         <Link href={node.href || "#"}>
                             <div className="w-full h-full relative">
-                                <img
+                                <Image
                                     src={node.imageUrl}
                                     alt={node.label}
+                                    width={1200}
+                                    height={800}
+                                    sizes="(min-width: 1024px) 50vw, 100vw"
                                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
 

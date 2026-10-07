@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Head from "next/head";
 import { PageHeader } from "./PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -141,10 +142,13 @@ function AuditoriumFilmstrip() {
             onClick={() => openLightbox(img, idx)}
             className="group relative flex-shrink-0 w-[220px] md:w-[280px] h-[340px] md:h-[400px] rounded-2xl overflow-hidden cursor-pointer snap-start shadow-2xl"
           >
-            <img
-              src={img.src}
-              alt={img.alt}
-              className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+            <Image
+                src={img.src}
+                alt={img.alt}
+                width={1200}
+                height={800}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
             <div className="absolute bottom-0 left-0 p-5 w-full">
@@ -190,10 +194,13 @@ function AuditoriumFilmstrip() {
             className="max-w-4xl max-h-[85vh] mx-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={selectedImage.src}
-              alt={selectedImage.alt}
-              className="w-full h-full object-contain rounded-lg"
+            <Image
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                width={1200}
+                height={800}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="w-full h-full object-contain rounded-lg"
             />
             <p className="text-white text-center font-serif text-lg mt-4">
               {selectedImage.title}
@@ -261,10 +268,13 @@ export default function AuditoriumPage() {
         {/* CINEMATIC HERO BAND */}
         <section className="relative bg-secondary overflow-hidden">
           <div className="absolute inset-0 opacity-25">
-            <img
-              src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=1600&q=80"
-              alt="Auditorium stage"
-              className="w-full h-full object-cover"
+            <Image
+                src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=1600&q=80"
+                alt="Auditorium stage"
+                width={1200}
+                height={800}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="w-full h-full object-cover"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-secondary/40" />
@@ -340,25 +350,34 @@ export default function AuditoriumPage() {
             <div className="md:col-span-7 relative">
               <div className="grid grid-cols-5 gap-4 h-[420px] md:h-[480px]">
                 <div className="col-span-3 rounded-2xl overflow-hidden shadow-xl">
-                  <img
-                    src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=900&q=80"
-                    alt="Auditorium stage"
-                    className="w-full h-full object-cover"
+                  <Image
+                      src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=900&q=80"
+                      alt="Auditorium stage"
+                      width={1200}
+                      height={800}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="col-span-2 flex flex-col gap-4">
                   <div className="flex-1 rounded-2xl overflow-hidden shadow-xl">
-                    <img
-                      src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=80"
-                      alt="Auditorium hall"
-                      className="w-full h-full object-cover"
+                    <Image
+                        src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=80"
+                        alt="Auditorium hall"
+                        width={1200}
+                        height={800}
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="flex-1 rounded-2xl overflow-hidden shadow-xl">
-                    <img
-                      src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=600&q=80"
-                      alt="School event"
-                      className="w-full h-full object-cover"
+                    <Image
+                        src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=600&q=80"
+                        alt="School event"
+                        width={1200}
+                        height={800}
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
@@ -409,10 +428,13 @@ export default function AuditoriumPage() {
                       }`}
                     >
                       <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
-                        <img
-                          src={row.img}
-                          alt={row.title}
-                          className="w-full h-full object-cover hover:scale-105 transition duration-700"
+                        <Image
+                            src={row.img}
+                            alt={row.title}
+                            width={1200}
+                            height={800}
+                            sizes="(min-width: 1024px) 50vw, 100vw"
+                            className="w-full h-full object-cover hover:scale-105 transition duration-700"
                         />
                       </div>
                       <div>
@@ -457,10 +479,13 @@ export default function AuditoriumPage() {
           <Reveal>
             <div className="relative overflow-hidden rounded-3xl bg-secondary text-white p-10 md:p-16 text-center shadow-xl">
               <div className="absolute inset-0 opacity-10">
-                <img
-                  src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1600&q=80"
-                  alt=""
-                  className="w-full h-full object-cover"
+                <Image
+                    src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1600&q=80"
+                    alt=""
+                    width={1200}
+                    height={800}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="w-full h-full object-cover"
                 />
               </div>
               <div className="relative">

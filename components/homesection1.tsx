@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -41,9 +42,11 @@ const FeatureCard = ({
     "
             >
                 {/* Image */}
-                <img
+                <Image
                     src={image}
                     alt={title}
+                    fill
+                    sizes="100vw"
                     className="
             absolute inset-0 w-full h-full object-cover
             group-hover:scale-110 transition-transform duration-700
@@ -214,9 +217,12 @@ const GrowthSkillsComponent = () => {
                     transition={{ duration: 0.8, delay: 0.6 }}
                     className="absolute bottom-4 left-4 md:bottom-8 md:left-8 z-20"
                 >
-                    <img
+                    <Image
                         src="/homeimages/book-elements.png"
                         alt="Decorative bottom left"
+                        width={128}
+                        height={128}
+                        sizes="160px"
                         className="w-24 h-24 md:w-32 md:h-32 object-cover"
                     />
                 </motion.div>
@@ -227,9 +233,12 @@ const GrowthSkillsComponent = () => {
                     transition={{ duration: 0.8, delay: 0.6 }}
                     className="absolute top-4 right-4 md:top-8 md:right-8 z-20"
                 >
-                    <img
+                    <Image
                         src="/homeimages/book-elements-1.png"
                         alt="Decorative top right"
+                        width={128}
+                        height={128}
+                        sizes="160px"
                         className="w-24 h-24 md:w-32 md:h-32 object-cover"
                     />
                 </motion.div>

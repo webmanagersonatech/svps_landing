@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { useRouter } from "next/router";
 import { PageHeader } from "../../../components/PageHeader";
@@ -130,16 +131,17 @@ export default function VisionMissionPage() {
                 {/* VISION SECTION with Background Image */}
                 <div className="relative">
                     {/* Background Image for Vision Section */}
-                    <div
-                        className="absolute inset-0 z-0 pointer-events-none"
-                        style={{
-                            backgroundImage: "url('/about/visionandmission/sona-valliappa-public-school-vertical.png')",
-                            backgroundPosition: "center center",
-                            backgroundSize: "50%",  // Reduced from "cover" to 50%
-                            backgroundRepeat: "no-repeat",
-                            opacity: 0.05,
-                        }}
-                    />
+                    <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.05] flex justify-center">
+                        <div className="relative w-1/2 h-full">
+                            <Image
+                                src="/about/visionandmission/sona-valliappa-public-school-vertical.png"
+                                alt=""
+                                fill
+                                sizes="50vw"
+                                className="object-contain object-center"
+                            />
+                        </div>
+                    </div>
 
                     <div className="max-w-7xl mx-auto px-4 py-8 relative z-10">
                         <div className="grid md:grid-cols-2 gap-12 items-stretch">

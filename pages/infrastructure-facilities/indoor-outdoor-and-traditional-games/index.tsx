@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useState } from "react";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
@@ -31,10 +32,13 @@ function GameSection({ title, desc, games, onViewClick }: any) {
             >
               {/* IMAGE SECTION */}
               <div className="relative h-[120px] overflow-hidden">
-                <img
-                  src={g.image}
-                  alt={g.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                <Image
+                    src={g.image}
+                    alt={g.name}
+                    width={1200}
+                    height={800}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                 />
                 <span className="absolute top-2 left-2 text-[10px] bg-black/70 text-white px-2 py-1 rounded">
                   Game
@@ -81,10 +85,13 @@ function GameModal({ game, onClose }: any) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative h-64">
-          <img
-            src={game.image}
-            alt={game.name}
-            className="w-full h-full object-cover"
+          <Image
+              src={game.image}
+              alt={game.name}
+              width={1200}
+              height={800}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="w-full h-full object-cover"
           />
         </div>
         <div className="p-6 text-center">

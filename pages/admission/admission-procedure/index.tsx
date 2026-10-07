@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -115,9 +116,12 @@ export default function AdmissionProcedurePage() {
                             {/* IMAGE CARD */}
                             <div className="relative  overflow-hidden shadow-xl group  rounded-tl-[80px] rounded-br-[20px]">
 
-                                <img
+                                <Image
                                     src="https://img.magnific.com/premium-psd/happy-young-college-student-smiling-looking-into-camera-isolated-background_920413-1568.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
                                     alt="Admission"
+                                    width={1200}
+                                    height={800}
+                                    sizes="(min-width: 1024px) 50vw, 100vw"
                                     className="w-full h-[500px] object-cover transition duration-700 group-hover:scale-105 "
                                 />
 

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -167,11 +168,13 @@ function AuditoriumFilmstrip() {
               className={`group relative rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-500 ${img.span ?? ""
                 }`}
             >
-              <img
-                src={img.src}
-                alt={img.alt}
-                loading="lazy"
-                className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+              <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width={1200}
+                  height={800}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute bottom-0 left-0 p-4 md:p-5 w-full">
@@ -218,10 +221,13 @@ function AuditoriumFilmstrip() {
             className="max-w-4xl max-h-[85vh] mx-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={selectedImage.src}
-              alt={selectedImage.alt}
-              className="w-full h-full object-contain rounded-lg"
+            <Image
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                width={1200}
+                height={800}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="w-full h-full object-contain rounded-lg"
             />
             <p className="text-white text-center font-serif text-lg mt-4">
               {selectedImage.title}
@@ -266,10 +272,13 @@ export default function AuditoriumPage() {
 
               {/* main image */}
               <div className="relative  overflow-hidden shadow-2xl group aspect-[4/3]">
-                <img
-                  src="/infra/auditorium.webp"
-                  alt="School auditorium stage"
-                  className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+                <Image
+                    src="/infra/auditorium.webp"
+                    alt="School auditorium stage"
+                    width={1200}
+                    height={800}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
                 <div className="absolute bottom-5 left-5 text-white">
@@ -282,10 +291,13 @@ export default function AuditoriumPage() {
 
               {/* accent secondary image, tucked bottom-right, overlapping */}
               <div className="absolute -bottom-2 -right-2 md:-right-6 w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-xl ring-4 ring-secondary">
-                <img
-                  src="/infra/auditorium-2.webp"
-                  alt="Auditorium hall wide shot"
-                  className="w-full h-full object-cover"
+                <Image
+                    src="/infra/auditorium-2.webp"
+                    alt="Auditorium hall wide shot"
+                    width={1200}
+                    height={800}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="w-full h-full object-cover"
                 />
               </div>
 

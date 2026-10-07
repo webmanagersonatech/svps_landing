@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { submitVisit } from '../lib/formsApi';
 import { XMarkIcon, CheckBadgeIcon, CalendarIcon, UserIcon, EnvelopeIcon, PhoneIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline';
 
 /* =========================
@@ -37,6 +38,8 @@ export const PopupForm: React.FC<PopupFormProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [submitError, setSubmitError] = useState('');
+  const [honeypot, setHoneypot] = useState(''); // hidden anti-spam field, real users never fill it
   const modalRef = useRef<HTMLDivElement>(null);
 
   // Handle escape key press
@@ -110,17 +113,31 @@ export const PopupForm: React.FC<PopupFormProps> = ({
     if (!validateForm()) return;
     
     setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
+    setSubmitError('');
+
+    try {
+      await submitVisit({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        preferredDate: formData.preferredDate,
+        message: formData.message.trim(),
+        purpose: title, // tells the admin which button / page the request came from
+        website: honeypot,
+      });
+    } catch (err: any) {
+      setSubmitError(err.message || 'Something went wrong. Please try again.');
+      setIsSubmitting(false);
+      return;
+    }
+
     setIsSubmitting(false);
     setIsSuccess(true);
-    
+
     if (onSubmit) {
       onSubmit(formData);
     }
-    
+
     setTimeout(() => {
       setIsSuccess(false);
       setFormData({
@@ -174,6 +191,17 @@ export const PopupForm: React.FC<PopupFormProps> = ({
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Honeypot – hidden from people, bots fill it */}
+              <input
+                type="text"
+                name="website"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden"
+              />
               {/* Name Field */}
               <div>
                 <div className="relative">
@@ -276,6 +304,10 @@ export const PopupForm: React.FC<PopupFormProps> = ({
                   />
                 </div>
               </div>
+
+              {submitError && (
+                <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-xs text-red-600">{submitError}</p>
+              )}
 
               {/* Submit Button */}
               <button

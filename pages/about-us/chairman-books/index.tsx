@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -109,9 +110,12 @@ export default function ChairmanBooksPage() {
 
                                                     {/* Image with diagonal clip shape effect */}
                                                     <div className="relative overflow-hidden">
-                                                        <img
+                                                        <Image
                                                             src={book.image}
                                                             alt={book.title}
+                                                            width={1200}
+                                                            height={800}
+                                                            sizes="(min-width: 1024px) 50vw, 100vw"
                                                             className="w-full h-[420px] object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1"
                                                         />
 

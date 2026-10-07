@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -67,11 +68,7 @@ export default function MedicalFacilitiesPage() {
       title: "Medical Counselling",
       desc: "Professional medical counselling services to address health concerns and promote wellness.",
     },
-    {
-      icon: PlusCircleIcon,
-      title: "First Aid Facility",
-      desc: "Immediate first aid assistance available on campus for any minor injuries or emergencies.",
-    },
+  
   ];
 
   return (
@@ -106,9 +103,12 @@ export default function MedicalFacilitiesPage() {
                       "polygon(20% 0%, 85% 0%, 100% 25%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)",
                   }}
                 >
-                  <img
-                    src="https://img.magnific.com/premium-photo/portrait-beautiful-young-intelligent-looking-indian-asian-woman-student_1207718-128135.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
+                  <Image
+                    src="/infra/health-camp.webp"
                     alt="Medical Room"
+                    width={1200}
+                    height={800}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
                   />
                 </div>
@@ -159,36 +159,36 @@ export default function MedicalFacilitiesPage() {
             Our Medical Facilities
           </h2>
 
-         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-  {features.map((item, i) => {
-    const Icon = item.icon;
-    return (
-      <Reveal key={i}>
-        <div className="relative bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md hover:border-orange-300 transition flex items-start gap-4 overflow-hidden">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {features.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <Reveal key={i}>
+                  <div className="relative bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md hover:border-orange-300 transition flex items-start gap-4 overflow-hidden">
 
-          {/* CORNER ACCENT */}
-          <div className="absolute top-0 right-0 w-10 h-10 bg-orange-500/90 rounded-bl-2xl" />
+                    {/* CORNER ACCENT */}
+                    <div className="absolute top-0 right-0 w-10 h-10 bg-orange-500/90 rounded-bl-2xl" />
 
-          {/* ICON */}
-          <div className="bg-primary/10 p-3 rounded-lg relative z-10">
-            <Icon className="w-6 h-6 text-primary" />
+                    {/* ICON */}
+                    <div className="bg-primary/10 p-3 rounded-lg relative z-10">
+                      <Icon className="w-6 h-6 text-primary" />
+                    </div>
+
+                    {/* TEXT */}
+                    <div className="relative z-10">
+                      <h3 className="font-semibold text-lg text-gray-900 mb-1">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm">
+                        {item.desc}
+                      </p>
+                    </div>
+
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
-
-          {/* TEXT */}
-          <div className="relative z-10">
-            <h3 className="font-semibold text-lg text-gray-900 mb-1">
-              {item.title}
-            </h3>
-            <p className="text-gray-600 text-sm">
-              {item.desc}
-            </p>
-          </div>
-
-        </div>
-      </Reveal>
-    );
-  })}
-</div>
         </div>
 
       </main>

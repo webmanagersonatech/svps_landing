@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -79,7 +80,14 @@ const ShapeImage = ({ src, alt, shape, className }: { src: string; alt: string; 
     const shapeClass = shape === "circle" ? "rounded-full" : shape === "soft" ? "rounded-3xl" : "rounded-2xl";
     return (
         <div className={`relative overflow-hidden shadow-lg ${shapeClass} ${className || ""}`}>
-            <img src={src} alt={alt} className="w-full h-full object-cover transition duration-500 hover:scale-105" />
+            <Image
+                src={src}
+                alt={alt}
+                width={1200}
+                height={800}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="w-full h-full object-cover transition duration-500 hover:scale-105"
+            />
         </div>
     );
 };
@@ -171,7 +179,14 @@ export default function AllRoundDevelopmentPage() {
                 {/* CALL TO ACTION with image background */}
                 <div className="relative py-20  overflow-hidden">
                     <div className="absolute inset-0 z-0">
-                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1920&h=600&fit=crop" alt="Campus" className="w-full h-full object-cover" />
+                        <Image
+                            src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1920&h=600&fit=crop"
+                            alt="Campus"
+                            width={1200}
+                            height={800}
+                            sizes="(min-width: 1024px) 50vw, 100vw"
+                            className="w-full h-full object-cover"
+                        />
                         <div className="absolute inset-0 bg-primary/70 mix-blend-multiply"></div>
                     </div>
                     <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">

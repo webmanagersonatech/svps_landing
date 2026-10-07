@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
+import Image from "next/image";
 import {
     Calendar,
     Newspaper,
@@ -10,64 +11,47 @@ import {
 
 } from "lucide-react";
 
-import { newsAndEvents } from "../data/newsandevents";
+import type { NewsOrEvent } from "../lib/newsEventsApi";
+import { skipOptimization } from "../lib/apiClient";
+
+type Tab = "news" | "events" | "upcoming";
+
+type Props = {
+    news: NewsOrEvent[];
+    events: NewsOrEvent[];
+    upcoming: NewsOrEvent[];
+    newsCount?: number;
+    eventsCount?: number;
+};
 
 
 
 // Main Component
-const NewsEventsComponent = () => {
-    const [activeTab, setActiveTab] = useState("news");
-    const [loading, setLoading] = useState(false);
+const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, eventsCount = events.length }: Props) => {
+    // Only tabs that have items are shown
+    const tabs = useMemo(
+        () =>
+            ([
+                { id: "news", items: news },
+                { id: "events", items: events },
+                { id: "upcoming", items: upcoming },
+            ] as { id: Tab; items: NewsOrEvent[] }[]).filter((t) => t.items.length > 0),
+        [news, events, upcoming]
+    );
+
+    const [activeTab, setActiveTab] = useState<Tab>(tabs[0]?.id ?? "news");
+    const loading = false;
     const [headerRef, headerInView] = useInView({ triggerOnce: true, threshold: 0.2 });
-    const today = new Date();
 
-    const newsItems = newsAndEvents
-        .filter((item) => item.category === "news")
-        .sort(
-            (a, b) =>
-                new Date(b.startDate).getTime() -
-                new Date(a.startDate).getTime()
-        )
-        .slice(0, 4);
+    // If data refreshes and the selected tab disappears, fall back to the first one
+    useEffect(() => {
+        if (tabs.length && !tabs.some((t) => t.id === activeTab)) setActiveTab(tabs[0].id);
+    }, [tabs, activeTab]);
 
-    const eventItems = newsAndEvents
-        .filter((item) => item.category === "event")
-        .sort(
-            (a, b) =>
-                new Date(b.startDate).getTime() -
-                new Date(a.startDate).getTime()
-        )
-        .slice(0, 4);
+    // Nothing to show -> hide the whole section
+    if (tabs.length === 0) return null;
 
-    const upcomingItems = newsAndEvents
-        .filter(
-            (item) =>
-                item.category === "event" &&
-                new Date(item.startDate).getTime() > today.getTime()
-        )
-        .sort(
-            (a, b) =>
-                new Date(a.startDate).getTime() -
-                new Date(b.startDate).getTime()
-        )
-        .slice(0, 4);
-
-    const getActiveData = () => {
-        switch (activeTab) {
-            case "news":
-                return newsItems;
-            case "events":
-                return eventItems;
-            case "upcoming":
-                return upcomingItems;
-            default:
-                return [];
-        }
-    };
-
-
-    const data = getActiveData();
-
+    const data = tabs.find((t) => t.id === activeTab)?.items ?? [];
 
     return (
         <div className="w-full overflow-hidden bg-gradient-to-b from-[#fef9f0] via-white to-[#f5f7fa] relative">
@@ -119,7 +103,7 @@ const NewsEventsComponent = () => {
                             </motion.h1>
 
                             <div className="flex gap-2 mb-6 justify-center md:justify-start bg-white/5 backdrop-blur-sm w-fit mx-auto md:mx-0">
-                                {["news", "events", "upcoming"].map((tab) => (
+                                {tabs.map(({ id: tab }) => (
                                     <motion.button
                                         key={tab}
                                         onClick={() => setActiveTab(tab)}
@@ -179,24 +163,28 @@ const NewsEventsComponent = () => {
                                 transition={{ duration: 0.6, delay: 0.5 }}
                                 className="flex flex-wrap gap-6 justify-center md:justify-start"
                             >
-                                <div className="flex items-center gap-3">
-                                    <div className="bg-white/10 rounded-full p-2">
-                                        <Calendar className="w-5 h-5 text-[#ec8013]" />
+                                {eventsCount > 0 && (
+                                    <div className="flex items-center gap-3">
+                                        <div className="bg-white/10 rounded-full p-2">
+                                            <Calendar className="w-5 h-5 text-[#ec8013]" />
+                                        </div>
+                                        <div className="text-secondary ">
+                                            <div className="text-2xl font-bold">{eventsCount}</div>
+                                            <div className="text-sm ">{eventsCount === 1 ? "Event" : "Events"}</div>
+                                        </div>
                                     </div>
-                                    <div className="text-secondary ">
-                                        <div className="text-2xl font-bold">50+</div>
-                                        <div className="text-sm ">Events Yearly</div>
+                                )}
+                                {newsCount > 0 && (
+                                    <div className="flex items-center gap-3">
+                                        <div className="bg-white/10 rounded-full p-2">
+                                            <Newspaper className="w-5 h-5 text-[#ec8013]" />
+                                        </div>
+                                        <div className="text-secondary ">
+                                            <div className="text-2xl font-bold">{newsCount}</div>
+                                            <div className="text-sm ">News {newsCount === 1 ? "Update" : "Updates"}</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <div className="bg-white/10 rounded-full p-2">
-                                        <Newspaper className="w-5 h-5 text-[#ec8013]" />
-                                    </div>
-                                    <div className="text-secondary ">
-                                        <div className="text-2xl font-bold">100+</div>
-                                        <div className="text-sm ">News Updates</div>
-                                    </div>
-                                </div>
+                                )}
                             </motion.div>
 
                             {/* CTA Button */}
@@ -299,17 +287,23 @@ const NewsEventsComponent = () => {
                                                 <div className="relative rounded-2xl overflow-hidden shadow-xl">
 
                                                     {/* IMAGE */}
-                                                    <img
-                                                        src={item.thumbnail}
-                                                        alt={item.title}
-                                                        className="w-full h-48 md:h-56 object-cover transition-transform duration-500 group-hover:scale-110"
-                                                    />
+                                                    <div className="relative w-full h-48 md:h-56">
+                                                        <Image
+                                                            src={item.thumbnail}
+                                                            alt={item.title}
+                                                            fill
+                                                            sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+                                                            unoptimized={skipOptimization(item.thumbnail)}
+                                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                                        />
+                                                    </div>
 
                                                     {/* DATE */}
                                                     <div className="absolute top-3 left-3 z-10">
                                                         <div className="bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-lg">
                                                             <p className="text-xs font-semibold text-[#e68a2e] tracking-wide">
                                                                 {new Date(item.startDate).toLocaleDateString("en-US", {
+                                                                    timeZone: "UTC",
                                                                     month: "long",
                                                                     day: "2-digit",
                                                                     year: "numeric"
@@ -349,20 +343,20 @@ const NewsEventsComponent = () => {
                         {/* Images grid */}
                         <div className="absolute inset-0 grid grid-cols-6 gap-6 p-6 opacity-30">
 
-                            <img src="/homeimages/school-1.png" className="w-14 h-14" />
-                            <img src="/homeimages/school-2.png" className="w-14 h-14" />
-                            <img src="/homeimages/school-3.png" className="w-14 h-14" />
-                            <img src="/homeimages/school-4.png" className="w-14 h-14" />
-                            <img src="/homeimages/school-5.png" className="w-14 h-14" />
-                            <img src="/homeimages/school-6.png" className="w-14 h-14" />
+                            <Image src="/homeimages/school-1.png" alt="" width={56} height={56} className="w-14 h-14" />
+                            <Image src="/homeimages/school-2.png" alt="" width={56} height={56} className="w-14 h-14" />
+                            <Image src="/homeimages/school-3.png" alt="" width={56} height={56} className="w-14 h-14" />
+                            <Image src="/homeimages/school-4.png" alt="" width={56} height={56} className="w-14 h-14" />
+                            <Image src="/homeimages/school-5.png" alt="" width={56} height={56} className="w-14 h-14" />
+                            <Image src="/homeimages/school-6.png" alt="" width={56} height={56} className="w-14 h-14" />
 
                             {/* repeat */}
-                            <img src="/homeimages/school-1.png" className="w-14 h-14" />
-                            <img src="/homeimages/school-2.png" className="w-14 h-14" />
-                            <img src="/homeimages/school-3.png" className="w-14 h-14" />
-                            <img src="/homeimages/school-7.png" className="w-14 h-14" />
-                            <img src="/homeimages/school-8.png" className="w-14 h-14" />
-                            <img src="/homeimages/school-9.png" className="w-14 h-14" />
+                            <Image src="/homeimages/school-1.png" alt="" width={56} height={56} className="w-14 h-14" />
+                            <Image src="/homeimages/school-2.png" alt="" width={56} height={56} className="w-14 h-14" />
+                            <Image src="/homeimages/school-3.png" alt="" width={56} height={56} className="w-14 h-14" />
+                            <Image src="/homeimages/school-7.png" alt="" width={56} height={56} className="w-14 h-14" />
+                            <Image src="/homeimages/school-8.png" alt="" width={56} height={56} className="w-14 h-14" />
+                            <Image src="/homeimages/school-9.png" alt="" width={56} height={56} className="w-14 h-14" />
 
 
 

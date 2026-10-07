@@ -3,6 +3,7 @@ import Image from "next/image";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import PopupForm from "../../../components/bookvisit";
+import Link from "next/link";
 import {
     LightBulbIcon,
     AcademicCapIcon,
@@ -256,14 +257,14 @@ export default function PrincipalMessagePage() {
                                     className="bg-primary text-white px-8 py-2.5 rounded-r-full hover:bg-primary/90 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
                                 >
                                     <ChatBubbleLeftRightIcon className="w-5 h-5" />
-                                    Schedule a Meeting
+                                    Schedule a Meeting 
                                 </button>
-                                <button
-                                    onClick={() => setIsPopupOpen(true)}
-                                    className="border-2 border-primary text-primary px-8 py-2.5 rounded-r-full hover:bg-primary/5 transition-all"
+                                <Link
+                                    href="/admission/admission-contact"
+                                    className="inline-block border-2 border-primary text-primary px-8 py-2.5 rounded-r-full hover:bg-primary/5 transition-all"
                                 >
                                     Enquire Now
-                                </button>
+                                </Link>
                             </div>
                         </Reveal>
                     </div>
@@ -273,7 +274,7 @@ export default function PrincipalMessagePage() {
             <PopupForm
                 isOpen={isPopupOpen}
                 onClose={() => setIsPopupOpen(false)}
-                title="Enquire Now"
+                title=" Schedule a Meeting with Principal"
                 subtitle="Fill in your details and we'll get back to you."
             />
         </>

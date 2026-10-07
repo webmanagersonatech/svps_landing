@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../components/SEO";
 import { PageHeader } from "../../components/PageHeader";
 import { useState } from "react";
@@ -9,13 +10,46 @@ import {
     UserIcon,
 } from "@heroicons/react/24/outline";
 import { FaWhatsapp } from "react-icons/fa";
+import { submitContact } from "../../lib/formsApi";
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
+        phone: "",
         message: "",
     });
+    const [honeypot, setHoneypot] = useState(""); // hidden anti-spam field
+    const [sending, setSending] = useState(false);
+    const [status, setStatus] = useState<{ type: "success" | "error"; text: string } | null>(null);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (sending) return;
+        setStatus(null);
+
+        if (formData.name.trim().length < 2) return setStatus({ type: "error", text: "Please enter your name." });
+        if (!/\S+@\S+\.\S+/.test(formData.email)) return setStatus({ type: "error", text: "Please enter a valid email address." });
+        if (formData.phone.trim() && !/^[\d\s+\-()]{7,20}$/.test(formData.phone.trim())) return setStatus({ type: "error", text: "Please enter a valid phone number." });
+        if (formData.message.trim().length < 5) return setStatus({ type: "error", text: "Please write a short message." });
+
+        setSending(true);
+        try {
+            const text = await submitContact({
+                name: formData.name.trim(),
+                email: formData.email.trim(),
+                phone: formData.phone.trim(),
+                message: formData.message.trim(),
+                website: honeypot,
+            });
+            setStatus({ type: "success", text });
+            setFormData({ name: "", email: "", phone: "", message: "" });
+        } catch (err: any) {
+            setStatus({ type: "error", text: err.message });
+        } finally {
+            setSending(false);
+        }
+    };
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -79,7 +113,10 @@ export default function ContactPage() {
                     Fill out the form and we'll get back to you shortly.
                 </p>
 
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit} noValidate>
+                    {/* Honeypot – hidden from people, bots fill it */}
+                    <input type="text" name="website" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+
                     {/* NAME – underline style, no border box */}
                     <div className="group">
                         <label className="block text-sm font-medium text-gray-600 mb-1">Full Name</label>
@@ -112,6 +149,22 @@ export default function ContactPage() {
                         </div>
                     </div>
 
+                    {/* PHONE (optional) */}
+                    <div className="group">
+                        <label className="block text-sm font-medium text-gray-600 mb-1">Phone Number <span className="text-gray-400 font-normal">(optional)</span></label>
+                        <div className="flex items-center border-b border-gray-200 focus-within:border-primary py-2 transition">
+                            <PhoneIcon className="w-5 h-5 text-gray-400 mr-3" />
+                            <input
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                type="tel"
+                                placeholder="+91 98765 43210"
+                                className="w-full outline-none bg-transparent text-gray-800 placeholder:text-gray-400 text-sm"
+                            />
+                        </div>
+                    </div>
+
                     {/* MESSAGE */}
                     <div className="group">
                         <label className="block text-sm font-medium text-gray-600 mb-1">Message</label>
@@ -128,11 +181,18 @@ export default function ContactPage() {
                     </div>
 
                     {/* BUTTON – flat, no gradient */}
+                    {status && (
+                        <p role="alert" className={`text-sm ${status.type === "success" ? "text-emerald-600" : "text-red-600"}`}>
+                            {status.text}
+                        </p>
+                    )}
+
                     <button
                         type="submit"
-                        className="mt-4 bg-primary text-white px-8 py-2.5 hover:bg-primary/90 transition font-medium"
+                        disabled={sending}
+                        className="mt-4 bg-primary text-white px-8 py-2.5 hover:bg-primary/90 transition font-medium disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                        Send Message →
+                        {sending ? "Sending..." : "Send Message →"}
                     </button>
                 </form>
 
@@ -208,9 +268,12 @@ export default function ContactPage() {
         <Reveal>
             <div className="h-full">
                 <div className="h-full overflow-hidden rounded-tl-[80px] rounded-br-[20px] shadow-lg">
-                    <img
+                    <Image
                         src="/contact/contact.webp"
                         alt="Contact"
+                        width={1200}
+                        height={800}
+                        sizes="(min-width: 1024px) 50vw, 100vw"
                         className="w-full h-full object-cover"
                     />
                 </div>

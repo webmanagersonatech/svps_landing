@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -132,9 +133,12 @@ export default function ComputerLabPage() {
 
                                 {/* main image with asymmetric rounded corners */}
                                 <div className="relative w-full h-full max-h-72 md:max-h-80 overflow-hidden rounded-tl-[2.5rem] rounded-br-[2.5rem] rounded-tr-2xl rounded-bl-2xl shadow-xl">
-                                    <img
+                                    <Image
                                         src="https://img.magnific.com/free-photo/empty-lecture-hall-with-modern-projection-equipment-generated-by-ai_188544-26095.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_test_b&w=740&q=80"
                                         alt="Students working in the computer lab"
+                                        width={1200}
+                                        height={800}
+                                        sizes="(min-width: 1024px) 50vw, 100vw"
                                         className="w-full h-full object-cover transition duration-500 hover:scale-105"
                                     />
                                 </div>
@@ -159,9 +163,11 @@ export default function ComputerLabPage() {
                 <Reveal>
                     <section className="relative w-full h-[60vh] min-h-[420px]">
                         {/* Background image (optional, remove if you want just the collage) */}
-                        <img
+                        <Image
                             src="/homeimages/computer-lab.webp"
                             alt="Rows of computers in the school lab"
+                            fill
+                            sizes="100vw"
                             className="absolute inset-0 w-full h-full object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -183,27 +189,36 @@ export default function ComputerLabPage() {
                             <div className="relative w-full md:w-1/2 h-[440px] md:h-[500px] mt-6 md:mt-0">
                                 {/* Back photo */}
                                 <div className="absolute top-0 right-0 w-[70%] h-[62%] rotate-[4deg] shadow-xl overflow-hidden border-4 border-white">
-                                    <img
+                                    <Image
                                         src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&h=900&fit=crop"
                                         alt="Rows of computers in the school lab"
+                                        width={1200}
+                                        height={800}
+                                        sizes="(min-width: 1024px) 50vw, 100vw"
                                         className="w-full h-full object-cover"
                                     />
                                 </div>
 
                                 {/* Front photo, overlapping bottom-left */}
                                 <div className="absolute bottom-0 left-0 w-[62%] h-[55%] -rotate-[3deg] shadow-xl overflow-hidden border-4 border-white">
-                                    <img
+                                    <Image
                                         src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=900&h=1100&fit=crop"
                                         alt="Student focused on coding assignment"
+                                        width={1200}
+                                        height={800}
+                                        sizes="(min-width: 1024px) 50vw, 100vw"
                                         className="w-full h-full object-cover"
                                     />
                                 </div>
 
                                 {/* Small accent card, tucked between */}
                                 <div className="absolute top-[52%] left-[8%] w-[38%] h-[30%] rotate-[6deg] shadow-lg overflow-hidden border-4 border-white z-10">
-                                    <img
+                                    <Image
                                         src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&h=700&fit=crop"
                                         alt="Close-up of student hands typing"
+                                        width={1200}
+                                        height={800}
+                                        sizes="(min-width: 1024px) 50vw, 100vw"
                                         className="w-full h-full object-cover"
                                     />
                                 </div>

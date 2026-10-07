@@ -1,6 +1,8 @@
 import { GetServerSideProps } from "next";
-import { activities } from "../data/activities";
-import { newsAndEvents } from "../data/newsandevents";
+import type { Activity } from "../lib/activitiesApi";
+import type { NewsOrEvent } from "../lib/newsEventsApi";
+import { fetchActivities } from "../lib/activitiesApi";
+import { fetchAllNewsEvents } from "../lib/newsEventsApi";
 
 const SITE_URL = "https://www.sonavalliappapublicschool.com";
 
@@ -34,7 +36,7 @@ const staticRoutes: { path: string; priority: string; changefreq: string }[] = [
   { path: "/public-disclosure", priority: "0.5", changefreq: "yearly" },
 ];
 
-function generateSiteMap() {
+function generateSiteMap(activities: Activity[], newsAndEvents: NewsOrEvent[]) {
   const staticUrls = staticRoutes
     .map(
       ({ path, priority, changefreq }) => `
@@ -79,7 +81,12 @@ export default function SiteMap() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const sitemap = generateSiteMap();
+  // If the API is unreachable, still serve the static pages
+  const [activities, newsAndEvents] = await Promise.all([
+    fetchActivities().catch(() => [] as Activity[]),
+    fetchAllNewsEvents().catch(() => [] as NewsOrEvent[]),
+  ]);
+  const sitemap = generateSiteMap(activities, newsAndEvents);
   res.setHeader("Content-Type", "text/xml");
   res.write(sitemap);
   res.end();

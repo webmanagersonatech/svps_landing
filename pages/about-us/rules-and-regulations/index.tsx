@@ -404,7 +404,7 @@ function UniformPanel() {
                         >
                             <div className="relative w-full h-full overflow-hidden rounded-[2rem]">
                                 <Image
-                                    src="/about/scuniform.png"
+                                    src="/about/school-uniform.webp"
                                     alt="School Uniform"
                                     fill
                                     className="object-contain object-center group-hover:scale-105 transition-transform duration-700"

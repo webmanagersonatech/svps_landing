@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import {
@@ -49,10 +50,13 @@ const Footer = () => {
 
             {/* Logo */}
             <Link href="/" className="inline-block">
-              <img
-                src="/homeimages/sona-valliappa-public-school-vertical-white.png"
-                alt="SVP School"
-                className="w-[80px] object-contain"
+              <Image
+                  src="/homeimages/sona-valliappa-public-school-vertical-white.png"
+                  alt="SVP School"
+                  width={160}
+                  height={200}
+                  sizes="160px"
+                  className="w-[80px] object-contain"
               />
             </Link>
 

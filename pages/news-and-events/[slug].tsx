@@ -1,11 +1,14 @@
 // pages/news-events/[slug].tsx
-import SEO from "../../components/SEO";
+import Image from "next/image";
+import SEO, { SITE_NAME, SITE_URL, toAbsoluteUrl } from "../../components/SEO";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { PageHeader } from "../../components/PageHeader";
-import { newsAndEvents, NewsOrEvent, EventDay } from "../../data/newsandevents";
+import type { NewsOrEvent, EventDay } from "../../lib/newsEventsApi";
+import { fetchAllNewsEvents, fetchNewsEvent } from "../../lib/newsEventsApi";
+import { ApiNotFound, REVALIDATE_SECONDS, safe, skipOptimization } from "../../lib/apiClient";
 import { Reveal } from "../../components/Reveal";
 import {
     CalendarIcon,
@@ -27,6 +30,7 @@ import {
 function formatDate(dateStr: string): string {
     const date = new Date(dateStr);
     return date.toLocaleDateString("en-IN", {
+        timeZone: "UTC",
         day: "numeric",
         month: "long",
         year: "numeric",
@@ -44,14 +48,23 @@ function getYouTubeEmbedUrl(url: string): string | null {
 }
 
 // Simple image lightbox
-function Lightbox({ src, onClose }: { src: string; onClose: () => void }) {
+function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
     return (
         <div
             className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
             onClick={onClose}
         >
-            <img src={src} alt="Full size" className="max-w-full max-h-full object-contain" />
+            <Image
+                src={src}
+                unoptimized={skipOptimization(src)}
+                alt={alt}
+                width={1600}
+                height={1067}
+                sizes="100vw"
+                className="w-auto h-auto max-w-full max-h-full object-contain"
+            />
             <button
+                aria-label="Close"
                 className="absolute top-4 right-4 text-white text-2xl bg-black/50 rounded-full w-8 h-8 flex items-center justify-center hover:bg-black/70 transition"
                 onClick={onClose}
             >
@@ -62,7 +75,7 @@ function Lightbox({ src, onClose }: { src: string; onClose: () => void }) {
 }
 
 // Component to render a grid of images with lightbox
-function ImageGrid({ images }: { images: string[] }) {
+function ImageGrid({ images, title }: { images: string[]; title: string }) {
     const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
     if (!images.length) return null;
@@ -76,14 +89,22 @@ function ImageGrid({ images }: { images: string[] }) {
                 {images.map((img, idx) => (
                     <div
                         key={idx}
-                        className="aspect-video bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition"
+                        className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-90 transition"
                         onClick={() => setLightboxSrc(img)}
                     >
-                        <img src={img} alt={`Gallery ${idx + 1}`} className="w-full h-full object-cover" />
+                        <Image
+                            src={img}
+                unoptimized={skipOptimization(img)}
+                            alt={`${title} – photo ${idx + 1}`}
+                            fill
+                            loading="lazy"
+                            sizes="(min-width: 640px) 33vw, 50vw"
+                            className="object-cover"
+                        />
                     </div>
                 ))}
             </div>
-            {lightboxSrc && <Lightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />}
+            {lightboxSrc && <Lightbox src={lightboxSrc} alt={`${title} – full size photo`} onClose={() => setLightboxSrc(null)} />}
         </div>
     );
 }
@@ -188,13 +209,21 @@ function EventDays({ days }: { days?: EventDay[] }) {
                                         <h4 className="text-sm font-medium text-gray-700 mb-2">Day {day.dayNumber} Gallery</h4>
                                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                                             {day.images.map((img, idx) => (
-                                                <img
+                                                <div
                                                     key={idx}
-                                                    src={img}
-                                                    alt={`Day ${day.dayNumber} - ${idx + 1}`}
-                                                    className="rounded-md object-cover w-full h-24 cursor-pointer hover:opacity-80 transition"
+                                                    className="relative w-full h-24 rounded-md overflow-hidden cursor-pointer hover:opacity-80 transition"
                                                     onClick={() => window.open(img, "_blank")}
-                                                />
+                                                >
+                                                    <Image
+                                                        src={img}
+                unoptimized={skipOptimization(img)}
+                                                        alt={`Day ${day.dayNumber} – photo ${idx + 1}`}
+                                                        fill
+                                                        loading="lazy"
+                                                        sizes="(min-width: 640px) 200px, 33vw"
+                                                        className="object-cover"
+                                                    />
+                                                </div>
                                             ))}
                                         </div>
                                     </div>
@@ -322,26 +351,21 @@ function StickyShareSidebar({
 }
 // ----------------------------------------------------------------
 
-export default function NewsEventDetailPage({ item }: { item: NewsOrEvent | null }) {
+export default function NewsEventDetailPage({ item, allItems = [] }: { item: NewsOrEvent | null; allItems?: NewsOrEvent[] }) {
     const router = useRouter();
     const [searchQuery, setSearchQuery] = useState("");
-    const [absoluteUrl, setAbsoluteUrl] = useState("");
 
-    // Get absolute URL for sharing (client-side only)
-    useEffect(() => {
-        if (window) {
-            setAbsoluteUrl(window.location.href);
-        }
-    }, []);
+    // Canonical URL used for sharing — same on server & client, no tracking params
+    const absoluteUrl = item ? `${SITE_URL}/news-and-events/${item.slug}` : "";
 
     // Derive recent items from actual data, sorted by startDate descending, excluding current item
     const recentItems = useMemo(() => {
         if (!item) return [];
-        return newsAndEvents
+        return allItems
             .filter((ni) => ni.slug !== item.slug)
             .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
             .slice(0, 6);
-    }, [item]);
+    }, [item, allItems]);
 
     // Filter recent items based on search query (title or excerpt)
     const filteredRecentItems = useMemo(() => {
@@ -376,6 +400,42 @@ export default function NewsEventDetailPage({ item }: { item: NewsOrEvent | null
     }
 
     const metaDescription = item.excerpt;
+    const pageUrl = `${SITE_URL}/news-and-events/${item.slug}`;
+    const galleryImages = [item.thumbnail, ...(item.galleries || [])]
+        .filter(Boolean)
+        .slice(0, 6)
+        .map(toAbsoluteUrl);
+
+    const jsonLd = [
+        {
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            headline: item.title.slice(0, 110),
+            description: metaDescription,
+            image: galleryImages,
+            datePublished: item.startDate,
+            dateModified: item.endDate || item.startDate,
+            mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+            author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+            publisher: {
+                "@type": "Organization",
+                name: SITE_NAME,
+                logo: {
+                    "@type": "ImageObject",
+                    url: `${SITE_URL}/homeimages/sona-valliappa-public-school.png`,
+                },
+            },
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+                { "@type": "ListItem", position: 2, name: "News & Events", item: `${SITE_URL}/news-and-events` },
+                { "@type": "ListItem", position: 3, name: item.title, item: pageUrl },
+            ],
+        },
+    ];
 
     return (
         <>
@@ -384,7 +444,11 @@ export default function NewsEventDetailPage({ item }: { item: NewsOrEvent | null
                 description={metaDescription}
                 path={`/news-and-events/${item.slug}`}
                 image={item.thumbnail}
+                imageAlt={item.title}
                 type="article"
+                publishedTime={item.startDate}
+                modifiedTime={item.endDate || item.startDate}
+                jsonLd={jsonLd}
             />
 
             <main className="bg-white relative">
@@ -415,12 +479,16 @@ export default function NewsEventDetailPage({ item }: { item: NewsOrEvent | null
                     <Reveal delay={200}>
                         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
                             {/* Left: Thumbnail with fixed height 500px */}
-                            <div className="lg:col-span-3 h-[500px] rounded-xl overflow-hidden bg-gray-100 shadow-sm">
+                            <div className="relative lg:col-span-3 h-[500px] rounded-xl overflow-hidden bg-gray-100 shadow-sm">
                                 {item.thumbnail ? (
-                                    <img
+                                    <Image
                                         src={item.thumbnail}
+                unoptimized={skipOptimization(item.thumbnail)}
                                         alt={item.title}
-                                        className="w-full h-full object-cover"
+                                        fill
+                                        priority
+                                        sizes="(min-width: 1024px) 75vw, 100vw"
+                                        className="object-cover"
                                     />
                                 ) : (
                                     <div className="w-full h-full flex items-center justify-center text-gray-400">
@@ -456,11 +524,14 @@ export default function NewsEventDetailPage({ item }: { item: NewsOrEvent | null
                                                 <div className="bg-white border border-gray-100 rounded-lg px-3 py-2 hover:shadow-sm transition-all duration-200 hover:border-gray-200">
                                                     <div className="flex gap-2.5 items-start">
                                                         {relatedItem.thumbnail && (
-                                                            <div className="flex-shrink-0 w-14 h-14 rounded-md overflow-hidden bg-gray-100">
-                                                                <img
+                                                            <div className="relative flex-shrink-0 w-14 h-14 rounded-md overflow-hidden bg-gray-100">
+                                                                <Image
                                                                     src={relatedItem.thumbnail}
+                unoptimized={skipOptimization(relatedItem.thumbnail)}
                                                                     alt={relatedItem.title}
-                                                                    className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                                                                    fill
+                                                                    sizes="56px"
+                                                                    className="object-cover group-hover:scale-105 transition duration-300"
                                                                 />
                                                             </div>
                                                         )}
@@ -530,7 +601,7 @@ export default function NewsEventDetailPage({ item }: { item: NewsOrEvent | null
                         {item.category === "event" && item.days && <EventDays days={item.days} />}
 
 
-                        {item.galleries && item.galleries.length > 0 && <ImageGrid images={item.galleries} />}
+                        {item.galleries && item.galleries.length > 0 && <ImageGrid images={item.galleries} title={item.title} />}
 
 
                         {/* Video links */}
@@ -552,16 +623,25 @@ export default function NewsEventDetailPage({ item }: { item: NewsOrEvent | null
     );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-    const paths = newsAndEvents.map((item) => ({
-        params: { slug: item.slug },
-    }));
-    return { paths, fallback: false };
-};
+// Pages are built on first visit and refreshed from the API every minute,
+// so news/events added in the admin panel show up without a redeploy.
+export const getStaticPaths: GetStaticPaths = async () => ({
+    paths: [],
+    fallback: "blocking",
+});
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const slug = params?.slug as string;
-    const item = newsAndEvents.find((ni) => ni.slug === slug) || null;
-    if (!item) return { notFound: true };
-    return { props: { item } };
+    try {
+        const slug = String(params?.slug);
+        const [item, all] = await Promise.all([
+            fetchNewsEvent(slug),
+            safe(() => fetchAllNewsEvents(), [] as NewsOrEvent[]),
+        ]);
+        // sidebar only needs a handful of recent items
+        const allItems = all.filter((n) => n.slug !== slug).slice(0, 7);
+        return { props: { item, allItems }, revalidate: REVALIDATE_SECONDS };
+    } catch (err) {
+        if (err instanceof ApiNotFound) return { notFound: true, revalidate: REVALIDATE_SECONDS };
+        throw err;
+    }
 };

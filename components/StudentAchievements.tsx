@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -271,12 +272,15 @@ const StudentAchievements = () => {
                             className="relative overflow-hidden min-h-[320px] md:min-h-[380px]"
                         >
                             {/* Background Image */}
-                            <div
-                                className="absolute inset-0 bg-cover bg-center scale-105"
-                                style={{
-                                    backgroundImage: `url(${item.bgImage})`,
-                                }}
-                            />
+                            <div className="absolute inset-0 scale-105">
+                                <Image
+                                    src={item.bgImage}
+                                    alt=""
+                                    fill
+                                    sizes="100vw"
+                                    className="object-cover object-center"
+                                />
+                            </div>
 
                             {/* Overlay */}
                             <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-[#10294d]/80" />
@@ -366,9 +370,12 @@ const StudentAchievements = () => {
                                     >
                                         {/* Student Image */}
                                         <div className="w-[160px] sm:w-[190px] md:w-[220px] lg:w-[280px] h-[210px] sm:h-[240px] md:h-[270px] lg:h-[270px] overflow-hidden shadow-2xl border-[6px] border-white">
-                                            <img
+                                            <Image
                                                 src={item.image}
                                                 alt={item.studentName}
+                                                width={1200}
+                                                height={800}
+                                                sizes="(min-width: 1024px) 50vw, 100vw"
                                                 className="w-full h-full object-cover object-top"
                                             />
                                         </div>

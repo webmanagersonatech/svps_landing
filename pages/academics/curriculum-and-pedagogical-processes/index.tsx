@@ -388,9 +388,12 @@ export default function CurriculumPage() {
                     <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-[60%_40%_50%_70%/60%_60%_40%_40%] blur-2xl"></div>
 
                     <div className="relative w-full h-full overflow-hidden rounded-[60%_40%_50%_70%/60%_60%_40%_40%] border border-white/30 shadow-2xl">
-                        <img
+                        <Image
                             src="/acadamics/Curriculum.webp"
                             alt="Curriculum"
+                            width={1200}
+                            height={800}
+                            sizes="(min-width: 1024px) 50vw, 100vw"
                             className="w-full h-full object-cover"
                         />
                     </div>

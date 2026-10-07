@@ -1,8 +1,12 @@
 import SEO from "../../components/SEO";
 import { useState, useEffect, useMemo } from "react";
 import { PageHeader } from "../../components/PageHeader";
-import { NewsOrEvent, newsAndEvents } from "../../data/newsandevents";
+import type { GetStaticProps } from "next";
+import type { NewsOrEvent } from "../../lib/newsEventsApi";
+import { fetchAllNewsEvents, isUpcomingEvent } from "../../lib/newsEventsApi";
+import { REVALIDATE_SECONDS, safe, skipOptimization } from "../../lib/apiClient";
 import Link from 'next/link';
+import Image from "next/image";
 import {
     CalendarIcon,
     ChevronLeftIcon,
@@ -14,18 +18,11 @@ import {
 function formatDate(dateStr: string): string {
     const date = new Date(dateStr);
     return date.toLocaleDateString("en-IN", {
+        timeZone: "UTC",
         day: "numeric",
         month: "long",
         year: "numeric",
     });
-}
-
-// Helper: Check if event is upcoming (startDate > today)
-function isUpcoming(item: NewsOrEvent): boolean {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const start = new Date(item.startDate);
-    return item.category === "event" && start > today;
 }
 
 // Pagination hook
@@ -63,7 +60,7 @@ function TabButton({
     );
 }
 
-export default function NewsEventsPage() {
+export default function NewsEventsPage({ newsAndEvents }: { newsAndEvents: NewsOrEvent[] }) {
     const [activeTab, setActiveTab] = useState<TabId>("news");
     const [searchTerm, setSearchTerm] = useState("");
     const [filterMonth, setFilterMonth] = useState<string>("");
@@ -72,7 +69,7 @@ export default function NewsEventsPage() {
     // Base data
     const allNews = newsAndEvents.filter((item) => item.category === "news");
     const allEvents = newsAndEvents.filter((item) => item.category === "event");
-    const allUpcoming = allEvents.filter(isUpcoming);
+    const allUpcoming = allEvents.filter(isUpcomingEvent);
 
     // Extract unique years and months from all items (for dropdowns)
     const availableYears = useMemo(() => {
@@ -182,11 +179,14 @@ export default function NewsEventsPage() {
                     >
                         <div className="flex flex-col md:flex-row gap-6">
                             {item.thumbnail && (
-                                <div className="md:w-48 h-32 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
-                                    <img
+                                <div className="relative md:w-48 h-32 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100">
+                                    <Image
                                         src={item.thumbnail}
+                unoptimized={skipOptimization(item.thumbnail)}
                                         alt={item.title}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                                        fill
+                                        sizes="(min-width: 768px) 192px, 100vw"
+                                        className="object-cover group-hover:scale-105 transition duration-300"
                                     />
                                 </div>
                             )}
@@ -364,3 +364,8 @@ export default function NewsEventsPage() {
         </>
     );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+    const newsAndEvents = await safe(() => fetchAllNewsEvents(), [] as NewsOrEvent[]);
+    return { props: { newsAndEvents }, revalidate: REVALIDATE_SECONDS };
+};

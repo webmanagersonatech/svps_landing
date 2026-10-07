@@ -2,6 +2,7 @@ import SEO from "../../../components/SEO";
 import Image from "next/image";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import {
     AcademicCapIcon,
     BeakerIcon,
@@ -93,9 +94,11 @@ const ShapeImage = ({ src, alt, shape, className }: { src: string; alt: string; 
     return (
         <div className={`relative overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/20 ${shapeClasses[shape]} ${className || ""}`}>
 
-            <img
+            <Image
                 src={src}
                 alt={alt}
+                fill
+                sizes="100vw"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
 
@@ -138,7 +141,7 @@ export default function MethodologyPage() {
             title: "Experiential & Hands‑On",
             description:
                 "Laboratory work, field visits, and maker sessions turn abstract concepts into tangible experiences.",
-            image: "/acadamics/Experiential-Hands‑On.webp",
+            image: "/acadamics/Experiential-Hands-On.webp",
             shape: "circle" as const,
         },
         {
@@ -226,9 +229,12 @@ export default function MethodologyPage() {
         ">
 
                                     {/* ================= BACKGROUND IMAGE ================= */}
-                                    <img
+                                    <Image
                                         src={methodologyPillars[activePillar].image}
                                         alt={methodologyPillars[activePillar].title}
+                                        width={1200}
+                                        height={800}
+                                        sizes="(min-width: 1024px) 50vw, 100vw"
                                         className="
                     absolute
                     inset-0
@@ -461,9 +467,12 @@ export default function MethodologyPage() {
                 <div className="relative w-full overflow-hidden">
 
                     {/* BACKGROUND IMAGE */}
-                    <img
+                    <Image
                         src="/acadamics/bgimage.webp"
                         alt="Learning Journey Background"
+                        width={1200}
+                        height={800}
+                        sizes="(min-width: 1024px) 50vw, 100vw"
                         className="block w-full h-auto"
                     />
 
@@ -472,12 +481,18 @@ export default function MethodologyPage() {
 
                     {/* CONTENT */}
                     <div className="absolute inset-0 z-10 flex items-center justify-center px-4">
-
                         <Reveal>
                             <div className="text-center text-white">
-                                <h2 className="text-3xl md:text-4xl font-serif font-bold">
+                                <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
                                     The Learning Journey
                                 </h2>
+
+                                <Link
+                                    href="/admission/admission-contact"
+                                    className="inline-block bg-white text-primary px-8 py-2.5 rounded-full font-medium hover:bg-white/90 hover:scale-105 active:scale-95 transition-all duration-300 shadow-md hover:shadow-lg"
+                                >
+                                    Enquiry  Now
+                                </Link>
                             </div>
                         </Reveal>
                     </div>

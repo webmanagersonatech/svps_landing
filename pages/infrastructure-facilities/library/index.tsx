@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -199,10 +200,13 @@ function LibraryGallery() {
 
               {/* Image */}
               <div className="overflow-hidden">
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className={`w-full ${img.height} object-cover transition duration-[1200ms] group-hover:scale-110`}
+                <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={1200}
+                    height={800}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className={`w-full ${img.height} object-cover transition duration-[1200ms] group-hover:scale-110`}
                 />
               </div>
 
@@ -275,10 +279,13 @@ function LibraryGallery() {
             className="max-w-5xl max-h-[85vh] mx-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={selectedImage.src}
-              alt={selectedImage.alt}
-              className="w-full h-full object-contain rounded-lg"
+            <Image
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                width={1200}
+                height={800}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="w-full h-full object-contain rounded-lg"
             />
             <div className="bg-white/10 backdrop-blur-md p-4 rounded-b-lg mt-2">
               <h3 className="text-white font-semibold text-lg">{selectedImage.title}</h3>
@@ -360,10 +367,13 @@ export default function LibraryPage() {
               {/* MAIN IMAGE CARD */}
               <div className="relative rounded-2xl overflow-hidden shadow-xl group aspect-[4/3]">
 
-                <img
-                  src="/homeimages/smart-library.webp"
-                  alt="Library"
-                  className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                <Image
+                    src="/homeimages/smart-library.webp"
+                    alt="Library"
+                    width={1200}
+                    height={800}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
                 />
 
                 {/* DARK OVERLAY */}

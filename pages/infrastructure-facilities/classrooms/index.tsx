@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -137,9 +138,12 @@ export default function ClassroomPage() {
 
                                 {/* Main Image Card */}
                                 <div className="rounded-t-2xl overflow-hidden shadow-md">
-                                    <img
+                                    <Image
                                         src="/infra/classroom.webp"
                                         alt="Classroom"
+                                        width={1200}
+                                        height={800}
+                                        sizes="(min-width: 1024px) 50vw, 100vw"
                                         className="w-full h-64 md:h-72 object-cover group-hover:scale-105 transition-transform duration-700"
                                     />
                                 </div>
@@ -226,9 +230,12 @@ export default function ClassroomPage() {
 
                                         {/* Image */}
                                         <div className="overflow-hidden">
-                                            <img
+                                            <Image
                                                 src={img}
                                                 alt={`Classroom gallery ${idx + 1}`}
+                                                width={1200}
+                                                height={800}
+                                                sizes="(min-width: 1024px) 50vw, 100vw"
                                                 className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                                             />
                                         </div>
@@ -266,10 +273,13 @@ export default function ClassroomPage() {
 
                     {/* Background */}
                     <div className="absolute inset-0">
-                        <img
+                        <Image
                             src="https://img.magnific.com/premium-photo/public-school-underfunded-urban-area-with-outdated-classrooms_1271419-32940.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
-                            className="w-full h-full object-cover"
                             alt="Campus background"
+                            width={1200}
+                            height={800}
+                            sizes="(min-width: 1024px) 50vw, 100vw"
+                            className="w-full h-full object-cover"
                         />
 
                         {/* Clean dark overlay */}

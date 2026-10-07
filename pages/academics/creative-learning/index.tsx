@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -157,9 +158,12 @@ export default function CreativeLearningPage() {
                         <Reveal delay={100}>
                             <div className="group">
                                 <div className="relative overflow-hidden rounded-2xl">
-                                    <img
+                                    <Image
                                         src="/acadamics/creative-learn.webp"
                                         alt="Students engaged in creative activity"
+                                        width={1200}
+                                        height={800}
+                                        sizes="(min-width: 1024px) 50vw, 100vw"
                                         className="w-full h-80 md:h-[26rem] object-cover transition-transform duration-500 group-hover:scale-105"
                                     />
                                     {/* Thin accent border on hover */}
@@ -209,9 +213,12 @@ export default function CreativeLearningPage() {
                             ].map((g, i) => (
                                 <Reveal key={g.label} delay={i * 90}>
                                     <div className="group relative overflow-hidden rounded-2xl shadow-sm h-56">
-                                        <img
+                                        <Image
                                             src={g.src}
                                             alt={g.label}
+                                            width={1200}
+                                            height={800}
+                                            sizes="(min-width: 1024px) 50vw, 100vw"
                                             className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 via-secondary/10 to-transparent opacity-80" />

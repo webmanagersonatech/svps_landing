@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -112,10 +113,13 @@ export default function DiningPage() {
               {/* MAIN IMAGE CARD */}
               <div className="relative overflow-hidden shadow-2xl group aspect-[4/3]">
 
-                <img
-                  src="https://img.magnific.com/premium-photo/students-enjoy-nutritious-breakfast-national-school-breakfast-week-sharing-smiles_771426-115272.jpg"
-                  alt="Healthy Food"
-                  className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+                <Image
+                    src="/infra/Cheerful-School.webp"
+                    alt="Healthy Food"
+                    width={1200}
+                    height={800}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
                 />
 
                 {/* SOFT GRADIENT */}
@@ -158,11 +162,12 @@ export default function DiningPage() {
 
               {/* Background Image */}
               <div className="absolute inset-0">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: "url('/infra/junk2.webp')",
-                  }}
+                <Image
+                  src="/infra/junk2.webp"
+                  alt=""
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover object-center"
                 />
 
                 {/* Black Overlay */}
@@ -226,11 +231,12 @@ export default function DiningPage() {
 
               {/* Background */}
               <div className="absolute inset-0">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: "url('/infra/junk1.webp')",
-                  }}
+                <Image
+                  src="/infra/junk1.webp"
+                  alt=""
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover object-center"
                 />
 
                 {/* Black Overlay */}

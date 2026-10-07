@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router'; // Import useRouter
-import { activities } from '../data/activities';
+import { fetchActivities } from '../lib/activitiesApi';
+import type { Activity as ActivityItem } from '../lib/activitiesApi';
 import {
   Menu, X, ChevronDown, ChevronRight,
   Home, Info, Users, BookOpen, GraduationCap,
@@ -43,6 +45,22 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const dropdownTimeout = useRef(null);
   const navRef = useRef(null);
+
+  // Activities come from the backend; the menu item is hidden until there is at least one
+  const [activities, setActivities] = useState<ActivityItem[]>([]);
+  useEffect(() => {
+    let cancelled = false;
+    fetchActivities()
+      .then((list) => {
+        if (!cancelled) setActivities(list);
+      })
+      .catch(() => {
+        if (!cancelled) setActivities([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // Helper function to check if a link is active
   const isActive = (href) => {
@@ -174,17 +192,21 @@ export default function Navbar() {
         { name: 'Dining', href: '/infrastructure-facilities/pantry-and-dining', icon: Coffee, description: 'Dining area' },
       ],
     },
-    {
-      name: "Activities",
-      href: "/activities",
-      icon: Activity,
-      submenu: activities.map((a) => ({
-        name: a.title,
-        href: `/activities/${a.slug}`,
-        icon: Activity,
-        description: a.title,
-      })),
-    },
+    ...(activities.length > 0
+      ? [
+          {
+            name: "Activities",
+            href: "/activities",
+            icon: Activity,
+            submenu: activities.map((a) => ({
+              name: a.title,
+              href: `/activities/${a.slug}`,
+              icon: Activity,
+              description: a.title,
+            })),
+          },
+        ]
+      : []),
     {
       name: 'Admission',
       href: '/admission',
@@ -401,10 +423,13 @@ export default function Navbar() {
                   transition={{ duration: 0.3 }}
                   className="flex items-center gap-2 sm:gap-3"
                 >
-                  <img
-                    src="/homeimages/sona-valliappa-public-school.png"
-                    alt="SVPS Logo"
-                    className="h-8 sm:h-9 md:h-10 lg:h-11 w-auto object-contain"
+                  <Image
+                      src="/homeimages/sona-valliappa-public-school.png"
+                      alt="SVPS Logo"
+                      width={240}
+                      height={60}
+                      sizes="240px"
+                      className="h-8 sm:h-9 md:h-10 lg:h-11 w-auto object-contain"
                   />
                 </motion.div>
               </Link>

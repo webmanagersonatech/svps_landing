@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
@@ -376,9 +377,12 @@ export default function ManagementProfilesPage() {
                                                 <div className={`w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full overflow-hidden bg-gray-800 shadow-lg ${activeIndex === index ? "ring-4 ring-amber-400/40" : ""
                                                     }`}>
                                                     {member.image ? (
-                                                        <img
+                                                        <Image
                                                             src={member.image}
                                                             alt={member.name}
+                                                            width={1200}
+                                                            height={800}
+                                                            sizes="(min-width: 1024px) 50vw, 100vw"
                                                             className="w-full h-full object-cover"
                                                         />
                                                     ) : (

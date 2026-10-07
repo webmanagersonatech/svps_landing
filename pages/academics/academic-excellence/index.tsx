@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
@@ -134,9 +135,12 @@ export default function AcademicExcellencePage() {
                         <Reveal delay={100} className="order-2 md:order-1">
                             <div className="relative">
                                 <div className="relative overflow-hidden rounded-3xl shadow-xl">
-                                    <img
+                                    <Image
                                         src="/acadamics/acadamic-excellence.webp"
                                         alt="Focused academic learning at SVPS"
+                                        width={1200}
+                                        height={800}
+                                        sizes="(min-width: 1024px) 50vw, 100vw"
                                         className="w-full h-80 md:h-[26rem] object-cover transition duration-500 hover:scale-105"
                                     />
                                 </div>
@@ -229,9 +233,12 @@ export default function AcademicExcellencePage() {
                                 <div className="absolute -inset-2 bg-primary/10 rounded-tl-[4rem] rounded-br-[4rem] rounded-tr-2xl rounded-bl-2xl" />
 
                                 <div className="relative overflow-hidden rounded-tl-[4rem] rounded-br-[4rem] rounded-tr-2xl rounded-bl-2xl shadow-xl">
-                                    <img
+                                    <Image
                                         src="/infra/library/canvas1.png"
                                         alt="Supportive learning environment"
+                                        width={1200}
+                                        height={800}
+                                        sizes="(min-width: 1024px) 50vw, 100vw"
                                         className="w-full h-80 md:h-[24rem] object-cover"
                                     />
                                 </div>

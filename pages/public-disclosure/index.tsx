@@ -54,9 +54,8 @@ function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
+      className={`transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -116,11 +115,10 @@ function DocumentRow({ title, documentUrl, isAvailable = true }: { title: string
       <div className="mt-2 sm:mt-0">
         <button
           onClick={handlePreview}
-          className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all ${
-            documentUrl
+          className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all ${documentUrl
               ? "text-[#0b3a6a] hover:bg-[#0b3a6a]/10 border border-[#0b3a6a]/20"
               : "text-gray-400 bg-gray-100 cursor-not-allowed"
-          }`}
+            }`}
           disabled={!documentUrl}
         >
           <EyeIcon className="h-3.5 w-3.5" />
@@ -235,28 +233,39 @@ export default function PublicDisclosurePage() {
     { label: "Complete Address", value: "Sona Valliappa Public School Junction Main Road, Salem - 636005, Tamil Nadu", icon: MapPinIcon },
     { label: "Principal Name & Qualification", value: "Ms. E.J. Kavitha M.A, M.Phil, B.Ed", icon: UserGroupIcon },
     { label: "School Email ID", value: "svpschool@sonatech.ac.in", icon: EnvelopeIcon, isLink: true, href: "mailto:svpschool@sonatech.ac.in" },
-    { label: "Contact Details", value: "0427 - 2912160 / 9442592160", icon: PhoneIcon },
+    {
+      label: "Contact Details",
+      value: (
+        <>
+          <a href="tel:+914272912160">0427 - 2912160</a>
+          {" / "}
+          <a href="tel:+919442592160">9442592160</a>
+        </>
+      ),
+      icon: PhoneIcon,
+      isLink: true,
+    },
   ];
 
   // B. Documents & Information (Full list from image)
   const documentsList = [
-    { title: "Copies of Affiliation/Upgradation Letter and Recent Extension of Affiliation", documentUrl: "/documents/affiliation-letter.pdf" },
-    { title: "Copies of Societies/Trust/Company Registration/Renewal Certificate", documentUrl: "/documents/trust-registration.pdf" },
-    { title: "Copy of No Objection Certificate (NOC) issued by State Govt./UT", documentUrl: "/documents/noc-certificate.pdf" },
-    { title: "Copies of Recognition Certificate under RTE Act, 2009 and its Renewal", documentUrl: "/documents/rte-certificate.pdf" },
-    { title: "Copy of Valid Building Safety Certificate as per National Building Code", documentUrl: "/documents/building-safety.pdf" },
-    { title: "Copy of Valid Fire Safety Certificate issued by Competent Authority", documentUrl: "/documents/fire-safety.pdf" },
-    { title: "Copy of DEO Certificate submitted for Affiliation/Upgradation", documentUrl: "/documents/deo-certificate.pdf" },
-    { title: "Copies of Valid Water, Health and Sanitation Certificates", documentUrl: "/documents/water-health-certificate.pdf" },
-    { title: "Certificate of Land and Lease Deed", documentUrl: "/documents/land-lease-deed.pdf" },
+    { title: "Copies of Affiliation/Upgradation Letter and Recent Extension of Affiliation", },
+    { title: "Copies of Societies/Trust/Company Registration/Renewal Certificate", documentUrl: "/documents/Trust Deed.pdf" },
+    { title: "Copy of No Objection Certificate (NOC) issued by State Govt./UT", documentUrl: "/documents/NOC.pdf" },
+    { title: "Copies of Recognition Certificate under RTE Act, 2009 and its Renewal", documentUrl: "/documents/Recognition Certificate.pdf" },
+    { title: "Copy of Valid Building Safety Certificate as per National Building Code", documentUrl: "/documents/form-d-safety-and-stability.pdf" },
+    { title: "Copy of Valid Fire Safety Certificate issued by Competent Authority", documentUrl: "/documents/Fire Safety.pdf" },
+    { title: "Copy of DEO Certificate submitted for Affiliation/Upgradation", documentUrl: "/documents/Self Certification.pdf" },
+    { title: "Copies of Valid Water, Health and Sanitation Certificates", documentUrl: "/documents/copies-of-valid-water-health-and-sanitation-certificates.pdf" },
+    { title: "Certificate of Land and Lease Deed", documentUrl: "/documents/Certificate of Land Lease.pdf" },
   ];
 
   // C. Result and Academics Documents
   const academicsDocuments = [
-    { title: "Fee Structure of the School", documentUrl: "/documents/fee-structure.pdf" },
-    { title: "Annual Academic Calendar", documentUrl: "/documents/academic-calendar.pdf" },
-    { title: "List of School Management Committee (SMC)", documentUrl: "/documents/smc-list.pdf" },
-    { title: "List of Parents Teachers' Association (PTA) Members", documentUrl: "/documents/pta-list.pdf" },
+    { title: "Fee Structure of the School", documentUrl: "" },
+    { title: "Annual Academic Calendar", documentUrl: "" },
+    { title: "List of School Management Committee (SMC)", documentUrl: "/documents/SMC.pdf" },
+    { title: "List of Parents Teachers' Association (PTA) Members", documentUrl: "/documents/PTA.pdf" },
   ];
 
   // Result Data (from image)
@@ -305,7 +314,7 @@ export default function PublicDisclosurePage() {
 
         {/* MAIN CONTENT */}
         <div ref={printRef} className="max-w-7xl mx-auto px-4 py-8 space-y-8">
-          
+
           {/* ==================== A. GENERAL INFORMATION ==================== */}
           <Reveal>
             <Card>
@@ -328,8 +337,8 @@ export default function PublicDisclosurePage() {
           {/* ==================== B. DOCUMENTS & INFORMATION ==================== */}
           <Reveal delay={100}>
             <Card>
-              <SectionHeader 
-                title="B. Documents & Information" 
+              <SectionHeader
+                title="B. Documents & Information"
                 icon={DocumentTextIcon}
                 subtitle="Click 'Preview' to view any document"
               />
@@ -345,7 +354,7 @@ export default function PublicDisclosurePage() {
           <Reveal delay={200}>
             <Card>
               <SectionHeader title="C. Result and Academics" icon={AcademicCapIcon} />
-              
+
               {/* Academics Documents Section */}
               <div className="border-b border-gray-100">
                 <div className="px-6 py-3 bg-gray-50/50">
@@ -367,7 +376,7 @@ export default function PublicDisclosurePage() {
                     Board Examination Results
                   </h3>
                 </div>
-                
+
                 {/* Class X Result */}
                 <div className="px-6 py-3">
                   <h4 className="text-sm font-medium text-[#0b3a6a] mb-2">Result Class: X</h4>
@@ -379,7 +388,7 @@ export default function PublicDisclosurePage() {
                       <div className="px-2">PASS %</div>
                       <div className="px-2">REMARKS</div>
                     </div>
-                    <ResultTable 
+                    <ResultTable
                       year={resultData.classX.year}
                       registered={resultData.classX.registered}
                       passed={resultData.classX.passed}
@@ -400,7 +409,7 @@ export default function PublicDisclosurePage() {
                       <div className="px-2">PASS %</div>
                       <div className="px-2">REMARKS</div>
                     </div>
-                    <ResultTable 
+                    <ResultTable
                       year={resultData.classXII.year}
                       registered={resultData.classXII.registered}
                       passed={resultData.classXII.passed}
@@ -434,14 +443,14 @@ export default function PublicDisclosurePage() {
                   <InfraStatCard key={idx} number={stat.number} label={stat.label} icon={stat.icon} />
                 ))}
               </div>
-              
+
               {/* YouTube Video Link */}
               <div className="px-6 pb-6 pt-2 border-t border-gray-100 mt-2">
                 <div className="flex items-center justify-between p-3 bg-gradient-to-r from-red-50 to-orange-50 rounded-xl border border-red-100">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-red-100 rounded-lg">
                       <svg className="h-5 w-5 text-red-600" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.376.505A3.016 3.016 0 0 0 .502 6.186C0 8.066 0 12 0 12s0 3.934.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.376-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.934 24 12 24 12s0-3.934-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.376.505A3.016 3.016 0 0 0 .502 6.186C0 8.066 0 12 0 12s0 3.934.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.376-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.934 24 12 24 12s0-3.934-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                       </svg>
                     </div>
                     <div>
@@ -449,8 +458,8 @@ export default function PublicDisclosurePage() {
                       <p className="text-xs text-gray-500">YouTube video of school inspection covering infrastructure</p>
                     </div>
                   </div>
-                  <a 
-                    href="#" 
+                  <a
+                    href="#"
                     onClick={(e) => { e.preventDefault(); alert("Video link will be added soon."); }}
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-red-600 hover:text-red-700 bg-red-50 px-3 py-1.5 rounded-lg transition-colors"
                   >

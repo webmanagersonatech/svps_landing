@@ -1,5 +1,5 @@
 import SEO from "../../../components/SEO";
-import { useRouter } from "next/router";
+import Link from "next/link";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -71,13 +71,19 @@ export default function HeritagePage() {
       year: "1958",
       title: "Thiagarajar Polytechnic College",
       description:
-        "The seed of educational service was sown in Salem by Philanthropist Kalathanthai Sri.Karumuttu Thiagarajar Chettiar.",
+        "The seed of educational service was sown in Salem by Philanthropist Kalathanthai Sri. Karumuttu Thiagarajar Chettiar.",
     },
     {
       year: "1997",
       title: "Sona College of Technology",
       description:
-        "Established under the vision of Sri.M.S.Chockalingam, becoming a forerunner in technical education.",
+        "Established under the vision of Sri. M.S. Chockalingam, becoming a forerunner in technical education.",
+    },
+    {
+      year: "1998 ",
+      title: "SSBM – Sona School of Business & Management",
+      description:
+        "A new milestone in management education, empowering future leaders with industry-focused learning, innovation, and entrepreneurial excellence.",
     },
     {
       year: "2017",
@@ -91,6 +97,7 @@ export default function HeritagePage() {
       description:
         "Our new venture to enlighten young minds with holistic, innovative education.",
     },
+
   ];
 
   return (
@@ -311,12 +318,12 @@ export default function HeritagePage() {
                 </Reveal>
 
                 <Reveal delay={350}>
-                  <button
-                    onClick={() => setIsPopupOpen(true)}
-                    className="bg-primary text-white px-8 py-2 rounded-r-full hover:scale-105 active:scale-95 transition duration-300 shadow-md hover:shadow-lg"
+                  <Link
+                    href="/admission/admission-contact"
+                    className="inline-block bg-primary text-white px-8 py-2 rounded-r-full hover:scale-105 active:scale-95 transition duration-300 shadow-md hover:shadow-lg"
                   >
                     Enquire Now
-                  </button>
+                  </Link>
                 </Reveal>
               </div>
 
