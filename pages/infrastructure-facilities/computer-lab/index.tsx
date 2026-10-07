@@ -134,7 +134,7 @@ export default function ComputerLabPage() {
                                 {/* main image with asymmetric rounded corners */}
                                 <div className="relative w-full h-full max-h-72 md:max-h-80 overflow-hidden rounded-tl-[2.5rem] rounded-br-[2.5rem] rounded-tr-2xl rounded-bl-2xl shadow-xl">
                                     <Image
-                                        src="https://img.magnific.com/free-photo/empty-lecture-hall-with-modern-projection-equipment-generated-by-ai_188544-26095.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_test_b&w=740&q=80"
+                                        src="/infra/Bright-School-Coding-Lab.webp"
                                         alt="Students working in the computer lab"
                                         width={1200}
                                         height={800}
@@ -159,75 +159,66 @@ export default function ComputerLabPage() {
                 </section>
 
 
-                {/* FULL-BLEED SIGNATURE BAND */}
-                <Reveal>
-                    <section className="relative w-full h-[60vh] min-h-[420px]">
-                        {/* Background image (optional, remove if you want just the collage) */}
-                        <Image
-                            src="/homeimages/computer-lab.webp"
-                            alt="Rows of computers in the school lab"
-                            fill
-                            sizes="100vw"
-                            className="absolute inset-0 w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+            {/* FULL-BLEED SIGNATURE BAND */}
+<Reveal>
+    <section className="relative w-full h-[60vh] min-h-[420px] overflow-hidden">
+        {/* Background image */}
+        <Image
+            src="/homeimages/computer-lab.webp"
+            alt="Rows of computers in the school lab"
+            fill
+            priority
+            sizes="100vw"
+            className="absolute inset-0 w-full h-full object-cover"
+        />
 
-                        {/* Content container with split layout */}
-                        <div className="relative h-full flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-0">
+        {/* Black overlay ABOVE the image */}
+        <div className="absolute inset-0 bg-black/60" />
+        {/* Optional: gradient for extra depth — remove if you want flat overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30" />
 
-                            {/* LEFT: Text Content */}
-                            <div className="relative z-10 w-full md:w-1/2 flex flex-col justify-center h-full md:pr-8">
-                                <p className="text-white/70 text-sm font-semibold tracking-wide uppercase mb-2">
-                                    Inside the Lab
-                                </p>
-                                <h2 className="text-3xl md:text-5xl font-serif font-bold text-white max-w-2xl leading-tight">
-                                    Every seat, a workstation. Every session, a step forward.
-                                </h2>
-                            </div>
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-0">
 
-                            {/* RIGHT: Image Collage */}
-                            <div className="relative w-full md:w-1/2 h-[440px] md:h-[500px] mt-6 md:mt-0">
-                                {/* Back photo */}
-                                <div className="absolute top-0 right-0 w-[70%] h-[62%] rotate-[4deg] shadow-xl overflow-hidden border-4 border-white">
-                                    <Image
-                                        src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&h=900&fit=crop"
-                                        alt="Rows of computers in the school lab"
-                                        width={1200}
-                                        height={800}
-                                        sizes="(min-width: 1024px) 50vw, 100vw"
-                                        className="w-full h-full object-cover"
-                                    />
-                                </div>
+            {/* LEFT: Text Content */}
+            <div className="w-full md:w-1/2 flex flex-col justify-center h-full md:pr-8">
+                <p className="text-white/70 text-sm font-semibold tracking-wide uppercase mb-2">
+                    Inside the Lab
+                </p>
+                <h2 className="text-3xl md:text-5xl font-serif font-bold text-white max-w-2xl leading-tight">
+                    Every seat, a workstation. Every session, a step forward.
+                </h2>
+            </div>
 
-                                {/* Front photo, overlapping bottom-left */}
-                                <div className="absolute bottom-0 left-0 w-[62%] h-[55%] -rotate-[3deg] shadow-xl overflow-hidden border-4 border-white">
-                                    <Image
-                                        src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=900&h=1100&fit=crop"
-                                        alt="Student focused on coding assignment"
-                                        width={1200}
-                                        height={800}
-                                        sizes="(min-width: 1024px) 50vw, 100vw"
-                                        className="w-full h-full object-cover"
-                                    />
-                                </div>
+            {/* RIGHT: Image Collage */}
+            <div className="relative w-full md:w-1/2 h-[440px] md:h-[500px] mt-6 md:mt-0">
+                {/* Back photo */}
+                <div className="absolute top-0 right-0 w-[70%] h-[62%] rotate-[4deg] shadow-xl overflow-hidden border-4 border-white">
+                    <Image
+                        src="/infra/Bright Classroom-Computer-Lab-Learning.webp"
+                        alt="Rows of computers in the school lab"
+                        width={1200}
+                        height={800}
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
 
-                                {/* Small accent card, tucked between */}
-                                <div className="absolute top-[52%] left-[8%] w-[38%] h-[30%] rotate-[6deg] shadow-lg overflow-hidden border-4 border-white z-10">
-                                    <Image
-                                        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&h=700&fit=crop"
-                                        alt="Close-up of student hands typing"
-                                        width={1200}
-                                        height={800}
-                                        sizes="(min-width: 1024px) 50vw, 100vw"
-                                        className="w-full h-full object-cover"
-                                    />
-                                </div>
-
-                            
-                            </div>
-                        </div>
-                    </section>
-                </Reveal>
+                {/* Front photo, overlapping bottom-left */}
+                <div className="absolute bottom-0 left-0 w-[62%] h-[55%] -rotate-[3deg] shadow-xl overflow-hidden border-4 border-white">
+                    <Image
+                        src="/infra/Bright-Indian-School-Computer-Lab.webp"
+                        alt="Student focused on coding assignment"
+                        width={1200}
+                        height={800}
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
+            </div>
+        </div>
+    </section>
+</Reveal>
 
 
 

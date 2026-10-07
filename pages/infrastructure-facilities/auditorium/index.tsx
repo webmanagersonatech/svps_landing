@@ -83,7 +83,7 @@ function AuditoriumFilmstrip() {
       span: "md:row-span-2",
     },
     {
-      src: "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=900&q=80",
+      src: "/infra/auditorium-5.webp",
       alt: "Tiered auditorium seating",
       title: "Tiered Seating",
     },
@@ -93,7 +93,7 @@ function AuditoriumFilmstrip() {
       title: "Stage Lighting",
     },
     {
-      src: "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=900&q=80",
+      src: "/infra/auditorium-7.webp",
       alt: "School event on stage",
       title: "Annual Day",
       span: "md:row-span-2",
@@ -104,7 +104,7 @@ function AuditoriumFilmstrip() {
       title: "The Grand Hall",
     },
     {
-      src: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=900&q=80",
+      src: "/infra/auditorium-4.webp",
       alt: "Award ceremony",
       title: "Award Ceremony",
     },

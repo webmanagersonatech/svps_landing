@@ -79,7 +79,7 @@ const nodes: NodeType[] = [
         id: 7,
         label: "Auditorium",
         imageUrl:
-            "https://img.magnific.com/premium-photo/hightech-school-auditorium-with-stateoftheart-audiovisual-equipment-isolated-white-background_660230-109474.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
+            "/infra/auditorium-1.webp",
         href: "/infrastructure-facilities/auditorium",
         color: "#DB2777",
         accentIcon: <FaChalkboardTeacher />, // You can replace with a more appropriate icon like FaMicrophone or FaTheaterMasks

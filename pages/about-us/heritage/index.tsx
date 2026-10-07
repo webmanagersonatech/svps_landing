@@ -92,7 +92,13 @@ export default function HeritagePage() {
         "The most sought-after Arts and Science college in Salem district, known for excellence and quality.",
     },
     {
-      year: "2025",
+      year: "2020",
+      title: "Sona Medical College of Naturopathy and Yoga",
+      description:
+        "A new milestone in holistic healthcare education, focusing on naturopathy, yoga, preventive wellness, natural healing, and compassionate healthcare practices.",
+    },
+    {
+      year: "2020 ",
       title: "Sona Valliappa Public School",
       description:
         "Our new venture to enlighten young minds with holistic, innovative education.",
@@ -230,7 +236,7 @@ export default function HeritagePage() {
                         {/* Decorative ribbon/tag */}
                         <div className="absolute -top-2 -right-2 w-16 h-16 overflow-hidden">
                           <div className="absolute top-4 right-[-20px] w-28 bg-primary text-white text-xs font-bold py-1 rotate-45 text-center shadow-md">
-                            {i === 0 ? "Latest" : `#${i + 1}`}
+                            {`#${i + 1}`}
                           </div>
                         </div>
 
@@ -248,15 +254,15 @@ export default function HeritagePage() {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                           </div>
-                          <h4 className="text-lg font-bold text-secondary group-hover:text-primary transition-colors flex-1">
+                          <h4 className=" font-bold text-secondary group-hover:text-primary transition-colors flex-1">
                             {item.title}
                           </h4>
                         </div>
 
                         {/* Description */}
-                        <p className="text-gray-600 text-sm leading-relaxed">
+                        {/* <p className="text-gray-600 text-sm leading-relaxed">
                           {item.description}
-                        </p>
+                        </p> */}
 
                         {/* Decorative bottom line */}
                         <div className="mt-4 h-0.5 w-0 bg-primary group-hover:w-full transition-all duration-500" />
@@ -280,9 +286,9 @@ export default function HeritagePage() {
 
                 <div className="flex flex-wrap justify-center md:justify-start gap-8 md:gap-12 text-center">
                   {[
-                    ["75,000+", "Students Transformed", "Diamonds Polished"],
-                    ["60+", "Years of Legacy", "Educational Excellence"],
-                    ["30+", "Research Centers", "Catering to Society"],
+                    ["75,000+", "Students Transformed", ""],
+                    ["60+", "Years of Legacy", ""],
+                    ["30+", "Research Centers", ""],
 
                   ].map((item, i) => (
                     <Reveal key={i} delay={i * 120}>

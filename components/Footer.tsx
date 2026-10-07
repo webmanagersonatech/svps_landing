@@ -18,13 +18,13 @@ const Footer = () => {
   const aboutLinks = [
     { name: "About Us", href: "/about-us/heritage" },
     { name: "Academics", href: "/academics/curriculum-and-pedagogical-processes" },
-    { name: "Infrastructure", href: "/infrastructure-facilities/classrooms" },
+  
     { name: "Admission", href: "/admission/admission-procedure" },
     { name: "Contact Us", href: "/contact-us" },
   ];
 
   const resourceLinks = [
-    { name: "Student Activities", href: "/activities/dramatics-role-play" },
+    { name: "Infrastructure", href: "/infrastructure-facilities/classrooms" },
     { name: "Mandatory Disclosure", href: "/public-disclosure" },
     { name: "News & Events", href: "/news-and-events" },
     { name: "Admission Contact", href: "/admission/admission-contact" },
