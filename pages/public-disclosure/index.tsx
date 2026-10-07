@@ -116,8 +116,8 @@ function DocumentRow({ title, documentUrl, isAvailable = true }: { title: string
         <button
           onClick={handlePreview}
           className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all ${documentUrl
-              ? "text-[#0b3a6a] hover:bg-[#0b3a6a]/10 border border-[#0b3a6a]/20"
-              : "text-gray-400 bg-gray-100 cursor-not-allowed"
+            ? "text-[#0b3a6a] hover:bg-[#0b3a6a]/10 border border-[#0b3a6a]/20"
+            : "text-gray-400 bg-gray-100 cursor-not-allowed"
             }`}
           disabled={!documentUrl}
         >
@@ -459,8 +459,9 @@ export default function PublicDisclosurePage() {
                     </div>
                   </div>
                   <a
-                    href="#"
-                    onClick={(e) => { e.preventDefault(); alert("Video link will be added soon."); }}
+                    href="https://www.youtube.com/watch?v=i9R1LIC9ryo"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-red-600 hover:text-red-700 bg-red-50 px-3 py-1.5 rounded-lg transition-colors"
                   >
                     <LinkIcon className="h-3.5 w-3.5" />
