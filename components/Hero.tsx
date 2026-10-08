@@ -105,35 +105,50 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40 z-10"></div>
         <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/95 via-black/80 to-transparent z-10"></div>
 
-        {backgroundImages.map((img, index) => (
-          <motion.div
-            key={index}
-            className="absolute inset-0 w-full h-full"
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{
-              opacity: currentBgIndex === index ? 1 : 0,
-              scale: currentBgIndex === index ? 1 : 1.1,
-            }}
-            transition={{
-              opacity: { duration: 1.5, ease: "easeInOut" },
-              scale: { duration: 8, ease: "easeInOut" }
-            }}
-            style={{ zIndex: currentBgIndex === index ? 1 : 0 }}
-          >
-            <Image
-              src={img}
-              alt="Background"
-              fill
-              sizes="100vw"
-              priority={index === 0}
-              className="object-cover"
-              style={{
-                transform: currentBgIndex === index ? 'scale(1.05)' : 'scale(1)',
-                transition: 'transform 8s ease-in-out',
+        {/* STATIC first image — renders immediately, no animation on load */}
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{ zIndex: currentBgIndex === 0 ? 1 : 0 }}
+        >
+          <Image
+            src={backgroundImages[0]}
+            alt="Background"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover"
+          />
+        </div>
+
+        {/* Animated images for crossfade (skip index 0) */}
+        {backgroundImages.slice(1).map((img, i) => {
+          const index = i + 1;
+          return (
+            <motion.div
+              key={index}
+              className="absolute inset-0 w-full h-full"
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: currentBgIndex === index ? 1 : 0,
+                scale: currentBgIndex === index ? 1.05 : 1,
               }}
-            />
-          </motion.div>
-        ))}
+              transition={{
+                opacity: { duration: 1.5, ease: "easeInOut" },
+                scale: { duration: 8, ease: "easeInOut" },
+              }}
+              style={{ zIndex: currentBgIndex === index ? 1 : 0 }}
+            >
+              <Image
+                src={img}
+                alt="Background"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </motion.div>
+          );
+        })}
+
         <div className="absolute inset-0 bg-black/20 z-10"></div>
       </div>
 
