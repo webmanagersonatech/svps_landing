@@ -193,36 +193,53 @@ export default function TeacherTrainingPage() {
                                     so they can inspire and nurture every student.
                                 </p>
 
-                               
-                             
+
+
                                 <p className="text-gray-700 leading-relaxed text-justify ">
                                     Our comprehensive training programmes equip teachers with subject
                                     expertise, psychological understanding, technological knowledge,
                                     and modern teaching skills.
                                 </p>
 
-                                <div className="bg-white  shadow-sm border border-gray-100 p-6 ">
+                                <div >
                                     <p className="text-gray-700 leading-relaxed  font-semibold text-secondary mb-3">
                                         SVPS Teaching Methodologies
                                     </p>
-                                    <ul className="grid sm:grid-cols-2 gap-2 ">
-                                        {[
-                                            "Teaching Students with Psychological Approach",
-                                            "Application oriented with demonstration Method",
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2">
+                                        {/* First Half */}
+                                        <ul className="space-y-2">
+                                            {[
+                                                "Teaching Students with Psychological Approach",
+                                                "Application oriented with demonstration Method",
+                                                "Chalk and talk Method",
+                                            ].map((item, index) => (
+                                                <li
+                                                    key={index}
+                                                    className="flex items-start bg-white  shadow-sm p-1 border border-gray-100 gap-2 text-gray-700"
+                                                >
+                                                    <span className="text-primary mt-1">✦</span>
+                                                    <span>{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
 
-
-                                            "Chalk and talk Method",
-                                            "Student Centric Method",
-                                            "Best Teaching Practices",
-                                            "Innovative Method",
-                                        
-                                        ].map((item, index) => (
-                                            <li key={index} className="flex items-start gap-2 text-gray-700 ">
-                                                <span className="text-primary mt-1">✦</span>
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
+                                        {/* Second Half */}
+                                        <ul className="space-y-2">
+                                            {[
+                                                "Student Centric Method",
+                                                "Best Teaching Practices",
+                                                "Innovative Method",
+                                            ].map((item, index) => (
+                                                <li
+                                                    key={index}
+                                                    className="flex items-end bg-white  shadow-sm border border-gray-100 p-[11px] gap-2 text-gray-700"
+                                                >
+                                                    <span className="text-primary mt-1">✦</span>
+                                                    <span>{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </Reveal>
@@ -262,7 +279,7 @@ export default function TeacherTrainingPage() {
                 </div>
 
 
-    {/* --- ADDED: TEACHER TRAINING PROGRAMMES & WORKSHOPS --- */}
+                {/* --- ADDED: TEACHER TRAINING PROGRAMMES & WORKSHOPS --- */}
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid md:grid-cols-2 gap-8">
                         <div className="bg-white shadow-sm border border-gray-100 p-8 hover:shadow-md transition-shadow">
