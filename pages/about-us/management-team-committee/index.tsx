@@ -416,18 +416,13 @@ export default function ManagementProfilesPage() {
                                                 </div>
 
                                                 {/* DESCRIPTION */}
-                                                <div className="mt-3 space-y-2 text-gray-600  leading-relaxed">
+                                                <div className="mt-3 space-y-2 text-gray-600  leading-relaxed text-justify">
                                                     {member.description.map((para, i) => (
                                                         <p key={i}>{para}</p>
                                                     ))}
                                                 </div>
 
-                                                {/* ACHIEVEMENTS */}
-                                                {member.achievements?.length > 0 && (
-                                                    <div className="mt-4 pt-3 border-t border-gray-100">
-
-                                                    </div>
-                                                )}
+                                            
 
                                             </div>
                                         </div>

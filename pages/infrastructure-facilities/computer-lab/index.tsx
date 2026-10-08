@@ -111,13 +111,13 @@ export default function ComputerLabPage() {
                                 <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary leading-tight">
                                     A Lab Built for <span className="text-primary">Tomorrow</span>
                                 </h2>
-                                <p className="text-gray-700 leading-relaxed ">
+                                <p className="text-gray-700 leading-relaxed text-justify ">
                                     Our Computer Lab is equipped with modern systems and high-speed connectivity,
                                     giving students hands-on access to technology from an early age. Structured
                                     sessions cover everything from basic digital literacy to programming and
                                     problem-solving.
                                 </p>
-                                <p className="text-gray-700 leading-relaxed ">
+                                <p className="text-gray-700 leading-relaxed text-justify ">
                                     Guided by trained faculty, students learn to use technology safely, think
                                     logically, and build the computational skills they will carry into higher
                                     studies and beyond.

@@ -181,11 +181,11 @@ export default function PrincipalMessagePage() {
                             </Reveal>
 
                             <Reveal delay={100}>
-                                <p className="text-gray-700 leading-relaxed">
+                                <p className="text-gray-700 leading-relaxed text-justify">
                                     The Sona Group of Institutions has built a reputation for the quality of its work for more than 60 years in the field of Education and Industry.
                                 </p>
 
-                                <p className="text-gray-700 leading-relaxed mt-2">
+                                <p className="text-gray-700 leading-relaxed mt-2 text-justify">
                                     Our school provides an exciting and safe atmosphere, where the needs of the children are nurtured. The school prides itself on its stimulating curriculum and provides a happy environment, so that the children become independent learners in future.
                                 </p>
                             </Reveal>
@@ -197,7 +197,7 @@ export default function PrincipalMessagePage() {
 
 
                 {/* FULL MESSAGE / PHILOSOPHY SECTION - CLIENT CONTENT (exactly as provided) */}
-                <div className="max-w-7xl mx-auto px-4 space-y-5 text-gray-700 leading-relaxed">
+                <div className="max-w-7xl mx-auto px-4 space-y-5 text-gray-700 leading-relaxed text-justify">
                     <Reveal delay={0}>
                         <p>
                             The Institution strongly believes that when children develop practical learning as a life skill and see the real life applications of the knowledge they gather, they will become lifelong learners.
@@ -243,7 +243,7 @@ export default function PrincipalMessagePage() {
                         </Reveal>
 
                         <Reveal delay={250}>
-                            <p className="text-gray-700 mb-6 leading-relaxed max-w-2xl mx-auto">
+                            <p className="text-gray-700 mb-6 leading-relaxed max-w-2xl mx-auto ">
                                 I personally invite you to visit our campus, meet our dedicated team,
                                 and experience the nurturing environment at Sona Valliappa Public School.
                                 Let's work together to shape your child's bright future.

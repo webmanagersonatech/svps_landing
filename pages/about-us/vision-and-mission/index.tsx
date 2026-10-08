@@ -169,13 +169,13 @@ export default function VisionMissionPage() {
                                 </Reveal>
 
                                 <Reveal delay={100}>
-                                    <p className="text-gray-700 leading-relaxed ">
+                                    <p className="text-gray-700 leading-relaxed text-justify">
                                         To nurture and develop young minds by providing a conducive and stimulating learning ambience, with balanced emphasis on curriculum, innovation and physical activity and make them responsible global citizens.
                                     </p>
                                 </Reveal>
 
                                 <Reveal delay={200}>
-                                    <p className="text-gray-700  leading-relaxed">
+                                    <p className="text-gray-700  leading-relaxed text-justify ">
                                         We envision a future where every student discovers their unique potential and
                                         is empowered with the knowledge, skills, and values to shape a sustainable and
                                         equitable world. Through excellence in teaching, groundbreaking research, and
@@ -202,7 +202,7 @@ export default function VisionMissionPage() {
                                 </Reveal>
 
                                 <Reveal delay={150}>
-                                    <ul className="space-y-3 mt-4">
+                                    <ul className="space-y-3 mt-4 text-justify">
                                         {[
                                             "To offer the best quality education with international emergent learning curriculum that is child-focused and teacher-facilitated.",
                                             "To provide a conducive, safe and stimulating environment fostering learning by doing with innovation.",

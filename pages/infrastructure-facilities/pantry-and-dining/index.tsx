@@ -187,7 +187,7 @@ export default function DiningPage() {
                   Guidelines
                 </h3>
 
-                <ul className="space-y-3 text-white/90 text-sm leading-relaxed">
+                <ul className="space-y-3 text-white/90 text-sm leading-relaxed text-justify">
                   <li>
                     Children must carry their own water bottle, snacks box, and lunch box.
                   </li>
@@ -258,7 +258,7 @@ export default function DiningPage() {
                   Not Allowed
                 </h3>
 
-                <ul className="space-y-4 text-white/90 text-sm leading-relaxed">
+                <ul className="space-y-4 text-white/90 text-sm leading-relaxed text-justify">
 
                   <li className="flex items-start gap-3">
                     <span className="mt-1 w-2 h-2 rounded-full bg-red-400" />
@@ -292,7 +292,7 @@ export default function DiningPage() {
 
                   <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/20 rounded-full blur-2xl" />
 
-                  <p className="relative z-10 text-sm text-white/90 leading-relaxed">
+                  <p className="relative z-10 text-sm text-white/90 leading-relaxed text-justify">
                     Parents are kindly requested to ensure children follow healthy eating
                     habits and avoid all junk food items.
                   </p>

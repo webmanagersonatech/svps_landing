@@ -166,7 +166,7 @@ function TimingsPanel() {
                                 "Time spent learning is time invested in your future."
                             </p>
 
-                            <p className="text-gray-600 text-base mb-5">
+                            <p className="text-gray-600 text-base mb-5 text-justify">
                                 Our school follows a well-structured schedule that provides
                                 students with ample time to learn, participate, interact, and
                                 enjoy their school day. We believe that beginning the day on
@@ -208,7 +208,7 @@ function TimingsPanel() {
                                 </tbody>
                             </table>
 
-                            <ul className="mt-5 space-y-2 text-base text-gray-600">
+                            <ul className="mt-5 space-y-2 text-base text-gray-600 text-justify">
                                 <li className="flex gap-2">
                                     <span className="text-primary font-bold">•</span>
                                     Students are encouraged to reach school a little before the

@@ -226,7 +226,7 @@ function LibraryGallery() {
                   {img.title}
                 </h3>
 
-                <p className="text-sm leading-relaxed text-gray-200 opacity-0 group-hover:opacity-100 translate-y-6 group-hover:translate-y-0 transition duration-500">
+                <p className="text-sm leading-relaxed text-justify text-gray-200 opacity-0 group-hover:opacity-100 translate-y-6 group-hover:translate-y-0 transition duration-500">
                   {img.description}
                 </p>
               </div>
@@ -416,14 +416,14 @@ export default function LibraryPage() {
                 Library – The Heart of Learning
               </h2>
 
-              <p className="text-gray-600  leading-relaxed mb-5">
+              <p className="text-gray-600  leading-relaxed text-justify mb-5">
                 Our library offers a cozy and thoughtfully designed reading space where
                 students can relax, explore, and enjoy the world of books. The warm and
                 comfortable atmosphere creates the perfect setting for quiet reading,
                 focused learning, and peaceful discovery.
               </p>
 
-              <p className="text-gray-600  leading-relaxed mb-5">
+              <p className="text-gray-600  leading-relaxed text-justify mb-5">
                 With a carefully curated collection of books and learning resources,
                 students can develop a love for reading while expanding their knowledge,
                 imagination, creativity, and independent thinking. Our library is more

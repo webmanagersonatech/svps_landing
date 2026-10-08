@@ -195,7 +195,7 @@ export default function MethodologyPage() {
                                 </h2>
                             </Reveal>
                             <Reveal delay={150}>
-                                <p className="text-gray-700 leading-relaxed ">
+                                <p className="text-gray-700 leading-relaxed text-justify ">
                                     At Sona Valliappa Public School, we believe that true learning happens when students
                                     are active participants, not passive listeners. Our methodology moves away from
                                     one‑way lectures and embraces dynamic, student‑centred strategies that respect
@@ -203,7 +203,7 @@ export default function MethodologyPage() {
                                 </p>
                             </Reveal>
                             <Reveal delay={200}>
-                                <p className="text-gray-700 leading-relaxed">
+                                <p className="text-gray-700 leading-relaxed text-justify">
                                     Every classroom is a thinking ecosystem – built on <span className="font-semibold text-primary">curiosity</span>,{" "}
                                     <span className="font-semibold text-primary">dialogue</span>, and{" "}
                                     <span className="font-semibold text-primary">reflection</span>. Our teachers are facilitators

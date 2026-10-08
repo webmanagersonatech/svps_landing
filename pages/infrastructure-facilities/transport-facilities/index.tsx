@@ -107,14 +107,14 @@ export default function TransportPage() {
       <span className="text-primary block">Every Single Day</span>
     </h2>
 
-    <p className="text-gray-600 mb-4 ">
+    <p className="text-gray-600 mb-4 leading-relaxed text-justify ">
       Our safe, reliable, and comfortable school transport service is designed
       to provide students with a smooth and convenient journey to and from
       school. Our buses are maintained with care and operated with a strong
       focus on student safety, comfort, and punctuality.
     </p>
 
-    <p className="text-gray-600 ">
+    <p className="text-gray-600 leading-relaxed text-justify ">
       With responsible drivers and supportive staff, we strive to create a
       secure and pleasant travel experience for every student. Our transport
       service gives parents peace of mind while ensuring students reach school

@@ -133,13 +133,13 @@ export default function CreativeLearningPage() {
                                 <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary leading-tight">
                                     Learning that Sparks <span className="text-primary">Imagination</span>
                                 </h2>
-                                <p className="text-gray-700 leading-relaxed ">
+                                <p className="text-gray-700 leading-relaxed text-justify ">
                                     Our creative learning approach combines classroom knowledge with practical activities,
                                     projects, discussions, and hands-on experiences that make learning enjoyable and
                                     meaningful. Students are encouraged to ask questions, express their ideas, solve
                                     problems, and discover their individual talents.
                                 </p>
-                                <p className="text-gray-700 leading-relaxed ">
+                                <p className="text-gray-700 leading-relaxed text-justify ">
                                     By nurturing imagination and independent thinking, we help students develop the
                                     confidence and skills they need to become innovative, curious, and lifelong learners.
                                 </p>

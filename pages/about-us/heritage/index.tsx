@@ -169,7 +169,7 @@ export default function HeritagePage() {
               </Reveal>
 
               <Reveal delay={100}>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed text-justify">
                   Education is the most powerful tool that brings in changes in everyone's life.
                   Rightly, with this noble and lofty vision, the Philanthropist
                   Kalathanthai Sri.Karumuttu Thiagarajar Chettiar, the textile wizard,
@@ -179,7 +179,7 @@ export default function HeritagePage() {
               </Reveal>
 
               <Reveal delay={200}>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed text-justify">
                   This seed had its rapid growth and blossomed into a magnificent tree with the relentless and magnanimous services of Sri.M.S.Chockalingam. He turned the institution to be a forerunner in technical education with its rich academic standards and is being celebrated as the most respected institution across the nation with 50000+ Alumni occupying top ranks in various multinational forums. His ardent desire in offering higher education led to the establishment of “Sona College of Technology” in 1997.
                 </p>
               </Reveal>
@@ -189,7 +189,7 @@ export default function HeritagePage() {
         </div>
 
         {/* STORY */}
-        <div className="max-w-7xl  mx-auto px-4 space-y-4 text-gray-700  leading-relaxed">
+        <div className="max-w-7xl  mx-auto px-4 space-y-4 text-gray-700  leading-relaxed text-justify">
           {[
             `Following the footsteps of the two legendary personalities, the educational legacy of Sona Group is being multiplied under the vibrant leadership of Sri.C.Valliappa, the Chairman and the Vice Chairmen Sri.Chocko Valliappa and Sri.Thyagu Valliappa, whose dedicated services with commitment has made SCT, the first offshoot of Sona Group to root strongly with its emergence as a top ranking engineering college in the nation and offers Under Graduate, Post Graduate and Doctoral programmes in engineering, technology and business,recognized by SIRO with 30+ research centers catering to the needs of society.`,
             `The relentless quest along with the public demand instilled great passion in the minds of the Chairman and the Vice Chairmen to establish yet another offshoot “Sona College of Arts and Science” in 2017 which has become the most sought after Arts and Science college in and around Salem district within a very short span of its inception for its excellent quality and standards.`,
@@ -316,7 +316,7 @@ export default function HeritagePage() {
                 </Reveal>
 
                 <Reveal delay={250}>
-                  <p className="text-gray-700 mb-6 leading-relaxed">
+                  <p className="text-gray-700 mb-6 leading-relaxed text-justify">
                     Having become self-reliant and progressive in offering higher education,
                     the Sona Group now intends to enlighten the <span className="font-bold text-primary">uncut diamonds</span>,
                     the young children with its new venture.

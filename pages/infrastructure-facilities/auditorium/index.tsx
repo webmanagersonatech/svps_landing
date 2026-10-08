@@ -330,11 +330,11 @@ export default function AuditoriumPage() {
                 Auditorium – Where Every Voice Finds Its Stage
               </h2>
 
-              <p className="text-gray-600  leading-relaxed mb-5">
+              <p className="text-gray-600  leading-relaxed text-justify mb-5">
                 Our spacious and well-equipped auditorium provides a vibrant platform for students to express themselves, showcase their talents, and celebrate their achievements. Designed to host a variety of school events, cultural programmes, seminars, competitions, performances, and special occasions, it creates an engaging experience for students and the school community.
               </p>
 
-              <p className="text-gray-600  leading-relaxed mb-5">
+              <p className="text-gray-600  leading-relaxed text-justify mb-5">
                 With a comfortable seating arrangement and a welcoming atmosphere, our auditorium encourages students to build confidence, develop communication skills, and embrace creativity while making every event a memorable experience.
               </p>
             </div>

@@ -133,7 +133,7 @@ const GrowthSkillsComponent2 = () => {
                                 </motion.h1>
 
                                 <motion.p
-                                    className="text-sm sm:text-base text-secondary mb-4 sm:mb-6  mx-auto md:mx-0 leading-relaxed"
+                                    className=" text-secondary mb-4 sm:mb-6  mx-auto md:mx-0 leading-relaxed text-justify"
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                                     transition={{ duration: 0.6, delay: 0.8 }}

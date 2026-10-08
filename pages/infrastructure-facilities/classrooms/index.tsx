@@ -115,7 +115,7 @@ export default function ClassroomPage() {
                                     Smart Classrooms
                                 </h2>
 
-                                <p className="text-gray-600 mb-4 leading-relaxed ">
+                                <p className="text-gray-600 mb-4 leading-relaxed text-justify ">
                                     Our smart classrooms provide a modern, engaging, and student-friendly
                                     learning environment designed to make education more interactive and
                                     effective. Equipped with digital learning tools and technology-enabled
@@ -123,7 +123,7 @@ export default function ClassroomPage() {
                                     through visuals, presentations, videos, and interactive activities.
                                 </p>
 
-                                <p className="text-gray-600 leading-relaxed">
+                                <p className="text-gray-600 leading-relaxed text-justify">
                                     We maintain a comfortable, positive, and distraction-free environment
                                     where students can learn with confidence, participate actively, and
                                     develop their curiosity and creativity. Our smart classrooms bring

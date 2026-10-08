@@ -129,21 +129,21 @@ export default function MedicalFacilitiesPage() {
                 Caring for Every Child
               </h2>
 
-              <p className="text-gray-600 mb-4  leading-relaxed">
+              <p className="text-gray-600 mb-4  leading-relaxed text-justify">
                 The school provides comprehensive medical support to ensure that every
                 student is safe and cared for throughout the day.
               </p>
 
-              <p className="text-gray-600 leading-relaxed  mb-4">
+              <p className="text-gray-600 leading-relaxed text-justify  mb-4">
                 From routine health checkups to emergency care, our facilities are
                 equipped to handle every situation efficiently.
               </p>
-              <p className="text-gray-600 leading-relaxed  mb-4">
+              <p className="text-gray-600 leading-relaxed text-justify  mb-4">
                 From routine health checkups to emergency care, our facilities are
                 equipped to handle every situation efficiently.
               </p>
 
-              <p className="text-gray-600 leading-relaxed ">
+              <p className="text-gray-600 leading-relaxed text-justify ">
                 From routine health checkups to emergency care, our facilities are
                 equipped to handle every situation efficiently.
               </p>

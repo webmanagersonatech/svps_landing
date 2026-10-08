@@ -3,6 +3,14 @@ import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
 import {
+    Palette,
+    Trophy,
+    Compass,
+    Sparkles,
+    BookOpen,
+    Circle,
+} from "lucide-react";
+import {
     AcademicCapIcon,
     BeakerIcon,
     BookOpenIcon,
@@ -122,37 +130,72 @@ export default function AllRoundDevelopmentPage() {
                     <div className="absolute bottom-20 right-0 w-80 h-80 bg-secondary/5 rounded-full blur-3xl -z-10"></div>
 
                     <div className="grid md:grid-cols-2 gap-12 items-center">
-                      <Reveal>
-    <div className="space-y-6">
-        <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary leading-tight">
-            All Round <span className="text-primary">Development</span>
-        </h2>
-        
-        <ul className="space-y-4 text-gray-700 leading-relaxed  list-disc pl-6">
-            <li>
-                At SVPS, Students study the Subjects thoroughly, understand and apply it practically.
-            </li>
-            <li>
-                Students are moulded to be ever interested, choosing their area of option in co-curricular and extra-curricular activities.
-            </li>
-            <li>
-                Every Student is encouraged to learn many Arts and Cultures, beyond their prescribed Subjects. Students can explore their Arts Skills and Science Talents as:
-            </li>
-        </ul>
-        
-    <div className="flex flex-wrap gap-x-6 gap-y-2 mt-4 justify-center">
-    <span className="text-gray-700 font-medium text-sm">Amazing Artists</span>
-    <span className="text-gray-400">|</span>
-    <span className="text-gray-700 font-medium text-sm">All Round Athletes</span>
-    <span className="text-gray-400">|</span>
-    <span className="text-gray-700 font-medium text-sm">Excelling Explorers</span>
-    <span className="text-gray-400">|</span>
-    <span className="text-gray-700 font-medium text-sm">Expertise Versatile</span>
-    <span className="text-gray-400">|</span>
-    <span className="text-gray-700 font-medium text-sm">Leading Resources</span>
-</div>
-    </div>
-</Reveal>
+                        <Reveal>
+                            <div className="space-y-6">
+                                <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary leading-tight">
+                                    All Round <span className="text-primary">Development</span>
+                                </h2>
+
+                                <ul className="space-y-4 text-gray-700 leading-relaxed text-justify  list-disc pl-6">
+                                    <li>
+                                        At SVPS, Students study the Subjects thoroughly, understand and apply it practically.
+                                    </li>
+                                    <li>
+                                        Students are moulded to be ever interested, choosing their area of option in co-curricular and extra-curricular activities.
+                                    </li>
+                                    <li>
+                                        Every Student is encouraged to learn many Arts and Cultures, beyond their prescribed Subjects. Students can explore their Arts Skills and Science Talents as:
+                                    </li>
+                                </ul>
+
+
+
+                                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 mt-4">
+                                    <div className="flex items-center gap-2">
+                                        <Palette className="w-4 h-4 text-primary" />
+                                        <span className="text-gray-700 font-medium text-sm">
+                                            Amazing Artists
+                                        </span>
+                                    </div>
+
+                                   
+
+                                    <div className="flex items-center gap-2">
+                                        <Trophy className="w-4 h-4 text-primary" />
+                                        <span className="text-gray-700 font-medium text-sm">
+                                            All Round Athletes
+                                        </span>
+                                    </div>
+
+                                 
+
+                                    <div className="flex items-center gap-2">
+                                        <Compass className="w-4 h-4 text-primary" />
+                                        <span className="text-gray-700 font-medium text-sm">
+                                            Excelling Explorers
+                                        </span>
+                                    </div>
+
+                                  
+
+                                    <div className="flex items-center gap-2">
+                                        <Sparkles className="w-4 h-4 text-primary" />
+                                        <span className="text-gray-700 font-medium text-sm">
+                                            Expertise Versatile
+                                        </span>
+                                    </div>
+
+                                   
+
+                                    <div className="flex items-center gap-2">
+                                        <BookOpen className="w-4 h-4 text-primary" />
+                                        <span className="text-gray-700 font-medium text-sm">
+                                            Leading Resources
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </Reveal>
 
                         <Reveal delay={100}>
                             <div className="relative">

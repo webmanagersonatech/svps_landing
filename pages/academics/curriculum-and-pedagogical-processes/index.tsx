@@ -335,7 +335,7 @@ export default function CurriculumPage() {
             </Reveal>
 
             <Reveal delay={150}>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-justify">
                     Our curriculum is designed to build a strong academic foundation
                     through conceptual and meaningful learning. We encourage students
                     to understand concepts deeply rather than simply memorising
@@ -344,7 +344,7 @@ export default function CurriculumPage() {
             </Reveal>
 
             <Reveal delay={175}>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-justify">
                     The learning experience focuses on curiosity, creativity, critical
                     thinking, problem-solving, and practical application. Through
                     academics, technology, co-curricular activities, sports, and life

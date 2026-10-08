@@ -188,24 +188,24 @@ export default function TeacherTrainingPage() {
                                     Teachers as <span className="text-primary">Lifelong Learners</span>
                                 </h2>
 
-                                <p className="text-gray-700 leading-relaxed ">
+                                <p className="text-gray-700 leading-relaxed text-justify ">
                                     Great teachers are lifelong learners. At SVPS, we empower our teachers
                                     so they can inspire and nurture every student.
                                 </p>
 
                                
                              
-                                <p className="text-gray-700 leading-relaxed ">
+                                <p className="text-gray-700 leading-relaxed text-justify ">
                                     Our comprehensive training programmes equip teachers with subject
                                     expertise, psychological understanding, technological knowledge,
                                     and modern teaching skills.
                                 </p>
 
-                                <div className="bg-white  shadow-sm border border-gray-100 p-6">
+                                <div className="bg-white  shadow-sm border border-gray-100 p-6 ">
                                     <p className="text-gray-700 leading-relaxed  font-semibold text-secondary mb-3">
                                         SVPS Teaching Methodologies
                                     </p>
-                                    <ul className="grid sm:grid-cols-2 gap-2">
+                                    <ul className="grid sm:grid-cols-2 gap-2 ">
                                         {[
                                             "Teaching Students with Psychological Approach",
                                             "Application oriented with demonstration Method",
@@ -274,7 +274,7 @@ export default function TeacherTrainingPage() {
                                     Teacher Training Programmes & Workshops
                                 </p>
                             </div>
-                            <ul className="space-y-3 ">
+                            <ul className="space-y-3 text-justify ">
                                 <li className="flex items-start gap-3 text-gray-700">
                                     <span className="text-primary mt-1">•</span>
                                     <span>At SVPS, we conduct Teacher Training Programmes by Skillful Experts.</span>
@@ -308,12 +308,12 @@ export default function TeacherTrainingPage() {
                                 </p>
                             </div>
                             <div className="space-y-4">
-                                <p className="text-gray-700   leading-relaxed">
+                                <p className="text-gray-700   leading-relaxed text-justify">
                                     Regular teacher workshops, including inter-school and intra-school
                                     programmes with certification, are conducted, and participation is
                                     encouraged for all teachers.
                                 </p>
-                                <p className="text-gray-700 leading-relaxed">
+                                <p className="text-gray-700 leading-relaxed text-justify">
                                     These workshops promote a positive learning culture, collaborative
                                     teaching, and innovative educational practices.
                                 </p>
@@ -440,7 +440,7 @@ export default function TeacherTrainingPage() {
                         <Reveal>
                             <MegaphoneIcon className="w-12 h-12 mx-auto mb-4" />
                             <h3 className="text-3xl font-serif font-bold mb-4">Inviting External Educators</h3>
-                            <p className="text-white/90  mb-8 max-w-2xl mx-auto">
+                            <p className="text-white/90  mb-8 max-w-2xl mx-auto ">
                                 Many of our workshops are open to teachers from other schools. Join our professional learning
                                 community – together we raise the bar for education.
                             </p>
