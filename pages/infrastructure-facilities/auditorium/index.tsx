@@ -179,7 +179,7 @@ function AuditoriumFilmstrip() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute bottom-0 left-0 p-4 md:p-5 w-full">
                 <div className="h-[2px] w-8 bg-primary mb-2 transition-all duration-500 group-hover:w-14" />
-                <p className="text-white font-semibold text-sm md:text-lg font-serif leading-tight">
+                <p className="text-white font-semibold text-sm md: font-serif leading-tight">
                   {img.title}
                 </p>
               </div>
@@ -229,7 +229,7 @@ function AuditoriumFilmstrip() {
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="w-full h-full object-contain rounded-lg"
             />
-            <p className="text-white text-center font-serif text-lg mt-4">
+            <p className="text-white text-center font-serif  mt-4">
               {selectedImage.title}
             </p>
           </div>
@@ -282,7 +282,7 @@ export default function AuditoriumPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
                 <div className="absolute bottom-5 left-5 text-white">
-                  <p className="text-lg font-semibold">A Stage for Every Star</p>
+                  <p className=" font-semibold">A Stage for Every Star</p>
                   <p className="text-sm text-white/80">
                     Built for performances, ceremonies & celebrations
                   </p>
@@ -307,7 +307,7 @@ export default function AuditoriumPage() {
                   <UsersIcon className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-lg y font-bold text-secondary leading-none">1000+</p>
+                  <p className=" y font-bold text-secondary leading-none">1000+</p>
                   <p className="text-[11px] text-gray-500 uppercase tracking-wide mt-1">
                     Seating Capacity
                   </p>
@@ -330,11 +330,11 @@ export default function AuditoriumPage() {
                 Auditorium – Where Every Voice Finds Its Stage
               </h2>
 
-              <p className="text-gray-600 text-lg leading-relaxed mb-5">
+              <p className="text-gray-600  leading-relaxed mb-5">
                 Our spacious and well-equipped auditorium provides a vibrant platform for students to express themselves, showcase their talents, and celebrate their achievements. Designed to host a variety of school events, cultural programmes, seminars, competitions, performances, and special occasions, it creates an engaging experience for students and the school community.
               </p>
 
-              <p className="text-gray-600 text-lg leading-relaxed mb-5">
+              <p className="text-gray-600  leading-relaxed mb-5">
                 With a comfortable seating arrangement and a welcoming atmosphere, our auditorium encourages students to build confidence, develop communication skills, and embrace creativity while making every event a memorable experience.
               </p>
             </div>

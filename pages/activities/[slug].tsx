@@ -99,7 +99,7 @@ export default function ActivityDetailPage({ activity }: { activity: Activity })
 
             <Reveal delay={400}>
               <div
-                className="text-gray-600 leading-relaxed text-lg"
+                className="text-gray-600 leading-relaxed "
                 dangerouslySetInnerHTML={{ __html: activity.description }}
               />
             </Reveal>

@@ -288,7 +288,7 @@ function LibraryGallery() {
                 className="w-full h-full object-contain rounded-lg"
             />
             <div className="bg-white/10 backdrop-blur-md p-4 rounded-b-lg mt-2">
-              <h3 className="text-white font-semibold text-lg">{selectedImage.title}</h3>
+              <h3 className="text-white font-semibold ">{selectedImage.title}</h3>
               <p className="text-gray-300 text-sm">{selectedImage.description}</p>
             </div>
           </div>
@@ -381,7 +381,7 @@ export default function LibraryPage() {
 
                 {/* FLOATING TEXT */}
                 <div className="absolute bottom-5 left-5 text-white">
-                  <p className="text-lg font-semibold">Reading Environment</p>
+                  <p className=" font-semibold">Reading Environment</p>
                   <p className="text-sm text-white/80">
                     A peaceful space for learning & imagination
                   </p>
@@ -416,14 +416,14 @@ export default function LibraryPage() {
                 Library – The Heart of Learning
               </h2>
 
-              <p className="text-gray-600 text-lg leading-relaxed mb-5">
+              <p className="text-gray-600  leading-relaxed mb-5">
                 Our library offers a cozy and thoughtfully designed reading space where
                 students can relax, explore, and enjoy the world of books. The warm and
                 comfortable atmosphere creates the perfect setting for quiet reading,
                 focused learning, and peaceful discovery.
               </p>
 
-              <p className="text-gray-600 text-lg leading-relaxed mb-5">
+              <p className="text-gray-600  leading-relaxed mb-5">
                 With a carefully curated collection of books and learning resources,
                 students can develop a love for reading while expanding their knowledge,
                 imagination, creativity, and independent thinking. Our library is more
@@ -462,7 +462,7 @@ export default function LibraryPage() {
                     </div>
 
                     <div>
-                      <h3 className="font-semibold mb-1 text-lg text-gray-900">
+                      <h3 className="font-semibold mb-1  text-gray-900">
                         {item.title}
                       </h3>
                       <p className="text-sm text-gray-600">

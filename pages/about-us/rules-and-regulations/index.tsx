@@ -351,7 +351,7 @@ function UniformPanel() {
 
                             <div className="space-y-6">
                                 <div>
-                                    <p className="font-semibold text-gray-800 mb-2 text-lg">
+                                    <p className="font-semibold text-gray-800 mb-2 ">
                                         Monday to Friday
                                     </p>
 
@@ -361,7 +361,7 @@ function UniformPanel() {
                                 </div>
 
                                 <div>
-                                    <p className="font-semibold text-gray-800 mb-2 text-lg">
+                                    <p className="font-semibold text-gray-800 mb-2 ">
                                         Saturday
                                     </p>
 
@@ -371,7 +371,7 @@ function UniformPanel() {
                                 </div>
 
                                 <div>
-                                    <p className="font-semibold text-gray-800 mb-2 text-lg">
+                                    <p className="font-semibold text-gray-800 mb-2 ">
                                         Shoes
                                     </p>
 
@@ -447,7 +447,7 @@ function StudentsPanel() {
                         <ul className="space-y-2.5">
                             {rules.map((rule, idx) => (
                                 <li key={idx} className="flex gap-2 text-gray-700 text-base">
-                                    <span className="text-primary font-bold text-lg">•</span> {rule}
+                                    <span className="text-primary font-bold ">•</span> {rule}
                                 </li>
                             ))}
                         </ul>
@@ -515,7 +515,7 @@ function ParentsPanel() {
                         <ul className="space-y-2.5">
                             {rules.map((rule, idx) => (
                                 <li key={idx} className="flex gap-2 text-gray-700 text-base">
-                                    <span className="text-secondary font-bold text-lg">•</span> {rule}
+                                    <span className="text-secondary font-bold ">•</span> {rule}
                                 </li>
                             ))}
                         </ul>
@@ -541,7 +541,7 @@ function ParentsPanel() {
 
                                 {/* Title */}
                                 <div className="absolute bottom-4 left-4">
-                                    <h3 className="text-white text-lg font-semibold">
+                                    <h3 className="text-white  font-semibold">
                                         Parent Teacher Meeting
                                     </h3>
                                 </div>

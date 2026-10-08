@@ -172,7 +172,7 @@ export default function AdmissionProcedurePage() {
                                         </span>
                                     </h2>
 
-                                    <p className="mt-3 text-white/80 text-lg">
+                                    <p className="mt-3 text-white/80 ">
                                         Now Open For Registration. Start your journey with modern learning,
                                         smart classrooms, and expert teaching.
                                     </p>
@@ -222,12 +222,12 @@ export default function AdmissionProcedurePage() {
                                 Easy & Transparent Admission
                             </h2>
 
-                            <p className="text-gray-600 text-lg leading-relaxed mb-5">
+                            <p className="text-gray-600  leading-relaxed mb-5">
                                 Our admission process is designed to be simple and smooth for all parents and students.
                                 We ensure clarity at every step with proper guidance from our admission team.
                             </p>
 
-                            <div className="space-y-3 mb-5 text-lg text-gray-700">
+                            <div className="space-y-3 mb-5  text-gray-700">
                                 <p>• Fill the application form with required details</p>
                                 <p>• Submit necessary academic documents</p>
                                 <p>• Attend interaction / assessment session</p>
@@ -235,7 +235,7 @@ export default function AdmissionProcedurePage() {
                                 <p>• Complete fee payment and enrollment</p>
                             </div>
 
-                            <p className="text-gray-600 text-lg">
+                            <p className="text-gray-600 ">
                                 We are committed to providing a stress-free admission experience for every family.
                             </p>
                         </div>
@@ -252,7 +252,7 @@ export default function AdmissionProcedurePage() {
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
                             Begin Your Child's Journey With Us
                         </h2>
-                        <p className="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">
+                        <p className="text-gray-500 max-w-2xl mx-auto  leading-relaxed">
                             Sona Valliappa Public School is currently offering Admissions from <strong className="text-gray-800">Pre-KG to Grade VIII</strong> subject to eligibility and availability of seats.
                         </p>
                     </div>
@@ -370,7 +370,7 @@ export default function AdmissionProcedurePage() {
                         <div className="bg-white border border-gray-200 shadow-sm p-6 md:p-7 flex flex-col md:flex-row justify-between items-center gap-5 transition-all">
                             <div>
                                 <h3 className="text-xl font-semibold text-gray-900 mb-1">Confirm Your Seat</h3>
-                                <p className="text-gray-500 text-lg max-w-xl">Upon acceptance, please complete the enrollment process within the stipulated date to secure your child's seat.</p>
+                                <p className="text-gray-500  max-w-xl">Upon acceptance, please complete the enrollment process within the stipulated date to secure your child's seat.</p>
                             </div>
                             <a
                                 href="https://hikabackend.sonastar.com/api/institutions/enquiry/INS-3-ZXYXKM"

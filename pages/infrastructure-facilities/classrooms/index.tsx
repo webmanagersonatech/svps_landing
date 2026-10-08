@@ -93,7 +93,7 @@ export default function ClassroomPage() {
     return (
         <>
             <SEO
-                title="Classrooms"
+                title="Smart Classrooms"
                 description="Modern, well-ventilated classrooms with interactive and student-focused learning at Sona Valliappa Public School, Salem."
                 path="/infrastructure-facilities/classrooms"
             />
@@ -101,9 +101,9 @@ export default function ClassroomPage() {
             <main className="bg-gradient-to-b from-slate-50 to-white">
                 {/* HEADER */}
                 <PageHeader
-                    title="Classrooms"
+                    title="Smart Classrooms"
                     subtitle="Creating an engaging and interactive learning environment for every student."
-                    breadcrumbs={["Home", "Infrastructure facilities", "Classrooms"]}
+                    breadcrumbs={["Home", "Infrastructure facilities", "Smart  Classrooms"]}
                 />
 
                 {/* INTRO */}
@@ -115,7 +115,7 @@ export default function ClassroomPage() {
                                     Smart Classrooms
                                 </h2>
 
-                                <p className="text-gray-600 mb-4 leading-relaxed">
+                                <p className="text-gray-600 mb-4 leading-relaxed ">
                                     Our smart classrooms provide a modern, engaging, and student-friendly
                                     learning environment designed to make education more interactive and
                                     effective. Equipped with digital learning tools and technology-enabled
@@ -176,7 +176,7 @@ export default function ClassroomPage() {
                 {/* STATS SECTION */}
                 <div className="bg-gray-100 py-8">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-3 md:grid-cols-3 gap-8">
                             {stats.map((stat, idx) => {
                                 const Icon = stat.icon;
                                 return (
@@ -242,9 +242,7 @@ export default function ClassroomPage() {
 
                                         {/* Overlay on hover */}
                                         <div className="absolute inset-0 bg-[#18596d]/0 group-hover:bg-[#18596d]/40 transition duration-300 flex items-center justify-center">
-                                            <p className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition duration-300">
-                                                View Space
-                                            </p>
+                                         
                                         </div>
 
                                         {/* Bottom label */}

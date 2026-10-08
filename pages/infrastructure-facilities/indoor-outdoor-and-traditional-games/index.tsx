@@ -19,7 +19,7 @@ function GameSection({ title, desc, games, onViewClick }: any) {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-serif mb-2">
             {title}
           </h2>
-          <p className="text-gray-600 text-lg leading-relaxed">{desc}</p>
+          <p className="text-gray-600  leading-relaxed">{desc}</p>
           <div className="mt-3 w-10 h-1 bg-primary rounded-full"></div>
         </div>
 
@@ -112,13 +112,13 @@ function IntroSection() {
     <section className="pt-10 ">
       <div className="max-w-7xl mx-auto px-4 text-start">
         <Reveal delay={100}>
-          <p className="text-lg text-gray-700 leading-relaxed">
+          <p className=" text-gray-700 leading-relaxed">
             We believe that learning extends beyond the classroom. Our sports and co-curricular activities provide students with opportunities to stay active, discover their talents, build confidence, and develop essential life skills.
           </p>
         </Reveal>
 
         <Reveal delay={200}>
-          <p className="text-lg  text-gray-700 leading-relaxed mt-4">
+          <p className="  text-gray-700 leading-relaxed mt-4">
             Through a variety of sports, games, cultural activities, competitions, and creative programmes, students learn the values of teamwork, discipline, leadership, perseverance, and sportsmanship. We encourage every student to participate, explore their interests, and enjoy a healthy, active, and well-balanced school life.
           </p>
         </Reveal>
@@ -148,7 +148,7 @@ export default function GamesPage() {
 
       <main className=" bg-gray-50">
         <PageHeader
-          title=" Sports"
+          title=" Sports & Games"
           subtitle="Fitness for Body and Mind"
           breadcrumbs={["Home", "Infrastructure facilities", "Sports & Games"]}
         />

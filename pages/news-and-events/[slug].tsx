@@ -327,7 +327,7 @@ function StickyShareSidebar({
                             <span
                                 className={`
                                     relative z-10
-                                    text-base md:text-lg
+                                    text-base md:
                                     transition-colors duration-300
                                     ${item.text}
                                     group-hover:text-white
@@ -500,7 +500,7 @@ export default function NewsEventDetailPage({ item, allItems = [] }: { item: New
                             {/* Right: Recent Updates container with scroll */}
                             <div className="bg-gray-50 shadow-sm flex flex-col h-[500px]">
                                 <div className="p-5 border-b border-gray-200">
-                                    <h3 className="text-lg font-bold text-gray-900">Recent Updates</h3>
+                                    <h3 className=" font-bold text-gray-900">Recent Updates</h3>
                                     <input
                                         type="text"
                                         placeholder="Search by title..."

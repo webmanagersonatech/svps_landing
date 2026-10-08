@@ -107,14 +107,14 @@ export default function TransportPage() {
       <span className="text-primary block">Every Single Day</span>
     </h2>
 
-    <p className="text-gray-600 mb-4 text-lg">
+    <p className="text-gray-600 mb-4 ">
       Our safe, reliable, and comfortable school transport service is designed
       to provide students with a smooth and convenient journey to and from
       school. Our buses are maintained with care and operated with a strong
       focus on student safety, comfort, and punctuality.
     </p>
 
-    <p className="text-gray-600 text-lg">
+    <p className="text-gray-600 ">
       With responsible drivers and supportive staff, we strive to create a
       secure and pleasant travel experience for every student. Our transport
       service gives parents peace of mind while ensuring students reach school
@@ -165,7 +165,7 @@ export default function TransportPage() {
             <Icon className="w-6 h-6 text-primary" />
           </div>
 
-          <h3 className="text-lg font-semibold text-gray-900 mb-1">
+          <h3 className=" font-semibold text-gray-900 mb-1">
             {item.title}
           </h3>
 

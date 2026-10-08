@@ -172,8 +172,8 @@ export default function Navbar() {
       href: '/infrastructure-facilities',
       icon: Building,
       submenu: [
-        { name: 'Class Rooms', href: '/infrastructure-facilities/classrooms', icon: Building, description: 'Modern learning spaces' },
-        { name: 'Sports', href: '/infrastructure-facilities/indoor-outdoor-and-traditional-games', icon: Activity, description: 'Sports & recreation' },
+        { name: 'Smart Class Rooms', href: '/infrastructure-facilities/classrooms', icon: Building, description: 'Modern learning spaces' },
+        { name: 'Sports & Games', href: '/infrastructure-facilities/indoor-outdoor-and-traditional-games', icon: Activity, description: 'Sports & recreation' },
         { name: 'Transport', href: '/infrastructure-facilities/transport-facilities', icon: Bus, description: 'Safe travel' },
         { name: 'Medical', href: '/infrastructure-facilities/medical-facilities', icon: Heart, description: 'Health support' },
         { name: 'Library', href: '/infrastructure-facilities/library', icon: BookOpen, description: 'Knowledge resources' },
@@ -275,7 +275,7 @@ export default function Navbar() {
             <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isLinkActive ? 'bg-[#ec8013]' : 'bg-[#ec8013]/10'}`}>
               <link.icon className={`w-4 h-4 ${isLinkActive ? 'text-white' : 'text-[#ec8013]'}`} />
             </div>
-            <span className={`font-medium text-sm ${isLinkActive ? 'text-[#ec8013]' : 'text-[#f5dfc4]'}`}>{link.name}</span>
+            <span className={`text-sm ${isLinkActive ? 'text-[#ec8013]' : 'text-[#f5dfc4]'}`}>{link.name}</span>
           </div>
           <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.2 }}>
             <ChevronDown className="w-3.5 h-3.5 text-[#f5dfc4]/50" />
@@ -305,7 +305,7 @@ export default function Navbar() {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-1.5">
-                          <span className={`text-xs font-medium ${isItemActive ? 'text-[#ec8013]' : 'text-[#f5dfc4]'}`}>{item.name}</span>
+                          <span className={`text-xs ${isItemActive ? 'text-[#ec8013]' : 'text-[#f5dfc4]'}`}>{item.name}</span>
                           {item.badge && (
                             <span className="text-[7px] px-1 py-0.5 bg-[#ec8013]/20 text-[#ec8013] rounded-full font-semibold">
                               {item.badge}
@@ -450,7 +450,7 @@ export default function Navbar() {
                       {link.submenu ? (
                         <motion.button
                           whileHover={{ y: -0.5 }}
-                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base font-medium transition-colors duration-200 ${isLinkActive || isSubActive
+                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base transition-colors duration-200 ${isLinkActive || isSubActive
                             ? 'text-[#ec8013]'
                             : 'text-[#f5dfc4]/80 hover:text-[#f5dfc4]'
                             }`}
@@ -466,7 +466,7 @@ export default function Navbar() {
                       ) : (
                         <Link
                           href={link.href}
-                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base font-medium transition-colors duration-200 ${isLinkActive
+                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base transition-colors duration-200 ${isLinkActive
                             ? 'text-[#ec8013]'
                             : 'text-[#f5dfc4]/80 hover:text-[#f5dfc4]'
                             }`}
@@ -510,7 +510,7 @@ export default function Navbar() {
                                         </div>
                                         <div className="flex-1 min-w-0">
                                           <div className="flex items-center gap-1.5">
-                                            <span className={`text-xs xl:text-sm font-medium transition-colors ${isItemActive ? 'text-[#ec8013]' : 'text-[#f5dfc4] group-hover:text-[#ec8013]'
+                                            <span className={`text-xs xl:text-sm transition-colors ${isItemActive ? 'text-[#ec8013]' : 'text-[#f5dfc4] group-hover:text-[#ec8013]'
                                               }`}>
                                               {item.name}
                                             </span>
@@ -666,7 +666,7 @@ export default function Navbar() {
                                 <link.icon className={`w-4 h-4 ${isActive(link.href) ? 'text-white' : 'text-[#ec8013]'
                                   }`} />
                               </div>
-                              <span className={`font-medium text-sm ${isActive(link.href) ? 'text-[#ec8013]' : 'text-[#f5dfc4]'
+                              <span className={`text-sm ${isActive(link.href) ? 'text-[#ec8013]' : 'text-[#f5dfc4]'
                                 }`}>{link.name}</span>
                             </div>
                             <ChevronRight className="w-3.5 h-3.5 text-[#f5dfc4]/30" />
@@ -682,7 +682,7 @@ export default function Navbar() {
                     >
                       <Link
                         href="/public-disclosure"
-                        className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-sm font-medium rounded-xl border border-white/10 bg-white/5 backdrop-blur-md text-white hover:bg-white/10 transition-all duration-300"
+                        className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-sm rounded-xl border border-white/10 bg-white/5 backdrop-blur-md text-white hover:bg-white/10 transition-all duration-300"
                         onClick={() => setIsOpen(false)}
                       >
                         Mandatory Disclosure

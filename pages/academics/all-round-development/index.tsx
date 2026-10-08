@@ -128,7 +128,7 @@ export default function AllRoundDevelopmentPage() {
             All Round <span className="text-primary">Development</span>
         </h2>
         
-        <ul className="space-y-4 text-gray-700 leading-relaxed text-lg list-disc pl-6">
+        <ul className="space-y-4 text-gray-700 leading-relaxed  list-disc pl-6">
             <li>
                 At SVPS, Students study the Subjects thoroughly, understand and apply it practically.
             </li>
@@ -193,7 +193,7 @@ export default function AllRoundDevelopmentPage() {
                         <Reveal>
                             <HandRaisedIcon className="w-12 h-12 mx-auto mb-4" />
                             <h3 className="text-3xl font-serif font-bold mb-4">Every Child Deserves a Full Spectrum Education</h3>
-                            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+                            <p className="text-white/90  mb-8 max-w-2xl mx-auto">
                                 Come see our clubs in action, meet our coaches, and watch a rehearsal or a match.
                             </p>
                             <button onClick={() => setIsPopupOpen(true)} className="bg-white text-primary px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">

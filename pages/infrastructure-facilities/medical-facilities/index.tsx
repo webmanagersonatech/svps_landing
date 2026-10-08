@@ -129,21 +129,21 @@ export default function MedicalFacilitiesPage() {
                 Caring for Every Child
               </h2>
 
-              <p className="text-gray-600 mb-4 text-lg leading-relaxed">
+              <p className="text-gray-600 mb-4  leading-relaxed">
                 The school provides comprehensive medical support to ensure that every
                 student is safe and cared for throughout the day.
               </p>
 
-              <p className="text-gray-600 leading-relaxed text-lg mb-4">
+              <p className="text-gray-600 leading-relaxed  mb-4">
                 From routine health checkups to emergency care, our facilities are
                 equipped to handle every situation efficiently.
               </p>
-              <p className="text-gray-600 leading-relaxed text-lg mb-4">
+              <p className="text-gray-600 leading-relaxed  mb-4">
                 From routine health checkups to emergency care, our facilities are
                 equipped to handle every situation efficiently.
               </p>
 
-              <p className="text-gray-600 leading-relaxed text-lg">
+              <p className="text-gray-600 leading-relaxed ">
                 From routine health checkups to emergency care, our facilities are
                 equipped to handle every situation efficiently.
               </p>
@@ -176,7 +176,7 @@ export default function MedicalFacilitiesPage() {
 
                     {/* TEXT */}
                     <div className="relative z-10">
-                      <h3 className="font-semibold text-lg text-gray-900 mb-1">
+                      <h3 className="font-semibold  text-gray-900 mb-1">
                         {item.title}
                       </h3>
                       <p className="text-gray-600 text-sm">

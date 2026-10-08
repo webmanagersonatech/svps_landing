@@ -395,7 +395,7 @@ export default function AdmissionContactPage() {
                                 <div>
                                     <div className="flex items-center gap-3 mb-4">
                                         <MapPinIcon className="w-5 h-5 text-primary" />
-                                        <h3 className="text-lg font-semibold text-gray-900">
+                                        <h3 className=" font-semibold text-gray-900">
                                             Visit Us
                                         </h3>
                                     </div>
@@ -415,7 +415,7 @@ export default function AdmissionContactPage() {
                                 <div>
                                     <div className="flex items-center gap-3 mb-4">
                                         <PhoneIcon className="w-5 h-5 text-primary" />
-                                        <h3 className="text-lg font-semibold text-gray-900">
+                                        <h3 className=" font-semibold text-gray-900">
                                             Call Us
                                         </h3>
                                     </div>
@@ -454,7 +454,7 @@ export default function AdmissionContactPage() {
                                 <div>
                                     <div className="flex items-center gap-3 mb-4">
                                         <EnvelopeIcon className="w-5 h-5 text-primary" />
-                                        <h3 className="text-lg font-semibold text-gray-900">
+                                        <h3 className=" font-semibold text-gray-900">
                                             Email Us
                                         </h3>
                                     </div>
@@ -472,7 +472,7 @@ export default function AdmissionContactPage() {
                                 <div>
                                     <div className="flex items-center gap-3 mb-4">
                                         <ClockIcon className="w-5 h-5 text-primary" />
-                                        <h3 className="text-lg font-semibold text-gray-900">
+                                        <h3 className=" font-semibold text-gray-900">
                                             Office Hours
                                         </h3>
                                     </div>

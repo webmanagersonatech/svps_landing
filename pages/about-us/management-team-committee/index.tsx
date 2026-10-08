@@ -396,7 +396,7 @@ export default function ManagementProfilesPage() {
                                             {/* HEADER + TEXT */}
                                             <div className="flex-1 text-center sm:text-left">
 
-                                                <h3 className="text-lg sm:text-xl lg:text-2xl font-serif font-bold text-gray-900">
+                                                <h3 className=" sm:text-xl lg:text-2xl font-serif font-bold text-gray-900">
                                                     {member.name}
                                                 </h3>
 

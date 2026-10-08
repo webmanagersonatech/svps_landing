@@ -171,7 +171,7 @@ export default function PrincipalMessagePage() {
                             <Reveal>
 
 
-                                <p className="text-gray-700 leading-relaxed font-medium text-lg">
+                                <p className="text-gray-700 leading-relaxed font-medium ">
                                     Greetings!
                                 </p>
 
@@ -216,7 +216,7 @@ export default function PrincipalMessagePage() {
 
                     <Reveal delay={300}>
                         <div className="mt-4 pt-2">
-                            <p className="font-semibold text-primary text-lg">
+                            <p className="font-semibold text-primary ">
                                 Best Wishes!
                             </p>
                             {/* Removed principal signature as it was not in client content */}

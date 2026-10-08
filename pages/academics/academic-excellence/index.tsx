@@ -170,13 +170,13 @@ export default function AcademicExcellencePage() {
                                     Learn with <span className="text-primary">Understanding</span>
                                 </h2>
 
-                                <p className="text-gray-700 leading-relaxed text-lg">
+                                <p className="text-gray-700 leading-relaxed ">
                                     We believe academic excellence is more than marks. Our focus is on
                                     conceptual learning, strong foundations, practical application, and
                                     individual growth.
                                 </p>
 
-                                <p className="text-gray-700 leading-relaxed text-lg">
+                                <p className="text-gray-700 leading-relaxed ">
                                     Through engaging teaching, regular practice, and continuous assessment,
                                     we encourage students to understand, explore, and apply what they learn.
                                     We aim to help every student learn better, think independently, and

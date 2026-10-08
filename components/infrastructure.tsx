@@ -36,7 +36,7 @@ export default function SchoolInfrastructureComponent() {
               initial={{ opacity: 0, x: -40 }}
               animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
               transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-              className="mt-6 text-gray-600 text-lg"
+              className="mt-6 text-gray-600 "
             >
               Our campus is designed as an intelligent ecosystem where technology,
               creativity, and learning merge to build future-ready students.

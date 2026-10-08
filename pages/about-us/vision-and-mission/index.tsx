@@ -169,13 +169,13 @@ export default function VisionMissionPage() {
                                 </Reveal>
 
                                 <Reveal delay={100}>
-                                    <p className="text-gray-700 leading-relaxed text-lg">
+                                    <p className="text-gray-700 leading-relaxed ">
                                         To nurture and develop young minds by providing a conducive and stimulating learning ambience, with balanced emphasis on curriculum, innovation and physical activity and make them responsible global citizens.
                                     </p>
                                 </Reveal>
 
                                 <Reveal delay={200}>
-                                    <p className="text-gray-700 text-lg leading-relaxed">
+                                    <p className="text-gray-700  leading-relaxed">
                                         We envision a future where every student discovers their unique potential and
                                         is empowered with the knowledge, skills, and values to shape a sustainable and
                                         equitable world. Through excellence in teaching, groundbreaking research, and
@@ -211,8 +211,8 @@ export default function VisionMissionPage() {
                                             "To imbibe strong values and ethics with a desire to care for the environment and the society.",
                                         ].map((item, i) => (
                                             <li key={i} className="flex items-start gap-3">
-                                                <span className="text-primary font-bold text-lg mt-0.5">✓</span>
-                                                <span className="text-gray-700 text-lg">{item}</span>
+                                                <span className="text-primary font-bold  mt-0.5">✓</span>
+                                                <span className="text-gray-700 ">{item}</span>
                                             </li>
                                         ))}
                                     </ul>

@@ -161,7 +161,7 @@ export default function ChairmanBooksPage() {
 
                                             <div className="w-20 h-1 bg-primary/40 rounded-full my-5" />
 
-                                            <p className="text-gray-700 leading-relaxed text-base md:text-lg">
+                                            <p className="text-gray-700 leading-relaxed text-base md:">
                                                 {book.desc}
                                             </p>
 

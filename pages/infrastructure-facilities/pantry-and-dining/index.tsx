@@ -63,7 +63,7 @@ export default function DiningPage() {
         />
 
         {/* INTRO */}
-        <div className="max-w-7xl  text-lg mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
+        <div className="max-w-7xl   mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
           <Reveal>
             <div>
               <h2 className="text-3xl md:text-4xl font-bold font-serif text-secondary mb-4">
@@ -130,7 +130,7 @@ export default function DiningPage() {
 
                   <div className="bg-white/90 backdrop-blur-md px-4 py-3 rounded-t-xl shadow-md">
 
-                    <p className="font-semibold text-gray-900 text-lg">
+                    <p className="font-semibold text-gray-900 ">
                       Junk Food Free Campus
                     </p>
 
@@ -180,7 +180,7 @@ export default function DiningPage() {
 
               {/* Content */}
               <div className="relative z-10 p-6">
-                <h3 className="text-lg font-semibold mb-5 flex items-center gap-2 text-white">
+                <h3 className=" font-semibold mb-5 flex items-center gap-2 text-white">
                   <div className="w-9 h-9 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/20">
                     <CheckCircleIcon className="w-5 h-5 text-green-400" />
                   </div>
@@ -250,7 +250,7 @@ export default function DiningPage() {
               {/* Content */}
               <div className="relative z-10 p-6">
 
-                <h3 className="text-lg font-semibold mb-5 flex items-center gap-3 text-white">
+                <h3 className=" font-semibold mb-5 flex items-center gap-3 text-white">
                   <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
                     <XCircleIcon className="w-5 h-5 text-red-400" />
                   </div>

@@ -341,54 +341,49 @@ export function PageHeader({
                         </motion.div>
                     </Link>
 
-                    <div className="flex items-center gap-2 flex-wrap">
-                        {breadcrumbs.map((item, i) => {
-                            const isLast = i === breadcrumbs.length - 1;
-                            const isHome = i === 0 && item.toLowerCase() === "home";
+                <div className="flex items-center gap-2 flex-wrap">
+    {breadcrumbs.map((item, i) => {
+        const isLast = i === breadcrumbs.length - 1;
+        const isHome = i === 0 && item.toLowerCase() === "home";
 
-                            return (
-                                <motion.div
-                                    key={i}
-                                    variants={breadcrumbItemVariants}
-                                    custom={i}
-                                    className="flex items-center gap-2"
-                                    whileHover={{ x: !isLast ? 3 : 0 }}
-                                >
-                                    {isHome ? (
-                                        <Link href="/">
-                                            <motion.span
-                                                whileHover={{ scale: 1.05 }}
-                                                className="text-gray-600 hover:text-gray-900 transition cursor-pointer text-sm"
-                                            >
-                                                {item}
-                                            </motion.span>
-                                        </Link>
-                                    ) : (
-                                        <motion.span
-                                            whileHover={{ scale: !isLast ? 1.05 : 1 }}
-                                            className={
-                                                isLast
-                                                    ? "text-gray-900 font-medium text-sm"
-                                                    : "text-gray-600 text-sm"
-                                            }
-                                        >
-                                            {item}
-                                        </motion.span>
-                                    )}
+        return (
+            <motion.div
+                key={i}
+                variants={breadcrumbItemVariants}
+                custom={i}
+                className="flex items-center gap-2"
+            >
+                {isHome ? (
+                    <Link href="/">
+                        <span className="text-gray-600 hover:text-gray-900 transition cursor-pointer text-sm">
+                            {item}
+                        </span>
+                    </Link>
+                ) : (
+                    <span
+                        className={
+                            isLast
+                                ? "text-gray-900 font-medium text-sm"
+                                : "text-gray-600 text-sm"
+                        }
+                    >
+                        {item}
+                    </span>
+                )}
 
-                                    {!isLast && (
-                                        <motion.div
-                                            initial={{ x: -5, opacity: 0 }}
-                                            animate={{ x: 0, opacity: 1 }}
-                                            transition={{ delay: i * 0.1 }}
-                                        >
-                                            <ChevronRightIcon className="w-3.5 h-3.5 text-gray-400" />
-                                        </motion.div>
-                                    )}
-                                </motion.div>
-                            );
-                        })}
-                    </div>
+                {!isLast && (
+                    <motion.div
+                        initial={{ x: -5, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: i * 0.1 }}
+                    >
+                        <ChevronRightIcon className="w-3.5 h-3.5 text-gray-400" />
+                    </motion.div>
+                )}
+            </motion.div>
+        );
+    })}
+</div>
                 </motion.nav>
             </motion.div>
         </>

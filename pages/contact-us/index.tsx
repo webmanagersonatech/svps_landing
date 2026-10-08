@@ -96,7 +96,7 @@ export default function ContactPage() {
                 <PageHeader
                     title="Contact Us"
                     subtitle="We’re here to help you. Reach out anytime."
-                    breadcrumbs={["Home", "Contact"]}
+                    breadcrumbs={["Home", "Contact Us"]}
                 />
 
                 {/* MAIN SECTION – NO CARDS, FLAT DESIGN */}
