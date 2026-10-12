@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { achievements } from "../data/achievements";
 
 // Reveal Component and Hook
 export function useReveal() {
@@ -49,68 +51,7 @@ export function Reveal({
     );
 }
 
-const achievementsData = [
-    {
-        id: 1,
-        studentName: "AYAAN GUPTA",
-        className: "CLASS I",
-        achievement: "RANK 1 IN OLYMPIAD",
-        subTitle: "ENGLISH & SCIENCE",
-        description:
-            "Outstanding performance in English and Science Olympiad with exceptional academic excellence.",
-        parent:
-            "Parents: Mrs. Aanchal Gupta & Mr. Aditya Gupta",
-        image:
-            "/achievements/winner-1.webp",
-        bgImage:
-            "/achievements/winner-1.webp",
-    },
-    {
-        id: 2,
-        studentName: "RIYA SHARMA",
-        className: "CLASS III",
-        achievement: "STATE LEVEL WINNER",
-        subTitle: "DRAWING COMPETITION",
-        description:
-            "Creative excellence and artistic brilliance showcased at state-level competition.",
-        parent:
-            "Parents: Mrs. Neha Sharma & Mr. Rahul Sharma",
-        image:
-            "/achievements/winner-2.webp",
-        bgImage:
-            "/achievements/winner-2.webp",
-    },
-    // {
-    //     id: 3,
-    //     studentName: "ARJUN MENON",
-    //     className: "CLASS V",
-    //     achievement: "NATIONAL CHESS CHAMPION",
-    //     subTitle: "UNDER 12 CATEGORY",
-    //     description:
-    //         "Achieved national recognition with strategic brilliance and confidence.",
-    //     parent:
-    //         "Parents: Mrs. Lakshmi Menon & Mr. Raj Menon",
-    //     image:
-    //         "https://img.magnific.com/premium-photo/boy-holding-trophy-with-words-year-2012-it_1277828-30093.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-    //     bgImage:
-    //         "https://img.magnific.com/premium-photo/boy-holding-trophy-with-words-year-2012-it_1277828-30093.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-    // },
-    // {
-    //     id: 4,
-    //     studentName: "SANA KHAN",
-    //     className: "CLASS II",
-    //     achievement: "BEST SPEAKER AWARD",
-    //     subTitle: "INTER SCHOOL EVENT",
-    //     description:
-    //         "Exceptional communication skills and stage confidence at inter-school competition.",
-    //     parent:
-    //         "Parents: Mrs. Farah Khan & Mr. Imran Khan",
-    //     image:
-    //         "https://img.magnific.com/premium-photo/happy-young-indian-boy-school-uniform-holding-crest_979520-49596.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-    //     bgImage:
-    //         "https://img.magnific.com/premium-photo/happy-young-indian-boy-school-uniform-holding-crest_979520-49596.jpg?ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-    // },
-];
+const achievementsData = achievements;
 
 const StudentAchievements = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -369,7 +310,7 @@ const StudentAchievements = () => {
                                         className="relative z-20 w-full flex justify-center"
                                     >
                                         {/* Student Image */}
-                                        <div className="w-[160px] sm:w-[190px] md:w-[220px] lg:w-[280px] h-[210px] sm:h-[240px] md:h-[270px] lg:h-[270px] overflow-hidden shadow-2xl border-[6px] border-white">
+                                        <Link href={`/student-achievements/${item.slug}`} aria-label={`View ${item.studentName} achievement`} className="block w-[160px] sm:w-[190px] md:w-[220px] lg:w-[280px] h-[210px] sm:h-[240px] md:h-[270px] lg:h-[270px] overflow-hidden shadow-2xl border-[6px] border-white">
                                             <Image
                                                 src={item.image}
                                                 alt={item.studentName}
@@ -378,7 +319,7 @@ const StudentAchievements = () => {
                                                 sizes="(min-width: 1024px) 50vw, 100vw"
                                                 className="w-full h-full object-cover object-top"
                                             />
-                                        </div>
+                                        </Link>
 
                                         {/* Award Ribbon */}
                                         <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-full flex justify-center">
@@ -391,9 +332,10 @@ const StudentAchievements = () => {
                                                         {item.studentName}
                                                     </h3>
 
+                                                    {(item.className || item.category) && (
                                                     <p className="text-center text-white  uppercase tracking-[3px] text-[9px] mt-1">
-                                                        {item.className}
-                                                    </p>
+                                                        {item.className || item.category}
+                                                    </p>)}
                                                 </div>
                                             </div>
                                         </div>
@@ -407,17 +349,24 @@ const StudentAchievements = () => {
                                             {item.achievement}
                                         </h2>
 
-                                        <p className="text-[#10294d] text-sm sm:text-base uppercase tracking-[3px] mt-2">
+                                        {item.subTitle && (<p className="text-[#10294d] text-sm sm:text-base uppercase tracking-[3px] mt-2">
                                             {item.subTitle}
-                                        </p>
+                                        </p>)}
 
                                         <p className="mt-4 text-secondary text-sm sm:text-base leading-relaxed  tracking-wide">
                                             {item.description}
                                         </p>
 
-                                        <p className="mt-4 text-secondary/80 text-[11px] sm:text-xs uppercase tracking-wide">
+                                        {item.parent && (<p className="mt-4 text-secondary/80 text-[11px] sm:text-xs uppercase tracking-wide">
                                             {item.parent}
-                                        </p>
+                                        </p>)}
+
+                                        <Link
+                                            href={`/student-achievements/${item.slug}`}
+                                            className="mt-5 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-1 text-xs sm:text-sm font-semibold uppercase tracking-wider text-white shadow-lg transition hover:brightness-95"
+                                        >
+                                            Read More <span aria-hidden>&rarr;</span>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

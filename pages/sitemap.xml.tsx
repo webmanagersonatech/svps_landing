@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import type { Activity } from "../lib/activitiesApi";
 import type { NewsOrEvent } from "../lib/newsEventsApi";
 import { fetchActivities } from "../lib/activitiesApi";
+import { achievements } from "../data/achievements";
 import { fetchAllNewsEvents } from "../lib/newsEventsApi";
 
 const SITE_URL = "https://www.sonavalliappapublicschool.com";
@@ -32,6 +33,8 @@ const staticRoutes: { path: string; priority: string; changefreq: string }[] = [
   { path: "/infrastructure-facilities/pantry-and-dining", priority: "0.6", changefreq: "monthly" },
   { path: "/infrastructure-facilities/transport-facilities", priority: "0.6", changefreq: "monthly" },
   { path: "/news-and-events", priority: "0.8", changefreq: "weekly" },
+  { path: "/student-achievements", priority: "0.7", changefreq: "monthly" },
+  ...achievements.map((a) => ({ path: `/student-achievements/${a.slug}`, priority: "0.6", changefreq: "monthly" })),
   { path: "/contact-us", priority: "0.8", changefreq: "monthly" },
   { path: "/public-disclosure", priority: "0.5", changefreq: "yearly" },
 ];
