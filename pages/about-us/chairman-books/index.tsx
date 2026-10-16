@@ -82,7 +82,7 @@ export default function ChairmanBooksPage() {
 
             <main className="bg-gradient-to-b from-background/60 via-white to-background/50">
                 <PageHeader
-                    title="Chairman\'s Books"
+                    title="Chairman's Books"
                     subtitle="Wisdom, Vision, and Legacy – penned by our founder"
                     breadcrumbs={["Home", "About", "Chairman\'s Books"]}
                 />
