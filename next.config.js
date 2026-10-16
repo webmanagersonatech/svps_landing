@@ -1,8 +1,14 @@
-// Host of the backend API (serves /uploads/...). Allowed so next/image can load uploaded photos.
-const apiUrl = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000").replace(/\/$/, "");
+
+const apiUrl = (
+  process.env.NEXT_PUBLIC_API_URL ||
+  "http://localhost:4000"
+).replace(/\/$/, "");
+
 let apiPattern = null;
+
 try {
   const u = new URL(apiUrl);
+
   apiPattern = {
     protocol: u.protocol.replace(":", ""),
     hostname: u.hostname,
@@ -10,22 +16,169 @@ try {
     pathname: "/uploads/**",
   };
 } catch (e) {
-  /* invalid URL - ignore */
+  // Invalid URL - ignore
 }
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+
   images: {
-    // Allow next/image to load these external hosts (fixes broken images locally & live)
     remotePatterns: [
-      { protocol: "https", hostname: "images.unsplash.com" },
-      { protocol: "https", hostname: "img.magnific.com" },
-      { protocol: "https", hostname: "www.sonavalliappapublicschool.com" },
-      { protocol: "https", hostname: "sonavalliappapublicschool.com" },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "img.magnific.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.sonavalliappapublicschool.com",
+      },
+      {
+        protocol: "https",
+        hostname: "sonavalliappapublicschool.com",
+      },
       ...(apiPattern ? [apiPattern] : []),
     ],
     formats: ["image/webp"],
+  },
+
+  async redirects() {
+    return [
+      // Admission
+      {
+        source: "/admission.html",
+        destination: "/admission/admission-procedure",
+        permanent: true,
+      },
+
+      {
+        source: "/events",
+        destination: "/news-and-events",
+        permanent: true,
+      },
+
+      // Contact and careers
+      {
+        source: "/contact-us.html",
+        destination: "/contact-us",
+        permanent: true,
+      },
+      {
+        source: "/careers/job-openings.html",
+        destination: "/",
+        permanent: true,
+      },
+
+      // Activities
+      {
+        source: "/activities/yoga.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/activities/rythmic-songs.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/activities/aerobics.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/activities/exciting-games.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/activities/value-calendar.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/activities/public-speaking.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/activities/sonaria-music-club.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/activities/information-communication-tech.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/activities/english-reading-program.html",
+        destination: "/",
+        permanent: true,
+      },
+
+      // Infrastructure
+      {
+        source: "/infrastructure-facilities/classrooms.html",
+        destination: "/infrastructure-facilities/classrooms",
+        permanent: true,
+      },
+      {
+        source: "/infrastructure-facilities/library.html",
+        destination: "/infrastructure-facilities/library",
+        permanent: true,
+      },
+      {
+        source: "/infrastructure-facilities/pantry-and-dining.htmlml",
+        destination: "/infrastructure-facilities/pantry-and-dining",
+        permanent: true,
+      },
+      {
+        source: "/infrastructure-facilities/montessori-room.html",
+        destination: "/",
+        permanent: true,
+      },
+
+      // About us
+      {
+        source: "/about-us/management-team-committee.html",
+        destination: "/about-us/management-team-committee",
+        permanent: true,
+      },
+      {
+        source: "/about-us/the-sona-story.html",
+        destination: "/",
+        permanent: true,
+      },
+    
+      {
+        source: "/about-us/rules-and-regulations/school-timings.html",
+        destination: "/about-us/rules-and-regulations/school-timings",
+        permanent: true,
+      },
+
+      // Resources
+      {
+        source: "/resources/bal-ganesh-virtual-contest.html",
+        destination: "/resources/bal-ganesh-virtual-contest",
+        permanent: true,
+      },
+
+      // Academics
+      {
+        source: "/academics/curriculum-and-pedagogical-processes.html",
+        destination: "/academics/curriculum-and-pedagogical-processes",
+        permanent: true,
+      },
+       {
+        source: "/chairmanbook/index.php",
+        destination: "/about-us/chairman-books",
+        permanent: true,
+      },
+    ];
   },
 };
 
