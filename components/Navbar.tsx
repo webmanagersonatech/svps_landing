@@ -394,7 +394,7 @@ export default function Navbar() {
                     height={60}
                     sizes="240px"
                     priority
-                    className="h-8 sm:h-9 md:h-10 lg:h-11 w-auto object-contain"
+                 className="h-10 sm:h-11 md:h-10 lg:h-11 w-auto object-contain"
                   />
                 </div>
               </Link>

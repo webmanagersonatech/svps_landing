@@ -151,13 +151,13 @@ export default function Hero() {
               <div key={currentSlide.id} className="space-y-6">
                 {/* Main Heading */}
                 <div className="space-y-2 anim-fade-up" style={{ animationDelay: "0.1s" }}>
-                  <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
-                    <span className="text-white/90">{currentSlide.titlePrefix}</span>
-                    <br />
-                    <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
-                      {currentSlide.titleGradient}
-                    </span>
-                  </h1>
+                <h1 className="text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
+  <span className="text-white/90">{currentSlide.titlePrefix}</span>
+  <br />
+  <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
+    {currentSlide.titleGradient}
+  </span>
+</h1>
                   <p
                     className="anim-fade-up text-sm md:text-base text-white/60 max-w-lg italic leading-relaxed"
                     style={{ animationDelay: "0.3s" }}
