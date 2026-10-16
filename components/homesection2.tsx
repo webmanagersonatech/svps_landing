@@ -107,7 +107,7 @@ const GrowthSkillsComponent2 = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                                     transition={{ duration: 0.5, delay: 0.4 }}
-                                    className="mt-2"
+                                    className="mt-2 flex justify-start sm:justify-start"
                                 >
                                     <span className="text-sm sm:text-base uppercase tracking-wider text-primary font-medium">
                                         Welcome to

@@ -441,7 +441,7 @@ export default function AdmissionEnquiryForm({
                                     name="name"
                                     value={formData.name}
                                     onChange={handleInputChange}
-                                    placeholder="John Doe"
+                                    placeholder="xxxx xx"
                                     autoComplete="name"
                                     className={`${inputBaseClass} ${inputBorderClass('name')}`}
                                 />
@@ -459,7 +459,7 @@ export default function AdmissionEnquiryForm({
                                     name="email"
                                     value={formData.email}
                                     onChange={handleInputChange}
-                                    placeholder="john@example.com"
+                                    placeholder="xxxx@example.com"
                                     autoComplete="email"
                                     className={`${inputBaseClass} ${inputBorderClass('email')}`}
                                 />
@@ -479,7 +479,7 @@ export default function AdmissionEnquiryForm({
                                     name="phone"
                                     value={formData.phone}
                                     onChange={handleInputChange}
-                                    placeholder="9876543210"
+                                    placeholder="phone number"
                                     inputMode="numeric"
                                     maxLength={10}
                                     autoComplete="tel"
