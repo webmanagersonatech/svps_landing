@@ -90,7 +90,8 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     fetchAllNewsEvents().catch(() => [] as NewsOrEvent[]),
   ]);
   const sitemap = generateSiteMap(activities, newsAndEvents);
-  res.setHeader("Content-Type", "text/xml");
+  res.setHeader("Content-Type", "application/xml; charset=utf-8");
+  res.setHeader("Cache-Control", "public, s-maxage=3600, stale-while-revalidate=86400");
   res.write(sitemap);
   res.end();
 
