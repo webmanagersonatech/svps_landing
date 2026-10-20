@@ -83,50 +83,35 @@ function useScrollSync(totalItems: number, threshold: number = 0.6) {
         const handleScroll = () => {
             if (isScrollingRef.current) return;
 
-            // Clear previous timeout
             if (scrollTimeoutRef.current) {
                 clearTimeout(scrollTimeoutRef.current);
             }
 
-            // Debounce scroll events
             scrollTimeoutRef.current = setTimeout(() => {
-                let maxVisibleIndex = 0;
-                let maxVisibility = 0;
+                const viewportHeight = window.innerHeight;
+                const viewportCenter = viewportHeight / 2;
+
+                let bestIndex = 0;
+                let bestScore = -Infinity;
 
                 itemRefs.current.forEach((ref, idx) => {
-                    if (ref) {
-                        const rect = ref.getBoundingClientRect();
-                        const viewportHeight = window.innerHeight;
+                    if (!ref) return;
+                    const rect = ref.getBoundingClientRect();
+                    const elementCenter = (rect.top + rect.bottom) / 2;
+                    const distance = Math.abs(elementCenter - viewportCenter);
+                    const score = -distance;
 
-                        // Calculate how much of the element is visible
-                        const visibleTop = Math.max(0, rect.top);
-                        const visibleBottom = Math.min(viewportHeight, rect.bottom);
-                        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-                        const visibilityRatio = visibleHeight / rect.height;
-
-                        // Also consider the element's position relative to viewport center
-                        const elementCenter = (rect.top + rect.bottom) / 2;
-                        const viewportCenter = viewportHeight / 2;
-                        const centerDistance = Math.abs(elementCenter - viewportCenter);
-                        const centerScore = Math.max(0, 1 - (centerDistance / (viewportHeight / 2)));
-
-                        // Combined score: visibility ratio + center proximity bonus
-                        const totalScore = visibilityRatio * 0.7 + centerScore * 0.3;
-
-                        if (totalScore > maxVisibility) {
-                            maxVisibility = totalScore;
-                            maxVisibleIndex = idx;
-                        }
+                    if (rect.bottom > 0 && rect.top < viewportHeight && score > bestScore) {
+                        bestScore = score;
+                        bestIndex = idx;
                     }
                 });
 
-                if (maxVisibility > threshold) {
-                    setActiveIndex(maxVisibleIndex);
-                }
-            }, 50);
+                setActiveIndex(bestIndex);
+            }, 80);
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => {
             window.removeEventListener('scroll', handleScroll);
             if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
@@ -137,10 +122,13 @@ function useScrollSync(totalItems: number, threshold: number = 0.6) {
         const targetRef = itemRefs.current[index];
         if (targetRef) {
             isScrollingRef.current = true;
-            targetRef.scrollIntoView({ behavior, block: 'start' });
+
+            const yOffset = -100;
+            const y = targetRef.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior });
+
             setActiveIndex(index);
 
-            // Reset scrolling flag after animation completes
             setTimeout(() => {
                 isScrollingRef.current = false;
             }, 800);
@@ -329,22 +317,25 @@ export default function ManagementProfilesPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
 
                     {/* SCROLL INDICATOR (Desktop Only) */}
-                    <div className="fixed left-4 top-1/2 -translate-y-1/2 z-30 hidden xl:block">
-                        <div className="flex flex-col gap-3">
+                    <div className="fixed left-4 top-1/2 -translate-y-1/2 z-30 hidden 2xl:block">
+                        <div className="flex flex-col gap-3 max-w-[180px]">
                             {managementMembers.map((member, idx) => (
                                 <button
                                     key={idx}
                                     onClick={() => scrollToIndex(idx, 'smooth')}
-                                    className="group flex items-center gap-3"
+                                    className="group flex items-center gap-3 text-left"
+                                    title={member.name}
                                 >
-                                    <div className={`h-2 rounded-full transition-all duration-300 ${activeIndex === idx
-                                        ? 'w-6 bg-amber-600'
-                                        : 'w-2 bg-gray-300 group-hover:bg-amber-400 group-hover:w-3'
-                                        }`} />
-                                    <span className={`text-xs transition ${activeIndex === idx
-                                        ? 'text-amber-600'
-                                        : 'text-gray-400 group-hover:text-gray-600'
-                                        }`}>
+                                    <div className={`h-2 rounded-full flex-shrink-0 transition-all duration-300 ${
+                                        activeIndex === idx
+                                            ? 'w-6 bg-amber-600'
+                                            : 'w-2 bg-gray-300 group-hover:bg-amber-400 group-hover:w-3'
+                                    }`} />
+                                    <span className={`text-xs truncate max-w-[140px] transition ${
+                                        activeIndex === idx
+                                            ? 'text-amber-600 font-medium'
+                                            : 'text-gray-400 group-hover:text-gray-600'
+                                    }`}>
                                         {member.name}
                                     </span>
                                 </button>
@@ -353,37 +344,38 @@ export default function ManagementProfilesPage() {
                     </div>
 
                     {/* CARDS */}
-                    <div className="space-y-6 sm:space-y-8 lg:space-y-12">
+                    <div className="space-y-6 sm:space-y-8 lg:space-y-12 pb-24 sm:pb-16">
                         {managementMembers.map((member, index) => (
                             <div
                                 key={index}
                                 ref={(el) => {
                                     itemRefs.current[index] = el;
                                 }}
-                                className={`transition-all duration-500 ${activeIndex === index
-                                    ? "scale-[1.02] shadow-xl"
-                                    : "opacity-95 hover:opacity-100"
-                                    }`}
+                                className={`transition-all duration-500 ${
+                                    activeIndex === index
+                                        ? "scale-[1.01] shadow-xl"
+                                        : "opacity-95 hover:opacity-100"
+                                }`}
                             >
                                 <Reveal delay={Math.min(index * 150, 400)} threshold={0.1}>
-
-                                    <div className="bg-white border border-gray-100  shadow-sm sm:shadow-md hover:shadow-xl transition p-4 sm:p-6 lg:p-8">
-
+                                    <div className="bg-white border border-gray-100 shadow-sm sm:shadow-md hover:shadow-xl transition p-4 sm:p-6 lg:p-8 rounded-lg">
                                         {/* TOP SECTION */}
                                         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
 
                                             {/* AVATAR */}
                                             <div className="flex-shrink-0 flex justify-center sm:justify-start">
-                                                <div className={`w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full overflow-hidden bg-gray-800 shadow-lg ${activeIndex === index ? "ring-4 ring-amber-400/40" : ""
-                                                    }`}>
+                                                <div className={`w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full overflow-hidden bg-gray-800 shadow-lg ${
+                                                    activeIndex === index ? "ring-4 ring-amber-400/40" : ""
+                                                }`}>
                                                     {member.image ? (
                                                         <Image
                                                             src={member.image}
                                                             alt={member.name}
-                                                            width={1200}
-                                                            height={800}
-                                                            sizes="(min-width: 1024px) 50vw, 100vw"
+                                                            width={112}
+                                                            height={112}
+                                                            sizes="112px"
                                                             className="w-full h-full object-cover"
+                                                            priority={index === 0}
                                                         />
                                                     ) : (
                                                         <div className="flex items-center justify-center h-full text-white text-xs text-center px-2">
@@ -394,9 +386,8 @@ export default function ManagementProfilesPage() {
                                             </div>
 
                                             {/* HEADER + TEXT */}
-                                            <div className="flex-1 text-center sm:text-left">
-
-                                                <h3 className=" sm:text-xl lg:text-2xl font-serif font-bold text-gray-900">
+                                            <div className="flex-1 text-center sm:text-left min-w-0">
+                                                <h3 className="text-lg sm:text-xl lg:text-2xl font-serif font-bold text-gray-900 break-words">
                                                     {member.name}
                                                 </h3>
 
@@ -408,7 +399,7 @@ export default function ManagementProfilesPage() {
                                                     {member.title && (
                                                         <>
                                                             <span className="text-gray-300">•</span>
-                                                            <span className="text-gray-500 ">
+                                                            <span className="text-gray-500 text-xs sm:text-sm">
                                                                 {member.title}
                                                             </span>
                                                         </>
@@ -416,18 +407,14 @@ export default function ManagementProfilesPage() {
                                                 </div>
 
                                                 {/* DESCRIPTION */}
-                                                <div className="mt-3 space-y-2 text-gray-600  leading-relaxed text-justify">
+                                                <div className="mt-3 space-y-2 text-gray-600 leading-relaxed text-justify text-sm sm:text-base break-words">
                                                     {member.description.map((para, i) => (
                                                         <p key={i}>{para}</p>
                                                     ))}
                                                 </div>
-
-                                            
-
                                             </div>
                                         </div>
                                     </div>
-
                                 </Reveal>
                             </div>
                         ))}
@@ -438,10 +425,12 @@ export default function ManagementProfilesPage() {
                         <button
                             onClick={goToPrevious}
                             disabled={activeIndex === 0}
-                            className={`p-2.5 sm:p-3 rounded-full shadow-md ${activeIndex === 0
-                                ? 'bg-gray-200 text-gray-400'
-                                : 'bg-white hover:bg-amber-600 hover:text-white'
-                                }`}
+                            aria-label="Previous profile"
+                            className={`p-3 rounded-full shadow-lg transition ${
+                                activeIndex === 0
+                                    ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                    : 'bg-white text-gray-700 hover:bg-amber-600 hover:text-white'
+                            }`}
                         >
                             ←
                         </button>
@@ -449,17 +438,16 @@ export default function ManagementProfilesPage() {
                         <button
                             onClick={goToNext}
                             disabled={activeIndex === managementMembers.length - 1}
-                            className={`p-2.5 sm:p-3 rounded-full shadow-md ${activeIndex === managementMembers.length - 1
-                                ? 'bg-gray-200 text-gray-400'
-                                : 'bg-white hover:bg-amber-600 hover:text-white'
-                                }`}
+                            aria-label="Next profile"
+                            className={`p-3 rounded-full shadow-lg transition ${
+                                activeIndex === managementMembers.length - 1
+                                    ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                    : 'bg-white text-gray-700 hover:bg-amber-600 hover:text-white'
+                            }`}
                         >
                             →
                         </button>
                     </div>
-
-
-
                 </div>
             </main>
         </>
