@@ -333,9 +333,9 @@ const StudentAchievements = () => {
                                                     </h3>
 
                                                     {(item.className || item.category) && (
-                                                    <p className="text-center text-white  uppercase tracking-[3px] text-[9px] mt-1">
-                                                        {item.className || item.category}
-                                                    </p>)}
+                                                        <p className="text-center text-white  uppercase tracking-[3px] text-[9px] mt-1">
+                                                            {item.className || item.category}
+                                                        </p>)}
                                                 </div>
                                             </div>
                                         </div>
@@ -343,32 +343,53 @@ const StudentAchievements = () => {
                                 </div>
 
                                 {/* LEFT CONTENT */}
-                                <div className="flex flex-col justify-center px-4 sm:px-6 md:px-8 py-4 sm:py-6 order-last md:order-first">
-                                    <div className="w-full max-w-lg mx-auto md:mx-0">
-                                        <h2 className="text-secondary text-[22px] sm:text-[26px] md:text-[30px] font-serif uppercase leading-tight">
+
+                                {/* LEFT CONTENT */}
+                                <div className="flex flex-col justify-center py-4 order-last md:order-first min-w-0">
+
+                                    <div className="w-full max-w-lg mx-auto md:mx-0 min-w-0
+                    bg-white/95 md:bg-transparent
+                    shadow-sm md:shadow-none">
+
+                                        <h2 className="p-2 text-[#10294d] text-xl sm:text-2xl md:text-[30px]
+                       font-serif uppercase leading-snug
+                       break-words [overflow-wrap:anywhere]">
                                             {item.achievement}
                                         </h2>
 
-                                        {item.subTitle && (<p className="text-[#10294d] text-sm sm:text-base uppercase tracking-[3px] mt-2">
-                                            {item.subTitle}
-                                        </p>)}
+                                        {item.subTitle && (
+                                            <p className="p-2 text-[#10294d] text-xs sm:text-sm md:text-base
+                          uppercase tracking-[1.5px] mt-2 break-words">
+                                                {item.subTitle}
+                                            </p>
+                                        )}
 
-                                        <p className="mt-4 text-secondary text-sm sm:text-base leading-relaxed  tracking-wide">
+                                        <p className="p-2 mt-3 sm:mt-4 text-[#334155]
+                      text-sm sm:text-base leading-7
+                      tracking-normal break-words [overflow-wrap:anywhere]">
                                             {item.description}
                                         </p>
 
-                                        {item.parent && (<p className="mt-4 text-secondary/80 text-[11px] sm:text-xs uppercase tracking-wide">
-                                            {item.parent}
-                                        </p>)}
+                                        {item.parent && (
+                                            <p className="p-2 mt-3 text-[#475569] text-xs sm:text-sm
+                          leading-relaxed break-words">
+                                                {item.parent}
+                                            </p>
+                                        )}
 
                                         <Link
                                             href={`/student-achievements/${item.slug}`}
-                                            className="mt-5 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-1 text-xs sm:text-sm font-semibold uppercase tracking-wider text-white shadow-lg transition hover:brightness-95"
+                                            className="mt-4 inline-flex items-center gap-2
+                       bg-primary px-5 py-2.5 text-sm
+                       uppercase tracking-wide text-white
+                       shadow-md transition hover:brightness-95"
                                         >
                                             Read More <span aria-hidden>&rarr;</span>
                                         </Link>
+
                                     </div>
                                 </div>
+
                             </div>
 
 

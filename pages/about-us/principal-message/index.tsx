@@ -132,31 +132,38 @@ export default function PrincipalMessagePage() {
                         {/* LEFT: PRINCIPAL PHOTO - DIAGONAL HEXAGONAL SHAPE */}
                         <Reveal>
                             <div className="relative group h-full">
-                                <div className="bg-white p-3 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 h-full">
-                                    {/* Polygonal Image Container */}
-                                    <div
-                                        className="relative overflow-hidden h-full min-h-[320px]"
-                                        style={{
-                                            clipPath: "polygon(20% 0%, 80% 0%, 100% 30%, 100% 70%, 80% 100%, 20% 100%, 0% 70%, 0% 30%)"
-                                        }}
-                                    >
-                                        {/* Image */}
-                                        <Image
-                                            src="/about/principal-message/principal-message-banner.svg"
-                                            alt="Principal - Sona Valliappa Public School"
-                                            fill
-                                            className="object-cover object-top"
-                                            sizes="(max-width: 768px) 100vw, 50vw"
-                                            priority
-                                        />
+                              <div className="relative flex h-full min-h-[260px] items-center justify-center
+                overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-amber-50
+                px-3 py-5 sm:min-h-[320px] md:min-h-[380px]">
 
-                                        {/* Gradient Overlay */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+    {/* Decorative background */}
+    <div className="absolute -right-10 -top-10 h-36 w-36
+                    rounded-full bg-blue-200/40 blur-2xl" />
 
-                                        {/* Decorative Border (adapts to clip-path) */}
-                                        <div className="absolute inset-0 border-2 border-primary/30 pointer-events-none" />
-                                    </div>
-                                </div>
+    <div className="absolute -bottom-10 -left-10 h-36 w-36
+                    rounded-full bg-amber-200/40 blur-2xl" />
+
+    {/* Principal Image */}
+    <div className="relative z-10 h-[220px] w-[175px]
+                    overflow-hidden border-4 border-white
+                    shadow-xl sm:h-[270px] sm:w-[210px]
+                    md:h-[310px] md:w-[240px]">
+
+        <Image
+            src="/about/principal-message/kavitha-principal-svps.webp"
+            alt="Principal - Sona Valliappa Public School"
+            fill
+            sizes="(max-width: 640px) 175px, (max-width: 768px) 210px, 240px"
+            className="object-cover object-top"
+            priority
+        />
+    </div>
+
+    {/* Subtle accent */}
+    <div className="absolute bottom-4 left-1/2 h-1 w-16
+                    -translate-x-1/2 bg-amber-500" />
+
+</div>
 
                                 {/* Badge repositioned for the new shape */}
                                 <div className="absolute -bottom-3 left-6 bg-secondary text-white text-sm font-semibold px-4 py-1 rounded-full shadow-md z-10">
