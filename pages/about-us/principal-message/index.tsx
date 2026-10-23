@@ -128,54 +128,37 @@ export default function PrincipalMessagePage() {
                 <div className="max-w-7xl mx-auto px-4 py-16">
                     <div className="grid md:grid-cols-2 gap-12 items-stretch">
 
-                        {/* LEFT: PRINCIPAL PHOTO - FULL WIDTH, REDUCED HEIGHT */}
-                        <Reveal>
-                            <div className="relative group h-full w-full">
+                     <Reveal>
+  <div className="relative group h-full w-full">
+    <div
+      className="relative h-full min-h-[240px] w-full overflow-hidden rounded-3xl
+      bg-gradient-to-br from-slate-50 via-blue-50 to-amber-50
+      sm:min-h-[280px] md:min-h-[340px]"
+    >
+      <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-blue-200/40 blur-2xl" />
+      <div className="absolute -bottom-10 -left-10 h-36 w-36 rounded-full bg-amber-200/40 blur-2xl" />
 
-                                {/* Main Image Container */}
-                                <div
-                                    className="relative h-full min-h-[240px] w-full
-            overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-amber-50
-            sm:min-h-[280px] md:min-h-[340px]"
-                                >
-                                    {/* Decorative Background */}
-                                    <div className="absolute -right-10 -top-10 h-36 w-36
-                rounded-full bg-blue-200/40 blur-2xl" />
+      <div className="absolute inset-0 z-10 h-full w-full">
+        <Image
+          src="/about/principal-message/kavitha-principal-svps.webp"
+          alt="Principal - Sona Valliappa Public School"
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover object-top"
+          priority
+        />
+      </div>
 
-                                    <div className="absolute -bottom-10 -left-10 h-36 w-36
-                rounded-full bg-amber-200/40 blur-2xl" />
+      <div className="absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+      <div className="absolute bottom-4 left-1/2 z-20 h-1 w-16 -translate-x-1/2 bg-amber-500" />
+    </div>
 
-                                    {/* Principal Image */}
-                                    <div className="absolute inset-0 z-10 h-full w-full">
-                                        <Image
-                                            src="/about/principal-message/kavitha-principal-svps.webp"
-                                            alt="Principal - Sona Valliappa Public School"
-                                            fill
-                                            sizes="(max-width: 768px) 100vw, 50vw"
-                                            className="object-cover object-top"
-                                            priority
-                                        />
-                                    </div>
-
-                                    {/* Bottom Gradient */}
-                                    <div className="absolute inset-x-0 bottom-0 z-10 h-24
-                bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
-
-                                    {/* Accent */}
-                                    <div className="absolute bottom-4 left-1/2 z-20
-                h-1 w-16 -translate-x-1/2 bg-amber-500" />
-                                </div>
-
-                                {/* Principal Name Badge */}
-                                <div className="absolute -bottom-3 left-1/2 z-30
-            -translate-x-1/2 whitespace-nowrap rounded-full
-            bg-secondary px-5 py-2 text-sm font-semibold
-            text-white shadow-lg">
-                                    Ms. E.J. Kavitha
-                                </div>
-
-                            </div>
-                        </Reveal>
+    <div className="absolute -bottom-3 left-1/2 z-30 -translate-x-1/2 whitespace-nowrap rounded-full
+      bg-secondary px-5 py-2 text-sm font-semibold text-white shadow-lg">
+      Ms. E.J. Kavitha
+    </div>
+  </div>
+</Reveal>
 
                         {/* RIGHT: CONTENT */}
                         <div className="h-full flex flex-col justify-center space-y-5">
