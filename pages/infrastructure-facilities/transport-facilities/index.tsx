@@ -140,7 +140,7 @@ export default function TransportPage() {
         />
 
         <section className="max-w-7xl mx-auto px-4 py-20 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-7 gap-12 items-stretch">
-          <Reveal className="xl:col-span-2">
+          <Reveal className="xl:col-span-4">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-6 font-serif leading-snug">
                 Safe Journeys,
@@ -169,7 +169,7 @@ export default function TransportPage() {
             </div>
           </Reveal>
 
-          <Reveal className="xl:col-span-5">
+          <Reveal className="xl:col-span-3">
             <div className="relative group h-full">
               {/* back layers */}
               <div className="absolute top-4 left-4 w-full h-full bg-primary/10 rounded-2xl"></div>
