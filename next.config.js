@@ -50,7 +50,7 @@ const nextConfig = {
     return [
       // Admission
       {
-        source: "/admission.html",
+        source: "/admission/admission-procedure.html",
         destination: "/admission/admission-procedure",
         permanent: true,
       },
@@ -89,6 +89,12 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
+      {
+        source: "/academics/teacher-training-programme-workshops.html",
+        destination: "/academics/teacher-training-programme-workshops",
+        permanent: true,
+      },
+
       {
         source: "/activities/exciting-games.html",
         destination: "/",
@@ -132,7 +138,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/infrastructure-facilities/pantry-and-dining.htmlml",
+        source: "/infrastructure-facilities/pantry-and-dining.html",
         destination: "/infrastructure-facilities/pantry-and-dining",
         permanent: true,
       },
@@ -153,12 +159,31 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
-    
+
       {
-        source: "/about-us/rules-and-regulations/school-timings.html",
-        destination: "/about-us/rules-and-regulations/school-timings",
+        source: "/about-us/rules-and-regulations/school-timings",
+        destination: "/about-us/rules-and-regulations",
         permanent: true,
       },
+      {
+        source: "/about-us/rules-and-regulations/for-students.html",
+        destination: "/about-us/rules-and-regulations",
+        permanent: true,
+      },
+
+      {
+        source: "/resources/videos.html",
+        destination: "/",
+        permanent: true,
+      },
+
+      {
+        source: "/resources/student-achievements.html",
+        destination: "/student-achievements/sathyan-m-finswimming",
+        permanent: true,
+      },
+   
+   
 
       // Resources
       {
@@ -173,7 +198,7 @@ const nextConfig = {
         destination: "/academics/curriculum-and-pedagogical-processes",
         permanent: true,
       },
-       {
+      {
         source: "/chairmanbook/index.php",
         destination: "/about-us/chairman-books",
         permanent: true,

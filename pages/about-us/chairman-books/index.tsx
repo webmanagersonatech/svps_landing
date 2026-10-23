@@ -2,6 +2,7 @@ import Image from "next/image";
 import SEO from "../../../components/SEO";
 import { PageHeader } from "../../../components/PageHeader";
 import { useEffect, useRef, useState } from "react";
+import PopupForm from "../../../components/bookvisit";
 import {
     BookOpenIcon,
     AcademicCapIcon,
@@ -72,6 +73,9 @@ const books = [
 ];
 
 export default function ChairmanBooksPage() {
+    /* ---- Popup state ---- */
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
     return (
         <>
             <SEO
@@ -84,14 +88,11 @@ export default function ChairmanBooksPage() {
                 <PageHeader
                     title="Chairman's Books"
                     subtitle="Wisdom, Vision, and Legacy – penned by our founder"
-                    breadcrumbs={["Home", "About", "Chairman\'s Books"]}
+                    breadcrumbs={["Home", "About", "Chairman's Books"]}
                 />
-
 
                 {/* BOOKS SECTION */}
                 <div className="max-w-7xl mx-auto px-4 py-16">
-
-
                     <div className="space-y-24">
                         {books.map((book, i) => {
                             const Icon = book.icon;
@@ -105,10 +106,7 @@ export default function ChairmanBooksPage() {
                                         {/* IMAGE SIDE */}
                                         <div className={`${isEven ? "md:order-1" : "md:order-2"}`}>
                                             <div className="relative group">
-                                                {/* Card container with new shape and structure */}
                                                 <div className="relative bg-white/5 backdrop-blur-sm rounded-[2rem] rounded-br-[4rem] rounded-tl-[4rem] shadow-2xl overflow-hidden border border-white/20 transition-all duration-500 group-hover:shadow-3xl group-hover:-translate-y-2">
-
-                                                    {/* Image with diagonal clip shape effect */}
                                                     <div className="relative overflow-hidden">
                                                         <Image
                                                             src={book.image}
@@ -119,26 +117,21 @@ export default function ChairmanBooksPage() {
                                                             className="w-full h-[420px] object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1"
                                                         />
 
-                                                        {/* Modern gradient overlay - diagonal style */}
                                                         <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/20 to-transparent" />
 
-                                                        {/* Bottom info bar - new structural element */}
                                                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                                                             <h3 className="text-white font-bold text-xl   mb-1">{book.title}</h3>
                                                             <p className="text-white/70 text-sm">Click to explore</p>
                                                         </div>
 
-                                                        {/* Floating icon - repositioned to bottom right with new shape */}
                                                         <div className="absolute bottom-5 right-5 bg-black/60 backdrop-blur-md p-3 rounded-2xl rounded-bl-3xl shadow-lg border border-white/30 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary">
                                                             <Icon className="w-6 h-6 text-white" />
                                                         </div>
 
-                                                        {/* Corner accent - decorative shape element */}
                                                         <div className="absolute top-0 left-0 w-24 h-24 bg-gradient-to-br from-primary/40 to-transparent rounded-br-3xl" />
                                                     </div>
                                                 </div>
 
-                                                {/* New structural element: floating badge below the card */}
                                                 <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur-md px-6 py-2 rounded-full shadow-lg border border-white/50 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:-bottom-4">
                                                     <span className="text-sm font-semibold text-gray-800"> New Arrival</span>
                                                 </div>
@@ -206,7 +199,11 @@ export default function ChairmanBooksPage() {
 
                         <Reveal delay={350}>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button className="bg-primary text-white px-8 py-2.5 rounded-full hover:bg-primary/90 transition">
+                                <button
+                                    type="button"
+                                    onClick={() => setIsPopupOpen(true)}
+                                    className="bg-primary text-white px-8 py-2.5 rounded-full hover:bg-primary/90 transition"
+                                >
                                     <BookOpenIcon className="w-5 h-5 inline mr-2" />
                                     Check Availability
                                 </button>
@@ -218,6 +215,13 @@ export default function ChairmanBooksPage() {
                     </div>
                 </div>
             </main>
+
+            <PopupForm
+                isOpen={isPopupOpen}
+                onClose={() => setIsPopupOpen(false)}
+                title="Enquire About Chairman's Books"
+                subtitle="Share your details and we'll let you know about availability and how to get a copy."
+            />
         </>
     );
 }

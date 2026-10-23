@@ -24,7 +24,7 @@ const Footer = () => {
 
   const resourceLinks = [
     { name: "Infrastructure", href: "/infrastructure-facilities/classrooms" },
-    { name: "Mandatory Disclosure", href: "/public-disclosure" },
+    { name: "Mandatory Disclosure", href: "/mandatory-disclosure" },
     { name: "News & Events", href: "/news-and-events" },
     { name: "Admission Contact", href: "/admission/admission-contact" },
   ];
@@ -86,7 +86,7 @@ const Footer = () => {
               <div className="flex items-center gap-3">
                 <FaEnvelope className="text-primary" />
                 <a
-                  href="mailto:svpschool@sonatech.ac.in"
+                  href="mailto:info@sonavalliappapublicschool.com"
                   className="text-white/80 hover:text-primary transition"
                 >
                   info@sonavalliappapublicschool.com

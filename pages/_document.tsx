@@ -19,7 +19,7 @@ const organizationJsonLd = {
     addressCountry: "IN",
   },
   telephone: "+91-427-2912160",
-  email: "svpschool@sonatech.ac.in",
+  email: "info@sonavalliappapublicschool.com",
   sameAs: [],
 };
 

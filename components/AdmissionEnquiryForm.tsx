@@ -32,7 +32,6 @@ const DEFAULT_COUNTRY_CODE = 'IN';
 const DEFAULT_STATE_CODE = 'TN';
 const INSTITUTE_ID = 'INS-3-ZXYXKM';
 
-// Class / Program options — value = the ID you provided
 const CLASS_OPTIONS: SelectOption[] = [
     { value: 'PREKG00001', label: 'Pre-KG' },
     { value: 'LKG0000002', label: 'LKG' },
@@ -57,6 +56,15 @@ const initialFormData: FormData = {
     city: '',
     programId: '',
 };
+
+/* ---------- Simple char captcha ---------- */
+const CAPTCHA_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+const CAPTCHA_LENGTH = 5;
+const generateCaptcha = (len = CAPTCHA_LENGTH): string =>
+    Array.from(
+        { length: len },
+        () => CAPTCHA_CHARS[Math.floor(Math.random() * CAPTCHA_CHARS.length)]
+    ).join('');
 
 /* ---------- Custom react-select styles (glass theme) ---------- */
 const selectStyles = {
@@ -127,7 +135,7 @@ const validatePhone = (phone: string): string => {
     if (!/^\d+$/.test(cleaned)) return 'Only digits allowed';
     if (cleaned.length !== 10) return 'Phone must be exactly 10 digits';
     if (!/^[6-9]/.test(cleaned)) return 'Must start with 6, 7, 8, or 9';
-    if (/^(\d)\1{9}$/.test(cleaned)) return 'Invalid phone number'; // 9999999999
+    if (/^(\d)\1{9}$/.test(cleaned)) return 'Invalid phone number';
     if (cleaned === '1234567890' || cleaned === '0123456789')
         return 'Invalid phone number';
     if (/^(0123456789|1234567890|9876543210|5432109876)$/.test(cleaned))
@@ -144,7 +152,7 @@ const validateEmail = (email: string): string => {
 
 /* ---------- Component ---------- */
 export default function AdmissionEnquiryForm({
-    title = 'Admission Enquiry',
+    title = 'Admissions Enquiry',
     subtitle = "Fill the details below and we'll get back to you",
     onSuccess,
     className = '',
@@ -153,9 +161,17 @@ export default function AdmissionEnquiryForm({
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [errors, setErrors] = useState<Record<string, string>>({});
+    const [touched, setTouched] = useState<Record<string, boolean>>({});
     const [submitStatus, setSubmitStatus] = useState<
         'idle' | 'success' | 'error'
     >('idle');
+
+    /* --- Captcha state --- */
+    const [captchaText, setCaptchaText] = useState(() => generateCaptcha());
+    const [captchaInput, setCaptchaInput] = useState('');
+
+    /* --- Consent checkbox state --- */
+    const [agreedToTerms, setAgreedToTerms] = useState(false);
 
     /* --- Data sources --- */
     const countries = useMemo(() => Country.getAllCountries(), []);
@@ -192,28 +208,35 @@ export default function AdmissionEnquiryForm({
         [cities]
     );
 
-    /* --- Generic input handler (text inputs) --- */
+    /* --- Live field validators (run on every change) --- */
+    const liveNameError = validateName(formData.name);
+    const liveEmailError = validateEmail(formData.email);
+    const livePhoneError = validatePhone(formData.phone);
+
+    /* --- Generic input handler --- */
     const handleInputChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
         const { name, value } = e.target;
 
-        // Live-restrict name to letters/spaces
         const sanitizedValue =
             name === 'name' ? value.replace(/[^A-Za-z\s.'-]/g, '') : value;
 
-        // Live-restrict phone to digits (max 10)
         const finalValue =
             name === 'phone'
                 ? sanitizedValue.replace(/\D/g, '').slice(0, 10)
                 : sanitizedValue;
 
         setFormData((prev) => ({ ...prev, [name]: finalValue }));
+        setTouched((prev) => ({ ...prev, [name]: true }));
 
-        // Clear error as user types
-        if (errors[name]) {
-            setErrors((prev) => ({ ...prev, [name]: '' }));
-        }
+        // Re-run validation for this field immediately
+        let err = '';
+        if (name === 'name') err = validateName(finalValue);
+        if (name === 'email') err = validateEmail(finalValue);
+        if (name === 'phone') err = validatePhone(finalValue);
+
+        setErrors((prev) => ({ ...prev, [name]: err, submit: '' }));
     };
 
     /* --- react-select change handlers --- */
@@ -224,43 +247,138 @@ export default function AdmissionEnquiryForm({
             state: '',
             city: '',
         }));
-        setErrors((prev) => ({ ...prev, country: '', state: '', city: '' }));
+        setErrors((prev) => ({
+            ...prev,
+            country: opt?.value ? '' : 'Country is required',
+            state: '',
+            city: '',
+        }));
+        setTouched((prev) => ({ ...prev, country: true }));
     };
 
     const handleStateChange = (opt: SingleValue<SelectOption>) => {
         setFormData((prev) => ({ ...prev, state: opt?.value || '', city: '' }));
-        setErrors((prev) => ({ ...prev, state: '', city: '' }));
+        setErrors((prev) => ({
+            ...prev,
+            state: opt?.value ? '' : 'State is required',
+            city: '',
+        }));
+        setTouched((prev) => ({ ...prev, state: true }));
     };
 
     const handleCityChange = (opt: SingleValue<SelectOption>) => {
         setFormData((prev) => ({ ...prev, city: opt?.value || '' }));
-        setErrors((prev) => ({ ...prev, city: '' }));
+        setErrors((prev) => ({
+            ...prev,
+            city: opt?.value ? '' : 'City is required',
+        }));
+        setTouched((prev) => ({ ...prev, city: true }));
     };
 
     const handleClassChange = (opt: SingleValue<SelectOption>) => {
         setFormData((prev) => ({ ...prev, programId: opt?.value || '' }));
-        setErrors((prev) => ({ ...prev, programId: '' }));
+        setErrors((prev) => ({
+            ...prev,
+            programId: opt?.value ? '' : 'Please select a class',
+        }));
+        setTouched((prev) => ({ ...prev, programId: true }));
     };
 
-    /* --- Validation --- */
+    /* --- Captcha handlers --- */
+    const refreshCaptcha = () => {
+        setCaptchaText(generateCaptcha());
+        setCaptchaInput('');
+        setErrors((prev) => ({ ...prev, captcha: '' }));
+    };
+
+    const handleCaptchaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value.toUpperCase();
+        setCaptchaInput(value);
+        setTouched((prev) => ({ ...prev, captcha: true }));
+
+        let err = '';
+        if (!value.trim()) {
+            err = 'Please enter the captcha';
+        } else if (value.trim() !== captchaText) {
+            err = 'Captcha does not match';
+        }
+        setErrors((prev) => ({ ...prev, captcha: err, submit: '' }));
+    };
+
+    /* --- Consent handler --- */
+    const handleConsentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setAgreedToTerms(e.target.checked);
+        setErrors((prev) => ({
+            ...prev,
+            consent: e.target.checked
+                ? ''
+                : 'Please agree to the Terms & Privacy Policy to continue',
+        }));
+        setTouched((prev) => ({ ...prev, consent: true }));
+    };
+
+    /* --- Step 1: are all detail fields valid? --- */
+    const isDetailsComplete = useMemo(() => {
+        return (
+            validateName(formData.name) === '' &&
+            validateEmail(formData.email) === '' &&
+            validatePhone(formData.phone) === '' &&
+            formData.country !== '' &&
+            formData.state !== '' &&
+            formData.city !== '' &&
+            formData.programId !== ''
+        );
+    }, [formData]);
+
+    /* --- Step 2: has the user typed the correct captcha? --- */
+    const isCaptchaValid = useMemo(() => {
+        return (
+            captchaInput.trim().length > 0 &&
+            captchaInput.trim().toUpperCase() === captchaText
+        );
+    }, [captchaInput, captchaText]);
+
+    /* --- Full validation (incl. captcha + consent) --- */
     const validateForm = () => {
         const newErrors: Record<string, string> = {};
+        const newTouched: Record<string, boolean> = {};
 
         const nameError = validateName(formData.name);
         if (nameError) newErrors.name = nameError;
+        newTouched.name = true;
 
         const emailError = validateEmail(formData.email);
         if (emailError) newErrors.email = emailError;
+        newTouched.email = true;
 
         const phoneError = validatePhone(formData.phone);
         if (phoneError) newErrors.phone = phoneError;
+        newTouched.phone = true;
 
         if (!formData.country) newErrors.country = 'Country is required';
         if (!formData.state) newErrors.state = 'State is required';
         if (!formData.city) newErrors.city = 'City is required';
         if (!formData.programId) newErrors.programId = 'Please select a class';
+        newTouched.country = true;
+        newTouched.state = true;
+        newTouched.city = true;
+        newTouched.programId = true;
+
+        if (!captchaInput.trim()) {
+            newErrors.captcha = 'Please enter the captcha';
+        } else if (captchaInput.trim().toUpperCase() !== captchaText) {
+            newErrors.captcha = 'Captcha does not match';
+        }
+        newTouched.captcha = true;
+
+        if (!agreedToTerms) {
+            newErrors.consent =
+                'Please agree to the Terms & Privacy Policy to continue';
+        }
+        newTouched.consent = true;
 
         setErrors(newErrors);
+        setTouched(newTouched);
         return Object.keys(newErrors).length === 0;
     };
 
@@ -311,11 +429,15 @@ export default function AdmissionEnquiryForm({
                 onSuccess?.(formData);
                 console.log('Enquiry submitted successfully:', responseData);
 
-                // Reset after 3s
                 setTimeout(() => {
                     setIsSubmitted(false);
                     setSubmitStatus('idle');
                     setFormData(initialFormData);
+                    setCaptchaInput('');
+                    setCaptchaText(generateCaptcha());
+                    setAgreedToTerms(false);
+                    setTouched({});
+                    setErrors({});
                 }, 3000);
             } else {
                 setSubmitStatus('error');
@@ -429,7 +551,7 @@ export default function AdmissionEnquiryForm({
                         )}
                     </AnimatePresence>
 
-                    <form onSubmit={handleSubmit} className="space-y-4 relative">
+                    <form onSubmit={handleSubmit} className="space-y-4 relative" noValidate>
                         {/* Row 1: Name + Email */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             <div className="relative group">
@@ -445,7 +567,7 @@ export default function AdmissionEnquiryForm({
                                     autoComplete="name"
                                     className={`${inputBaseClass} ${inputBorderClass('name')}`}
                                 />
-                                {errors.name && (
+                                {touched.name && errors.name && (
                                     <p className="text-red-400 text-xs mt-1 ml-1">{errors.name}</p>
                                 )}
                             </div>
@@ -463,11 +585,12 @@ export default function AdmissionEnquiryForm({
                                     autoComplete="email"
                                     className={`${inputBaseClass} ${inputBorderClass('email')}`}
                                 />
-                                {errors.email && (
+                                {touched.email && errors.email && (
                                     <p className="text-red-400 text-xs mt-1 ml-1">{errors.email}</p>
                                 )}
                             </div>
                         </div>
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {/* Row 2: Phone */}
                             <div className="relative group">
@@ -485,7 +608,7 @@ export default function AdmissionEnquiryForm({
                                     autoComplete="tel"
                                     className={`${inputBaseClass} ${inputBorderClass('phone')}`}
                                 />
-                                {errors.phone && (
+                                {touched.phone && errors.phone && (
                                     <p className="text-red-400 text-xs mt-1 ml-1">{errors.phone}</p>
                                 )}
                             </div>
@@ -504,13 +627,14 @@ export default function AdmissionEnquiryForm({
                                     styles={selectStyles}
                                     classNamePrefix="class-select"
                                 />
-                                {errors.programId && (
+                                {touched.programId && errors.programId && (
                                     <p className="text-red-400 text-xs mt-1 ml-1">
                                         {errors.programId}
                                     </p>
                                 )}
                             </div>
                         </div>
+
                         {/* Row 4: Country + State */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             <div className="relative group">
@@ -526,7 +650,7 @@ export default function AdmissionEnquiryForm({
                                     styles={selectStyles}
                                     classNamePrefix="country-select"
                                 />
-                                {errors.country && (
+                                {touched.country && errors.country && (
                                     <p className="text-red-400 text-xs mt-1 ml-1">
                                         {errors.country}
                                     </p>
@@ -547,7 +671,7 @@ export default function AdmissionEnquiryForm({
                                     styles={selectStyles}
                                     classNamePrefix="state-select"
                                 />
-                                {errors.state && (
+                                {touched.state && errors.state && (
                                     <p className="text-red-400 text-xs mt-1 ml-1">{errors.state}</p>
                                 )}
                             </div>
@@ -568,16 +692,128 @@ export default function AdmissionEnquiryForm({
                                 styles={selectStyles}
                                 classNamePrefix="city-select"
                             />
-                            {errors.city && (
+                            {touched.city && errors.city && (
                                 <p className="text-red-400 text-xs mt-1 ml-1">{errors.city}</p>
                             )}
                         </div>
 
+                        {/* Row 6: Captcha — appears only when all details are valid */}
+                        <AnimatePresence>
+                            {isDetailsComplete && (
+                                <motion.div
+                                    key="captcha-section"
+                                    initial={{ opacity: 0, height: 0, y: -8 }}
+                                    animate={{ opacity: 1, height: 'auto', y: 0 }}
+                                    exit={{ opacity: 0, height: 0, y: -8 }}
+                                    transition={{ duration: 0.35, ease: 'easeOut' }}
+                                    className="overflow-hidden"
+                                >
+                                    <div className="relative group pt-1">
+                                        <label className="block text-white/70 text-xs font-medium mb-1 ml-1 backdrop-blur-sm">
+                                            Captcha *
+                                        </label>
+                                        <div className="flex items-center gap-2">
+                                            <div className="flex-1 flex items-center justify-center h-[42px] rounded-xl bg-white/10 border border-white/20 select-none overflow-hidden">
+                                                <span
+                                                    className="text-white text-lg font-bold tracking-[0.35em] italic"
+                                                    style={{
+                                                        textShadow: '1px 1px 2px rgba(0,0,0,0.6)',
+                                                    }}
+                                                >
+                                                    {captchaText}
+                                                </span>
+                                            </div>
+                                            <button
+                                                type="button"
+                                                onClick={refreshCaptcha}
+                                                className="px-3 h-[42px] rounded-xl bg-white/5 border border-white/20 text-white/70 text-base hover:bg-white/10 hover:text-white transition"
+                                                title="Refresh captcha"
+                                                aria-label="Refresh captcha"
+                                            >
+                                                ↻
+                                            </button>
+                                        </div>
+                                        <input
+                                            type="text"
+                                            value={captchaInput}
+                                            onChange={handleCaptchaChange}
+                                            placeholder="Enter captcha"
+                                            maxLength={CAPTCHA_LENGTH}
+                                            autoComplete="off"
+                                            spellCheck={false}
+                                            className={`${inputBaseClass} ${inputBorderClass(
+                                                'captcha'
+                                            )} mt-2 tracking-widest uppercase`}
+                                        />
+                                        {touched.captcha && errors.captcha && (
+                                            <p className="text-red-400 text-xs mt-1 ml-1">
+                                                {errors.captcha}
+                                            </p>
+                                        )}
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
+                        {/* Row 7: Consent Checkbox — appears only after captcha is entered correctly */}
+                        <AnimatePresence>
+                            {isDetailsComplete && isCaptchaValid && (
+                                <motion.div
+                                    key="consent-section"
+                                    initial={{ opacity: 0, height: 0, y: -8 }}
+                                    animate={{ opacity: 1, height: 'auto', y: 0 }}
+                                    exit={{ opacity: 0, height: 0, y: -8 }}
+                                    transition={{ duration: 0.35, ease: 'easeOut' }}
+                                    className="overflow-hidden"
+                                >
+                                    <div className="relative pt-1">
+                                        <label
+                                            htmlFor="agree-terms"
+                                            className={`flex items-start gap-2 cursor-pointer select-none rounded-xl p-2 -mx-2 transition-colors ${
+                                                touched.consent && errors.consent
+                                                    ? 'bg-red-500/10 border border-red-500/40'
+                                                    : 'hover:bg-white/5'
+                                            }`}
+                                        >
+                                            <input
+                                                id="agree-terms"
+                                                type="checkbox"
+                                                checked={agreedToTerms}
+                                                onChange={handleConsentChange}
+                                                className="mt-0.5 w-4 h-4 flex-shrink-0 rounded border-white/30 bg-white/5 text-primary focus:ring-2 focus:ring-primary/50 cursor-pointer accent-[var(--primary,#3b82f6)]"
+                                            />
+                                            <span className="text-white/50 text-xs leading-relaxed">
+                                                I agree to the{' '}
+                                                <span className="text-primary/80 hover:text-primary cursor-pointer transition-colors">
+                                                    Terms
+                                                </span>{' '}
+                                                &{' '}
+                                                <span className="text-primary/80 hover:text-primary cursor-pointer transition-colors">
+                                                    Privacy Policy
+                                                </span>{' '}
+                                                and consent to being contacted regarding my
+                                                enquiry. <span className="text-red-400">*</span>
+                                            </span>
+                                        </label>
+                                        {touched.consent && errors.consent && (
+                                            <p className="text-red-400 text-xs mt-1 ml-1">
+                                                {errors.consent}
+                                            </p>
+                                        )}
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
                         {/* Submit Button */}
                         <button
                             type="submit"
-                            disabled={isSubmitting}
-                            className="w-full py-3 rounded-xl font-semibold bg-gradient-to-r from-primary to-accent text-white flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300 disabled:opacity-70 disabled:hover:scale-100 text-sm mt-2 relative overflow-hidden group"
+                            disabled={
+                                isSubmitting ||
+                                !isDetailsComplete ||
+                                !isCaptchaValid
+                            }
+                            className="w-full py-3 rounded-xl font-semibold bg-gradient-to-r from-primary to-accent text-white flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-sm mt-2 relative overflow-hidden group"
                         >
                             <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             {isSubmitting ? (
@@ -592,17 +828,6 @@ export default function AdmissionEnquiryForm({
                                 </>
                             )}
                         </button>
-
-                        <p className="text-white/30 text-xs text-center mt-3">
-                            By submitting, you agree to our{' '}
-                            <span className="text-primary/70 hover:text-primary/90 cursor-pointer transition-colors">
-                                Terms
-                            </span>{' '}
-                            &{' '}
-                            <span className="text-primary/70 hover:text-primary/90 cursor-pointer transition-colors">
-                                Privacy Policy
-                            </span>
-                        </p>
                     </form>
                 </div>
             </div>

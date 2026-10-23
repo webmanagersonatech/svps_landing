@@ -57,7 +57,7 @@ const backgroundImages = [
 // Social links
 const socialLinks = [
   { Icon: FaWhatsapp, label: "WhatsApp", hoverColor: "group-hover:text-green-500", url: "https://wa.me/919442592159" },
-  { Icon: FaInstagram, label: "Instagram", hoverColor: "group-hover:text-pink-500", url: "https://www.instagram.com/sonavalliappapapublicschool/" },
+  { Icon: FaInstagram, label: "Instagram", hoverColor: "group-hover:text-pink-500", url: "https://www.instagram.com/sonavalliappapublicschool/" },
   { Icon: FaFacebook, label: "Facebook", hoverColor: "group-hover:text-blue-500", url: "https://www.facebook.com/sonavalliappapublicschool/" },
   { Icon: FaTwitter, label: "Twitter / X", hoverColor: "group-hover:text-black", url: "https://x.com/sona_vp_school" },
 ];
@@ -196,7 +196,7 @@ export default function Hero() {
 
             {/* RIGHT COLUMN - Enquiry Form */}
             <AdmissionEnquiryForm
-              title="Admission Enquiry"
+              title="Admissions Enquiry"
               subtitle="Fill the details below and we'll get back to you"
               onSuccess={(data) => {
                 console.log("Hero enquiry submitted:", data);

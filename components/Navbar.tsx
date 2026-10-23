@@ -78,9 +78,8 @@ function MobileDropdown({ link, onClose }: MobileDropdownProps) {
       {/* Height animation without JS: grid-rows 0fr -> 1fr */}
       {link.submenu && (
         <div
-          className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
-            isExpanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-          }`}
+          className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${isExpanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+            }`}
         >
           <div className="overflow-hidden">
             <div className="pl-11 pr-3 pb-2 space-y-1">
@@ -252,18 +251,18 @@ export default function Navbar() {
     },
     ...(activities.length > 0
       ? [
-          {
-            name: "Activities",
-            href: "/activities",
+        {
+          name: "Activities",
+          href: "/activities",
+          icon: Activity,
+          submenu: activities.map((a) => ({
+            name: a.title,
+            href: `/activities/${a.slug}`,
             icon: Activity,
-            submenu: activities.map((a) => ({
-              name: a.title,
-              href: `/activities/${a.slug}`,
-              icon: Activity,
-              description: a.title,
-            })),
-          },
-        ]
+            description: a.title,
+          })),
+        },
+      ]
       : []),
     {
       name: "Admission",
@@ -394,7 +393,7 @@ export default function Navbar() {
                     height={60}
                     sizes="240px"
                     priority
-                 className="h-10 sm:h-11 md:h-10 lg:h-11 w-auto object-contain"
+                    className="h-10 sm:h-11 md:h-10 lg:h-11 w-auto object-contain"
                   />
                 </div>
               </Link>
@@ -415,11 +414,10 @@ export default function Navbar() {
                     >
                       {link.submenu ? (
                         <button
-                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base transition-all duration-200 hover:-translate-y-px ${
-                            isLinkActive || isSubActive
+                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base transition-all duration-200 hover:-translate-y-px ${isLinkActive || isSubActive
                               ? "text-[#ec8013]"
                               : "text-[#f5dfc4]/80 hover:text-[#f5dfc4]"
-                          }`}
+                            }`}
                         >
                           <span>{link.name}</span>
                           <ChevronDown
@@ -429,11 +427,10 @@ export default function Navbar() {
                       ) : (
                         <Link
                           href={link.href}
-                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base transition-colors duration-200 ${
-                            isLinkActive
+                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base transition-colors duration-200 ${isLinkActive
                               ? "text-[#ec8013]"
                               : "text-[#f5dfc4]/80 hover:text-[#f5dfc4]"
-                          }`}
+                            }`}
                         >
                           <span>{link.name}</span>
                         </Link>
@@ -443,21 +440,19 @@ export default function Navbar() {
                           so BOTH open and close are smooth (no JS animation library needed). */}
                       {link.submenu && (
                         <div
-                          className={`absolute top-full left-0 pt-1 transition-[opacity,transform,visibility] duration-200 ease-out ${
-                            isDropdownOpen
+                          className={`absolute top-full left-0 pt-1 transition-[opacity,transform,visibility] duration-200 ease-out ${isDropdownOpen
                               ? "opacity-100 translate-y-0 visible"
                               : "opacity-0 translate-y-2 invisible pointer-events-none"
-                          }`}
+                            }`}
                           onMouseEnter={() => handleMouseEnter(link.name)}
                           onMouseLeave={handleMouseLeave}
                         >
                           <div className="w-72 xl:w-80 bg-[#1a4a5c] shadow-xl border border-[#ec8013]/20 overflow-hidden">
                             <div
-                              className={`p-2 ${
-                                link.name === "Activities"
+                              className={`p-2 ${link.name === "Activities"
                                   ? "max-h-[360px] overflow-y-auto activities-scrollbar"
                                   : ""
-                              }`}
+                                }`}
                             >
                               {link.submenu.map((item) => {
                                 const isItemActive = isItemActivePath(router.pathname, item.href);
@@ -465,23 +460,20 @@ export default function Navbar() {
                                   <Link
                                     key={item.name}
                                     href={item.href}
-                                    className={`flex items-center gap-3 p-2.5 transition-all duration-150 group ${
-                                      isItemActive ? "bg-[#ec8013]/15" : "hover:bg-[#ec8013]/10"
-                                    }`}
+                                    className={`flex items-center gap-3 p-2.5 transition-all duration-150 group ${isItemActive ? "bg-[#ec8013]/15" : "hover:bg-[#ec8013]/10"
+                                      }`}
                                   >
                                     <div
-                                      className={`w-8 h-8 flex items-center justify-center shrink-0 rounded-md ${
-                                        isItemActive ? "bg-[#ec8013]" : "bg-[#ec8013]/10"
-                                      }`}
+                                      className={`w-8 h-8 flex items-center justify-center shrink-0 rounded-md ${isItemActive ? "bg-[#ec8013]" : "bg-[#ec8013]/10"
+                                        }`}
                                     >
                                       <item.icon className={`w-4 h-4 ${isItemActive ? "text-white" : "text-[#ec8013]"}`} />
                                     </div>
                                     <div className="flex-1 min-w-0">
                                       <div className="flex items-center gap-1.5">
                                         <span
-                                          className={`text-xs xl:text-sm transition-colors ${
-                                            isItemActive ? "text-[#ec8013]" : "text-[#f5dfc4] group-hover:text-[#ec8013]"
-                                          }`}
+                                          className={`text-xs xl:text-sm transition-colors ${isItemActive ? "text-[#ec8013]" : "text-[#f5dfc4] group-hover:text-[#ec8013]"
+                                            }`}
                                         >
                                           {item.name}
                                         </span>
@@ -494,11 +486,10 @@ export default function Navbar() {
                                       <div className="text-[10px] text-[#f5dfc4]/40 truncate">{item.description}</div>
                                     </div>
                                     <ArrowRight
-                                      className={`w-3 h-3 transition-all shrink-0 ${
-                                        isItemActive
+                                      className={`w-3 h-3 transition-all shrink-0 ${isItemActive
                                           ? "text-[#ec8013]"
                                           : "text-[#f5dfc4]/20 group-hover:text-[#ec8013] group-hover:translate-x-0.5"
-                                      }`}
+                                        }`}
                                     />
                                   </Link>
                                 );
@@ -515,7 +506,7 @@ export default function Navbar() {
               {/* Desktop Buttons */}
               <div className="hidden lg:flex items-center gap-2 xl:gap-3">
                 <Link
-                  href="/public-disclosure"
+                  href="/mandatory-disclosure"
                   className="
                     px-3 xl:px-4 py-1.5
                     text-xs xl:text-sm font-semibold
@@ -573,14 +564,12 @@ export default function Navbar() {
                 aria-expanded={isOpen}
               >
                 <Menu
-                  className={`absolute w-4 h-4 transition-all duration-200 ${
-                    isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
-                  }`}
+                  className={`absolute w-4 h-4 transition-all duration-200 ${isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
+                    }`}
                 />
                 <X
-                  className={`absolute w-4 h-4 transition-all duration-200 ${
-                    isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
-                  }`}
+                  className={`absolute w-4 h-4 transition-all duration-200 ${isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
+                    }`}
                 />
               </button>
             </div>
@@ -589,17 +578,15 @@ export default function Navbar() {
 
         {/* Mobile overlay */}
         <div
-          className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden transition-[opacity,visibility] duration-200 ${
-            isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
-          }`}
+          className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden transition-[opacity,visibility] duration-200 ${isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+            }`}
           onClick={() => setIsOpen(false)}
         />
 
         {/* Mobile Navigation Panel — slides in/out with CSS transform */}
         <div
-          className={`fixed right-0 top-0 bottom-0 w-80 sm:w-96 bg-gradient-to-br from-[#1a4a5c] to-[#0d3543] shadow-2xl z-40 lg:hidden transition-[transform,visibility] duration-300 ease-out will-change-transform ${
-            isOpen ? "translate-x-0 visible" : "translate-x-full invisible"
-          }`}
+          className={`fixed right-0 top-0 bottom-0 w-80 sm:w-96 bg-gradient-to-br from-[#1a4a5c] to-[#0d3543] shadow-2xl z-40 lg:hidden transition-[transform,visibility] duration-300 ease-out will-change-transform ${isOpen ? "translate-x-0 visible" : "translate-x-full invisible"
+            }`}
           aria-hidden={!isOpen}
         >
           <div className="h-full overflow-y-auto hide-scrollbar pt-16 pb-6">
@@ -611,16 +598,14 @@ export default function Navbar() {
                   ) : (
                     <Link
                       href={link.href}
-                      className={`flex items-center justify-between gap-3 px-4 py-3 transition-all group rounded-lg ${
-                        isActive(link.href) ? "bg-[#ec8013]/10" : "hover:bg-[#ec8013]/5"
-                      }`}
+                      className={`flex items-center justify-between gap-3 px-4 py-3 transition-all group rounded-lg ${isActive(link.href) ? "bg-[#ec8013]/10" : "hover:bg-[#ec8013]/5"
+                        }`}
                       onClick={() => setIsOpen(false)}
                     >
                       <div className="flex items-center gap-3">
                         <div
-                          className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                            isActive(link.href) ? "bg-[#ec8013]" : "bg-[#ec8013]/10"
-                          }`}
+                          className={`w-8 h-8 rounded-lg flex items-center justify-center ${isActive(link.href) ? "bg-[#ec8013]" : "bg-[#ec8013]/10"
+                            }`}
                         >
                           <link.icon className={`w-4 h-4 ${isActive(link.href) ? "text-white" : "text-[#ec8013]"}`} />
                         </div>
@@ -637,7 +622,7 @@ export default function Navbar() {
               {/* Mobile Action Buttons */}
               <div className="pt-4 mt-4 border-t border-[#ec8013]/15 space-y-3">
                 <Link
-                  href="/public-disclosure"
+                  href="/mandatory-disclosure"
                   className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-sm rounded-xl border border-white/10 bg-white/5 backdrop-blur-md text-white hover:bg-white/10 transition-all duration-300"
                   onClick={() => setIsOpen(false)}
                 >

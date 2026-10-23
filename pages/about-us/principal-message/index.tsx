@@ -128,46 +128,52 @@ export default function PrincipalMessagePage() {
                 <div className="max-w-7xl mx-auto px-4 py-16">
                     <div className="grid md:grid-cols-2 gap-12 items-stretch">
 
-                        {/* LEFT: PRINCIPAL PHOTO */}
-                        {/* LEFT: PRINCIPAL PHOTO - DIAGONAL HEXAGONAL SHAPE */}
+                        {/* LEFT: PRINCIPAL PHOTO - FULL WIDTH, REDUCED HEIGHT */}
                         <Reveal>
-                            <div className="relative group h-full">
-                                <div className="relative flex h-full min-h-[260px] items-center justify-center
-                overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-amber-50
-                px-3 py-5 sm:min-h-[320px] md:min-h-[380px]">
+                            <div className="relative group h-full w-full">
 
-                                    {/* Decorative background */}
+                                {/* Main Image Container */}
+                                <div
+                                    className="relative h-full min-h-[240px] w-full
+            overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-amber-50
+            sm:min-h-[280px] md:min-h-[340px]"
+                                >
+                                    {/* Decorative Background */}
                                     <div className="absolute -right-10 -top-10 h-36 w-36
-                    rounded-full bg-blue-200/40 blur-2xl" />
+                rounded-full bg-blue-200/40 blur-2xl" />
 
                                     <div className="absolute -bottom-10 -left-10 h-36 w-36
-                    rounded-full bg-amber-200/40 blur-2xl" />
+                rounded-full bg-amber-200/40 blur-2xl" />
 
                                     {/* Principal Image */}
-                                    <div className="relative z-10 h-[220px] w-[175px]
-                    overflow-hidden border-4 border-white
-                    md:h-[310px] md:w-[240px]">
-
+                                    <div className="absolute inset-0 z-10 h-full w-full">
                                         <Image
                                             src="/about/principal-message/kavitha-principal-svps.webp"
                                             alt="Principal - Sona Valliappa Public School"
                                             fill
-                                            sizes="(max-width: 640px) 175px, (max-width: 768px) 210px, 240px"
+                                            sizes="(max-width: 768px) 100vw, 50vw"
                                             className="object-cover object-top"
                                             priority
                                         />
                                     </div>
 
-                                    {/* Subtle accent */}
-                                    <div className="absolute bottom-4 left-1/2 h-1 w-16
-                    -translate-x-1/2 bg-amber-500" />
+                                    {/* Bottom Gradient */}
+                                    <div className="absolute inset-x-0 bottom-0 z-10 h-24
+                bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
 
+                                    {/* Accent */}
+                                    <div className="absolute bottom-4 left-1/2 z-20
+                h-1 w-16 -translate-x-1/2 bg-amber-500" />
                                 </div>
 
-                                {/* Badge repositioned for the new shape */}
-                                <div className="absolute -bottom-3 left-6 bg-secondary text-white text-sm font-semibold px-4 py-1 rounded-full shadow-md z-10">
+                                {/* Principal Name Badge */}
+                                <div className="absolute -bottom-3 left-1/2 z-30
+            -translate-x-1/2 whitespace-nowrap rounded-full
+            bg-secondary px-5 py-2 text-sm font-semibold
+            text-white shadow-lg">
                                     Ms. E.J. Kavitha
                                 </div>
+
                             </div>
                         </Reveal>
 

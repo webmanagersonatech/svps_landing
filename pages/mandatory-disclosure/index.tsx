@@ -232,7 +232,7 @@ export default function PublicDisclosurePage() {
     { label: "School Code", value: "56948", icon: DocumentTextIcon },
     { label: "Complete Address", value: "Sona Valliappa Public School Junction Main Road, Salem - 636005, Tamil Nadu", icon: MapPinIcon },
     { label: "Principal Name & Qualification", value: "Ms. E.J. Kavitha M.A, M.Phil, B.Ed", icon: UserGroupIcon },
-    { label: "School Email ID", value: "svpschool@sonatech.ac.in", icon: EnvelopeIcon, isLink: true, href: "mailto:svpschool@sonatech.ac.in" },
+    { label: "School Email ID", value: "info@sonavalliappapublicschool.com", icon: EnvelopeIcon, isLink: true, href: "mailto:info@sonavalliappapublicschool.com" },
     {
       label: "Contact Details",
       value: (
@@ -299,16 +299,16 @@ export default function PublicDisclosurePage() {
   return (
     <>
       <SEO
-        title="Public Mandatory Disclosure"
+        title=" Mandatory Disclosure"
         description="Official CBSE mandatory disclosure for Sona Valliappa Public School - Affiliation, results, staff, infrastructure and regulatory documents."
-        path="/public-disclosure"
+        path="/mandatory-disclosure"
       />
 
       <main className="bg-gray-50 min-h-screen">
         <PageHeader
-          title="Public Mandatory Disclosure"
+          title=" Mandatory Disclosure"
           subtitle="Complete information as per CBSE and regulatory requirements"
-          breadcrumbs={["Home", "Public Disclosure"]}
+          breadcrumbs={["Home", "Mandatory Disclosure"]}
         />
 
 

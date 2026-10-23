@@ -94,8 +94,18 @@ const initialFormData: FormData = {
 };
 
 /* =========================
+   SIMPLE CHAR CAPTCHA
+========================= */
+const CAPTCHA_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // no 0/O/1/I
+const CAPTCHA_LENGTH = 5;
+const generateCaptcha = (len = CAPTCHA_LENGTH): string =>
+    Array.from(
+        { length: len },
+        () => CAPTCHA_CHARS[Math.floor(Math.random() * CAPTCHA_CHARS.length)]
+    ).join("");
+
+/* =========================
    REACT-SELECT UNDERLINE STYLES
-   (matches the border-b input design)
 ========================= */
 const underlineSelectStyles = {
     control: (base: any) => ({
@@ -200,7 +210,7 @@ export default function AdmissionContactPage() {
         "+91 9442592160",
     ];
     const landline = "+91 427 2912160";
-    const email = "svpschool@sonatech.ac.in";
+    const email = "info@sonavalliappapublicschool.com";
     const addressLines = [
         "The Principal,",
         "Sona Valliappa Public School,",
@@ -213,6 +223,16 @@ export default function AdmissionContactPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [errors, setErrors] = useState<Record<string, string>>({});
+    const [touched, setTouched] = useState<Record<string, boolean>>({});
+
+    /* ---- Captcha state ---- */
+    const [captchaText, setCaptchaText] = useState(() => generateCaptcha());
+    const [captchaInput, setCaptchaInput] = useState("");
+    const [captchaError, setCaptchaError] = useState("");
+    const [captchaTouched, setCaptchaTouched] = useState(false);
+
+    /* ---- Consent state ---- */
+    const [agreedToTerms, setAgreedToTerms] = useState(false);
 
     /* ---- Location data ---- */
     const countries = useMemo(() => Country.getAllCountries(), []);
@@ -244,6 +264,39 @@ export default function AdmissionContactPage() {
         [cities]
     );
 
+    /* ---- Live field errors ---- */
+    const liveErrors = useMemo(
+        () => ({
+            name: validateName(formData.name),
+            email: validateEmail(formData.email),
+            phone: validatePhone(formData.phone),
+            country: formData.country ? "" : "Country is required",
+            state: formData.state ? "" : "State is required",
+            city: formData.city ? "" : "City is required",
+            programId: formData.programId ? "" : "Please select a class",
+        }),
+        [formData]
+    );
+
+    const isDetailsComplete = useMemo(
+        () =>
+            !liveErrors.name &&
+            !liveErrors.email &&
+            !liveErrors.phone &&
+            !liveErrors.country &&
+            !liveErrors.state &&
+            !liveErrors.city &&
+            !liveErrors.programId,
+        [liveErrors]
+    );
+
+    const isCaptchaValid = useMemo(
+        () =>
+            captchaInput.trim().length > 0 &&
+            captchaInput.trim().toUpperCase() === captchaText,
+        [captchaInput, captchaText]
+    );
+
     /* ---- Handlers ---- */
     const handleInputChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -257,7 +310,15 @@ export default function AdmissionContactPage() {
                 : sanitizedValue;
 
         setFormData((prev) => ({ ...prev, [name]: finalValue }));
-        if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
+        setTouched((prev) => ({ ...prev, [name]: true }));
+
+        let err = "";
+        if (name === "name") err = validateName(finalValue);
+        if (name === "email") err = validateEmail(finalValue);
+        if (name === "phone") err = validatePhone(finalValue);
+        if (name === "programId") err = finalValue ? "" : "Please select a class";
+
+        setErrors((prev) => ({ ...prev, [name]: err, submit: "" }));
     };
 
     const handleCountryChange = (opt: SingleValue<SelectOption>) => {
@@ -267,21 +328,67 @@ export default function AdmissionContactPage() {
             state: "",
             city: "",
         }));
-        setErrors((prev) => ({ ...prev, country: "", state: "", city: "" }));
+        setErrors((prev) => ({
+            ...prev,
+            country: opt?.value ? "" : "Country is required",
+            state: "",
+            city: "",
+        }));
+        setTouched((prev) => ({ ...prev, country: true }));
     };
 
     const handleStateChange = (opt: SingleValue<SelectOption>) => {
         setFormData((prev) => ({ ...prev, state: opt?.value || "", city: "" }));
-        setErrors((prev) => ({ ...prev, state: "", city: "" }));
+        setErrors((prev) => ({
+            ...prev,
+            state: opt?.value ? "" : "State is required",
+            city: "",
+        }));
+        setTouched((prev) => ({ ...prev, state: true }));
     };
 
     const handleCityChange = (opt: SingleValue<SelectOption>) => {
         setFormData((prev) => ({ ...prev, city: opt?.value || "" }));
-        setErrors((prev) => ({ ...prev, city: "" }));
+        setErrors((prev) => ({
+            ...prev,
+            city: opt?.value ? "" : "City is required",
+        }));
+        setTouched((prev) => ({ ...prev, city: true }));
+    };
+
+    const refreshCaptcha = () => {
+        setCaptchaText(generateCaptcha());
+        setCaptchaInput("");
+        setCaptchaError("");
+        setCaptchaTouched(false);
+    };
+
+    const handleCaptchaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value.toUpperCase();
+        setCaptchaInput(value);
+        setCaptchaTouched(true);
+        if (!value.trim()) {
+            setCaptchaError("Please enter the captcha");
+        } else if (value.trim() !== captchaText) {
+            setCaptchaError("Captcha does not match");
+        } else {
+            setCaptchaError("");
+        }
+    };
+
+    const handleConsentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setAgreedToTerms(e.target.checked);
+        setErrors((prev) => ({
+            ...prev,
+            consent: e.target.checked
+                ? ""
+                : "Please agree to the Terms & Privacy Policy to continue",
+        }));
     };
 
     const validateForm = () => {
         const newErrors: Record<string, string> = {};
+
         const nameError = validateName(formData.name);
         if (nameError) newErrors.name = nameError;
         const emailError = validateEmail(formData.email);
@@ -292,7 +399,31 @@ export default function AdmissionContactPage() {
         if (!formData.state) newErrors.state = "State is required";
         if (!formData.city) newErrors.city = "City is required";
         if (!formData.programId) newErrors.programId = "Please select a class";
+
+        if (!captchaInput.trim()) {
+            newErrors.captcha = "Please enter the captcha";
+            setCaptchaError("Please enter the captcha");
+        } else if (captchaInput.trim().toUpperCase() !== captchaText) {
+            newErrors.captcha = "Captcha does not match";
+            setCaptchaError("Captcha does not match");
+        }
+
+        if (!agreedToTerms) {
+            newErrors.consent =
+                "Please agree to the Terms & Privacy Policy to continue";
+        }
+
         setErrors(newErrors);
+        setTouched({
+            name: true,
+            email: true,
+            phone: true,
+            country: true,
+            state: true,
+            city: true,
+            programId: true,
+        });
+        setCaptchaTouched(true);
         return Object.keys(newErrors).length === 0;
     };
 
@@ -341,6 +472,13 @@ export default function AdmissionContactPage() {
                 setTimeout(() => {
                     setIsSubmitted(false);
                     setFormData(initialFormData);
+                    setCaptchaInput("");
+                    setCaptchaText(generateCaptcha());
+                    setCaptchaError("");
+                    setCaptchaTouched(false);
+                    setAgreedToTerms(false);
+                    setTouched({});
+                    setErrors({});
                 }, 3000);
             } else {
                 setErrors((prev) => ({
@@ -490,7 +628,7 @@ export default function AdmissionContactPage() {
                         <Reveal>
                             <div className="bg-gray-50/80 p-6 md:p-8 border border-gray-100">
                                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-serif mb-2">
-                                    Admission Enquiry
+                                    Admissions Enquiry
                                 </h2>
                                 <p className="text-gray-500 text-sm mb-6 pb-1 border-b border-gray-200 inline-block">
                                     Fill the form – we&apos;ll get back to you shortly
@@ -525,63 +663,84 @@ export default function AdmissionContactPage() {
                                     )}
                                 </AnimatePresence>
 
-                                <form onSubmit={handleSubmit} className="space-y-5">
-                                    {/* Row 1: Name + Phone */}
-
+                                <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+                                    {/* Name */}
                                     <div>
                                         <input
                                             type="text"
                                             name="name"
                                             value={formData.name}
                                             onChange={handleInputChange}
+                                            onBlur={() => setTouched((prev) => ({ ...prev, name: true }))}
                                             placeholder="Full Name *"
                                             autoComplete="name"
-                                            className="w-full border-b border-gray-300 bg-transparent py-2 px-1 focus:outline-none focus:border-primary transition text-gray-800 placeholder:text-gray-400"
+                                            className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 placeholder:text-gray-400 ${
+                                                touched.name && errors.name
+                                                    ? "border-red-400"
+                                                    : "border-gray-300 focus:border-primary"
+                                            }`}
                                         />
-                                        {errors.name && (
+                                        {touched.name && errors.name && (
                                             <p className="text-red-500 text-xs mt-1">{errors.name}</p>
                                         )}
                                     </div>
 
+                                    {/* Phone */}
                                     <div>
                                         <input
                                             type="tel"
                                             name="phone"
                                             value={formData.phone}
                                             onChange={handleInputChange}
+                                            onBlur={() => setTouched((prev) => ({ ...prev, phone: true }))}
                                             placeholder="Phone Number *"
                                             inputMode="numeric"
                                             maxLength={10}
                                             autoComplete="tel"
-                                            className="w-full border-b border-gray-300 bg-transparent py-2 px-1 focus:outline-none focus:border-primary transition text-gray-800 placeholder:text-gray-400"
+                                            className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 placeholder:text-gray-400 ${
+                                                touched.phone && errors.phone
+                                                    ? "border-red-400"
+                                                    : "border-gray-300 focus:border-primary"
+                                            }`}
                                         />
-                                        {errors.phone && (
+                                        {touched.phone && errors.phone && (
                                             <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
                                         )}
                                     </div>
 
-
+                                    {/* Email */}
                                     <div>
                                         <input
                                             type="email"
                                             name="email"
                                             value={formData.email}
                                             onChange={handleInputChange}
+                                            onBlur={() => setTouched((prev) => ({ ...prev, email: true }))}
                                             placeholder="Email Address"
                                             autoComplete="email"
-                                            className="w-full border-b border-gray-300 bg-transparent py-2 px-1 focus:outline-none focus:border-primary transition text-gray-800 placeholder:text-gray-400"
+                                            className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 placeholder:text-gray-400 ${
+                                                touched.email && errors.email
+                                                    ? "border-red-400"
+                                                    : "border-gray-300 focus:border-primary"
+                                            }`}
                                         />
-                                        {errors.email && (
+                                        {touched.email && errors.email && (
                                             <p className="text-red-500 text-xs mt-1">{errors.email}</p>
                                         )}
                                     </div>
 
+                                    {/* Class */}
                                     <div>
                                         <select
                                             name="programId"
                                             value={formData.programId}
                                             onChange={handleInputChange}
-                                            className="w-full border-b border-gray-300 bg-transparent py-2 px-1 focus:outline-none focus:border-primary transition text-gray-800"
+                                            onBlur={() => setTouched((prev) => ({ ...prev, programId: true }))}
+                                            className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 ${
+                                                touched.programId && errors.programId
+                                                    ? "border-red-400"
+                                                    : "border-gray-300 focus:border-primary"
+                                            }`}
                                         >
                                             <option value="">Select Grade / Class *</option>
                                             {CLASS_OPTIONS.map((opt) => (
@@ -590,13 +749,12 @@ export default function AdmissionContactPage() {
                                                 </option>
                                             ))}
                                         </select>
-                                        {errors.programId && (
+                                        {touched.programId && errors.programId && (
                                             <p className="text-red-500 text-xs mt-1">{errors.programId}</p>
                                         )}
                                     </div>
 
-
-                                    {/* Row 3: Country + State */}
+                                    {/* Country + State */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
                                             <Select<SelectOption>
@@ -608,7 +766,7 @@ export default function AdmissionContactPage() {
                                                 styles={underlineSelectStyles}
                                                 classNamePrefix="country-select"
                                             />
-                                            {errors.country && (
+                                            {touched.country && errors.country && (
                                                 <p className="text-red-500 text-xs mt-1">{errors.country}</p>
                                             )}
                                         </div>
@@ -624,13 +782,13 @@ export default function AdmissionContactPage() {
                                                 styles={underlineSelectStyles}
                                                 classNamePrefix="state-select"
                                             />
-                                            {errors.state && (
+                                            {touched.state && errors.state && (
                                                 <p className="text-red-500 text-xs mt-1">{errors.state}</p>
                                             )}
                                         </div>
                                     </div>
 
-
+                                    {/* City */}
                                     <div>
                                         <Select<SelectOption>
                                             options={cityOptions}
@@ -642,19 +800,122 @@ export default function AdmissionContactPage() {
                                             styles={underlineSelectStyles}
                                             classNamePrefix="city-select"
                                         />
-                                        {errors.city && (
+                                        {touched.city && errors.city && (
                                             <p className="text-red-500 text-xs mt-1">{errors.city}</p>
                                         )}
                                     </div>
-                                    {/* Empty second column — leaves City half-width on desktop */}
-                                    <div className="hidden md:block" />
 
+                                    {/* CAPTCHA – appears only when all details are valid */}
+                                    <AnimatePresence>
+                                        {isDetailsComplete && (
+                                            <motion.div
+                                                key="captcha-section"
+                                                initial={{ opacity: 0, height: 0, y: -8 }}
+                                                animate={{ opacity: 1, height: "auto", y: 0 }}
+                                                exit={{ opacity: 0, height: 0, y: -8 }}
+                                                transition={{ duration: 0.35, ease: "easeOut" }}
+                                                className="overflow-hidden"
+                                            >
+                                                <div className="pt-1">
+                                                    <label className="block text-sm font-medium text-gray-600 mb-1">
+                                                        Captcha *
+                                                    </label>
+                                                    <div className="flex items-center gap-2">
+                                                        <div className="flex-1 flex items-center justify-center border-b border-gray-300 py-2 select-none">
+                                                            <span
+                                                                className="text-gray-800 text-lg font-bold tracking-[0.35em] italic"
+                                                                style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.15)" }}
+                                                            >
+                                                                {captchaText}
+                                                            </span>
+                                                        </div>
+                                                        <button
+                                                            type="button"
+                                                            onClick={refreshCaptcha}
+                                                            className="px-3 py-2 text-gray-500 hover:text-primary border-b border-gray-300 transition"
+                                                            title="Refresh captcha"
+                                                            aria-label="Refresh captcha"
+                                                        >
+                                                            ↻
+                                                        </button>
+                                                    </div>
+                                                    <input
+                                                        type="text"
+                                                        value={captchaInput}
+                                                        onChange={handleCaptchaChange}
+                                                        placeholder="Enter captcha"
+                                                        maxLength={CAPTCHA_LENGTH}
+                                                        autoComplete="off"
+                                                        spellCheck={false}
+                                                        className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 placeholder:text-gray-400 mt-2 tracking-widest uppercase ${
+                                                            captchaTouched && captchaError
+                                                                ? "border-red-400"
+                                                                : "border-gray-300 focus:border-primary"
+                                                        }`}
+                                                    />
+                                                    {captchaTouched && captchaError && (
+                                                        <p className="text-red-500 text-xs mt-1">{captchaError}</p>
+                                                    )}
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+
+                                    {/* CONSENT CHECKBOX – appears only after captcha is valid */}
+                                    <AnimatePresence>
+                                        {isDetailsComplete && isCaptchaValid && (
+                                            <motion.div
+                                                key="consent-section"
+                                                initial={{ opacity: 0, height: 0, y: -8 }}
+                                                animate={{ opacity: 1, height: "auto", y: 0 }}
+                                                exit={{ opacity: 0, height: 0, y: -8 }}
+                                                transition={{ duration: 0.35, ease: "easeOut" }}
+                                                className="overflow-hidden"
+                                            >
+                                                <div className="pt-1">
+                                                    <label
+                                                        htmlFor="agree-terms"
+                                                        className={`flex items-start gap-2 cursor-pointer select-none rounded p-2 -mx-2 transition-colors ${
+                                                            errors.consent
+                                                                ? "bg-red-50 border border-red-200"
+                                                                : "hover:bg-gray-50"
+                                                        }`}
+                                                    >
+                                                        <input
+                                                            id="agree-terms"
+                                                            type="checkbox"
+                                                            checked={agreedToTerms}
+                                                            onChange={handleConsentChange}
+                                                            className="mt-0.5 w-4 h-4 flex-shrink-0 rounded border-gray-300 text-primary focus:ring-2 focus:ring-primary/50 cursor-pointer"
+                                                        />
+                                                        <span className="text-gray-500 text-xs leading-relaxed">
+                                                            I agree to the{" "}
+                                                            <span className="text-primary/80 hover:text-primary cursor-pointer transition-colors">
+                                                                Terms
+                                                            </span>{" "}
+                                                            &{" "}
+                                                            <span className="text-primary/80 hover:text-primary cursor-pointer transition-colors">
+                                                                Privacy Policy
+                                                            </span>{" "}
+                                                            and consent to being contacted regarding my enquiry.{" "}
+                                                            <span className="text-red-400">*</span>
+                                                        </span>
+                                                    </label>
+                                                    {errors.consent && (
+                                                        <p className="text-red-500 text-xs mt-1 ml-1">
+                                                            {errors.consent}
+                                                        </p>
+                                                    )}
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
 
                                     {/* Submit */}
                                     <button
                                         type="submit"
-                                        disabled={isSubmitting}
-                                        className="mt-4 bg-primary text-white px-6 py-2.5 w-full hover:bg-primary/90 transition-all font-medium disabled:opacity-70"
+                                        disabled={isSubmitting || !isDetailsComplete || !isCaptchaValid}
+                                        className="mt-4 bg-primary text-white px-6 py-2.5 w-full hover:bg-primary/90 transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
                                         {isSubmitting ? "Submitting..." : "Submit Enquiry →"}
                                     </button>
