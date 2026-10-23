@@ -10,6 +10,10 @@ const SITE_URL = "https://www.sonavalliappapublicschool.com";
 // Every static page on the site, with a relative priority/change frequency.
 const staticRoutes: { path: string; priority: string; changefreq: string }[] = [
   { path: "/", priority: "1.0", changefreq: "weekly" },
+  { path: "/about-us", priority: "0.8", changefreq: "monthly" },
+  { path: "/academics", priority: "0.8", changefreq: "monthly" },
+  { path: "/infrastructure-facilities", priority: "0.7", changefreq: "monthly" },
+  { path: "/activities", priority: "0.7", changefreq: "weekly" },
   { path: "/about-us/heritage", priority: "0.7", changefreq: "monthly" },
   { path: "/about-us/vision-and-mission", priority: "0.7", changefreq: "monthly" },
   { path: "/about-us/principal-message", priority: "0.7", changefreq: "monthly" },

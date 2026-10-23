@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { fetchActivities } from "../lib/activitiesApi";
 import type { Activity as ActivityItem } from "../lib/activitiesApi";
+import { aboutLinks, academicsLinks, infrastructureLinks } from "../data/siteMenu";
 import {
   Menu, X, ChevronDown, ChevronRight,
   Home, Info, Users, BookOpen, GraduationCap,
@@ -51,8 +52,8 @@ const isSubmenuActivePath = (pathname: string, submenu?: SubmenuItem[]) => {
 };
 
 // ---------- Mobile Dropdown ----------
-// NOTE: defined OUTSIDE Navbar. When it was inside, every Navbar re-render
-// (e.g. on scroll) created a new component type, which reset its open/close state.
+// Parent item is a real Link (navigates to the main page).
+// A separate chevron button toggles the submenu open/closed.
 function MobileDropdown({ link, onClose }: MobileDropdownProps) {
   const router = useRouter();
   const [isExpanded, setIsExpanded] = useState(isSubmenuActivePath(router.pathname, link.submenu));
@@ -60,26 +61,50 @@ function MobileDropdown({ link, onClose }: MobileDropdownProps) {
 
   return (
     <div className="border-b border-[#ec8013]/10">
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className={`flex items-center justify-between w-full px-4 py-3 transition-all duration-200 hover:bg-[#ec8013]/5 group ${isLinkActive ? "bg-[#ec8013]/10" : ""}`}
+      <div
+        className={`flex items-center w-full transition-all duration-200 hover:bg-[#ec8013]/5 group ${
+          isLinkActive ? "bg-[#ec8013]/10" : ""
+        }`}
       >
-        <div className="flex items-center gap-3">
-          <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isLinkActive ? "bg-[#ec8013]" : "bg-[#ec8013]/10"}`}>
+        {/* Parent link — navigates to the main page */}
+        <Link
+          href={link.href}
+          className="flex items-center gap-3 flex-1 px-4 py-3"
+          onClick={onClose}
+        >
+          <div
+            className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+              isLinkActive ? "bg-[#ec8013]" : "bg-[#ec8013]/10"
+            }`}
+          >
             <link.icon className={`w-4 h-4 ${isLinkActive ? "text-white" : "text-[#ec8013]"}`} />
           </div>
-          <span className={`text-sm ${isLinkActive ? "text-[#ec8013]" : "text-[#f5dfc4]"}`}>{link.name}</span>
-        </div>
-        <ChevronDown
-          className={`w-3.5 h-3.5 text-[#f5dfc4]/50 transition-transform duration-200 ${isExpanded ? "rotate-180" : "rotate-0"}`}
-        />
-      </button>
+          <span className={`text-sm ${isLinkActive ? "text-[#ec8013]" : "text-[#f5dfc4]"}`}>
+            {link.name}
+          </span>
+        </Link>
+
+        {/* Separate chevron toggle for expanding submenu */}
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="px-4 py-3"
+          aria-label={isExpanded ? "Collapse submenu" : "Expand submenu"}
+          aria-expanded={isExpanded}
+        >
+          <ChevronDown
+            className={`w-3.5 h-3.5 text-[#f5dfc4]/50 transition-transform duration-200 ${
+              isExpanded ? "rotate-180" : "rotate-0"
+            }`}
+          />
+        </button>
+      </div>
 
       {/* Height animation without JS: grid-rows 0fr -> 1fr */}
       {link.submenu && (
         <div
-          className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${isExpanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-            }`}
+          className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${
+            isExpanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          }`}
         >
           <div className="overflow-hidden">
             <div className="pl-11 pr-3 pb-2 space-y-1">
@@ -90,18 +115,30 @@ function MobileDropdown({ link, onClose }: MobileDropdownProps) {
                     key={item.name}
                     href={item.href}
                     tabIndex={isExpanded ? 0 : -1}
-                    className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-[#ec8013]/10 group ${isItemActive ? "bg-[#ec8013]/20" : ""}`}
+                    className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-[#ec8013]/10 group ${
+                      isItemActive ? "bg-[#ec8013]/20" : ""
+                    }`}
                     onClick={() => {
                       setIsExpanded(false);
                       onClose();
                     }}
                   >
-                    <div className={`w-6 h-6 rounded-md flex items-center justify-center ${isItemActive ? "bg-[#ec8013]" : "bg-[#ec8013]/5"}`}>
-                      <item.icon className={`w-3.5 h-3.5 ${isItemActive ? "text-white" : "text-[#ec8013]"}`} />
+                    <div
+                      className={`w-6 h-6 rounded-md flex items-center justify-center ${
+                        isItemActive ? "bg-[#ec8013]" : "bg-[#ec8013]/5"
+                      }`}
+                    >
+                      <item.icon
+                        className={`w-3.5 h-3.5 ${isItemActive ? "text-white" : "text-[#ec8013]"}`}
+                      />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-1.5">
-                        <span className={`text-xs ${isItemActive ? "text-[#ec8013]" : "text-[#f5dfc4]"}`}>{item.name}</span>
+                        <span
+                          className={`text-xs ${isItemActive ? "text-[#ec8013]" : "text-[#f5dfc4]"}`}
+                        >
+                          {item.name}
+                        </span>
                         {item.badge && (
                           <span className="text-[7px] px-1 py-0.5 bg-[#ec8013]/20 text-[#ec8013] rounded-full font-semibold">
                             {item.badge}
@@ -148,7 +185,8 @@ export default function Navbar() {
   }, []);
 
   const isActive = (href: string) => isActivePath(router.pathname, href);
-  const isSubmenuActive = (submenu?: SubmenuItem[]) => isSubmenuActivePath(router.pathname, submenu);
+  const isSubmenuActive = (submenu?: SubmenuItem[]) =>
+    isSubmenuActivePath(router.pathname, submenu);
 
   // Handle scroll effect
   useEffect(() => {
@@ -202,6 +240,16 @@ export default function Navbar() {
     }
   };
 
+  // Close the dropdown when navigating
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setActiveDropdown(null);
+      setIsOpen(false);
+    };
+    router.events.on("routeChangeStart", handleRouteChange);
+    return () => router.events.off("routeChangeStart", handleRouteChange);
+  }, [router.events]);
+
   const navLinks: NavLink[] = [
     {
       name: "Home",
@@ -210,63 +258,40 @@ export default function Navbar() {
     },
     {
       name: "About",
-      href: "/about",
+      href: "/about-us",
       icon: Info,
-      submenu: [
-        { name: "Heritage", href: "/about-us/heritage", icon: Info, description: "Our legacy and history" },
-        { name: "Vision & Mission", href: "/about-us/vision-and-mission", icon: Info, description: "Our goals and purpose" },
-        { name: "Management", href: "/about-us/management-team-committee", icon: Users, description: "Leadership team" },
-        { name: "Chairman's Books", href: "/about-us/chairman-books", icon: BookOpen, description: "Publications by chairman" },
-        { name: "Principal Message", href: "/about-us/principal-message", icon: MessageCircle, description: "Message from principal" },
-        { name: "Rules & Regulations", href: "/about-us/rules-and-regulations", icon: Shield, description: "School policies" },
-      ],
+      submenu: aboutLinks,
     },
     {
       name: "Academics",
       href: "/academics",
       icon: GraduationCap,
-      submenu: [
-        { name: "Curriculum & Pedagogical Processes", href: "/academics/curriculum-and-pedagogical-processes", icon: BookOpen, description: "Teaching framework" },
-        { name: "Methodology", href: "/academics/methodology", icon: BookOpen, description: "Learning approach" },
-        { name: "Creative Learning", href: "/academics/creative-learning", icon: Palette, description: "Imagination in action" },
-        { name: "Academic Excellence", href: "/academics/academic-excellence", icon: Trophy, description: "Strong academic foundation" },
-        { name: "All Round Development", href: "/academics/all-round-development", icon: Award, description: "Holistic growth" },
-        { name: "Teacher Training", href: "/academics/teacher-training-programme-workshops", icon: Users, description: "Faculty development" },
-      ],
+      submenu: academicsLinks,
     },
     {
       name: "Infrastructure",
       href: "/infrastructure-facilities",
       icon: Building,
-      submenu: [
-        { name: "Smart Class Rooms", href: "/infrastructure-facilities/classrooms", icon: Building, description: "Modern learning spaces" },
-        { name: "Sports & Games", href: "/infrastructure-facilities/indoor-outdoor-and-traditional-games", icon: Activity, description: "Sports & recreation" },
-        { name: "Transport", href: "/infrastructure-facilities/transport-facilities", icon: Bus, description: "Safe travel" },
-        { name: "Medical", href: "/infrastructure-facilities/medical-facilities", icon: Heart, description: "Health support" },
-        { name: "Library", href: "/infrastructure-facilities/library", icon: BookOpen, description: "Knowledge resources" },
-        { name: "Auditorium", href: "/infrastructure-facilities/auditorium", icon: Building2, description: "Spacious space for events and activities" },
-        { name: "Computer Lab", href: "/infrastructure-facilities/computer-lab", icon: Monitor, description: "Technology-enabled learning" },
-        { name: "Dining", href: "/infrastructure-facilities/pantry-and-dining", icon: Coffee, description: "Dining area" },
-      ],
+      submenu: infrastructureLinks,
     },
     ...(activities.length > 0
       ? [
-        {
-          name: "Activities",
-          href: "/activities",
-          icon: Activity,
-          submenu: activities.map((a) => ({
-            name: a.title,
-            href: `/activities/${a.slug}`,
+          {
+            name: "Activities",
+            href: "/activities",
             icon: Activity,
-            description: a.title,
-          })),
-        },
-      ]
+            submenu: activities.map((a) => ({
+              name: a.title,
+              href: `/activities/${a.slug}`,
+              icon: Activity,
+              description: a.title,
+            })),
+          },
+        ]
       : []),
     {
       name: "Admission",
-      href: "/admission",
+      href: "/admission/admission-procedure",
       icon: FileText,
       submenu: [
         { name: "Procedure", href: "/admission/admission-procedure", icon: FileText, description: "Steps to apply" },
@@ -276,7 +301,7 @@ export default function Navbar() {
     },
     {
       name: "Resources",
-      href: "/resources",
+      href: "/news-and-events",
       icon: Globe,
       submenu: [
         { name: "News & Events", href: "/news-and-events", icon: Calendar, description: "Updates", badge: "New" },
@@ -379,7 +404,9 @@ export default function Navbar() {
 
       <div ref={navRef}>
         <nav
-          className={`animate-nav-in fixed top-0 w-full z-50 transition-colors duration-300 ${scrolled ? "bg-secondary" : ""}`}
+          className={`animate-nav-in fixed top-0 w-full z-50 transition-colors duration-300 ${
+            scrolled ? "bg-secondary" : ""
+          }`}
         >
           <div className="container-responsive">
             <div className="flex justify-between items-center h-14 md:h-16 lg:h-16">
@@ -412,47 +439,45 @@ export default function Navbar() {
                       onMouseEnter={() => link.submenu && handleMouseEnter(link.name)}
                       onMouseLeave={handleMouseLeave}
                     >
-                      {link.submenu ? (
-                        <button
-                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base transition-all duration-200 hover:-translate-y-px ${isLinkActive || isSubActive
-                              ? "text-[#ec8013]"
-                              : "text-[#f5dfc4]/80 hover:text-[#f5dfc4]"
-                            }`}
-                        >
-                          <span>{link.name}</span>
+                      {/* Parent item is ALWAYS a Link so the main page is clickable.
+                          Submenu parents still open their dropdown on hover. */}
+                      <Link
+                        href={link.href}
+                        className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base transition-all duration-200 hover:-translate-y-px ${
+                          isLinkActive || isSubActive
+                            ? "text-[#ec8013]"
+                            : "text-[#f5dfc4]/80 hover:text-[#f5dfc4]"
+                        }`}
+                      >
+                        <span>{link.name}</span>
+                        {link.submenu && (
                           <ChevronDown
-                            className={`w-3 h-3 xl:w-3.5 xl:h-3.5 transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : "rotate-0"}`}
-                          />
-                        </button>
-                      ) : (
-                        <Link
-                          href={link.href}
-                          className={`relative flex items-center gap-1 px-2 xl:px-3 py-2 text-sm xl:text-base transition-colors duration-200 ${isLinkActive
-                              ? "text-[#ec8013]"
-                              : "text-[#f5dfc4]/80 hover:text-[#f5dfc4]"
+                            className={`w-3 h-3 xl:w-3.5 xl:h-3.5 transition-transform duration-200 ${
+                              isDropdownOpen ? "rotate-180" : "rotate-0"
                             }`}
-                        >
-                          <span>{link.name}</span>
-                        </Link>
-                      )}
+                          />
+                        )}
+                      </Link>
 
                       {/* Desktop Submenu — always mounted, toggled with opacity/translate/visibility
                           so BOTH open and close are smooth (no JS animation library needed). */}
                       {link.submenu && (
                         <div
-                          className={`absolute top-full left-0 pt-1 transition-[opacity,transform,visibility] duration-200 ease-out ${isDropdownOpen
+                          className={`absolute top-full left-0 pt-1 transition-[opacity,transform,visibility] duration-200 ease-out ${
+                            isDropdownOpen
                               ? "opacity-100 translate-y-0 visible"
                               : "opacity-0 translate-y-2 invisible pointer-events-none"
-                            }`}
+                          }`}
                           onMouseEnter={() => handleMouseEnter(link.name)}
                           onMouseLeave={handleMouseLeave}
                         >
                           <div className="w-72 xl:w-80 bg-[#1a4a5c] shadow-xl border border-[#ec8013]/20 overflow-hidden">
                             <div
-                              className={`p-2 ${link.name === "Activities"
+                              className={`p-2 ${
+                                link.name === "Activities"
                                   ? "max-h-[360px] overflow-y-auto activities-scrollbar"
                                   : ""
-                                }`}
+                              }`}
                             >
                               {link.submenu.map((item) => {
                                 const isItemActive = isItemActivePath(router.pathname, item.href);
@@ -460,20 +485,29 @@ export default function Navbar() {
                                   <Link
                                     key={item.name}
                                     href={item.href}
-                                    className={`flex items-center gap-3 p-2.5 transition-all duration-150 group ${isItemActive ? "bg-[#ec8013]/15" : "hover:bg-[#ec8013]/10"
-                                      }`}
+                                    className={`flex items-center gap-3 p-2.5 transition-all duration-150 group ${
+                                      isItemActive ? "bg-[#ec8013]/15" : "hover:bg-[#ec8013]/10"
+                                    }`}
                                   >
                                     <div
-                                      className={`w-8 h-8 flex items-center justify-center shrink-0 rounded-md ${isItemActive ? "bg-[#ec8013]" : "bg-[#ec8013]/10"
-                                        }`}
+                                      className={`w-8 h-8 flex items-center justify-center shrink-0 rounded-md ${
+                                        isItemActive ? "bg-[#ec8013]" : "bg-[#ec8013]/10"
+                                      }`}
                                     >
-                                      <item.icon className={`w-4 h-4 ${isItemActive ? "text-white" : "text-[#ec8013]"}`} />
+                                      <item.icon
+                                        className={`w-4 h-4 ${
+                                          isItemActive ? "text-white" : "text-[#ec8013]"
+                                        }`}
+                                      />
                                     </div>
                                     <div className="flex-1 min-w-0">
                                       <div className="flex items-center gap-1.5">
                                         <span
-                                          className={`text-xs xl:text-sm transition-colors ${isItemActive ? "text-[#ec8013]" : "text-[#f5dfc4] group-hover:text-[#ec8013]"
-                                            }`}
+                                          className={`text-xs xl:text-sm transition-colors ${
+                                            isItemActive
+                                              ? "text-[#ec8013]"
+                                              : "text-[#f5dfc4] group-hover:text-[#ec8013]"
+                                          }`}
                                         >
                                           {item.name}
                                         </span>
@@ -483,13 +517,16 @@ export default function Navbar() {
                                           </span>
                                         )}
                                       </div>
-                                      <div className="text-[10px] text-[#f5dfc4]/40 truncate">{item.description}</div>
+                                      <div className="text-[10px] text-[#f5dfc4]/40 truncate">
+                                        {item.description}
+                                      </div>
                                     </div>
                                     <ArrowRight
-                                      className={`w-3 h-3 transition-all shrink-0 ${isItemActive
+                                      className={`w-3 h-3 transition-all shrink-0 ${
+                                        isItemActive
                                           ? "text-[#ec8013]"
                                           : "text-[#f5dfc4]/20 group-hover:text-[#ec8013] group-hover:translate-x-0.5"
-                                        }`}
+                                      }`}
                                     />
                                   </Link>
                                 );
@@ -564,12 +601,14 @@ export default function Navbar() {
                 aria-expanded={isOpen}
               >
                 <Menu
-                  className={`absolute w-4 h-4 transition-all duration-200 ${isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
-                    }`}
+                  className={`absolute w-4 h-4 transition-all duration-200 ${
+                    isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
+                  }`}
                 />
                 <X
-                  className={`absolute w-4 h-4 transition-all duration-200 ${isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
-                    }`}
+                  className={`absolute w-4 h-4 transition-all duration-200 ${
+                    isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
+                  }`}
                 />
               </button>
             </div>
@@ -578,15 +617,17 @@ export default function Navbar() {
 
         {/* Mobile overlay */}
         <div
-          className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden transition-[opacity,visibility] duration-200 ${isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
-            }`}
+          className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden transition-[opacity,visibility] duration-200 ${
+            isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+          }`}
           onClick={() => setIsOpen(false)}
         />
 
         {/* Mobile Navigation Panel — slides in/out with CSS transform */}
         <div
-          className={`fixed right-0 top-0 bottom-0 w-80 sm:w-96 bg-gradient-to-br from-[#1a4a5c] to-[#0d3543] shadow-2xl z-40 lg:hidden transition-[transform,visibility] duration-300 ease-out will-change-transform ${isOpen ? "translate-x-0 visible" : "translate-x-full invisible"
-            }`}
+          className={`fixed right-0 top-0 bottom-0 w-80 sm:w-96 bg-gradient-to-br from-[#1a4a5c] to-[#0d3543] shadow-2xl z-40 lg:hidden transition-[transform,visibility] duration-300 ease-out will-change-transform ${
+            isOpen ? "translate-x-0 visible" : "translate-x-full invisible"
+          }`}
           aria-hidden={!isOpen}
         >
           <div className="h-full overflow-y-auto hide-scrollbar pt-16 pb-6">
@@ -598,18 +639,28 @@ export default function Navbar() {
                   ) : (
                     <Link
                       href={link.href}
-                      className={`flex items-center justify-between gap-3 px-4 py-3 transition-all group rounded-lg ${isActive(link.href) ? "bg-[#ec8013]/10" : "hover:bg-[#ec8013]/5"
-                        }`}
+                      className={`flex items-center justify-between gap-3 px-4 py-3 transition-all group rounded-lg ${
+                        isActive(link.href) ? "bg-[#ec8013]/10" : "hover:bg-[#ec8013]/5"
+                      }`}
                       onClick={() => setIsOpen(false)}
                     >
                       <div className="flex items-center gap-3">
                         <div
-                          className={`w-8 h-8 rounded-lg flex items-center justify-center ${isActive(link.href) ? "bg-[#ec8013]" : "bg-[#ec8013]/10"
-                            }`}
+                          className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                            isActive(link.href) ? "bg-[#ec8013]" : "bg-[#ec8013]/10"
+                          }`}
                         >
-                          <link.icon className={`w-4 h-4 ${isActive(link.href) ? "text-white" : "text-[#ec8013]"}`} />
+                          <link.icon
+                            className={`w-4 h-4 ${
+                              isActive(link.href) ? "text-white" : "text-[#ec8013]"
+                            }`}
+                          />
                         </div>
-                        <span className={`text-sm ${isActive(link.href) ? "text-[#ec8013]" : "text-[#f5dfc4]"}`}>
+                        <span
+                          className={`text-sm ${
+                            isActive(link.href) ? "text-[#ec8013]" : "text-[#f5dfc4]"
+                          }`}
+                        >
                           {link.name}
                         </span>
                       </div>

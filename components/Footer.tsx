@@ -16,14 +16,14 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const aboutLinks = [
-    { name: "About Us", href: "/about-us/heritage" },
-    { name: "Academics", href: "/academics/curriculum-and-pedagogical-processes" },
+    { name: "About Us", href: "/about-us" },
+    { name: "Academics", href: "/academics" },
     { name: "Admission", href: "/admission/admission-procedure" },
     { name: "Contact Us", href: "/contact-us" },
   ];
 
   const resourceLinks = [
-    { name: "Infrastructure", href: "/infrastructure-facilities/classrooms" },
+    { name: "Infrastructure", href: "/infrastructure-facilities" },
     { name: "Mandatory Disclosure", href: "/mandatory-disclosure" },
     { name: "News & Events", href: "/news-and-events" },
     { name: "Admission Contact", href: "/admission/admission-contact" },
@@ -31,9 +31,9 @@ const Footer = () => {
 
   const quickLinks = [
     { name: "Home", href: "/" },
-    { name: "School Facilities", href: "/infrastructure-facilities/classrooms" },
-    { name: "Transport", href: "/infrastructure-facilities/transport-facilities" },
-    { name: "Careers", href: "/careers" },
+    { name: "School Facilities", href: "/infrastructure-facilities" },
+    { name: "Transport", href: "/infrastructure-facilities" },
+    { name: "Library", href: "/infrastructure-facilities/library" },
   ];
 
   return (
