@@ -97,22 +97,22 @@ const nextConfig = {
 
       {
         source: "/activities/exciting-games.html",
-        destination: "/",
+        destination: "/activities/sports-activities",
         permanent: true,
       },
       {
         source: "/activities/value-calendar.html",
-        destination: "/",
+        destination: "/activities/value-calendar",
         permanent: true,
       },
       {
         source: "/activities/public-speaking.html",
-        destination: "/",
+        destination: "/activities/public-speaking",
         permanent: true,
       },
       {
         source: "/activities/sonaria-music-club.html",
-        destination: "/",
+        destination: "/activities/sonaria-music-club",
         permanent: true,
       },
       {
@@ -165,9 +165,48 @@ const nextConfig = {
         destination: "/about-us/rules-and-regulations",
         permanent: true,
       },
+
+      {
+        source: "/about-us/rules-and-regulations/school-timings.html",
+        destination: "/about-us/rules-and-regulations",
+        permanent: true,
+      },
+
+      {
+        source: "/public-disclosure/documents/FEE%20STRUCTURE.pdf",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/public-disclosure/documents/copies-of-valid-water-health-and-sanitation-certificates.pdf",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/public-disclosure/documents/FEE%20STRUCTURE.pdf",
+        destination: "/",
+        permanent: true,
+      },
+
+      {
+        source: "/about-us/rules-and-regulations/school-timings.html",
+        destination: "/about-us/rules-and-regulations",
+        permanent: true,
+      },
       {
         source: "/about-us/rules-and-regulations/for-students.html",
         destination: "/about-us/rules-and-regulations",
+        permanent: true,
+      },
+      {
+        source: "/calendar/school_calendar_2024_2025.pdf",
+        destination: "/",
+        permanent: true,
+      },
+
+      {
+        source: "/resources/bal-ganesh-virtual-contest",
+        destination: "/news-and-events/vinayagar-chaturthi-2025",
         permanent: true,
       },
 
@@ -179,11 +218,21 @@ const nextConfig = {
 
       {
         source: "/resources/student-achievements.html",
-        destination: "/student-achievements/sathyan-m-finswimming",
+        destination: "/student-achievements",
         permanent: true,
       },
-   
-   
+
+      {
+        source: "/admission.html",
+        destination: "/admission/admission-procedure",
+        permanent: true,
+      },
+
+      {
+        source: "/public-disclosure",
+        destination: "/mandatory-disclosure",
+        permanent: true,
+      },
 
       // Resources
       {
