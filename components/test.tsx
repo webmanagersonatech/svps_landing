@@ -57,7 +57,11 @@ export default function TestApiPage() {
                 <PageHeader
                     title="Our Curriculum"
                     subtitle='"Empowering minds with knowledge, skills, and values for a changing world."'
-                    breadcrumbs={["Home", "Academics", "Curriculum"]}
+                  breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "Academics", href: "/academics" },
+  { label: "Curriculum", href: "/academics/curriculum" },
+]}
                 />
 
                 {/* CURRICULUM PHILOSOPHY SECTION */}

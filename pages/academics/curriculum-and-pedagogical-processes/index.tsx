@@ -318,7 +318,11 @@ export default function CurriculumPage() {
                 <PageHeader
                     title="Our Curriculum"
                     subtitle='"Learning today, shaping tomorrow."'
-                    breadcrumbs={["Home", "Academics", "Curriculum"]}
+                  breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "Academics", href: "/academics" },
+  { label: "Curriculum", href: "/academics/curriculum" },
+]}
                 />
 
          {/* CURRICULUM PHILOSOPHY SECTION */}

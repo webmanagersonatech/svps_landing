@@ -120,7 +120,11 @@ export default function HeritagePage() {
         <PageHeader
           title='"Education gives wings to fly"'
           subtitle="- Dr. APJ Abdul Kalam"
-          breadcrumbs={["Home", "About", "Our Heritage"]}
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "About", href: "/about-us" },
+            { label: "Our Heritage", href: "/about-us/our-heritage" },
+          ]}
         />
 
         <div className="max-w-7xl mx-auto px-4 py-16">

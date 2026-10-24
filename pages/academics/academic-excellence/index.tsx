@@ -123,7 +123,11 @@ export default function AcademicExcellencePage() {
                 <PageHeader
                     title="Academic Excellence"
                     subtitle='"A strong academic foundation that helps every student achieve their full potential."'
-                    breadcrumbs={["Home", "Academics", "Academic Excellence"]}
+                  breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "Academics", href: "/academics" },
+  { label: "Academic Excellence", href: "/academics/academic-excellence" },
+]}
                 />
 
                 {/* INTRO */}

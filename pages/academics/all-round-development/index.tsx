@@ -121,7 +121,11 @@ export default function AllRoundDevelopmentPage() {
                 <PageHeader
                     title="All Round Development"
                     subtitle='"Shaping scholars, athletes, artists, and leaders – because excellence is not one-dimensional."'
-                    breadcrumbs={["Home", "Academics", "All Round Development"]}
+                    breadcrumbs={[
+                        { label: "Home", href: "/" },
+                        { label: "Academics", href: "/academics" },
+                        { label: "All Round Development", href: "/academics/all-round-development" },
+                    ]}
                 />
 
                 {/* INTRODUCTION / PHILOSOPHY with image */}
@@ -158,7 +162,7 @@ export default function AllRoundDevelopmentPage() {
                                         </span>
                                     </div>
 
-                                   
+
 
                                     <div className="flex items-center gap-2">
                                         <Trophy className="w-4 h-4 text-primary" />
@@ -167,7 +171,7 @@ export default function AllRoundDevelopmentPage() {
                                         </span>
                                     </div>
 
-                                 
+
 
                                     <div className="flex items-center gap-2">
                                         <Compass className="w-4 h-4 text-primary" />
@@ -176,7 +180,7 @@ export default function AllRoundDevelopmentPage() {
                                         </span>
                                     </div>
 
-                                  
+
 
                                     <div className="flex items-center gap-2">
                                         <Sparkles className="w-4 h-4 text-primary" />
@@ -185,7 +189,7 @@ export default function AllRoundDevelopmentPage() {
                                         </span>
                                     </div>
 
-                                   
+
 
                                     <div className="flex items-center gap-2">
                                         <BookOpen className="w-4 h-4 text-primary" />

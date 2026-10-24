@@ -15,7 +15,10 @@ export default function AboutUsPage() {
         title="About Us"
         subtitle="Our legacy, purpose and the people behind the school"
         intro="Discover the story of Sona Valliappa Public School: where we come from, what we stand for, and the leadership guiding our students every day."
-        breadcrumbs={["Home", "About Us"]}
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "About Us", href: "/about-us" },
+        ]}
         cards={aboutLinks}
       />
     </>

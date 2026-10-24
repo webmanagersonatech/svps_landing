@@ -521,7 +521,11 @@ export default function AdmissionContactPage() {
                 <PageHeader
                     title="Admission Contact"
                     subtitle="We are here to help you with admissions and inquiries."
-                    breadcrumbs={["Home", "Admissions", "Contact"]}
+                    breadcrumbs={[
+                        { label: "Home", href: "/" },
+                        { label: "Admission", href: "/admission/contact" },
+                        { label: "Contact", href: "/admission/contact" },
+                    ]}
                 />
 
                 <div className="max-w-7xl mx-auto px-4 py-16 md:py-20">
@@ -674,11 +678,10 @@ export default function AdmissionContactPage() {
                                             onBlur={() => setTouched((prev) => ({ ...prev, name: true }))}
                                             placeholder="Full Name *"
                                             autoComplete="name"
-                                            className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 placeholder:text-gray-400 ${
-                                                touched.name && errors.name
+                                            className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 placeholder:text-gray-400 ${touched.name && errors.name
                                                     ? "border-red-400"
                                                     : "border-gray-300 focus:border-primary"
-                                            }`}
+                                                }`}
                                         />
                                         {touched.name && errors.name && (
                                             <p className="text-red-500 text-xs mt-1">{errors.name}</p>
@@ -697,11 +700,10 @@ export default function AdmissionContactPage() {
                                             inputMode="numeric"
                                             maxLength={10}
                                             autoComplete="tel"
-                                            className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 placeholder:text-gray-400 ${
-                                                touched.phone && errors.phone
+                                            className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 placeholder:text-gray-400 ${touched.phone && errors.phone
                                                     ? "border-red-400"
                                                     : "border-gray-300 focus:border-primary"
-                                            }`}
+                                                }`}
                                         />
                                         {touched.phone && errors.phone && (
                                             <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
@@ -718,11 +720,10 @@ export default function AdmissionContactPage() {
                                             onBlur={() => setTouched((prev) => ({ ...prev, email: true }))}
                                             placeholder="Email Address"
                                             autoComplete="email"
-                                            className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 placeholder:text-gray-400 ${
-                                                touched.email && errors.email
+                                            className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 placeholder:text-gray-400 ${touched.email && errors.email
                                                     ? "border-red-400"
                                                     : "border-gray-300 focus:border-primary"
-                                            }`}
+                                                }`}
                                         />
                                         {touched.email && errors.email && (
                                             <p className="text-red-500 text-xs mt-1">{errors.email}</p>
@@ -736,11 +737,10 @@ export default function AdmissionContactPage() {
                                             value={formData.programId}
                                             onChange={handleInputChange}
                                             onBlur={() => setTouched((prev) => ({ ...prev, programId: true }))}
-                                            className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 ${
-                                                touched.programId && errors.programId
+                                            className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 ${touched.programId && errors.programId
                                                     ? "border-red-400"
                                                     : "border-gray-300 focus:border-primary"
-                                            }`}
+                                                }`}
                                         >
                                             <option value="">Select Grade / Class *</option>
                                             {CLASS_OPTIONS.map((opt) => (
@@ -847,11 +847,10 @@ export default function AdmissionContactPage() {
                                                         maxLength={CAPTCHA_LENGTH}
                                                         autoComplete="off"
                                                         spellCheck={false}
-                                                        className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 placeholder:text-gray-400 mt-2 tracking-widest uppercase ${
-                                                            captchaTouched && captchaError
+                                                        className={`w-full border-b bg-transparent py-2 px-1 focus:outline-none transition text-gray-800 placeholder:text-gray-400 mt-2 tracking-widest uppercase ${captchaTouched && captchaError
                                                                 ? "border-red-400"
                                                                 : "border-gray-300 focus:border-primary"
-                                                        }`}
+                                                            }`}
                                                     />
                                                     {captchaTouched && captchaError && (
                                                         <p className="text-red-500 text-xs mt-1">{captchaError}</p>
@@ -875,11 +874,10 @@ export default function AdmissionContactPage() {
                                                 <div className="pt-1">
                                                     <label
                                                         htmlFor="agree-terms"
-                                                        className={`flex items-start gap-2 cursor-pointer select-none rounded p-2 -mx-2 transition-colors ${
-                                                            errors.consent
+                                                        className={`flex items-start gap-2 cursor-pointer select-none rounded p-2 -mx-2 transition-colors ${errors.consent
                                                                 ? "bg-red-50 border border-red-200"
                                                                 : "hover:bg-gray-50"
-                                                        }`}
+                                                            }`}
                                                     >
                                                         <input
                                                             id="agree-terms"

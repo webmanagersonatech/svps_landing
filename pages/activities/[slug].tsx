@@ -60,7 +60,11 @@ export default function ActivityDetailPage({ activity }: { activity: Activity })
         <PageHeader
           title={activity.title}
           subtitle="Explore this activity and discover new skills"
-          breadcrumbs={["Home", "Activities", activity.title]}
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Activities", href: "/activities" },
+            { label: activity.title, href: `/activities/${activity.slug}` },
+          ]}
         />
 
         {/* ACTIVITY OVERVIEW */}

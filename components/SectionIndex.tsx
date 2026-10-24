@@ -21,7 +21,7 @@ interface SectionIndexProps {
   subtitle?: string;
   /** Short paragraph shown beside the list */
   intro?: string;
-  breadcrumbs: string[];
+  breadcrumbs: { label: string; href: string }[];
   cards: SectionCard[];
   emptyMessage?: string;
 }

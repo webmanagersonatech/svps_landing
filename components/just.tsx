@@ -51,9 +51,8 @@ function Reveal({
     <div
       ref={ref}
       style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
-      className={`transition-all duration-700 ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
+      className={`transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
     >
       {children}
     </div>
@@ -143,12 +142,12 @@ function AuditoriumFilmstrip() {
             className="group relative flex-shrink-0 w-[220px] md:w-[280px] h-[340px] md:h-[400px] rounded-2xl overflow-hidden cursor-pointer snap-start shadow-2xl"
           >
             <Image
-                src={img.src}
-                alt={img.alt}
-                width={1200}
-                height={800}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+              src={img.src}
+              alt={img.alt}
+              width={1200}
+              height={800}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
             <div className="absolute bottom-0 left-0 p-5 w-full">
@@ -195,12 +194,12 @@ function AuditoriumFilmstrip() {
             onClick={(e) => e.stopPropagation()}
           >
             <Image
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                width={1200}
-                height={800}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-full object-contain rounded-lg"
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              width={1200}
+              height={800}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="w-full h-full object-contain rounded-lg"
             />
             <p className="text-white text-center font-serif text-lg mt-4">
               {selectedImage.title}
@@ -262,19 +261,23 @@ export default function AuditoriumPage() {
         <PageHeader
           title="Auditorium"
           subtitle="A grand stage where talent shines and memories are made."
-          breadcrumbs={["Home", "Infrastructure facilities", "Auditorium"]}
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Infrastructure Facilities", href: "/infrastructure-facilities" },
+            { label: "Auditorium", href: "/infrastructure-facilities/auditorium" },
+          ]}
         />
 
         {/* CINEMATIC HERO BAND */}
         <section className="relative bg-secondary overflow-hidden">
           <div className="absolute inset-0 opacity-25">
             <Image
-                src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=1600&q=80"
-                alt="Auditorium stage"
-                width={1200}
-                height={800}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-full object-cover"
+              src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=1600&q=80"
+              alt="Auditorium stage"
+              width={1200}
+              height={800}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="w-full h-full object-cover"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-secondary/40" />
@@ -351,33 +354,33 @@ export default function AuditoriumPage() {
               <div className="grid grid-cols-5 gap-4 h-[420px] md:h-[480px]">
                 <div className="col-span-3 rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                      src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=900&q=80"
-                      alt="Auditorium stage"
-                      width={1200}
-                      height={800}
-                      sizes="(min-width: 1024px) 50vw, 100vw"
-                      className="w-full h-full object-cover"
+                    src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=900&q=80"
+                    alt="Auditorium stage"
+                    width={1200}
+                    height={800}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="col-span-2 flex flex-col gap-4">
                   <div className="flex-1 rounded-2xl overflow-hidden shadow-xl">
                     <Image
-                        src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=80"
-                        alt="Auditorium hall"
-                        width={1200}
-                        height={800}
-                        sizes="(min-width: 1024px) 50vw, 100vw"
-                        className="w-full h-full object-cover"
+                      src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=80"
+                      alt="Auditorium hall"
+                      width={1200}
+                      height={800}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="flex-1 rounded-2xl overflow-hidden shadow-xl">
                     <Image
-                        src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=600&q=80"
-                        alt="School event"
-                        width={1200}
-                        height={800}
-                        sizes="(min-width: 1024px) 50vw, 100vw"
-                        className="w-full h-full object-cover"
+                      src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=600&q=80"
+                      alt="School event"
+                      width={1200}
+                      height={800}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
@@ -423,18 +426,17 @@ export default function AuditoriumPage() {
                 return (
                   <Reveal key={i}>
                     <div
-                      className={`grid md:grid-cols-2 gap-10 items-center ${
-                        reversed ? "md:[&>*:first-child]:order-2" : ""
-                      }`}
+                      className={`grid md:grid-cols-2 gap-10 items-center ${reversed ? "md:[&>*:first-child]:order-2" : ""
+                        }`}
                     >
                       <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
                         <Image
-                            src={row.img}
-                            alt={row.title}
-                            width={1200}
-                            height={800}
-                            sizes="(min-width: 1024px) 50vw, 100vw"
-                            className="w-full h-full object-cover hover:scale-105 transition duration-700"
+                          src={row.img}
+                          alt={row.title}
+                          width={1200}
+                          height={800}
+                          sizes="(min-width: 1024px) 50vw, 100vw"
+                          className="w-full h-full object-cover hover:scale-105 transition duration-700"
                         />
                       </div>
                       <div>
@@ -480,12 +482,12 @@ export default function AuditoriumPage() {
             <div className="relative overflow-hidden rounded-3xl bg-secondary text-white p-10 md:p-16 text-center shadow-xl">
               <div className="absolute inset-0 opacity-10">
                 <Image
-                    src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1600&q=80"
-                    alt=""
-                    width={1200}
-                    height={800}
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="w-full h-full object-cover"
+                  src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1600&q=80"
+                  alt=""
+                  width={1200}
+                  height={800}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div className="relative">

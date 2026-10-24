@@ -308,7 +308,10 @@ export default function PublicDisclosurePage() {
         <PageHeader
           title=" Mandatory Disclosure"
           subtitle="Complete information as per CBSE and regulatory requirements"
-          breadcrumbs={["Home", "Mandatory Disclosure"]}
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Mandatory Disclosure", href: "/mandatory-disclosure" },
+          ]}
         />
 
 

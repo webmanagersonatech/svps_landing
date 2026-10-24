@@ -141,23 +141,23 @@ export default function TeacherTrainingPage() {
     ];
 
     // Testimonials from teachers with photos
-const testimonials = [
-    {
-        quote: "The recent capacity building workshops at Sona Valliappa Public School gave me practical strategies that I could immediately apply in my classes for Grades 1 to 8. I feel more confident, connected and empowered as an educator.",
-        name: "Ms. Lalithambigai S, TGT",
-        image: "/acadamics/Lalithambigai.webp",
-    },
-    {
-        quote: "An excellent learning experience that enhanced our teaching strategies and broadened our professional perspective.",
-        name: "Ms. Shanthala Ramesh, TGT",
-        image: "/acadamics/SHANTHALA.webp",
-    },
-    {
-        quote: "The interactive learning strategies I picked up here completely revived participation in my classroom. Even the quietest students are eager to speak up now. The positive reinforcement modules changed how we handle behavior management. Our classroom environment is calmer, more focused, and much happier.",
-        name: "Ms. Kayathri R, TGT",
-        image: "/acadamics/KAYATHRI.webp",
-    },
-];
+    const testimonials = [
+        {
+            quote: "The recent capacity building workshops at Sona Valliappa Public School gave me practical strategies that I could immediately apply in my classes for Grades 1 to 8. I feel more confident, connected and empowered as an educator.",
+            name: "Ms. Lalithambigai S, TGT",
+            image: "/acadamics/Lalithambigai.webp",
+        },
+        {
+            quote: "An excellent learning experience that enhanced our teaching strategies and broadened our professional perspective.",
+            name: "Ms. Shanthala Ramesh, TGT",
+            image: "/acadamics/SHANTHALA.webp",
+        },
+        {
+            quote: "The interactive learning strategies I picked up here completely revived participation in my classroom. Even the quietest students are eager to speak up now. The positive reinforcement modules changed how we handle behavior management. Our classroom environment is calmer, more focused, and much happier.",
+            name: "Ms. Kayathri R, TGT",
+            image: "/acadamics/KAYATHRI.webp",
+        },
+    ];
 
     return (
         <>
@@ -173,7 +173,11 @@ const testimonials = [
                     title="Workshops for Teacher Training and Transformation
 "
                     subtitle='"Great teachers never stop learning – we invest in ours so they can invest in every child."'
-                    breadcrumbs={["Home", "Academics", "Teacher Training"]}
+                    breadcrumbs={[
+                        { label: "Home", href: "/" },
+                        { label: "Academics", href: "/academics" },
+                        { label: "Teacher Training", href: "/academics/teacher-training-programme-workshops" },
+                    ]}
                 />
 
                 {/* PHILOSOPHY SECTION with image */}
@@ -392,59 +396,59 @@ const testimonials = [
                     </div>
                 </div> */}
 
-{/* TEACHER TESTIMONIALS with photos */}
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <Reveal>
-        <div className="text-center mb-12">
-            <HeartIcon className="w-10 h-10 text-primary mx-auto mb-2" />
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary">
-                What Our Teachers Say
-            </h2>
-            <p className="text-gray-600 mt-2">
-                Real experiences from our learning community
-            </p>
-        </div>
-    </Reveal>
-
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 items-stretch">
-        {testimonials.map((t, idx) => (
-            <Reveal key={idx} delay={idx * 150}>
-                <div className="relative bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all duration-300 pt-12 p-6 md:p-8 h-full min-h-[320px] flex flex-col">
-
-                    {/* Floating Avatar */}
-                    <div className="absolute -top-8 left-1/2 -translate-x-1/2">
-                        <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-50">
-                            <Image
-                                src={t.image}
-                                alt={t.name}
-                                width={150}
-                                height={150}
-                                sizes="64px"
-                                className="w-full h-full object-cover"
-                            />
+                {/* TEACHER TESTIMONIALS with photos */}
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                    <Reveal>
+                        <div className="text-center mb-12">
+                            <HeartIcon className="w-10 h-10 text-primary mx-auto mb-2" />
+                            <h2 className="text-3xl md:text-4xl font-serif font-bold text-secondary">
+                                What Our Teachers Say
+                            </h2>
+                            <p className="text-gray-600 mt-2">
+                                Real experiences from our learning community
+                            </p>
                         </div>
-                    </div>
+                    </Reveal>
 
-                    {/* Quote */}
-                    <div className="flex-1 flex items-center justify-center">
-                        <p className="text-gray-700 leading-8 text-center text-base md:text-lg">
-                            “{t.quote}”
-                        </p>
-                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 items-stretch">
+                        {testimonials.map((t, idx) => (
+                            <Reveal key={idx} delay={idx * 150}>
+                                <div className="relative bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all duration-300 pt-12 p-6 md:p-8 h-full min-h-[320px] flex flex-col">
 
-                    {/* Teacher Name */}
-                    <div className="mt-6 pt-4 border-t border-gray-100 text-center">
-                        <p className="font-semibold text-gray-900">
-                            — {t.name}
-                        </p>
-                    </div>
+                                    {/* Floating Avatar */}
+                                    <div className="absolute -top-8 left-1/2 -translate-x-1/2">
+                                        <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-50">
+                                            <Image
+                                                src={t.image}
+                                                alt={t.name}
+                                                width={150}
+                                                height={150}
+                                                sizes="64px"
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </div>
+                                    </div>
 
+                                    {/* Quote */}
+                                    <div className="flex-1 flex items-center justify-center">
+                                        <p className="text-gray-700 leading-8 text-center text-base md:text-lg">
+                                            “{t.quote}”
+                                        </p>
+                                    </div>
+
+                                    {/* Teacher Name */}
+                                    <div className="mt-6 pt-4 border-t border-gray-100 text-center">
+                                        <p className="font-semibold text-gray-900">
+                                            — {t.name}
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </Reveal>
+                        ))}
+                    </div>
                 </div>
-            </Reveal>
-        ))}
-    </div>
-</div>
-```
+                ```
 
                 {/* CALL TO ACTION with background image */}
                 <div className="relative py-20  overflow-hidden">

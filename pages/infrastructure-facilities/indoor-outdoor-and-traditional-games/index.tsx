@@ -150,7 +150,11 @@ export default function GamesPage() {
         <PageHeader
           title=" Sports & Games"
           subtitle="Fitness for Body and Mind"
-          breadcrumbs={["Home", "Infrastructure facilities", "Sports & Games"]}
+       breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "Infrastructure Facilities", href: "/infrastructure-facilities" },
+  { label: "Sports & Games", href: "/infrastructure-facilities/indoor-outdoor-and-traditional-games" },
+]}
         />
 
         {/* INTRO SECTION */}

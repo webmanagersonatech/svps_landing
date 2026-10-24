@@ -88,7 +88,11 @@ export default function ChairmanBooksPage() {
                 <PageHeader
                     title="Chairman's Books"
                     subtitle="Wisdom, Vision, and Legacy – penned by our founder"
-                    breadcrumbs={["Home", "About", "Chairman's Books"]}
+                    breadcrumbs={[
+                        { label: "Home", href: "/" },
+                        { label: "About", href: "/about-us" },
+                        { label: "Chairman's Books", href: "/about-us/chairman-books" },
+                    ]}
                 />
 
                 {/* BOOKS SECTION */}

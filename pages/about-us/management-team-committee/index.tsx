@@ -310,7 +310,11 @@ export default function ManagementProfilesPage() {
                 <PageHeader
                     title='"Leadership with Vision, Service with Heart"'
                     subtitle="- Guiding the Future of Education"
-                    breadcrumbs={["Home", "About", "Management Profiles"]}
+                    breadcrumbs={[
+                        { label: "Home", href: "/" },
+                        { label: "About", href: "/about-us" },
+                        { label: "Management Profiles", href: "/about-us/management-profiles" },
+                    ]}
                 />
 
                 {/* INTRODUCTION SECTION */}
@@ -326,16 +330,14 @@ export default function ManagementProfilesPage() {
                                     className="group flex items-center gap-3 text-left"
                                     title={member.name}
                                 >
-                                    <div className={`h-2 rounded-full flex-shrink-0 transition-all duration-300 ${
-                                        activeIndex === idx
-                                            ? 'w-6 bg-amber-600'
-                                            : 'w-2 bg-gray-300 group-hover:bg-amber-400 group-hover:w-3'
-                                    }`} />
-                                    <span className={`text-xs truncate max-w-[140px] transition ${
-                                        activeIndex === idx
-                                            ? 'text-amber-600 font-medium'
-                                            : 'text-gray-400 group-hover:text-gray-600'
-                                    }`}>
+                                    <div className={`h-2 rounded-full flex-shrink-0 transition-all duration-300 ${activeIndex === idx
+                                        ? 'w-6 bg-amber-600'
+                                        : 'w-2 bg-gray-300 group-hover:bg-amber-400 group-hover:w-3'
+                                        }`} />
+                                    <span className={`text-xs truncate max-w-[140px] transition ${activeIndex === idx
+                                        ? 'text-amber-600 font-medium'
+                                        : 'text-gray-400 group-hover:text-gray-600'
+                                        }`}>
                                         {member.name}
                                     </span>
                                 </button>
@@ -351,11 +353,10 @@ export default function ManagementProfilesPage() {
                                 ref={(el) => {
                                     itemRefs.current[index] = el;
                                 }}
-                                className={`transition-all duration-500 ${
-                                    activeIndex === index
-                                        ? "scale-[1.01] shadow-xl"
-                                        : "opacity-95 hover:opacity-100"
-                                }`}
+                                className={`transition-all duration-500 ${activeIndex === index
+                                    ? "scale-[1.01] shadow-xl"
+                                    : "opacity-95 hover:opacity-100"
+                                    }`}
                             >
                                 <Reveal delay={Math.min(index * 150, 400)} threshold={0.1}>
                                     <div className="bg-white border border-gray-100 shadow-sm sm:shadow-md hover:shadow-xl transition p-4 sm:p-6 lg:p-8 rounded-lg">
@@ -364,9 +365,8 @@ export default function ManagementProfilesPage() {
 
                                             {/* AVATAR */}
                                             <div className="flex-shrink-0 flex justify-center sm:justify-start">
-                                                <div className={`w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full overflow-hidden bg-gray-800 shadow-lg ${
-                                                    activeIndex === index ? "ring-4 ring-amber-400/40" : ""
-                                                }`}>
+                                                <div className={`w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full overflow-hidden bg-gray-800 shadow-lg ${activeIndex === index ? "ring-4 ring-amber-400/40" : ""
+                                                    }`}>
                                                     {member.image ? (
                                                         <Image
                                                             src={member.image}
@@ -426,11 +426,10 @@ export default function ManagementProfilesPage() {
                             onClick={goToPrevious}
                             disabled={activeIndex === 0}
                             aria-label="Previous profile"
-                            className={`p-3 rounded-full shadow-lg transition ${
-                                activeIndex === 0
-                                    ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                    : 'bg-white text-gray-700 hover:bg-amber-600 hover:text-white'
-                            }`}
+                            className={`p-3 rounded-full shadow-lg transition ${activeIndex === 0
+                                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                : 'bg-white text-gray-700 hover:bg-amber-600 hover:text-white'
+                                }`}
                         >
                             ←
                         </button>
@@ -439,11 +438,10 @@ export default function ManagementProfilesPage() {
                             onClick={goToNext}
                             disabled={activeIndex === managementMembers.length - 1}
                             aria-label="Next profile"
-                            className={`p-3 rounded-full shadow-lg transition ${
-                                activeIndex === managementMembers.length - 1
-                                    ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                    : 'bg-white text-gray-700 hover:bg-amber-600 hover:text-white'
-                            }`}
+                            className={`p-3 rounded-full shadow-lg transition ${activeIndex === managementMembers.length - 1
+                                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                : 'bg-white text-gray-700 hover:bg-amber-600 hover:text-white'
+                                }`}
                         >
                             →
                         </button>

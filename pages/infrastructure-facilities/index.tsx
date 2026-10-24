@@ -15,7 +15,10 @@ export default function InfrastructurePage() {
         title="Infrastructure & Facilities"
         subtitle="Modern, safe spaces built for learning and growth"
         intro="Our campus is designed to support every part of school life, from technology-enabled classrooms to sports, health and dining."
-        breadcrumbs={["Home", "Infrastructure"]}
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Infrastructure", href: "/infrastructure-facilities" },
+        ]}
         cards={infrastructureLinks}
       />
     </>

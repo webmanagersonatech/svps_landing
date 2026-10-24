@@ -4,6 +4,11 @@ import { useInView } from "react-intersection-observer";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
+type Breadcrumb = {
+    label: string;
+    href?: string;
+};
+
 export function PageHeader({
     title,
     subtitle,
@@ -12,7 +17,7 @@ export function PageHeader({
 }: {
     title: string;
     subtitle?: string;
-    breadcrumbs: string[];
+    breadcrumbs: Breadcrumb[];
     children?: ReactNode;
 }) {
     const controls = useAnimation();
@@ -273,7 +278,8 @@ export function PageHeader({
                                         damping: 15,
                                         delay: 0.2,
                                     }}
-                                    className="text-4xl md:text-5xl font-semibold tracking-wide mb-3 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent leading-tight py-2"   >
+                                    className="text-4xl md:text-5xl font-semibold tracking-wide mb-3 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent leading-tight py-2"
+                                >
                                     {title}
                                 </motion.h1>
                             </motion.div>
@@ -297,7 +303,6 @@ export function PageHeader({
                     )}
                 </motion.div>
 
-                {/* LAYERED WAVE */}
                 {/* WAVE DIVIDER with animated path */}
                 <motion.div
                     initial={{ y: 100, opacity: 0 }}
@@ -330,8 +335,10 @@ export function PageHeader({
             >
                 <motion.nav
                     variants={breadcrumbVariants}
+                    aria-label="Breadcrumb"
                     className="inline-flex items-center gap-2 bg-white shadow-lg py-2 px-4 border border-gray-200 rounded-lg hover:shadow-xl transition-shadow duration-300"
                 >
+                    {/* Home icon */}
                     <Link href="/" aria-label="Home">
                         <motion.div
                             whileHover={{ scale: 1.1, rotate: -10 }}
@@ -341,49 +348,60 @@ export function PageHeader({
                         </motion.div>
                     </Link>
 
-                <div className="flex items-center gap-2 flex-wrap">
-    {breadcrumbs.map((item, i) => {
-        const isLast = i === breadcrumbs.length - 1;
-        const isHome = i === 0 && item.toLowerCase() === "home";
+                    <div className="flex items-center gap-2 flex-wrap">
+                        {breadcrumbs.map((item, i) => {
+                            const isLast = i === breadcrumbs.length - 1;
+                            // Skip rendering a duplicate "Home" link right after the home icon
+                            const isHome = i === 0 && item.label.toLowerCase() === "home";
 
-        return (
-            <motion.div
-                key={i}
-                variants={breadcrumbItemVariants}
-                custom={i}
-                className="flex items-center gap-2"
-            >
-                {isHome ? (
-                    <Link href="/">
-                        <span className="text-gray-600 hover:text-gray-900 transition cursor-pointer text-sm">
-                            {item}
-                        </span>
-                    </Link>
-                ) : (
-                    <span
-                        className={
-                            isLast
-                                ? "text-gray-900 font-medium text-sm"
-                                : "text-gray-600 text-sm"
-                        }
-                    >
-                        {item}
-                    </span>
-                )}
+                            return (
+                                <motion.div
+                                    key={`${item.label}-${i}`}
+                                    variants={breadcrumbItemVariants}
+                                    custom={i}
+                                    className="flex items-center gap-2"
+                                >
+                                    {isLast || !item.href ? (
+                                        // Last item (current page) or item without href → plain text
+                                        <span
+                                            className={
+                                                isLast
+                                                    ? "text-gray-900 font-medium text-sm"
+                                                    : "text-gray-600 text-sm"
+                                            }
+                                            aria-current={isLast ? "page" : undefined}
+                                        >
+                                            {item.label}
+                                        </span>
+                                    ) : (
+                                        // Clickable breadcrumb link
+                                        <Link
+                                            href={isHome ? "/" : item.href}
+                                            aria-label={item.label}
+                                        >
+                                            <motion.span
+                                                whileHover={{ x: 2 }}
+                                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                                className="text-gray-600 hover:text-gray-900 transition cursor-pointer text-sm inline-block"
+                                            >
+                                                {item.label}
+                                            </motion.span>
+                                        </Link>
+                                    )}
 
-                {!isLast && (
-                    <motion.div
-                        initial={{ x: -5, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: i * 0.1 }}
-                    >
-                        <ChevronRightIcon className="w-3.5 h-3.5 text-gray-400" />
-                    </motion.div>
-                )}
-            </motion.div>
-        );
-    })}
-</div>
+                                    {!isLast && (
+                                        <motion.div
+                                            initial={{ x: -5, opacity: 0 }}
+                                            animate={{ x: 0, opacity: 1 }}
+                                            transition={{ delay: i * 0.1 }}
+                                        >
+                                            <ChevronRightIcon className="w-3.5 h-3.5 text-gray-400" />
+                                        </motion.div>
+                                    )}
+                                </motion.div>
+                            );
+                        })}
+                    </div>
                 </motion.nav>
             </motion.div>
         </>

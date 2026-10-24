@@ -169,12 +169,12 @@ function AuditoriumFilmstrip() {
                 }`}
             >
               <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width={1200}
-                  height={800}
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                src={img.src}
+                alt={img.alt}
+                width={1200}
+                height={800}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute bottom-0 left-0 p-4 md:p-5 w-full">
@@ -222,12 +222,12 @@ function AuditoriumFilmstrip() {
             onClick={(e) => e.stopPropagation()}
           >
             <Image
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                width={1200}
-                height={800}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full h-full object-contain rounded-lg"
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              width={1200}
+              height={800}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="w-full h-full object-contain rounded-lg"
             />
             <p className="text-white text-center font-serif  mt-4">
               {selectedImage.title}
@@ -257,7 +257,11 @@ export default function AuditoriumPage() {
         <PageHeader
           title="Auditorium"
           subtitle="A grand stage where talent shines and memories are made."
-          breadcrumbs={["Home", "Infrastructure facilities", "Auditorium"]}
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Infrastructure Facilities", href: "/infrastructure-facilities" },
+            { label: "Auditorium", href: "/infrastructure-facilities/auditorium" },
+          ]}
         />
 
 
@@ -273,12 +277,12 @@ export default function AuditoriumPage() {
               {/* main image */}
               <div className="relative  overflow-hidden shadow-2xl group aspect-[4/3]">
                 <Image
-                    src="/infra/auditorium.webp"
-                    alt="School auditorium stage"
-                    width={1200}
-                    height={800}
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+                  src="/infra/auditorium.webp"
+                  alt="School auditorium stage"
+                  width={1200}
+                  height={800}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
                 <div className="absolute bottom-5 left-5 text-white">
@@ -292,12 +296,12 @@ export default function AuditoriumPage() {
               {/* accent secondary image, tucked bottom-right, overlapping */}
               <div className="absolute -bottom-2 -right-2 md:-right-6 w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden shadow-xl ring-4 ring-secondary">
                 <Image
-                    src="/infra/auditorium-2.webp"
-                    alt="Auditorium hall wide shot"
-                    width={1200}
-                    height={800}
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="w-full h-full object-cover"
+                  src="/infra/auditorium-2.webp"
+                  alt="Auditorium hall wide shot"
+                  width={1200}
+                  height={800}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="w-full h-full object-cover"
                 />
               </div>
 

@@ -97,7 +97,11 @@ export default function ComputerLabPage() {
                 <PageHeader
                     title="Computer Lab"
                     subtitle='"Preparing students for a digital future through technology, logic, and curiosity."'
-                    breadcrumbs={["Home", "Infrastructure Facilities", "Computer Lab"]}
+             breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "Infrastructure Facilities", href: "/infrastructure-facilities" },
+  { label: "Computer Lab", href: "/infrastructure-facilities/computer-lab" },
+]}
                 />
 
                 {/* INTRO */}

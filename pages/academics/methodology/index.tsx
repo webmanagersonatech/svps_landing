@@ -175,7 +175,11 @@ export default function MethodologyPage() {
                 <PageHeader
                     title="Our Teaching Methodology"
                     subtitle='"We don’t fill a bucket, we light a fire – every child learns how to learn."'
-                    breadcrumbs={["Home", "Academics", "Methodology"]}
+                    breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "Academics", href: "/academics" },
+  { label: "Methodology", href: "/academics/methodology" },
+]}
                 />
 
                 {/* PHILOSOPHY & PILLARS SECTION with organic shapes */}

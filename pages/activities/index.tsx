@@ -18,7 +18,10 @@ export default function ActivitiesPage({ activities }: { activities: Activity[] 
         title="Activities"
         subtitle="Explore, create and discover new skills"
         intro="Beyond the classroom, our students take part in a wide range of activities that build confidence, creativity and teamwork."
-        breadcrumbs={["Home", "Activities"]}
+     breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "Activities", href: "/activities" },
+]}
         emptyMessage="Activities will be listed here soon."
         cards={activities.map((a) => ({
           name: a.title,

@@ -265,7 +265,10 @@ export default function NewsEventsPage({ newsAndEvents }: { newsAndEvents: NewsO
                 <PageHeader
                     title="News & Events"
                     subtitle="Stay updated with the latest happenings at school"
-                    breadcrumbs={["Home", "News & Events"]}
+                  breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "News & Events", href: "/news-and-events" },
+]}
                 />
 
                 <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">

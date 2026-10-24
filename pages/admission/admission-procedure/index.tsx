@@ -98,7 +98,11 @@ export default function AdmissionProcedurePage() {
                 <PageHeader
                     title="Admission Procedure"
                     subtitle="Simple, transparent and student-friendly admission process."
-                    breadcrumbs={["Home", "Admissions", "Procedure"]}
+                    breadcrumbs={[
+                        { label: "Home", href: "/" },
+                        { label: "Admission", href: "/admission/contact" },
+                        { label: "Procedure", href: "/admission/procedure" },
+                    ]}
                 />
 
                 {/* INTRO SECTION */}

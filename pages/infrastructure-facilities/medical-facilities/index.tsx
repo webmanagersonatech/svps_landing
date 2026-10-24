@@ -84,7 +84,11 @@ export default function MedicalFacilitiesPage() {
         <PageHeader
           title="Medical Facilities"
           subtitle="Ensuring the health, safety, and well-being of every student."
-          breadcrumbs={["Home", "Infrastructure facilities", "Medical"]}
+         breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "Infrastructure Facilities", href: "/infrastructure-facilities" },
+  { label: "Medical", href: "/infrastructure-facilities/medical-facilities" },
+]}
         />
 
         {/* INTRO */}

@@ -116,7 +116,11 @@ export default function CreativeLearningPage() {
                 <PageHeader
                     title="Creative Learning"
                     subtitle='"We encourage students to think beyond textbooks, explore new ideas, and learn through creativity."'
-                    breadcrumbs={["Home", "Academics", "Creative Learning"]}
+                  breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "Academics", href: "/academics" },
+  { label: "Creative Learning", href: "/academics/creative-learning" },
+]}
                 />
 
                 {/* INTRO */}

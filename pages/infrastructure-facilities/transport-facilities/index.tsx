@@ -136,7 +136,11 @@ export default function TransportPage() {
         <PageHeader
           title="Transport Facilities"
           subtitle="Safe, reliable, and efficient transportation for every student."
-          breadcrumbs={["Home", "Infrastructure facilities", "Transport"]}
+          breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "Infrastructure Facilities", href: "/infrastructure-facilities" },
+  { label: "Transport", href: "/infrastructure-facilities/transport-facilities" },
+]}
         />
 
         <section className="max-w-7xl mx-auto px-4 py-20 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-7 gap-12 items-stretch">

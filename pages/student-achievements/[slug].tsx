@@ -63,7 +63,11 @@ export default function AchievementDetail({
         <PageHeader
           title="Student Achievements"
           subtitle="Celebrating the pride of our school"
-          breadcrumbs={["Home", "Student Achievements", name]}
+          breadcrumbs={[
+            { label: "Home", href: "/" },
+            { label: "Student Achievements", href: "/student-achievements" },
+            { label: name, href: `/student-achievements/${item.slug}` },
+          ]}
         />
 
         {/* HERO CARD */}

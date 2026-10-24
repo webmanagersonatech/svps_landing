@@ -103,7 +103,11 @@ export default function ClassroomPage() {
                 <PageHeader
                     title="Smart Classrooms"
                     subtitle="Creating an engaging and interactive learning environment for every student."
-                    breadcrumbs={["Home", "Infrastructure facilities", "Smart  Classrooms"]}
+                  breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "Infrastructure Facilities", href: "/infrastructure-facilities" },
+  { label: "Smart Classrooms", href: "/infrastructure-facilities/classrooms" },
+]}
                 />
 
                 {/* INTRO */}

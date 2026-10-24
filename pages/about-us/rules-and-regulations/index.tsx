@@ -94,8 +94,13 @@ export default function RulesAndRegulationsPage() {
                 <PageHeader
                     title="Rules & Regulations"
                     subtitle="Discipline, Integrity, and Excellence – The pillars of our community"
-                    breadcrumbs={["Home", "About", "Rules & Regulations"]}
+                    breadcrumbs={[
+                        { label: "Home", href: "/" },
+                        { label: "About", href: "/about-us" },
+                        { label: "Rules & Regulations", href: "/about-us/rules-and-regulations" },
+                    ]}
                 />
+
 
                 <div className="max-w-7xl mx-auto px-4 py-12">
                     {/* Tabs */}

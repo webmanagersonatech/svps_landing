@@ -125,7 +125,11 @@ export default function VisionMissionPage() {
                 <PageHeader
                     title="Vision & Mission"
                     subtitle="Shaping Tomorrow's Leaders Through Purpose and Excellence"
-                    breadcrumbs={["Home", "About", "Vision & Mission"]}
+                    breadcrumbs={[
+                        { label: "Home", href: "/" },
+                        { label: "About", href: "/about-us" },
+                        { label: "Vision & Mission", href: "/about-us/vision-and-mission" },
+                    ]}
                 />
 
                 {/* VISION SECTION with Background Image */}

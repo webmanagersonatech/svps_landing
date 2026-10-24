@@ -94,7 +94,7 @@ function ImageGrid({ images, title }: { images: string[]; title: string }) {
                     >
                         <Image
                             src={img}
-                unoptimized={skipOptimization(img)}
+                            unoptimized={skipOptimization(img)}
                             alt={`${title} – photo ${idx + 1}`}
                             fill
                             loading="lazy"
@@ -216,7 +216,7 @@ function EventDays({ days }: { days?: EventDay[] }) {
                                                 >
                                                     <Image
                                                         src={img}
-                unoptimized={skipOptimization(img)}
+                                                        unoptimized={skipOptimization(img)}
                                                         alt={`Day ${day.dayNumber} – photo ${idx + 1}`}
                                                         fill
                                                         loading="lazy"
@@ -455,7 +455,11 @@ export default function NewsEventDetailPage({ item, allItems = [] }: { item: New
                 <PageHeader
                     title={item.title}
                     subtitle={item.category === "event" ? "Event Details" : "News Article"}
-                    breadcrumbs={["Home", "News & Events", item.title]}
+                    breadcrumbs={[
+                        { label: "Home", href: "/" },
+                        { label: "News & Events", href: "/news-and-events" },
+                        { label: item.title, href: `/news-and-events/${item.slug}` },
+                    ]}
                 />
 
                 {/* Sticky share sidebar - only when we have the absolute URL */}
@@ -483,7 +487,7 @@ export default function NewsEventDetailPage({ item, allItems = [] }: { item: New
                                 {item.thumbnail ? (
                                     <Image
                                         src={item.thumbnail}
-                unoptimized={skipOptimization(item.thumbnail)}
+                                        unoptimized={skipOptimization(item.thumbnail)}
                                         alt={item.title}
                                         fill
                                         priority
@@ -527,7 +531,7 @@ export default function NewsEventDetailPage({ item, allItems = [] }: { item: New
                                                             <div className="relative flex-shrink-0 w-14 h-14 rounded-md overflow-hidden bg-gray-100">
                                                                 <Image
                                                                     src={relatedItem.thumbnail}
-                unoptimized={skipOptimization(relatedItem.thumbnail)}
+                                                                    unoptimized={skipOptimization(relatedItem.thumbnail)}
                                                                     alt={relatedItem.title}
                                                                     fill
                                                                     sizes="56px"

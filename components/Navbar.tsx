@@ -38,6 +38,10 @@ interface MobileDropdownProps {
 }
 
 // ---------- Helpers (outside component so they are stable) ----------
+const APPLY_URL = "https://hikaapp.sonastar.com/INS-3-ZXYXKM";
+
+const isExternal = (href: string) => href.startsWith("http");
+
 const isActivePath = (pathname: string, href: string) => {
   if (href === "/") return pathname === href;
   return pathname.startsWith(href);
@@ -110,11 +114,15 @@ function MobileDropdown({ link, onClose }: MobileDropdownProps) {
             <div className="pl-11 pr-3 pb-2 space-y-1">
               {link.submenu.map((item) => {
                 const isItemActive = isItemActivePath(router.pathname, item.href);
+                const external = isExternal(item.href);
                 return (
                   <Link
                     key={item.name}
                     href={item.href}
                     tabIndex={isExpanded ? 0 : -1}
+                    {...(external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
                     className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all hover:bg-[#ec8013]/10 group ${
                       isItemActive ? "bg-[#ec8013]/20" : ""
                     }`}
@@ -295,7 +303,7 @@ export default function Navbar() {
       icon: FileText,
       submenu: [
         { name: "Procedure", href: "/admission/admission-procedure", icon: FileText, description: "Steps to apply" },
-        { name: "Online Application", href: "https://hikaapp.sonastar.com/INS-3-ZXYXKM", icon: Globe, description: "Apply online", badge: "New" },
+        { name: "Online Application", href: APPLY_URL, icon: Globe, description: "Apply online", badge: "New" },
         { name: "Contact", href: "/admission/admission-contact", icon: MessageCircle, description: "Reach office" },
       ],
     },
@@ -481,10 +489,14 @@ export default function Navbar() {
                             >
                               {link.submenu.map((item) => {
                                 const isItemActive = isItemActivePath(router.pathname, item.href);
+                                const external = isExternal(item.href);
                                 return (
                                   <Link
                                     key={item.name}
                                     href={item.href}
+                                    {...(external
+                                      ? { target: "_blank", rel: "noopener noreferrer" }
+                                      : {})}
                                     className={`flex items-center gap-3 p-2.5 transition-all duration-150 group ${
                                       isItemActive ? "bg-[#ec8013]/15" : "hover:bg-[#ec8013]/10"
                                     }`}
@@ -568,7 +580,9 @@ export default function Navbar() {
                 </Link>
 
                 <Link
-                  href="https://hikaapp.sonastar.com/INS-3-ZXYXKM"
+                  href={APPLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="
                     px-3 xl:px-4 py-1.5
                     text-xs xl:text-sm font-semibold
@@ -680,7 +694,9 @@ export default function Navbar() {
                   Mandatory Disclosure
                 </Link>
                 <Link
-                  href="https://hikaapp.sonastar.com/INS-3-ZXYXKM"
+                  href={APPLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full px-4 py-2.5 font-semibold text-sm rounded-xl bg-gradient-to-r from-[#ec8013] to-[#f5a623] text-white shadow-md hover:shadow-xl transition-all duration-300"
                   onClick={() => setIsOpen(false)}
                 >

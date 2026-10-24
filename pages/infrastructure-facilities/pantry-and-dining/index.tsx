@@ -59,7 +59,11 @@ export default function DiningPage() {
         <PageHeader
           title="Dining"
           subtitle="Promoting healthy eating habits for growing minds."
-          breadcrumbs={["Home", "Infrastructure facilities", "Dining"]}
+    breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "Infrastructure Facilities", href: "/infrastructure-facilities" },
+  { label: "Dining", href: "/infrastructure-facilities/pantry-and-dining" },
+]}
         />
 
         {/* INTRO */}

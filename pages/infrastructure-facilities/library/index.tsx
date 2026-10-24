@@ -350,7 +350,11 @@ export default function LibraryPage() {
         <PageHeader
           title="Library"
           subtitle="A quiet world of knowledge, imagination, and discovery."
-          breadcrumbs={["Home", "Infrastructure facilities", "Library"]}
+          breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "Infrastructure Facilities", href: "/infrastructure-facilities" },
+  { label: "Library", href: "/infrastructure-facilities/library" },
+]}
         />
 
         {/* INTRO (more premium layout like your medical page) */}

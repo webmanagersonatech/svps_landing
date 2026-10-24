@@ -15,7 +15,10 @@ export default function AcademicsPage() {
         title="Academics"
         subtitle="A strong foundation for curious, confident learners"
         intro="From our curriculum framework to creative learning and teacher development, see how we nurture academic excellence and holistic growth."
-        breadcrumbs={["Home", "Academics"]}
+      breadcrumbs={[
+  { label: "Home", href: "/" },
+  { label: "Academics", href: "/academics" },
+]}
         cards={academicsLinks}
       />
     </>
