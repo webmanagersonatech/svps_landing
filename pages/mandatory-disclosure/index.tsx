@@ -232,7 +232,7 @@ export default function PublicDisclosurePage() {
     { label: "School Code", value: "56948", icon: DocumentTextIcon },
     { label: "Complete Address", value: "Sona Valliappa Public School Junction Main Road, Salem - 636005, Tamil Nadu", icon: MapPinIcon },
     { label: "Principal Name & Qualification", value: "Ms. E.J. Kavitha M.A, M.Phil, B.Ed", icon: UserGroupIcon },
-    { label: "School Email ID", value: "info@sonavalliappapublicschool.com", icon: EnvelopeIcon, isLink: true, href: "mailto:info@sonavalliappapublicschool.com" },
+    { label: "School Email ID", value: "svpschool@sonatech.ac.in", icon: EnvelopeIcon, isLink: true, href: "mailto:svpschool@sonatech.ac.in" },
     {
       label: "Contact Details",
       value: (
