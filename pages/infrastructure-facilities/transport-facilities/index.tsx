@@ -13,6 +13,9 @@ import {
   PauseIcon,
   SpeakerWaveIcon,
   SpeakerXMarkIcon,
+  MapPinIcon,
+  ArrowRightIcon,
+  BuildingOffice2Icon,
 } from "@heroicons/react/24/outline";
 
 /* =========================
@@ -63,6 +66,57 @@ function Reveal({
 const REEL_VIDEO_SRC = "/infra/Bus.webm";
 
 /* =========================
+   ROUTE DATA
+========================= */
+type RouteGroup = {
+  id: string;
+  label: string;
+  icon: typeof TruckIcon;
+  accent: string;
+  headerBg: string;
+  routes: {
+    name: string;
+    stops?: string[];
+    note?: string;
+  }[];
+};
+
+const routeGroups: RouteGroup[] = [
+  {
+    id: "bus",
+    label: "Bus Routes",
+    icon: TruckIcon,
+    accent: "text-primary",
+    headerBg: "bg-orange-50 border-orange-200",
+    routes: [
+      { name: "Tharamangalam" },
+      { name: "Omalur" },
+      { name: "Elampillai" },
+    ],
+  },
+  {
+    id: "cab",
+    label: "Cab Routes",
+    icon: MapIcon,
+    accent: "text-blue-600",
+    headerBg: "bg-blue-50 border-blue-200",
+    routes: [
+      { name: "Shankar Nagar" },
+      { name: "Seelanayakanpatti" },
+      { name: "3 Roads" },
+      { name: "Gugai" },
+      { name: "Gorimedu" },
+      { name: "Alagapuram" },
+      { name: "Mamagam" },
+      { name: "Steel Plant" },
+      { name: "Narosothipatti" },
+      { name: "Kuranguchavadi" },
+      { name: "Periya Pudhur" },
+    ],
+  },
+];
+
+/* =========================
    MAIN PAGE
 ========================= */
 export default function TransportPage() {
@@ -104,6 +158,9 @@ export default function TransportPage() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
 
+  /* ---- Route tab state ---- */
+  const [activeTab, setActiveTab] = useState<string>("bus");
+
   const togglePlay = () => {
     const v = videoRef.current;
     if (!v) return;
@@ -137,10 +194,13 @@ export default function TransportPage() {
           title="Transport Facilities"
           subtitle="Safe, reliable, and efficient transportation for every student."
           breadcrumbs={[
-  { label: "Home", href: "/" },
-  { label: "Infrastructure Facilities", href: "/infrastructure-facilities" },
-  { label: "Transport", href: "/infrastructure-facilities/transport-facilities" },
-]}
+            { label: "Home", href: "/" },
+            { label: "Infrastructure Facilities", href: "/infrastructure-facilities" },
+            {
+              label: "Transport",
+              href: "/infrastructure-facilities/transport-facilities",
+            },
+          ]}
         />
 
         <section className="max-w-7xl mx-auto px-4 py-20 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-7 gap-12 items-stretch">
@@ -270,6 +330,150 @@ export default function TransportPage() {
               );
             })}
           </div>
+        </section>
+
+        {/* =========================
+            ROUTES SECTION
+        ========================= */}
+        <section
+          id="routes"
+          className="relative max-w-7xl mx-auto px-4 pb-24"
+        >
+          <Reveal>
+            <div className="text-center mb-10">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-3">
+                <MapPinIcon className="w-4 h-4" />
+                Coverage
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                Our Routes
+              </h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                We connect students across Salem and nearby localities through a
+                well-planned network of bus and cab routes.
+              </p>
+            </div>
+          </Reveal>
+
+          {/* Tabs */}
+          <Reveal>
+            <div className="flex justify-center mb-8">
+              <div
+                role="tablist"
+                aria-label="Route categories"
+                className="inline-flex p-1 rounded-xl bg-slate-100 shadow-inner"
+              >
+                {routeGroups.map((group) => {
+                  const Icon = group.icon;
+                  const active = activeTab === group.id;
+                  return (
+                    <button
+                      key={group.id}
+                      role="tab"
+                      aria-selected={active}
+                      onClick={() => setActiveTab(group.id)}
+                      className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 rounded-lg text-sm font-semibold transition-all ${
+                        active
+                          ? "bg-white text-gray-900 shadow"
+                          : "text-gray-600 hover:text-gray-900"
+                      }`}
+                    >
+                      <Icon className="w-4 h-4" />
+                      {group.label}
+                      <span
+                        className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+                          active
+                            ? "bg-primary/10 text-primary"
+                            : "bg-gray-200 text-gray-600"
+                        }`}
+                      >
+                        {group.routes.length}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Active route panel */}
+          {routeGroups
+            .filter((g) => g.id === activeTab)
+            .map((group) => {
+              const Icon = group.icon;
+              return (
+                <Reveal key={group.id}>
+                  <div className="relative rounded-2xl border border-gray-100 bg-white shadow-sm overflow-hidden">
+                    {/* map-like dotted background */}
+                    <div
+                      className="absolute inset-0 opacity-[0.35] pointer-events-none"
+                      style={{
+                        backgroundImage:
+                          "radial-gradient(circle, #cbd5e1 1px, transparent 1px)",
+                        backgroundSize: "22px 22px",
+                      }}
+                    ></div>
+
+                    <div
+                      className={`relative flex items-center gap-3 px-5 sm:px-6 py-4 border-b ${group.headerBg}`}
+                    >
+                      <div className="w-10 h-10 rounded-lg bg-white shadow flex items-center justify-center">
+                        <Icon className={`w-5 h-5 ${group.accent}`} />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-gray-900">
+                          {group.label}
+                        </h3>
+                        <p className="text-xs text-gray-600">
+                          {group.routes.length} route
+                          {group.routes.length > 1 ? "s" : ""} covered
+                        </p>
+                      </div>
+                    </div>
+
+                    <ul className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 p-5 sm:p-6">
+                      {group.routes.map((route, idx) => (
+                        <li
+                          key={`${group.id}-${idx}`}
+                          className="group flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 transition-colors"
+                        >
+                          {/* timeline marker */}
+                          <div className="flex flex-col items-center pt-1">
+                            <span
+                              className={`w-2.5 h-2.5 rounded-full ring-4 ring-white shadow ${
+                                group.id === "bus"
+                                  ? "bg-primary"
+                                  : "bg-blue-600"
+                              }`}
+                            ></span>
+                          </div>
+
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center gap-2">
+                              <MapPinIcon
+                                className={`w-4 h-4 shrink-0 ${group.accent}`}
+                              />
+                              <span className="font-medium text-gray-900 text-sm">
+                                {route.name}
+                              </span>
+                            </div>
+                            {route.note && (
+                              <p className="text-xs text-gray-500 mt-0.5 pl-6">
+                                {route.note}
+                              </p>
+                            )}
+                          </div>
+
+                          <ArrowRightIcon className="w-3.5 h-3.5 text-gray-300 group-hover:text-gray-500 transition-colors mt-1.5" />
+                        </li>
+                      ))}
+                    </ul>
+
+                 
+                  </div>
+                </Reveal>
+              );
+            })}
         </section>
       </main>
     </>
