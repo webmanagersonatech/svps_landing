@@ -81,11 +81,18 @@ export const byOldest = (a: NewsOrEvent, b: NewsOrEvent) => time(a) - time(b);
 const todayIST = () => new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
 
 /**
- * Upcoming event = category is "event" AND startDate is today or later.
+ * Upcoming event = category is "event" AND startDate is strictly AFTER today (future only).
  * News is never upcoming. Used on the home page and the News & Events page.
  */
 export const isUpcomingEvent = (item: Pick<NewsOrEvent, "category" | "startDate">): boolean =>
-    item.category === "event" && !!item.startDate && item.startDate.slice(0, 10) >= todayIST();
+    item.category === "event" && !!item.startDate && item.startDate.slice(0, 10) > todayIST();
+
+/**
+ * Past / today's event = category is "event" AND startDate is today or earlier.
+ * This is what the "Events" tab shows (never future events).
+ */
+export const isPastOrTodayEvent = (item: Pick<NewsOrEvent, "category" | "startDate">): boolean =>
+    item.category === "event" && !!item.startDate && item.startDate.slice(0, 10) <= todayIST();
 
 /* =======================
    News & Events APIs
@@ -135,7 +142,7 @@ export async function fetchNewsEvent(slug: string): Promise<NewsOrEvent> {
     }
 }
 
-/** 🔜 Upcoming events only (category "event", start date today or later), soonest first */
+/** 🔜 Upcoming events only (category "event", start date after today), soonest first */
 export async function fetchUpcomingEvents(limit?: number): Promise<NewsOrEvent[]> {
     try {
         const { docs } = await getAllPages<NewsEventData>("/api/newsandevents", { category: "event" });
@@ -156,7 +163,7 @@ export async function fetchHomeNewsEvents(perTab = 4): Promise<HomeNewsEvents> {
         const allEvents = events.docs.map(mapNewsEvent);
         return {
             news: news.data.docs.map(mapNewsEvent).sort(byNewest),
-            events: [...allEvents].sort(byNewest).slice(0, perTab),
+            events: allEvents.filter(isPastOrTodayEvent).sort(byNewest).slice(0, perTab),
             upcoming: allEvents.filter(isUpcomingEvent).sort(byOldest).slice(0, perTab),
             newsCount: news.data.totalDocs,
             eventsCount: events.totalDocs,

@@ -3,7 +3,7 @@ import { useState, useEffect, useMemo } from "react";
 import { PageHeader } from "../../components/PageHeader";
 import type { GetStaticProps } from "next";
 import type { NewsOrEvent } from "../../lib/newsEventsApi";
-import { fetchAllNewsEvents, isUpcomingEvent } from "../../lib/newsEventsApi";
+import { fetchAllNewsEvents, isUpcomingEvent, isPastOrTodayEvent } from "../../lib/newsEventsApi";
 import { REVALIDATE_SECONDS, safe, skipOptimization } from "../../lib/apiClient";
 import Link from 'next/link';
 import Image from "next/image";
@@ -68,18 +68,19 @@ export default function NewsEventsPage({ newsAndEvents }: { newsAndEvents: NewsO
 
     // Base data
     const allNews = newsAndEvents.filter((item) => item.category === "news");
-    const allEvents = newsAndEvents.filter((item) => item.category === "event");
-    const allUpcoming = allEvents.filter(isUpcomingEvent);
+    // "Events" tab = past + today's events only; "Upcoming" tab = future events only
+    const allEvents = newsAndEvents.filter(isPastOrTodayEvent);
+    const allUpcoming = newsAndEvents.filter(isUpcomingEvent);
 
     // Extract unique years and months from all items (for dropdowns)
     const availableYears = useMemo(() => {
         const years = new Set<string>();
-        [...allNews, ...allEvents].forEach((item) => {
+        [...allNews, ...allEvents, ...allUpcoming].forEach((item) => {
             const year = new Date(item.startDate).getFullYear().toString();
             years.add(year);
         });
         return Array.from(years).sort().reverse();
-    }, [allNews, allEvents]);
+    }, [allNews, allEvents, allUpcoming]);
 
     const months = [
         { value: "1", label: "January" },
@@ -331,14 +332,14 @@ export default function NewsEventsPage({ newsAndEvents }: { newsAndEvents: NewsO
                                 active={activeTab === "events"}
                                 onClick={setActiveTab}
                             >
-                                All Events ({filteredEvents.length})
+                                Events ({filteredEvents.length})
                             </TabButton>
                             <TabButton
                                 id="upcoming"
                                 active={activeTab === "upcoming"}
                                 onClick={setActiveTab}
                             >
-                                Upcoming ({filteredUpcoming.length})
+                                Upcoming Events ({filteredUpcoming.length})
                             </TabButton>
                         </nav>
                     </div>
