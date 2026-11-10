@@ -596,7 +596,7 @@ export default function NewsEventDetailPage({ item, allItems = [] }: { item: New
 
                         <Reveal delay={300}>
                             <div
-                                className="prose prose-lg text-justify max-w-none text-gray-700 prose-headings:font-semibold prose-a:text-primary"
+                                className="rich-content text-lg text-justify max-w-none text-gray-700"
                                 dangerouslySetInnerHTML={{ __html: item.contentHtml }}
                             />
                         </Reveal>

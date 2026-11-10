@@ -15,6 +15,7 @@ import Modal, { ConfirmDialog } from "../../components/admin/Modal";
 import Pagination from "../../components/admin/Pagination";
 import FileUploader from "../../components/admin/FileUploader";
 import ThumbnailPicker from "../../components/admin/ThumbnailPicker";
+import RichTextEditor from "../../components/admin/RichTextEditor";
 import { useToast } from "../../components/admin/Toast";
 import { NewsEvent, Paginated, api, fileUrl } from "../../lib/adminApi";
 import { IMAGE_TYPES, PRESS_TYPES, formatDate, stripHtml, toDateInput } from "../../lib/adminUtils";
@@ -119,7 +120,7 @@ function NewsEventForm({ item, defaultCategory, onClose, onSaved }: { item: News
 
         <div>
           <label className="mb-1.5 block text-sm font-medium text-slate-700">Description</label>
-          <textarea rows={6} value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Write the details... (basic HTML like <p>, <ul><li> is allowed)" className="input resize-y" />
+          <RichTextEditor value={description} onChange={setDescription} placeholder="Write the details..." />
         </div>
 
         <ThumbnailPicker existing={item?.thumbnail} file={thumbnail} onChange={setThumbnail} onError={toast.error} required={!isEdit} />

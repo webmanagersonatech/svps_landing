@@ -22,3 +22,55 @@ body {
     @apply w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20;
   }
 }
+
+/* ---------- Rich text editor (admin, React Quill) ---------- */
+.rich-editor .ql-toolbar.ql-snow {
+  border-color: #cbd5e1;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: #f8fafc;
+}
+.rich-editor .ql-container.ql-snow {
+  border-color: #cbd5e1;
+  border-radius: 0 0 0.5rem 0.5rem;
+  font-size: 0.875rem;
+}
+.rich-editor .ql-editor {
+  min-height: 220px;
+  max-height: 45vh;
+  overflow-y: auto;
+  color: #1e293b;
+}
+.rich-editor .ql-editor.ql-blank::before {
+  color: #94a3b8;
+  font-style: normal;
+}
+.rich-editor:focus-within .ql-toolbar.ql-snow,
+.rich-editor:focus-within .ql-container.ql-snow {
+  border-color: #ec8013;
+}
+
+/* ---------- Rich text content (public pages) ----------
+   Tailwind's preflight removes list/heading styles, so restore them for
+   HTML written in the editor. Also supports Quill's alignment/indent classes. */
+.rich-content { line-height: 1.75; word-wrap: break-word; }
+.rich-content p { margin: 0 0 1em; }
+.rich-content h1, .rich-content h2, .rich-content h3, .rich-content h4 { font-weight: 600; color: #111827; line-height: 1.3; margin: 1.4em 0 0.6em; }
+.rich-content h1 { font-size: 1.875rem; }
+.rich-content h2 { font-size: 1.5rem; }
+.rich-content h3 { font-size: 1.25rem; }
+.rich-content h4 { font-size: 1.125rem; }
+.rich-content ul { list-style: disc; padding-left: 1.5em; margin: 0 0 1em; }
+.rich-content ol { list-style: decimal; padding-left: 1.5em; margin: 0 0 1em; }
+.rich-content li { margin: 0.25em 0; }
+.rich-content a { color: #ec8013; text-decoration: underline; }
+.rich-content blockquote { border-left: 4px solid #ec8013; padding-left: 1em; margin: 1em 0; color: #4b5563; font-style: italic; }
+.rich-content img { max-width: 100%; height: auto; border-radius: 0.5rem; }
+.rich-content strong { font-weight: 700; }
+.rich-content .ql-align-center { text-align: center; }
+.rich-content .ql-align-right { text-align: right; }
+.rich-content .ql-align-justify { text-align: justify; }
+.rich-content .ql-indent-1 { padding-left: 3em; }
+.rich-content .ql-indent-2 { padding-left: 6em; }
+.rich-content .ql-indent-3 { padding-left: 9em; }
+.rich-content li.ql-indent-1 { padding-left: 1.5em; margin-left: 1.5em; }
+.rich-content li.ql-indent-2 { padding-left: 1.5em; margin-left: 3em; }
