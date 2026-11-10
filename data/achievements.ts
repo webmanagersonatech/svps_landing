@@ -37,7 +37,7 @@ export const achievements: Achievement[] = [
     category: "Finswimming",
     description: "1st Place – 50-metre Bi-Fins, 6th National Finswimming Championship 2026 (33.96 seconds).",
     image: "/achievements/Sathyan.webp",
-    bgImage: "/achievements/Sathyan.web",
+    bgImage: "/achievements/Sathyan.webp",
     highlights: [
       "1st Place – 50-metre Bi-Fins, 6th National Finswimming Championship 2026 (33.96 seconds).",
       "1st Place – 100-metre Bi-Fins, 6th National Finswimming Championship 2026 (1 minute 14.46 seconds).",
