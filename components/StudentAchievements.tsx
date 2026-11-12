@@ -197,9 +197,9 @@ const StudentAchievements = () => {
                                     <h3 className="text-[#10294d] font-serif text-lg sm:text-xl md:text-2xl uppercase tracking-[1.5px] font-semibold leading-tight">
                                         {item.studentName}
                                     </h3>
-                                    {(item.className || item.category) && (
+                                    {(item.className ) && (
                                         <p className="text-amber-600 uppercase tracking-[3px] text-[10px] sm:text-xs mt-1">
-                                            {item.className || item.category}
+                                            {item.className}
                                         </p>
                                     )}
                                 </motion.div>
