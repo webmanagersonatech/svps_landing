@@ -6,9 +6,7 @@ import Image from "next/image";
 import {
     Calendar,
     Newspaper,
-
     ArrowRight,
-
 } from "lucide-react";
 
 import type { NewsOrEvent } from "../lib/newsEventsApi";
@@ -22,36 +20,51 @@ type Props = {
     upcoming: NewsOrEvent[];
     newsCount?: number;
     eventsCount?: number;
+    upcomingCount?: number;
 };
 
-
-
 // Main Component
-const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, eventsCount = events.length }: Props) => {
-    // Only tabs that have items are shown
+const NewsEventsComponent = ({
+    news,
+    events,
+    upcoming,
+    newsCount = news.length,
+    eventsCount = events.length,
+    upcomingCount = upcoming.length,
+}: Props) => {
+    // Only tabs that have items are shown.
+    // Each tab carries a `count` = the TRUE total (from props), not the length
+    // of the (possibly sliced) display array.
     const tabs = useMemo(
         () =>
             ([
-                { id: "news", items: news },
-                { id: "events", items: events },
-                { id: "upcoming", items: upcoming },
-            ] as { id: Tab; items: NewsOrEvent[] }[]).filter((t) => t.items.length > 0),
-        [news, events, upcoming]
+                { id: "news", items: news, count: newsCount },
+                { id: "events", items: events, count: eventsCount },
+                { id: "upcoming", items: upcoming, count: upcomingCount },
+            ] as { id: Tab; items: NewsOrEvent[]; count: number }[]).filter(
+                (t) => t.items.length > 0
+            ),
+        [news, events, upcoming, newsCount, eventsCount, upcomingCount]
     );
 
-    const [activeTab, setActiveTab] = useState<Tab>(tabs[0]?.id ?? "news");
+    const preferredTab = tabs.find((t) => t.id === "upcoming") ?? tabs[0];
+    const [activeTab, setActiveTab] = useState<Tab>(preferredTab?.id ?? "news");
     const loading = false;
     const [headerRef, headerInView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
     // If data refreshes and the selected tab disappears, fall back to the first one
     useEffect(() => {
-        if (tabs.length && !tabs.some((t) => t.id === activeTab)) setActiveTab(tabs[0].id);
+        if (tabs.length && !tabs.some((t) => t.id === activeTab)) {
+            setActiveTab(tabs[0].id);
+        }
     }, [tabs, activeTab]);
 
     // Nothing to show -> hide the whole section
     if (tabs.length === 0) return null;
 
-    const data = tabs.find((t) => t.id === activeTab)?.items ?? [];
+    const activeTabData = tabs.find((t) => t.id === activeTab);
+    const data = activeTabData?.items ?? [];
+    const totalCount = activeTabData?.count ?? data.length;
 
     return (
         <div className="w-full overflow-hidden bg-gradient-to-b from-[#fef9f0] via-white to-[#f5f7fa] relative">
@@ -61,7 +74,6 @@ const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, 
 
             {/* CBSE Header Pattern - Redesigned with Left Text & Right Images */}
             <div className="relative bg-gradient-to-b from-[#f5dfc4] via-[#fdebd3] via-50% via-[#f9f3ed] via-75% to-[#f5f7fa] text-white overflow-hidden">
-
 
                 {/* Floating Orbs */}
                 <motion.div
@@ -103,14 +115,14 @@ const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, 
                             </motion.h1>
 
                             <div className="flex gap-2 mb-6 justify-center md:justify-start bg-white/5 backdrop-blur-sm w-fit mx-auto md:mx-0">
-                                {tabs.map(({ id: tab }) => (
+                                {tabs.map(({ id: tab, count }) => (
                                     <motion.button
                                         key={tab}
                                         onClick={() => setActiveTab(tab)}
-                                        className={`relative px-6 py-2.5 text-sm font-medium  transition-all duration-300 capitalize
-                ${activeTab === tab
+                                        className={`relative px-6 py-2.5 text-sm font-medium transition-all duration-300 capitalize
+                                            ${activeTab === tab
                                                 ? "text-white"
-                                                : "text-secondary  hover:text-secondary/80 "
+                                                : "text-secondary hover:text-secondary/80"
                                             }`}
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
@@ -124,19 +136,38 @@ const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, 
                                                     clipPath: "polygon(0% 0%, 100% 0%, 97% 100%, 3% 100%)",
                                                     borderRadius: "8px 8px 4px 4px",
                                                     transform: "perspective(400px) rotateX(2deg)",
-                                                    transformOrigin: "bottom"
+                                                    transformOrigin: "bottom",
                                                 }}
                                                 transition={{ type: "spring", duration: 0.5 }}
                                             />
                                         )}
 
+                                        {/* Cart-style count badge — active tab only, shows TRUE total */}
+                                        {activeTab === tab && (
+                                            <motion.span
+                                                initial={{ scale: 0, opacity: 0 }}
+                                                animate={{ scale: 1, opacity: 1 }}
+                                                exit={{ scale: 0, opacity: 0 }}
+                                                transition={{ type: "spring", stiffness: 500, damping: 25 }}
+                                                className="absolute -top-2 -right-2 z-20 flex items-center justify-center
+                                                    min-w-[20px] h-5 px-1.5 rounded-full
+                                                    bg-white text-[#ec8013] text-[10px] font-bold leading-none
+                                                    shadow-md ring-2 ring-[#ec8013]/40"
+                                            >
+                                                {count}
+                                            </motion.span>
+                                        )}
+
                                         {/* Tab text */}
                                         <span className="relative z-10">
-                                            {tab === "upcoming" ? "Upcoming Events" : tab.charAt(0).toUpperCase() + tab.slice(1)}
+                                            {tab === "upcoming"
+                                                ? "Upcoming Events"
+                                                : tab.charAt(0).toUpperCase() + tab.slice(1)}
                                         </span>
                                     </motion.button>
                                 ))}
                             </div>
+
                             {/* Underline Decoration */}
                             <motion.div
                                 initial={{ width: 0 }}
@@ -150,7 +181,7 @@ const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, 
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                                 transition={{ duration: 0.6, delay: 0.4 }}
-                                className="text-secondary  text-lg italic mb-8 leading-relaxed"
+                                className="text-secondary text-lg italic mb-8 leading-relaxed"
                             >
                                 Stay updated with the latest happenings, achievements,
                                 and upcoming events at Sona Valliappa Public School
@@ -168,9 +199,9 @@ const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, 
                                         <div className="bg-white/10 rounded-full p-2">
                                             <Calendar className="w-5 h-5 text-[#ec8013]" />
                                         </div>
-                                        <div className="text-secondary ">
+                                        <div className="text-secondary">
                                             <div className="text-2xl font-bold">{eventsCount}</div>
-                                            <div className="text-sm ">{eventsCount === 1 ? "Event" : "Events"}</div>
+                                            <div className="text-sm">{eventsCount === 1 ? "Event" : "Events"}</div>
                                         </div>
                                     </div>
                                 )}
@@ -179,9 +210,9 @@ const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, 
                                         <div className="bg-white/10 rounded-full p-2">
                                             <Newspaper className="w-5 h-5 text-[#ec8013]" />
                                         </div>
-                                        <div className="text-secondary ">
+                                        <div className="text-secondary">
                                             <div className="text-2xl font-bold">{newsCount}</div>
-                                            <div className="text-sm ">News {newsCount === 1 ? "Update" : "Updates"}</div>
+                                            <div className="text-sm">News {newsCount === 1 ? "Update" : "Updates"}</div>
                                         </div>
                                     </div>
                                 )}
@@ -205,20 +236,20 @@ const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, 
                                         }}
                                         whileTap={{ scale: 0.96 }}
                                         className="
-                relative overflow-hidden
-                mt-8 px-7 py-3
-                bg-white/5
-                text-primary
-                font-semibold tracking-wide
-                border border-primary/30
-                rounded-2xl
-                backdrop-blur-xl
-                hover:text-white
-                transition-all duration-500
-                flex items-center gap-2
-                mx-auto md:mx-0 group
-                shadow-sm hover:shadow-lg
-            "
+                                            relative overflow-hidden
+                                            mt-8 px-7 py-3
+                                            bg-white/5
+                                            text-primary
+                                            font-semibold tracking-wide
+                                            border border-primary/30
+                                            rounded-2xl
+                                            backdrop-blur-xl
+                                            hover:text-white
+                                            transition-all duration-500
+                                            flex items-center gap-2
+                                            mx-auto md:mx-0 group
+                                            shadow-sm hover:shadow-lg
+                                        "
                                     >
                                         {/* Hover Background */}
                                         <span className="absolute inset-0 bg-primary scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 rounded-2xl"></span>
@@ -245,7 +276,6 @@ const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, 
                             className="relative"
                         >
 
-
                             <div className="grid grid-cols-2 gap-6 gap-y-8">
                                 {loading && (
                                     <div className="grid grid-cols-2 gap-6 gap-y-8">
@@ -263,7 +293,7 @@ const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, 
                                         rotate: index % 2 === 0 ? -5 : 5,
                                         rotateHover: index % 2 === 0 ? -3 : 3,
                                         delay: index * 0.1,
-                                        mt: index % 2 === 0 ? 0 : 8
+                                        mt: index % 2 === 0 ? 0 : 8,
                                     };
 
                                     return (
@@ -279,7 +309,7 @@ const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, 
                                                 whileHover={{
                                                     scale: 1.05,
                                                     rotate: effects.rotateHover,
-                                                    transition: { duration: 0.3 }
+                                                    transition: { duration: 0.3 },
                                                 }}
                                                 className="group cursor-pointer"
                                                 style={{ marginTop: `${effects.mt}px` }}
@@ -306,7 +336,7 @@ const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, 
                                                                     timeZone: "UTC",
                                                                     month: "long",
                                                                     day: "2-digit",
-                                                                    year: "numeric"
+                                                                    year: "numeric",
                                                                 })}
                                                             </p>
                                                         </div>
@@ -327,22 +357,26 @@ const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, 
                                         </Link>
                                     );
                                 })}
-
                             </div>
+
+                            {/* "Showing X of Y" hint */}
+                            {totalCount > data.length && (
+                                <p className="text-xs text-secondary/60 text-center mt-4">
+                                    Showing {data.length} of {totalCount}
+                                </p>
+                            )}
                         </motion.div>
                     </div>
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 h-[220px] overflow-hidden">
-
                     {/* Curved container */}
-                    <div className="w-full h-full 
-                  [clip-path:polygon(0_100%,100%_0,100%_100%,0_100%)]
-                  bg-gray-100 relative">
+                    <div className="w-full h-full
+                        [clip-path:polygon(0_100%,100%_0,100%_100%,0_100%)]
+                        bg-gray-100 relative">
 
                         {/* Images grid */}
                         <div className="absolute inset-0 grid grid-cols-6 gap-6 p-6 opacity-30">
-
                             <Image src="/homeimages/school-1.png" alt="" width={56} height={56} className="w-14 h-14" />
                             <Image src="/homeimages/school-2.png" alt="" width={56} height={56} className="w-14 h-14" />
                             <Image src="/homeimages/school-3.png" alt="" width={56} height={56} className="w-14 h-14" />
@@ -357,15 +391,7 @@ const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, 
                             <Image src="/homeimages/school-7.png" alt="" width={56} height={56} className="w-14 h-14" />
                             <Image src="/homeimages/school-8.png" alt="" width={56} height={56} className="w-14 h-14" />
                             <Image src="/homeimages/school-9.png" alt="" width={56} height={56} className="w-14 h-14" />
-
-
-
-
-
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -374,4 +400,3 @@ const NewsEventsComponent = ({ news, events, upcoming, newsCount = news.length, 
 };
 
 export default NewsEventsComponent;
-
